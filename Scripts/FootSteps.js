@@ -1,6 +1,6 @@
 @script RequireComponent( AudioSource )
 
-var walk : AudioClip;
+var walkSounds:AudioClip[];
 
 // Use this for initialization
 function Start () {
@@ -9,18 +9,14 @@ function Start () {
 // Update is called once per frame
 function Update () 
 {
-	var direction = Vector3(Input.GetAxis("Horizontal"),0,Input.GetAxis("Vertical"));
-	
-	if(direction.magnitude > 1.0) direction.Normalize();
-
-	if ( direction.magnitude > 0 ) 
+	if ( Input.GetAxis( "Horizontal" ) || Input.GetAxis( "Vertical" ) ) 
 	{
+		audio.clip = walkSounds[Random.Range(0, walkSounds.length)];
 		audio.Play();
 	}
     else
     {
-       audio.Stop();
+		audio.Stop();
     }
 	
 }
-
