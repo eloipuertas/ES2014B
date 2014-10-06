@@ -43,7 +43,7 @@ public class MenuController : MonoBehaviour
 				} else {
 						
 						player.SendMessage("addFeature",medio.renderer.material.mainTexture.name);
-						Application.LoadLevel ("juego"); //Load the game (next scene)
+						Application.LoadLevel ("PlayScene"); //Load the game (next scene)
 				}
 		}
 }

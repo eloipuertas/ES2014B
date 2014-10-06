@@ -2,22 +2,35 @@ Initialize engine version: 4.5.4f1 (e036f44c54c9)
 GfxDevice: creating device client; threaded=1
 Direct3D:
     Version:  Direct3D 11.0 [level 11.0]
-    Renderer: NVIDIA GeForce GTX 760M (ID=0x11e3)
+    Renderer: NVIDIA GeForce GT 620M (ID=0x1140)
     Vendor:   NVIDIA
-    VRAM:     1988 MB
+    VRAM:     977 MB
 Begin MonoManager ReloadAssembly
-Platform assembly: E:\Feina\UB\4t any\ES\Sprint 1\menu logica\play_Data\Managed\UnityEngine.dll (this message is harmless)
-Loading E:\Feina\UB\4t any\ES\Sprint 1\menu logica\play_Data\Managed\UnityEngine.dll into Unity Child Domain
-Platform assembly: E:\Feina\UB\4t any\ES\Sprint 1\menu logica\play_Data\Managed\Assembly-CSharp.dll (this message is harmless)
-Loading E:\Feina\UB\4t any\ES\Sprint 1\menu logica\play_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
-- Completed reload, in  0.039 seconds
-desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
+Platform assembly: C:\Users\Zenbook\Documents\GitHub\ES2014B\Project\unity\menu logica\play_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\Zenbook\Documents\GitHub\ES2014B\Project\unity\menu logica\play_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\Zenbook\Documents\GitHub\ES2014B\Project\unity\menu logica\play_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\Zenbook\Documents\GitHub\ES2014B\Project\unity\menu logica\play_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\Zenbook\Documents\GitHub\ES2014B\Project\unity\menu logica\play_Data\Managed\Assembly-UnityScript.dll (this message is harmless)
+Loading C:\Users\Zenbook\Documents\GitHub\ES2014B\Project\unity\menu logica\play_Data\Managed\Assembly-UnityScript.dll into Unity Child Domain
+- Completed reload, in  0.093 seconds
+desktop: 1366x768 60Hz; virtual: 1366x768 at 0,0
 <RI> Initializing input.
 XInput1_3.dll not found.
 <RI> Input initialized.
-UnloadTime: 0.244275 ms
+Caracteristica espasa afegida
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+WARNING: Shader Unsupported: 'Hidden/TerrainEngine/Details/BillboardWavingDoublePass' - Pass '' shader state not supported
+The referenced script on this Behaviour is missing!
+ 
+(Filename:  Line: 1783)
+
+UnloadTime: 0.414736 ms
 Unloading 4 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
 
-Unloading 16 unused Assets to reduce memory usage. Loaded Objects now: 83.
-Total: 0.399051 ms (FindLiveObjects: 0.004105 ms CreateObjectMapping: 0.006158 ms MarkObjects: 0.045160 ms  DeleteObjects: 0.052960 ms)
+Unloading 25 unused Assets to reduce memory usage. Loaded Objects now: 127.
+Total: 1.777872 ms (FindLiveObjects: 0.012677 ms CreateObjectMapping: 0.013281 ms MarkObjects: 0.085120 ms  DeleteObjects: 0.450354 ms)
 
+Platform assembly: C:\Users\Zenbook\Documents\GitHub\ES2014B\Project\unity\menu logica\play_Data\Managed\Boo.Lang.dll (this message is harmless)
+WARNING: Shader Unsupported: 'Hidden/TerrainEngine/Details/BillboardWavingDoublePass' - Pass '' shader state not supported

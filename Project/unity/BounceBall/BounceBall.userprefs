@@ -1,8 +1,9 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="..\..\Sprint 1\menu logica\Assets\scripts\playGame.cs.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="..\menu logica\Assets\scripts\MenuController.cs">
     <Files>
-      <File FileName="..\..\Sprint 1\menu logica\Assets\scripts\playGame.cs.cs" Line="1" Column="1" />
+      <File FileName="..\menu logica\Assets\scripts\Player.cs" Line="1" Column="1" />
+      <File FileName="..\menu logica\Assets\scripts\MenuController.cs" Line="19" Column="50" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
