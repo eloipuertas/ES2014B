@@ -1,11 +1,10 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\scripts\Feature.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\scripts\Player.cs">
     <Files>
       <File FileName="Assets\scripts\MenuFeatures.cs" Line="1" Column="1" />
-      <File FileName="..\camera 3a persona\BounceBall\Assets\Scripts\CameraMovement.cs" Line="15" Column="3" />
       <File FileName="Assets\scripts\Player.cs" Line="1" Column="1" />
-      <File FileName="Assets\scripts\Feature.cs" Line="10" Column="5" />
+      <File FileName="Assets\scripts\Feature.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
