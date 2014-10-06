@@ -51,7 +51,7 @@
      <Compile Include="Assets\Scripts\MainMenuController.cs" />
      <None Include="Assets\Standard Assets\Particles\Sources\Shaders\Particle Alpha Blend (Queue +100).shader" />
  <Reference Include="Assembly-UnityScript-firstpass">
- <HintPath>E:/Feina/UB/4t any/ES/Sprint 1/camera 3a persona/BounceBall/Library/ScriptAssemblies/Assembly-UnityScript-firstpass.dll</HintPath>
+ <HintPath>E:/Feina/UB/Github/ES2014B/Project/unity/BounceBall/Library/ScriptAssemblies/Assembly-UnityScript-firstpass.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
