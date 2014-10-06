@@ -12,6 +12,8 @@
 /*.userprefs
 /*.pidb
 /*.booproj
+#Los .exe los adjuntaremos en releases
+*.exe
 
 #Unity3D Generated File On Crash Reports
 sysinfo.txt
