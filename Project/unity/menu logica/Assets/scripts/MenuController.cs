@@ -16,7 +16,7 @@ public class MenuController : MonoBehaviour
 				//The cursor will automatically be hidden, centered on view and made to never leave the view.
 				//Screen.lockCursor = false;	
 				medio = GameObject.FindGameObjectWithTag ("medio");
-				player = GameObject.FindGameObjectWithTag ("player");
+				player = GameObject.FindGameObjectWithTag ("Player");
 
 		}
 	
