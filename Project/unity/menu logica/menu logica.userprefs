@@ -1,9 +1,9 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\scripts\MenuController.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Temp\Compiled-Normal-Diffuse-Win.shader">
     <Files>
-      <File FileName="Assets\scripts\Player.cs" Line="1" Column="1" />
-      <File FileName="Assets\scripts\MenuController.cs" Line="19" Column="50" />
+      <File FileName="Temp\Compiled-Normal-Diffuse-Win.shader" Line="1" Column="1" />
+      <File FileName="..\..\..\..\..\New Unity Project 2\Assets\Standard Assets\Scripts\Utility Scripts\MeshCombineUtility.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
