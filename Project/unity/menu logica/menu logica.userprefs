@@ -1,10 +1,20 @@
 ﻿<Properties>
+<<<<<<< HEAD
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Temp\ParsedCombinations-Normal-Diffuse.shader">
     <Files>
       <File FileName="Temp\ParsedCombinations-Normal-Diffuse.shader" Line="1" Column="1" />
       <File FileName="Temp\Compiled-Normal-Diffuse-Win.shader" Line="1" Column="1" />
       <File FileName="..\..\..\..\..\New Unity Project 2\Assets\Standard Assets\Scripts\Utility Scripts\MeshCombineUtility.cs" Line="1" Column="1" />
+=======
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\scripts\BallMovement.js">
+    <Files>
+      <File FileName="Assets\scripts\Player.cs" Line="43" Column="4" />
+      <File FileName="Assets\scripts\MenuController.cs" Line="45" Column="79" />
+      <File FileName="Assets\scripts\InterfacePlayer.cs" Line="8" Column="2" />
+      <File FileName="Assets\scripts\BallMovement.js" Line="101" Column="1" />
+>>>>>>> 6dafcf594759c0fe9d8f537a045c4fb5b48acc81
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
