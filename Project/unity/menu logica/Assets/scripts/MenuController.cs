@@ -5,7 +5,7 @@ public class MenuController : MonoBehaviour
 {
 		private GameObject medio;
 		private GameObject player;
-		public bool isQuitButton = false;			//Is the button the quit button?
+		public bool isQuitButton;			//Is the button the quit button?
 		private Feature mid;
 	
 		void Start ()
@@ -16,7 +16,7 @@ public class MenuController : MonoBehaviour
 				//The cursor will automatically be hidden, centered on view and made to never leave the view.
 				//Screen.lockCursor = false;	
 				medio = GameObject.FindGameObjectWithTag ("medio");
-				player = GameObject.FindGameObjectWithTag ("Player");
+				
 
 		}
 	
@@ -41,9 +41,9 @@ public class MenuController : MonoBehaviour
 						
 						
 				} else {
-						
-						player.SendMessage("addFeature",medio.renderer.material.mainTexture.name);
+						GameObject jug = (GameObject) Instantiate(Resources.Load(medio.renderer.material.mainTexture.name));
 						Application.LoadLevel ("PlayScene"); //Load the game (next scene)
+						
 				}
 		}
 }

@@ -5,8 +5,8 @@ using System.Collections;
 public class Player : MonoBehaviour, InterfacePlayer
 {
 		private bool firstposition;
-		private int cont = 0;
-
+		public float posInicialX,posInicialY,posInicialZ;
+		public int mass;
 		void Awake ()
 		{
 				DontDestroyOnLoad (gameObject);
@@ -16,8 +16,10 @@ public class Player : MonoBehaviour, InterfacePlayer
 		void Start ()
 		{
 
-				this.transform.renderer.enabled = false;
+				
 				firstposition = false;
+				
+				
 			
 
 		}
@@ -26,29 +28,20 @@ public class Player : MonoBehaviour, InterfacePlayer
 		void Update ()
 		{
 				if (Application.loadedLevel == 1 && !firstposition) {
-						rigidbody.useGravity = true;
-						this.transform.renderer.enabled = true;
-						Vector3 temp = new Vector3 (80.83101f, 5f, 248.4657f);//temporal
+
+
+						Vector3 temp = new Vector3 (posInicialX, posInicialY, posInicialZ);
+						rigidbody.mass = mass;
 						this.transform.position = temp;
 						firstposition = true;
-				} else if (Application.loadedLevel == 0) {
-						rigidbody.useGravity = false;
-						Vector3 temp = new Vector3 (0f, 5f, 0f);//temporal
-						this.transform.position = temp;
+
 				}
 				
 
 
 						
 		}
-
-		public void addFeature (string caracteristica)
-		{
-				
-				PlayerPrefs.SetString ("f" + cont, caracteristica);
-				cont++;
-				
-		}
+	
 
 		public void movePlayer (float x, float y, float z)
 		{
