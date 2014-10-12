@@ -46,13 +46,13 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\BallMovement.js" />
-     <Compile Include="Assets\Scripts\FootSteps.js" />
+     <Compile Include="Assets\scripts\BallMovement.js" />
+     <Compile Include="Assets\scripts\FootSteps.js" />
      <None Include="Assets\MedievalBuildings\readme.txt" />
      <None Include="Assets\Standard Assets\Skyboxes\_skybox info.txt" />
      <None Include="Assets\Standard Assets\Water (Basic)\Sources\Shaders\FX-Water Simple.shader" />
  <Reference Include="Assembly-UnityScript-firstpass">
- <HintPath>E:/Mis docus/Dropbox/2014/ES/proyectogc/12oct/ES2014B/Project/unity/menu logica/Library/ScriptAssemblies/Assembly-UnityScript-firstpass.dll</HintPath>
+ <HintPath>C:/Users/Zenbook/Documents/GitHub/ES2014B/Project/unity/menu logica/Library/ScriptAssemblies/Assembly-UnityScript-firstpass.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>
