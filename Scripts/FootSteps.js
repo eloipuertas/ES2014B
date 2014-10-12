@@ -9,14 +9,10 @@ function Start () {
 // Update is called once per frame
 function Update () 
 {
-	if ( Input.GetAxis( "Horizontal" ) || Input.GetAxis( "Vertical" ) ) 
+	if (  Transform.hasChanged || ! audio.isPlaying ) 
 	{
 		audio.clip = walkSounds[Random.Range(0, walkSounds.length)];
 		audio.Play();
 	}
-    else
-    {
-		audio.Stop();
-    }
 	
 }
