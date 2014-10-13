@@ -11,7 +11,7 @@ public class MoverPersonaje : MonoBehaviour {
 	void Start () {
 		//TODO
 		//¡cambiar a nombre del personaje!
-		personajeP = GameObject.Find("Player");
+		personajeP = GameObject.FindGameObjectWithTag ("Player");
 		click = new RaycastHit(); 
 	}
 	
