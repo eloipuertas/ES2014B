@@ -46,9 +46,9 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\scripts\BallMovement.js" />
-     <Compile Include="Assets\scripts\FootSteps.js" />
-     <None Include="Assets\MedievalBuildings\readme.txt" />
+     <Compile Include="Assets\MainCharacter\Script\BallMovement.js" />
+     <Compile Include="Assets\MainCharacter\Script\FootSteps.js" />
+     <None Include="Assets\Terrain\Packets\MedievalBuildings\readme.txt" />
      <None Include="Assets\Standard Assets\Skyboxes\_skybox info.txt" />
      <None Include="Assets\Standard Assets\Water (Basic)\Sources\Shaders\FX-Water Simple.shader" />
   </ItemGroup>

@@ -46,13 +46,13 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\scripts\CameraMovement.cs" />
-     <Compile Include="Assets\scripts\Feature.cs" />
-     <Compile Include="Assets\scripts\InterfacePlayer.cs" />
-     <Compile Include="Assets\scripts\MenuController.cs" />
-     <Compile Include="Assets\scripts\MenuFeatures.cs" />
-     <Compile Include="Assets\scripts\Player.cs" />
-     <None Include="Assets\MedievalBuildings\readme.txt" />
+     <Compile Include="Assets\MainCharacter\Script\CameraMovement.cs" />
+     <Compile Include="Assets\MainCharacter\Script\Feature.cs" />
+     <Compile Include="Assets\MainCharacter\Script\InterfacePlayer.cs" />
+     <Compile Include="Assets\MainCharacter\Script\Player.cs" />
+     <Compile Include="Assets\Menu\Script\MenuController.cs" />
+     <Compile Include="Assets\Menu\Script\MenuFeatures.cs" />
+     <None Include="Assets\Terrain\Packets\MedievalBuildings\readme.txt" />
      <None Include="Assets\Standard Assets\Skyboxes\_skybox info.txt" />
      <None Include="Assets\Standard Assets\Water (Basic)\Sources\Shaders\FX-Water Simple.shader" />
  <Reference Include="Assembly-UnityScript-firstpass">
