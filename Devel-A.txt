@@ -1,1 +1,0 @@
-Commit inicial para poder partir desde este snap al crear nuestras propias "branch" :)
