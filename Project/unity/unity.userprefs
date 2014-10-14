@@ -1,9 +1,9 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\MainCharacter\Script\MoverPersonaje.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\spider\scripts\NPCState.cs">
     <Files>
-      <File FileName="Assets\MainCharacter\Script\MoverPersonaje.cs" Line="14" Column="60" />
-      <File FileName="Assets\MainCharacter\Script\CameraMovement.cs" Line="18" Column="14" />
+      <File FileName="Assets\spider\scripts\NPCState.cs" Line="30" Column="16" />
+      <File FileName="Assets\spider\scripts\AI_movement.cs" Line="23" Column="12" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
