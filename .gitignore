@@ -6,6 +6,7 @@ Obj/
 UnityGenerated/
 Library/
 Bin/
+*.exe
 
 # ===================================== #
 # Visual Studio / MonoDevelop generated #
