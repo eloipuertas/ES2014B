@@ -1,0 +1,152 @@
+fileFormatVersion: 2
+guid: c69ada0b39a7009459bd4f16744d25b7
+ModelImporter:
+  serializedVersion: 16
+  fileIDToRecycleName:
+    100000: aguijon_left
+    100002: Aguijon_right
+    100004: Armature
+    100006: colm_left
+    100008: colm_rigt
+    100010: Cul
+    100012: Cylinder_022
+    100014: //RootNode
+    100016: Muslo_darr_left_001
+    100018: Muslo_darr_right_001
+    100020: Muslo_dev_left_001
+    100022: Muslo_dev_right_001
+    100024: Muslo_mid_darr_left_001
+    100026: Muslo_mid_darr_right_001
+    100028: Muslo_Mid_dev_left_001
+    100030: Muslo_Mid_dev_right_001
+    100032: Pata__Mid_dev_right_002
+    100034: Pata__Mid_dev_right_003
+    100036: Pata_darr_left_002
+    100038: Pata_darr_left_003
+    100040: Pata_darr_right_002
+    100042: Pata_darr_right_003
+    100044: Pata_dev_left_002
+    100046: Pata_dev_left_003
+    100048: Pata_dev_right_002
+    100050: Pata_dev_right_003
+    100052: Pata_mid_darr_left_002
+    100054: Pata_mid_darr_left_003
+    100056: Pata_mid_darr_right_002
+    100058: Pata_mid_darr_right_003
+    100060: Pata_Mid_dev_left_002
+    100062: Pata_Mid_dev_left_003
+    100064: Torso_Central
+    100066: Torso_Central_darr
+    100068: Torso_colm_left
+    100070: Torso_colm_rigt
+    100072: Torso_darr_left
+    100074: Torso_darr_right
+    100076: Torso_dev_left
+    100078: Torso_dev_right
+    100080: Torso_mid_darr_left
+    100082: Torso_mid_darr_right
+    100084: Torso_Mid_dev_left
+    100086: Torso_Mid_dev_right
+    400000: aguijon_left
+    400002: Aguijon_right
+    400004: Armature
+    400006: colm_left
+    400008: colm_rigt
+    400010: Cul
+    400012: Cylinder_022
+    400014: //RootNode
+    400016: Muslo_darr_left_001
+    400018: Muslo_darr_right_001
+    400020: Muslo_dev_left_001
+    400022: Muslo_dev_right_001
+    400024: Muslo_mid_darr_left_001
+    400026: Muslo_mid_darr_right_001
+    400028: Muslo_Mid_dev_left_001
+    400030: Muslo_Mid_dev_right_001
+    400032: Pata__Mid_dev_right_002
+    400034: Pata__Mid_dev_right_003
+    400036: Pata_darr_left_002
+    400038: Pata_darr_left_003
+    400040: Pata_darr_right_002
+    400042: Pata_darr_right_003
+    400044: Pata_dev_left_002
+    400046: Pata_dev_left_003
+    400048: Pata_dev_right_002
+    400050: Pata_dev_right_003
+    400052: Pata_mid_darr_left_002
+    400054: Pata_mid_darr_left_003
+    400056: Pata_mid_darr_right_002
+    400058: Pata_mid_darr_right_003
+    400060: Pata_Mid_dev_left_002
+    400062: Pata_Mid_dev_left_003
+    400064: Torso_Central
+    400066: Torso_Central_darr
+    400068: Torso_colm_left
+    400070: Torso_colm_rigt
+    400072: Torso_darr_left
+    400074: Torso_darr_right
+    400076: Torso_dev_left
+    400078: Torso_dev_right
+    400080: Torso_mid_darr_left
+    400082: Torso_mid_darr_right
+    400084: Torso_Mid_dev_left
+    400086: Torso_Mid_dev_right
+    4300000: Cylinder_022
+    7400000: Default Take
+    7400002: walk
+    9500000: //RootNode
+    13700000: Cylinder_022
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
