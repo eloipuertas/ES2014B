@@ -1,9 +1,8 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\MainCharacter\Script\MoverPersonaje.cs">
+  <MonoDevelop.Ide.Workspace />
+  <MonoDevelop.Ide.Workbench ActiveDocument="..\..\..\..\Mat_Comp\Enginyeria del Software\BounceBall\Assets\Scripts\CameraMovement.cs">
     <Files>
-      <File FileName="Assets\MainCharacter\Script\MoverPersonaje.cs" Line="14" Column="60" />
-      <File FileName="Assets\MainCharacter\Script\CameraMovement.cs" Line="18" Column="14" />
+      <File FileName="..\..\..\..\Mat_Comp\Enginyeria del Software\BounceBall\Assets\Scripts\CameraMovement.cs" Line="25" Column="29" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
