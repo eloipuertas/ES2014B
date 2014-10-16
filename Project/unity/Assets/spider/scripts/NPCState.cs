@@ -2,8 +2,6 @@ using UnityEngine;
 using System.Collections;
 
 public class NPCState : MonoBehaviour {
-	
-	
 	public float moveVelocity = 5f;
 	public int maxHealth = 100;
 	public int health = 100;
@@ -12,10 +10,13 @@ public class NPCState : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start(){
+
+	}
+
+	void awake(){
 		direction = new Vector3(0,0,0);
 		destination = transform.position;	// stand still
 	}
-	
 	// Update is called once per frame
 	void Update(){
 		direction = destination-transform.position;

@@ -2,24 +2,25 @@
 using System.Collections;
 
 public class AI_movement : MonoBehaviour {
-	public float speed;
-	public Transform object_to_follow;
-	private Transform me;
+	public Transform target;
+	NPCState myState;
 
 	// Use this for initialization
 	void Start () {
-		me = transform;
+
+	}
+	void awake () {
+		myState = this.gameObject.GetComponent<NPCState> ();
+		myState.setDestination (target.position.x, 0, target.position.z);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		float distX = object_to_follow.position.x-me.position.x;
-		float distZ = object_to_follow.position.z-me.position.z;
-	    float dist = (Mathf.Sqrt (Mathf.Pow(distX,2)+Mathf.Pow(distZ,2)));
-		float prop = speed/dist;
-
-		Vector3 velocity = new Vector3(prop*distX, 0, prop*distZ);
-
-		rigidbody.velocity = velocity;
+		myState = this.gameObject.GetComponent<NPCState> ();
+		//if ((Mathf.Sqrt (Mathf.Pow (target.position.x, 2) + Mathf.Pow (target.position.z, 2))) > 0.5) {
+			myState.setDestination (target.position.x, 0, target.position.z);
+		//} else {
+		//	myState.setDestination (transform.position.x, transform.position.y, transform.position.z);
+		//}
 	}
 }
