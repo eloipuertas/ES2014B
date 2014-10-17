@@ -5,7 +5,6 @@
 	public class MainPjMovement : MonoBehaviour {
 	private GameObject player;
 	private RaycastHit hit;
-	public Vector3 playerPos = new Vector3 (75,0,75);
 	public float speed = 50.0f;
 	
 	public Vector3 previousPosition;
@@ -14,8 +13,8 @@
 	
 	// Use this for initialization
 	void Start () {
-		player = GameObject.Find("mainCharacter");
-		targetPosition = player.transform.position;
+		//player = GameObject.FindGameObjectWithTag ("Player");
+		targetPosition = transform.position;
 		hit = new RaycastHit();
 	}
 	
@@ -24,7 +23,7 @@
 		if (Input.GetKeyDown(KeyCode.Mouse0)) {
 			if (Input.GetMouseButtonDown(0)) {
 				Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-				if (Physics.Raycast(ray, out hit, 1000.0f)) {
+				if (Physics.Raycast(ray, out hit, 1000.0f, ~(1 << 8))) {
 					previousPosition = transform.position;
 					targetPosition = hit.point;
 					//targetPosition.y = GameObject.Find("Terrain").transform.position.y;
@@ -36,9 +35,10 @@
 		//if(lerpMoving < 1)
 			movePlayer();
 	}
-	
+
 	void movePlayer(){
 		//lerpMoving += Time.deltaTime;
 		transform.position = Vector3.MoveTowards(transform.position, targetPosition, Time.deltaTime * speed);
+
 	}
 }

@@ -19,7 +19,7 @@ public class Player : MonoBehaviour, InterfacePlayer
 				
 				firstposition = false;
 				
-				
+		//rigidbody.freezeRotation = true;
 			
 
 		}
@@ -31,7 +31,7 @@ public class Player : MonoBehaviour, InterfacePlayer
 
 
 						Vector3 temp = new Vector3 (posInicialX, posInicialY, posInicialZ);
-						rigidbody.mass = mass;
+						//rigidbody.mass = mass;
 						this.transform.position = temp;
 						firstposition = true;
 
