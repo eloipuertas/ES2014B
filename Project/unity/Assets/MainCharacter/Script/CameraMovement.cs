@@ -16,29 +16,28 @@ public class CameraMovement : MonoBehaviour
 		void Start ()
 		{
 				target = GameObject.FindGameObjectWithTag ("Player");
-				transform.position = posInit;
+				//transform.position = posInit;
 		}
 
 		private void Update ()
 		{
-
 				if (target != null) {
-						
+
 						transform.LookAt (target.transform);
 
-						posInit [0] = Mathf.Lerp (transform.position.x, target.transform.position.x, Time.deltaTime * smooth);
-						posInit [1] = Mathf.Lerp (transform.position.y, target.transform.position.y, Time.deltaTime * smooth);
-						posInit [2] = Mathf.Lerp (transform.position.z, target.transform.position.z, Time.deltaTime * smooth);
-						
 						distancia = Mathf.Clamp (distancia + Input.GetAxis ("Mouse ScrollWheel") * zoomSpeed, distanciaMin, distanciaMax);
 
-						posCamera [0] = posInit [0] + distancia;
-						posCamera [1] = posInit [1] + distancia;
-						posCamera [2] = posInit [2] + distancia;
+						//posCamera [1] = distancia;
+						//posCamera [2] = -distancia;
+
+						posCamera [0] = target.transform.position.x - distancia;
+						posCamera [1] = target.transform.position.y + distancia;
+						posCamera [2] = target.transform.position.z - distancia;			
+
+						//transform.localEulerAngles = new Vector3(transform.localEulerAngles.x -20, transform.localEulerAngles.y, transform.localEulerAngles.z);
+					
 						
 						transform.position = posCamera;
-						
-						
 				}
 
 		}
