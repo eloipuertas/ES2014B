@@ -5,40 +5,44 @@
 	public class MainPjMovement : MonoBehaviour {
 	private GameObject player;
 	private RaycastHit hit;
-	public float speed = 50.0f;
+	public float speed = 50;
 	
 	public Vector3 previousPosition;
 	public Vector3 targetPosition;
+	private CharacterController controller;
 	public float lerpMoving;
 	
 	// Use this for initialization
 	void Start () {
-		//player = GameObject.FindGameObjectWithTag ("Player");
+		controller = this.GetComponent<CharacterController>();
 		targetPosition = transform.position;
 		hit = new RaycastHit();
 	}
 	
 	//Update is called once per frame
 	void Update () {
-		if (Input.GetKeyDown(KeyCode.Mouse0)) {
-			if (Input.GetMouseButtonDown(0)) {
-				Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-				if (Physics.Raycast(ray, out hit, 1000.0f, ~(1 << 8))) {
-					previousPosition = transform.position;
+		if (Input.GetMouseButtonDown (0)) {
+			if (Physics.Raycast (Camera.main.ScreenPointToRay (Input.mousePosition), out hit, 1000.0f, ~(1 << 8))) {
+				if (hit.transform) {
 					targetPosition = hit.point;
-					//targetPosition.y = GameObject.Find("Terrain").transform.position.y;
 					targetPosition.y = 0;
-					lerpMoving = 0;
 				}
 			}
 		}
-		//if(lerpMoving < 1)
-			movePlayer();
+
+		MoveTowardsTarget (targetPosition);
 	}
 
-	void movePlayer(){
-		//lerpMoving += Time.deltaTime;
-		transform.position = Vector3.MoveTowards(transform.position, targetPosition, Time.deltaTime * speed);
-
+	void MoveTowardsTarget(Vector3 target) {
+		var offset = target - transform.position;
+		if(offset.magnitude > 0.5f) {
+			offset = offset.normalized * speed;
+			controller.Move(offset * Time.deltaTime);
+			Quaternion newRotation = Quaternion.LookRotation (transform.position - targetPosition);
+			newRotation.x = 0f;
+			newRotation.z = 0f;
+			transform.rotation = Quaternion.Slerp (transform.rotation, newRotation,  (speed/5)*Time.deltaTime);
+		}
 	}
+
 }
