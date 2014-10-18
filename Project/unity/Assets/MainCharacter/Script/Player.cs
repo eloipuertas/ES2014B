@@ -59,7 +59,6 @@ public class Player : MonoBehaviour
 
 
 						Vector3 temp = new Vector3 (posInicialX, posInicialY, posInicialZ);
-						rigidbody.mass = mass;
 						this.transform.position = temp;
 						firstposition = true;
 
