@@ -57,7 +57,7 @@ public class Player : MonoBehaviour
 				} 
 				if (Application.loadedLevel == 1 && !firstposition) {
 
-
+						mesh.renderer.enabled = true;
 						Vector3 temp = new Vector3 (posInicialX, posInicialY, posInicialZ);
 						this.transform.position = temp;
 						firstposition = true;
