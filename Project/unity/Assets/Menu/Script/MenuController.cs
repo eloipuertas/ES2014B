@@ -36,7 +36,7 @@ public class MenuController : MonoBehaviour
 						
 						
 				} else {
-						GameObject jug = (GameObject) Instantiate(Resources.Load("papertex22"));
+						//GameObject jug = (GameObject) Instantiate(Resources.Load("papertex22"));
 
 						Application.LoadLevel (1); //Load the game (next scene)
 						
