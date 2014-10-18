@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
 		public float posInicialX, posInicialY, posInicialZ;
 		public int mass;
 		private float timeESC;
+		private GameObject mesh;
 
 		void Awake ()
 		{
@@ -21,6 +22,8 @@ public class Player : MonoBehaviour
 				
 				firstposition = false;
 				timeESC = 0;
+				mesh = GameObject.FindGameObjectWithTag ("mesh_pj");
+				mesh.renderer.enabled = false;
 				
 				
 			
