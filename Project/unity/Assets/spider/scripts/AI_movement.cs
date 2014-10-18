@@ -17,10 +17,11 @@ public class AI_movement : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		myState = this.gameObject.GetComponent<NPCState> ();
-		//if ((Mathf.Sqrt (Mathf.Pow (target.position.x, 2) + Mathf.Pow (target.position.z, 2))) > 0.5) {
-			myState.setDestination (target.position.x, 0, target.position.z);
-		//} else {
-		//	myState.setDestination (transform.position.x, transform.position.y, transform.position.z);
-		//}
+
+		if (Vector3.Distance (transform.position,target.position)>2) {
+			myState.setDestination (target.position.x, target.position.y, target.position.z);
+		} else {
+			myState.setDestination (transform.position.x, transform.position.y, transform.position.z);
+		}
 	}
 }

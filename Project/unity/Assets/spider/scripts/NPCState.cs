@@ -2,34 +2,33 @@ using UnityEngine;
 using System.Collections;
 
 public class NPCState : MonoBehaviour {
-	public float moveVelocity = 5f;
+	
+	public float moveVelocity = 10f;
 	public int maxHealth = 100;
 	public int health = 100;
-	private Vector3 direction;
-	private Vector3 destination;
+	public Vector3 destination;
 	
-	// Use this for initialization
-	void Start(){
-
+	void Awake(){
+		destination = transform.position;
+		//destination = new Vector3(100,100,100);
+		//animation = gameObject.animation;
+		//gameObject.animation.Play("walk",PlayMode.StopAll);
+		/*if(!animation.isPlaying){
+		}*/
 	}
-
-	void awake(){
-		direction = new Vector3(0,0,0);
-		destination = transform.position;	// stand still
-	}
-	// Update is called once per frame
+	
 	void Update(){
-		direction = destination-transform.position;
+		moveToDestination();
+	}
+	
+	public void moveToDestination(){
+		Vector3 direction = destination-transform.position;
 		if(direction.magnitude > 1){
 			direction.Normalize();
-			Vector3 velocity = direction*moveVelocity*Time.deltaTime;
-			transform.Translate(velocity);
+			//rigidbody.velocity = direction*moveVelocity*Time.deltaTime;
+			rigidbody.velocity = direction - transform.position;
 		}else{
-			transform.Translate(direction);
-		}
-		
-		if(!animation.isPlaying){
-			animation.Play();
+			transform.position = destination;
 		}
 	}
 	
