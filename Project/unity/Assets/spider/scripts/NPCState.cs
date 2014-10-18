@@ -24,6 +24,11 @@ public class NPCState : MonoBehaviour {
 		moveDirection *= moveSpeed;
 		characterController.Move(moveDirection * Time.deltaTime);
 	}
+
+	// ATTACK
+	public void attack(){
+		// TODO
+	}
 	
 	// MOVEMENT
 	public Vector3 getDestination(){
