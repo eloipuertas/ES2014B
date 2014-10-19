@@ -3,7 +3,9 @@ using System.Collections;
 
 [ RequireComponent( typeof( AudioSource ) ) ]
 
-public class AmbientalMusic : MonoBehaviour {
+public class AmbientalMusic : MonoBehaviour 
+{
+	public GameObject PNJ;
 
 	public AudioClip catacumba;
 	public AudioClip fight;
@@ -40,6 +42,6 @@ public class AmbientalMusic : MonoBehaviour {
 
 	bool isPNJinScene()
 	{
-		// TODO
+		return GameObject.Find ( "SPIDER" ).activeInHierarchy;
 	}
 }
