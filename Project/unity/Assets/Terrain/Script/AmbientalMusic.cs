@@ -10,8 +10,6 @@ public class AmbientalMusic : MonoBehaviour
 	public AudioClip catacumba;
 	public AudioClip fight;
 
-	bool PNJinScene = false;
-
 	// Use this for initialization
 	void Start () 
 	{
@@ -25,23 +23,18 @@ public class AmbientalMusic : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-		PNJinScene = isPNJinScene();
-
-		if ( PNJinScene ) 
+		if ( GameObject.Find ( "SPIDER" ).activeInHierarchy ) 
 		{
 			audio.clip = fight;
-			audio.Play ();
+
+			if ( ! audio.isPlaying ) audio.Play ();
 
 		} else {
 			audio.clip = catacumba;
-			audio.Play ();
+
+			if ( ! audio.isPlaying ) audio.Play ();
 
 		}
 	
-	}
-
-	bool isPNJinScene()
-	{
-		return GameObject.Find ( "SPIDER" ).activeInHierarchy;
 	}
 }
