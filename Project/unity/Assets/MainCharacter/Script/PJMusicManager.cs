@@ -10,19 +10,19 @@ public class PJMusicManager : MonoBehaviour
 
 	public AudioClip killed;
 
-	public static void PlayAttackOK()
+	public void PlayAttackOK()
 	{
 		audio.clip = attackOK;
 		audio.Play ();
 	}
 	
-	public static void PlayAttackFAIL()
+	public void PlayAttackFAIL()
 	{
-		audio.clip = attackFAIL[Random.Range(0, attackFAIL.GetLength)];
+		audio.clip = attackFAIL[Random.Range(0, attackFAIL.Length)];
 		audio.Play ();
 	}
 	
-	public static void PlayKilled()
+	public void PlayKilled()
 	{
 		audio.clip = killed;
 		audio.Play ();		
