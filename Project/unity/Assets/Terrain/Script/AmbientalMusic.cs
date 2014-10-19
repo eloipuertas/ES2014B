@@ -5,17 +5,18 @@ using System.Collections;
 
 public class AmbientalMusic : MonoBehaviour {
 
-	public AudioClip gotes;
-	public AudioClip ratPanat;
-	public AudioClip correntAire;
-	public AudioClip correntAigua;
-
+	public AudioClip catacumba;
 	public AudioClip fight;
 
 	bool PNJinScene = false;
 
 	// Use this for initialization
-	void Start () {
+	void Start () 
+	{
+		audio.clip = catacumba;
+		audio.loop = true;
+
+		audio.Play ();
 	
 	}
 	
@@ -24,11 +25,14 @@ public class AmbientalMusic : MonoBehaviour {
 	{
 		PNJinScene = isPNJinScene();
 
-		if ( PNJinScene ) {
-				audio.clip = fight;
-				audio.Play ();
+		if ( PNJinScene ) 
+		{
+			audio.clip = fight;
+			audio.Play ();
 
 		} else {
+			audio.clip = catacumba;
+			audio.Play ();
 
 		}
 	
