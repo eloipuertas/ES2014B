@@ -22,6 +22,8 @@ public class AmbientalMusic : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
+		PNJinScene = isPNJinScene();
+
 		if ( PNJinScene ) {
 				audio.clip = fight;
 				audio.Play ();
@@ -30,5 +32,10 @@ public class AmbientalMusic : MonoBehaviour {
 
 		}
 	
+	}
+
+	bool isPNJinScene()
+	{
+		// TODO
 	}
 }
