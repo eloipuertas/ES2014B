@@ -1,20 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class MenuController : MonoBehaviour
+public class backMainMenu : MonoBehaviour
 {
-
-		public bool isQuitButton;			//Is the button the quit button?
-
+		
 		public Texture2D buttontex;
 		public Texture2D hoverbutton;
-	
 		
-
-
 		public void OnMouseExit ()
 		{
-			
+				//renderer.material.color = Color.red;
 				guiTexture.texture = buttontex;
 		
 		}
@@ -24,22 +19,14 @@ public class MenuController : MonoBehaviour
 				guiTexture.texture = hoverbutton;
 
 		}
-		
-		
-	
 		//This function is called when the user has released the mouse button
 		public void OnMouseUpAsButton ()
 		{
 
-				if (isQuitButton) {
-						Application.Quit ();
-						
-						
-				} else {
-						
+				
+				
+				Application.LoadLevel (0); //Load the game (next scene)
+				
 
-						Application.LoadLevel (1); //Load the game (next scene)
-						
-				}
 		}
 }
