@@ -6,26 +6,30 @@ public class MenuController : MonoBehaviour
 
 		public bool isQuitButton;			//Is the button the quit button?
 		private Color color;
+	    public Texture2D buttontex;
+		public Texture2D hoverbutton;
 	
 		void Start ()
 		{
 
 
-		color = renderer.material.color;
+		//scolor = renderer.material.color;
 
 		}
 	
 		//This function is called when the mouse entered the GUIElement or Collider
-		public void OnMouseEnter ()
-		{
-				renderer.material.color = Color.red;
-		
-		}
-		//This function is called when the mouse is not any longer over the GUIElement or Collider
 		public void OnMouseExit ()
 		{
-				renderer.material.color = color;
+				//renderer.material.color = Color.red;
+				guiTexture.texture = buttontex;
+		
 		}
+		public void OnMouseEnter (){
+				guiTexture.texture = hoverbutton;
+
+		}
+		//This function is called when the mouse is not any longer over the GUIElement or Collider
+		
 	
 		//This function is called when the user has released the mouse button
 		public void OnMouseUpAsButton ()
