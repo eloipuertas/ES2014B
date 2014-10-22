@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: a2c3a117ddea42544b13d2c13b41c32c
+=======
+guid: 77a51f2bb63137b4aaa6afc83d614f56
+>>>>>>> c-65-66-+columnas+paredes+techo+otras
 folderAsset: yes
 DefaultImporter:
   userData: 

@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 8040d614040e0504aa11a9d7b2022f81
+=======
+guid: b8602a0006d373c43aa9b35e65a79a37
+>>>>>>> c-65-66-+columnas+paredes+techo+otras
 AudioImporter:
   serializedVersion: 4
   format: 0

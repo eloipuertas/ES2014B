@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: bcb53bf6f36f12f4ab7a38cd8e54475a
+=======
+guid: 4be10e8234a20384cbce445eef505a23
+>>>>>>> c-65-66-+columnas+paredes+techo+otras
 MonoImporter:
   serializedVersion: 2
   defaultReferences: []
