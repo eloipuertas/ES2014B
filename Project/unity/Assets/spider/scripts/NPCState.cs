@@ -1,21 +1,32 @@
 using UnityEngine;
 using System.Collections;
 
-public class NPCState : MonoBehaviour {
+public class NPCState : MonoBehaviour, IAttacker {
+	
+	public static int MUERTO = 0;
+	public static int VIVO = 1;
+	public static int ATACANDO = 2;
+	public static int INATACABLE = 3;
+	public static int OTRO = 4;
 	
 	public float moveSpeed = 1.5f;
 	public int maxHealth = 100;
 	public int health = 100;
+	public int damageAttack = 5;
+	public int state = 1;
 	public Vector3 destination;
 	CharacterController characterController;
 	
 	void Awake(){
 		characterController = GetComponent<CharacterController>();
 		setDestination(transform.position.x,transform.position.y,transform.position.z);
+		state = VIVO;
 	}
 	
 	void Update(){
-		move();
+		if(state != MUERTO){
+			move();
+		}
 	}
 	
 	private void move(){
@@ -36,10 +47,19 @@ public class NPCState : MonoBehaviour {
 		newRotation.z = 0f;
 		transform.rotation = Quaternion.Slerp(transform.rotation,newRotation,(moveSpeed/1)*Time.deltaTime);
 	}
-
+	
 	// ATTACK
-	public void attack(){
-		// TODO
+	// TODO DESCOMENTAR!!!! (comentat perque no peti al fer proves i tal)
+	/*public void attack(PjPrincipal pjPrincipal){
+		if(state != MUERTO && pjPrincipal.getEstat() != PjPrincipal.INATACABLE){
+			state = ATACANDO;
+			pjPrincipal.restarVida(damageAttack);
+		}
+	}*/
+	
+	public int receiveDamage(int damage){
+		substractHealth(damage);
+		return state;
 	}
 	
 	// MOVEMENT
@@ -47,12 +67,19 @@ public class NPCState : MonoBehaviour {
 		return destination;
 	}
 	public void setDestination(float x,float y,float z){
+		state = VIVO;
 		destination = new Vector3(x,y,z);
 	}
 	
 	// HP
 	public void setHealth(int newHealth){
-		health = newHealth;
+		if(state != MUERTO){
+			health = newHealth;
+			if(health <= 0){
+				health = 0;
+				state = MUERTO;
+			}
+		}
 	}
 	public int getHealth(){
 		return health;
@@ -68,5 +95,9 @@ public class NPCState : MonoBehaviour {
 	}
 	public void substractHealth(int healthToSubstract){
 		setHealth(health-healthToSubstract);
+	}
+	
+	public int getState(){
+		return state;
 	}
 }
