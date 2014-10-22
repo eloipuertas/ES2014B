@@ -11,9 +11,9 @@ public class HealthMana : MonoBehaviour
 		//atributos de la vida
 		public Texture texVida;
 		private float alturaVida;
-		private float hp = 100;
-		private float maxhp = 100;
-		private float healthpercent;
+		private float vida = 100;
+		private float maxvida = 100;
+		private float vidapercent;
 
 		//atributos del mana
 		public Texture texMana;
@@ -22,16 +22,33 @@ public class HealthMana : MonoBehaviour
 		private float maxmana = 100;
 		private float manapercent;
 
+		//texto que saldra cuando el personaje muera
+		public Texture gameOverTexture;
+		private float xPos = Screen.width / 2.7f;
+		private float yPos = Screen.height / 3.2f;
+		//private GUIStyle myStyle;
+
+		
+		void Start ()
+		{
+				/*myStyle = new GUIStyle ();
+				myStyle.normal.textColor = Color.white;
+				myStyle.alignment = TextAnchor.MiddleCenter;
+				myStyle.normal.background = texButtonBackNotPressed;*/
+
+
+		}
+
 		void OnGUI ()
 		{
+
+				vidapercent = vida / maxvida;
+				if (vidapercent < 0)
+						vidapercent = 0;
+				if (vidapercent > 100)
+						vidapercent = 100;
 				
-				healthpercent = hp / maxhp;
-				if (healthpercent < 0)
-						healthpercent = 0;
-				if (healthpercent > 100)
-						healthpercent = 100;
-				
-				alturaVida = healthpercent * diametro;
+				alturaVida = vidapercent * diametro;
 
 				manapercent = mana / maxmana;
 				if (manapercent < 0)
@@ -50,7 +67,30 @@ public class HealthMana : MonoBehaviour
 				GUI.DrawTexture (new Rect (0, -diametro + alturaMana, diametro, diametro), texMana);
 				GUI.EndGroup ();
 
+				/*
+				//per debugar
+				if (GUI.Button (new Rect (100, 100, 100, 100), "- vida")) {
+						vida -= 20;
+						if (vida <= 0) {
+								
+								vida = 0;
 
+
+						}
+
+				}
+				*/
+				if (vida <= 0) {
+						
+						GUI.Label (new Rect (xPos, yPos, Screen.width / 3, Screen.height / 3), gameOverTexture);
+						if (GUI.Button (new Rect (xPos*1.1f, 2f * yPos, Screen.width / 5, Screen.height / 15),"Back to main menu")) {
+								Destroy (this.gameObject);
+								Application.LoadLevel (0);
+				
+						}
+				}
+
+				
 
 		}
 
@@ -58,18 +98,19 @@ public class HealthMana : MonoBehaviour
 		{
 				if (puntos < 0)
 						puntos = puntos * -1;
-				hp += puntos;
-				if (hp > maxhp)
-						hp = maxhp;
+				vida += puntos;
+				if (vida > maxvida)
+						vida = maxvida;
 		}
 
 		public void restarVida (int puntos)
 		{
 				if (puntos < 0)
 						puntos = puntos * -1;
-				hp -= puntos;
-				if (hp < 0) 
-						hp = 0;
+				vida -= puntos;
+				if (vida <= 0) {
+						vida = 0;
+				}
 		}
 
 		public void sumarMana (int puntos)
