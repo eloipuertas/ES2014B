@@ -23,18 +23,18 @@ public class AmbientalMusic : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-		if ( GameObject.Find ( "SPIDER" ).activeInHierarchy ) 
+		/*if ( GameObject.Find ( "SPIDER" ).activeInHierarchy ) 
 		{
 			audio.clip = fight;
 
 			if ( ! audio.isPlaying ) audio.Play ();
 
-		} else {
+		} else {*/
 			audio.clip = catacumba;
 
 			if ( ! audio.isPlaying ) audio.Play ();
 
-		}
+		//}
 	
 	}
 }
