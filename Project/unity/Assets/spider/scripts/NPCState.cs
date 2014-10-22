@@ -49,7 +49,7 @@ public class NPCState : MonoBehaviour, IAttacker {
 	}
 	
 	// ATTACK
-	public int IAttacker.attack(IAttacker attacker){
+	int IAttacker.attack(IAttacker attacker){
 		if(state != MUERTO && attacker.getState() != INATACABLE){
 			state = ATACANDO;
 			attacker.receiveDamage(damageAttack);
@@ -57,12 +57,12 @@ public class NPCState : MonoBehaviour, IAttacker {
 		return state;
 	}
 	
-	public int IAttacker.receiveDamage(int damage){
+	int IAttacker.receiveDamage(int damage){
 		substractHealth(damage);
 		return state;
 	}
 	
-	public int IAttacker.getState(){
+	int IAttacker.getState(){
 		return state;
 	}
 	
