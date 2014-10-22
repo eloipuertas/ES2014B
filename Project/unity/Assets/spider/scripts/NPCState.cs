@@ -62,6 +62,10 @@ public class NPCState : MonoBehaviour, IAttacker {
 		return state;
 	}
 	
+	public int IAttacker.getState(){
+		return state;
+	}
+	
 	// MOVEMENT
 	public Vector3 getDestination(){
 		return destination;

@@ -4,4 +4,5 @@ using System.Collections;
 interface IAttacker{
 	int attack(IAttacker attacker);	// return state
 	int receiveDamage(int damage);	// return state
+	int getState();					// return state
 }
