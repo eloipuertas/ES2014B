@@ -49,15 +49,15 @@ public class NPCState : MonoBehaviour, IAttacker {
 	}
 	
 	// ATTACK
-	// TODO DESCOMENTAR!!!! (comentat perque no peti al fer proves i tal)
-	/*public void attack(PjPrincipal pjPrincipal){
-		if(state != MUERTO && pjPrincipal.getEstat() != PjPrincipal.INATACABLE){
+	public int IAttacker.attack(IAttacker attacker){
+		if(state != MUERTO && attacker.getState() != INATACABLE){
 			state = ATACANDO;
-			pjPrincipal.restarVida(damageAttack);
+			attacker.receiveDamage(damageAttack);
 		}
-	}*/
+		return state;
+	}
 	
-	public int receiveDamage(int damage){
+	public int IAttacker.receiveDamage(int damage){
 		substractHealth(damage);
 		return state;
 	}
