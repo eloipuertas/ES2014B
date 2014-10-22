@@ -3,7 +3,7 @@ using System.Collections;
 
 public class NPCState : MonoBehaviour {
 	
-	public float moveSpeed = 1f;
+	public float moveSpeed = 1.5f;
 	public int maxHealth = 100;
 	public int health = 100;
 	public Vector3 destination;
@@ -22,7 +22,19 @@ public class NPCState : MonoBehaviour {
 		Vector3 moveDirection = destination-transform.position;
 		moveDirection.Normalize();
 		moveDirection *= moveSpeed;
-		characterController.Move(moveDirection * Time.deltaTime);
+		characterController.Move (moveDirection * Time.deltaTime);
+		lookAt();
+	}
+	
+	// LOOK
+	public void lookAt(){
+		if((destination - transform.position).magnitude < 0.1){
+			return;
+		}
+		Quaternion newRotation = Quaternion.LookRotation(destination - transform.position);
+		newRotation.x = 0f;
+		newRotation.z = 0f;
+		transform.rotation = Quaternion.Slerp(transform.rotation,newRotation,(moveSpeed/1)*Time.deltaTime);
 	}
 
 	// ATTACK
