@@ -1,34 +1,27 @@
 fileFormatVersion: 2
-guid: 7e87645335d98284fa97118d60f71dde
+guid: f0877786593186d4690f537352b2b066
 ModelImporter:
   serializedVersion: 16
   fileIDToRecycleName:
-    100000: Cube
-    100002: //RootNode
-    100004: Door_left
-    100006: Door_right
-    400000: Cube
-    400002: //RootNode
-    400004: Door_left
-    400006: Door_right
-    2300000: Cube
-    2300002: Door_left
-    2300004: Door_right
-    3300000: Cube
-    3300002: Door_left
-    3300004: Door_right
-    4300000: Door_right
-    4300002: Door_left
-    4300004: Cube
-    6400000: Cube
-    6400002: Door_left
-    6400004: Door_right
+    100000: Liquid
+    100002: Potion
+    100004: //RootNode
+    400000: Liquid
+    400002: Potion
+    400004: //RootNode
+    2300000: Liquid
+    2300002: Potion
+    3300000: Liquid
+    3300002: Potion
+    4300000: Liquid
+    4300002: Potion
+    6400000: Liquid
+    6400002: Potion
     7400000: Default Take
     9500000: //RootNode
-    11100000: //RootNode
   materials:
     importMaterials: 1
-    materialName: 0
+    materialName: 1
     materialSearch: 1
   animations:
     legacyGenerateAnimations: 4
@@ -47,10 +40,10 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 1
+    addColliders: 0
     importBlendShapes: 1
-    swapUVChannels: 0
-    generateSecondaryUV: 0
+    swapUVChannels: 1
+    generateSecondaryUV: 1
     useFileUnits: 1
     optimizeMeshForGPU: 1
     weldVertices: 1
@@ -75,8 +68,8 @@ ModelImporter:
     armStretch: .0500000007
     legStretch: .0500000007
     feetSpacing: 0
-    rootMotionBoneName: 
+    rootMotionBoneName: Potion
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 1
+  animationType: 2
   additionalBone: 0
   userData: 
