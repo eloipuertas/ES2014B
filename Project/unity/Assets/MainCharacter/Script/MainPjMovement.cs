@@ -38,7 +38,7 @@
 		if(offset.magnitude > 0.5f) {
 			offset = offset.normalized * speed;
 			controller.Move(offset * Time.deltaTime);
-			Quaternion newRotation = Quaternion.LookRotation (transform.position - targetPosition);
+			Quaternion newRotation = Quaternion.LookRotation (targetPosition - transform.position);
 			newRotation.x = 0f;
 			newRotation.z = 0f;
 			transform.rotation = Quaternion.Slerp (transform.rotation, newRotation,  (speed/5)*Time.deltaTime);
