@@ -16,11 +16,21 @@ public class NPCState : MonoBehaviour, IAttacker {
 	public int state = 1;
 	public Vector3 destination;
 	CharacterController characterController;
+	Animator animator;
 	
 	void Awake(){
 		characterController = GetComponent<CharacterController>();
+		animator = GetComponent<Animator>();
+		
 		setDestination(transform.position.x,transform.position.y,transform.position.z);
 		state = VIVO;
+		
+		/*// Get the Animator component from your gameObject
+		// Sets the value
+		animator.SetBool("InConga", true); 
+		// Gets the value
+		bool isInConga = animator.GetBool("InConga");*/
+
 	}
 	
 	void Update(){
@@ -33,6 +43,9 @@ public class NPCState : MonoBehaviour, IAttacker {
 		Vector3 moveDirection = destination-transform.position;
 		moveDirection.Normalize();
 		moveDirection *= moveSpeed;
+		if(moveDirection.magnitude < 0.5){
+			animator.SetBool("walk_enabled",false);
+		}
 		characterController.Move (moveDirection * Time.deltaTime);
 		lookAt();
 	}
@@ -50,9 +63,12 @@ public class NPCState : MonoBehaviour, IAttacker {
 	
 	// ATTACK
 	int IAttacker.attack(IAttacker attacker){
-		if(state != MUERTO && attacker.getState() != INATACABLE){
+		if (state != MUERTO && attacker.getState () != INATACABLE) {
 			state = ATACANDO;
-			attacker.receiveDamage(damageAttack);
+			animator.SetBool ("attack_enabled", true);
+			attacker.receiveDamage (damageAttack);
+		} else {
+			animator.SetBool("attack_enabled",false);
 		}
 		return state;
 	}
@@ -71,8 +87,15 @@ public class NPCState : MonoBehaviour, IAttacker {
 		return destination;
 	}
 	public void setDestination(float x,float y,float z){
-		state = VIVO;
-		destination = new Vector3(x,y,z);
+		if (state != MUERTO) {
+				animator.SetBool ("attack_enabled", false);
+				animator.SetBool ("walk_enabled", true);
+				state = VIVO;
+				destination = new Vector3 (x, y, z);
+		} else {
+			animator.SetBool("attack_enabled",false);
+			animator.SetBool("walk_enabled",false);
+		}
 	}
 	
 	// HP
