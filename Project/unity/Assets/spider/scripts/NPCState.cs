@@ -62,7 +62,7 @@ public class NPCState : MonoBehaviour, IAttacker {
 	}
 	
 	// ATTACK
-	int IAttacker.attack(IAttacker attacker){
+	public int attack(IAttacker attacker){
 		if (state != MUERTO && attacker.getState () != INATACABLE) {
 			state = ATACANDO;
 			animator.SetBool ("attack_enabled", true);
@@ -73,12 +73,8 @@ public class NPCState : MonoBehaviour, IAttacker {
 		return state;
 	}
 	
-	int IAttacker.receiveDamage(int damage){
+	public int receiveDamage(int damage){
 		substractHealth(damage);
-		return state;
-	}
-	
-	int IAttacker.getState(){
 		return state;
 	}
 	

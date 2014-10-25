@@ -23,6 +23,7 @@ public class AI_movement : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		myState = this.gameObject.GetComponent<NPCState> ();
+
 		float dist = Vector3.Distance (transform.position, target.position);
 
 		if (myState.state!=NPCState.MUERTO){
@@ -30,7 +31,7 @@ public class AI_movement : MonoBehaviour {
 				if (current_action==MOVING){
 					myState.setDestination (transform.position.x, transform.position.y, transform.position.z);
 				}
-				//TODO attack
+				myState.attack(target.GetComponent<NPCState> ()); //TODO Swap to whatever implements the interface on the main character when integrating to devel
 				current_action = ATTACKING;
 			}else if (dist<aggro_range){
 				if (current_action != MOVING){
