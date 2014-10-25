@@ -63,6 +63,7 @@ public class NPCState : MonoBehaviour, IAttacker {
 	
 	// ATTACK
 	public int attack(IAttacker attacker){
+		lookAt ();
 		if (state != MUERTO && attacker.getState () != INATACABLE) {
 			state = ATACANDO;
 			animator.SetBool ("attack_enabled", true);
