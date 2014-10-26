@@ -47,6 +47,49 @@ ModelImporter:
     100082: Torso_mid_darr_right
     100084: Torso_Mid_dev_left
     100086: Torso_Mid_dev_right
+    100088: Bone
+    100090: Bone_001
+    100092: Bone_002
+    100094: Bone_003
+    100096: Bone_004
+    100098: Bone_005
+    100100: Bone_006
+    100102: Bone_007
+    100104: Bone_008
+    100106: Bone_009
+    100108: Bone_010
+    100110: Bone_011
+    100112: Bone_012
+    100114: Bone_013
+    100116: Bone_014
+    100118: Bone_015
+    100120: Bone_016
+    100122: Bone_017
+    100124: Bone_018
+    100126: Bone_019
+    100128: Bone_020
+    100130: Bone_021
+    100132: Bone_022
+    100134: Bone_023
+    100136: Bone_024
+    100138: Bone_025
+    100140: Bone_026
+    100142: Bone_027
+    100144: Bone_028
+    100146: Bone_029
+    100148: Bone_030
+    100150: Bone_031
+    100152: Bone_032
+    100154: Bone_033
+    100156: Bone_034
+    100158: Bone_035
+    100160: Bone_036
+    100162: Bone_037
+    100164: Bone_040
+    100166: Bone_041
+    100168: Bone_042
+    100170: Bone_043
+    100172: Cylinder_018
     400000: aguijon_left
     400002: Aguijon_right
     400004: Armature
@@ -91,11 +134,56 @@ ModelImporter:
     400082: Torso_mid_darr_right
     400084: Torso_Mid_dev_left
     400086: Torso_Mid_dev_right
+    400088: Bone
+    400090: Bone_001
+    400092: Bone_002
+    400094: Bone_003
+    400096: Bone_004
+    400098: Bone_005
+    400100: Bone_006
+    400102: Bone_007
+    400104: Bone_008
+    400106: Bone_009
+    400108: Bone_010
+    400110: Bone_011
+    400112: Bone_012
+    400114: Bone_013
+    400116: Bone_014
+    400118: Bone_015
+    400120: Bone_016
+    400122: Bone_017
+    400124: Bone_018
+    400126: Bone_019
+    400128: Bone_020
+    400130: Bone_021
+    400132: Bone_022
+    400134: Bone_023
+    400136: Bone_024
+    400138: Bone_025
+    400140: Bone_026
+    400142: Bone_027
+    400144: Bone_028
+    400146: Bone_029
+    400148: Bone_030
+    400150: Bone_031
+    400152: Bone_032
+    400154: Bone_033
+    400156: Bone_034
+    400158: Bone_035
+    400160: Bone_036
+    400162: Bone_037
+    400164: Bone_040
+    400166: Bone_041
+    400168: Bone_042
+    400170: Bone_043
+    400172: Cylinder_018
     4300000: Cylinder_022
+    4300002: Cylinder_018
     7400000: Default Take
     7400002: walk
     9500000: //RootNode
     13700000: Cylinder_022
+    13700002: Cylinder_018
   materials:
     importMaterials: 1
     materialName: 0
