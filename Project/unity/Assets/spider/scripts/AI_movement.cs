@@ -18,7 +18,7 @@ public class AI_movement : MonoBehaviour {
 	void awake () {
 		myState = this.gameObject.GetComponent<NPCState> ();
 
-		GameObject goTarget = GameObject.FindWithTag("player");
+		GameObject goTarget = getPlayerGameObject();
 
 		target = goTarget.transform;
 
@@ -32,7 +32,7 @@ public class AI_movement : MonoBehaviour {
 		myState = this.gameObject.GetComponent<NPCState> ();
 
 		if (target == null) {
-			GameObject goTarget = GameObject.FindWithTag("player");
+			GameObject goTarget = getPlayerGameObject();
 			target = goTarget.transform;
 		}
 
@@ -65,4 +65,8 @@ public class AI_movement : MonoBehaviour {
 			}
 		}
 	}
+
+	private GameObject getPlayerGameObject() {
+		return GameObject.FindWithTag("Player");
+    }
 }
