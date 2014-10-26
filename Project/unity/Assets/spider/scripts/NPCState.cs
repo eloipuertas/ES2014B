@@ -10,6 +10,7 @@ public class NPCState : MonoBehaviour, IAttacker {
 	public static int OTRO = 4;
 	
 	public float moveSpeed = 1.5f;
+	public float rotationSpeed = 4.0f;
 	public int maxHealth = 100;
 	public int health = 100;
 	public int damageAttack = 5;
@@ -40,14 +41,16 @@ public class NPCState : MonoBehaviour, IAttacker {
 	}
 	
 	private void move(){
-		Vector3 moveDirection = destination-transform.position;
-		moveDirection.Normalize();
-		moveDirection *= moveSpeed;
-		if(moveDirection.magnitude < 0.5){
-			animator.SetBool("walk_enabled",false);
+		if ( animator != null && characterController != null ) { 
+			Vector3 moveDirection = destination-transform.position;
+			moveDirection.Normalize();
+			moveDirection *= moveSpeed;
+			if(moveDirection.magnitude < 0.5){
+				animator.SetBool("walk_enabled",false);
+			}
+			characterController.Move (moveDirection * Time.deltaTime);
+			lookAt();
 		}
-		characterController.Move (moveDirection * Time.deltaTime);
-		lookAt();
 	}
 	
 	// LOOK
@@ -58,7 +61,7 @@ public class NPCState : MonoBehaviour, IAttacker {
 		Quaternion newRotation = Quaternion.LookRotation(destination - transform.position);
 		newRotation.x = 0f;
 		newRotation.z = 0f;
-		transform.rotation = Quaternion.Slerp(transform.rotation,newRotation,(moveSpeed/1)*Time.deltaTime);
+		transform.rotation = Quaternion.Slerp(transform.rotation,newRotation,(rotationSpeed/1)*Time.deltaTime);
 	}
 	
 	// ATTACK
@@ -84,14 +87,16 @@ public class NPCState : MonoBehaviour, IAttacker {
 		return destination;
 	}
 	public void setDestination(float x,float y,float z){
-		if (state != MUERTO) {
+		if (animator != null) {
+			if (state != MUERTO) {
 				animator.SetBool ("attack_enabled", false);
 				animator.SetBool ("walk_enabled", true);
 				state = VIVO;
 				destination = new Vector3 (x, y, z);
-		} else {
-			animator.SetBool("attack_enabled",false);
-			animator.SetBool("walk_enabled",false);
+			} else {
+				animator.SetBool ("attack_enabled", false);
+				animator.SetBool ("walk_enabled", false);
+			}
 		}
 	}
 	

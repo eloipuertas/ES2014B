@@ -17,17 +17,27 @@ public class AI_movement : MonoBehaviour {
 	}
 	void awake () {
 		myState = this.gameObject.GetComponent<NPCState> ();
-		try{
+
+		GameObject goTarget = GameObject.FindWithTag("player");
+
+		target = goTarget.transform;
+
+		if (target != null) {
 			myState.setDestination (target.position.x, 0, target.position.z);
-		}catch (UnassignedReferenceException ex){
-			Debug.Log ("NPC "+gameObject.tag+" has no target specified! The AI will not do anything.");
 		}
 	}
 	
 	// Update is called once per frame
 	void Update () {
-			myState = this.gameObject.GetComponent<NPCState> ();
-		try{
+		myState = this.gameObject.GetComponent<NPCState> ();
+
+		if (target == null) {
+			GameObject goTarget = GameObject.FindWithTag("player");
+			target = goTarget.transform;
+		}
+
+		if ( target != null ) {
+			// TODO Before calculating distance, check if the target is in VISUAL range!
 			float dist = Vector3.Distance (transform.position, target.position);
 
 			if (myState.state!=NPCState.MUERTO){
@@ -35,8 +45,11 @@ public class AI_movement : MonoBehaviour {
 					if (current_action==MOVING){
 						myState.setDestination (transform.position.x, transform.position.y, transform.position.z);
 					}
-					myState.attack(target.GetComponent<NPCState> ()); //TODO Swap to whatever implements the interface on the main character when integrating to devel
-					current_action = ATTACKING;
+					NPCState targetState = target.GetComponent<NPCState>();
+					if ( targetState != null && targetState is IAttacker ) {
+						myState.attack(targetState); //TODO Swap to whatever implements the interface on the main character when integrating to devel
+						current_action = ATTACKING;
+					}
 				}else if (dist<aggro_range){
 					if (current_action != MOVING){
 						current_action = MOVING;
@@ -48,8 +61,6 @@ public class AI_movement : MonoBehaviour {
 				myState.setDestination (transform.position.x, transform.position.y, transform.position.z);
 				current_action = PASSIVE;
 			}
-		}catch (UnassignedReferenceException ex){
-			//Debug.Log ("NPC "+gameObject.tag+" has no target specified! The AI will not do anything.");
 		}
 	}
 }
