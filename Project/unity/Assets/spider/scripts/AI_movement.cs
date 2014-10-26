@@ -3,14 +3,14 @@ using System;
 
 public class AI_movement : MonoBehaviour {
 	public Transform target;
-	public float aggro_range = 3.5f;
-	public float attack_range = 1.5f; //TODO move to NPCState
+	public float aggroRange = 3.5f;
+	public float attackRange = 1.5f; //TODO move to NPCState
 	private NPCState myState;
 
 	private const int PASSIVE = 0;
 	private const int MOVING = 1;
 	private const int ATTACKING = 2;
-	private int current_action = PASSIVE;
+	public int currentAction = MOVING;
 		
 	void Start () {
 
@@ -40,26 +40,28 @@ public class AI_movement : MonoBehaviour {
 			// TODO Before calculating distance, check if the target is in VISUAL range!
 			float dist = Vector3.Distance (transform.position, target.position);
 
+			//Debug.Log("dist: " + dist, gameObject);
+
 			if (myState.state!=NPCState.MUERTO){
-				if (dist<attack_range){
-					if (current_action==MOVING){
+				if (dist<attackRange){
+					if (currentAction==MOVING){
 						myState.setDestination (transform.position.x, transform.position.y, transform.position.z);
 					}
-					NPCState targetState = target.GetComponent<NPCState>();
-					if ( targetState != null && targetState is IAttacker ) {
+					EntityState targetState = target.GetComponent<EntityState>();
+					if ( targetState != null ) {
 						myState.attack(targetState); //TODO Swap to whatever implements the interface on the main character when integrating to devel
-						current_action = ATTACKING;
+						currentAction = ATTACKING;
 					}
-				}else if (dist<aggro_range){
-					if (current_action != MOVING){
-						current_action = MOVING;
+				}else if (dist<aggroRange){
+					if (currentAction != MOVING){
+						currentAction = MOVING;
 					}
 					myState.setDestination (target.position.x, target.position.y, target.position.z);
 				}
 				//If we add any blink skills on the player character, this AI would be completely screwed over...
-			}else if (current_action == MOVING){
+			}else if (currentAction == MOVING){
 				myState.setDestination (transform.position.x, transform.position.y, transform.position.z);
-				current_action = PASSIVE;
+				currentAction = PASSIVE;
 			}
 		}
 	}

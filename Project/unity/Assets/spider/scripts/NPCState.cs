@@ -1,21 +1,16 @@
 using UnityEngine;
 using System.Collections;
 
-public class NPCState : MonoBehaviour, IAttacker {
-	
-	public static int MUERTO = 0;
-	public static int VIVO = 1;
-	public static int ATACANDO = 2;
-	public static int INATACABLE = 3;
-	public static int OTRO = 4;
+public class NPCState : EntityState {
 	
 	public float moveSpeed = 1.5f;
 	public float rotationSpeed = 4.0f;
 	public int maxHealth = 100;
 	public int health = 100;
 	public int damageAttack = 5;
-	public int state = 1;
+
 	public Vector3 destination;
+
 	CharacterController characterController;
 	Animator animator;
 	
@@ -65,7 +60,7 @@ public class NPCState : MonoBehaviour, IAttacker {
 	}
 	
 	// ATTACK
-	public int attack(IAttacker attacker){
+	public new int attack(IAttacker attacker){
 		lookAt ();
 		if (state != MUERTO && attacker.getState () != INATACABLE) {
 			state = ATACANDO;
@@ -77,7 +72,7 @@ public class NPCState : MonoBehaviour, IAttacker {
 		return state;
 	}
 	
-	public int receiveDamage(int damage){
+	public new int receiveDamage(int damage){
 		substractHealth(damage);
 		return state;
 	}
@@ -124,9 +119,5 @@ public class NPCState : MonoBehaviour, IAttacker {
 	}
 	public void substractHealth(int healthToSubstract){
 		setHealth(health-healthToSubstract);
-	}
-	
-	public int getState(){
-		return state;
 	}
 }
