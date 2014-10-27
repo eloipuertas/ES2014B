@@ -5,10 +5,10 @@ using System.Collections;
 
 public class AmbientalMusic : MonoBehaviour 
 {
-	public GameObject PNJ;
-
 	public AudioClip catacumba;
 	public AudioClip fight;
+
+	public AudioClip gameOver;
 
 	// Use this for initialization
 	void Start () 
@@ -23,18 +23,28 @@ public class AmbientalMusic : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-		/*if ( GameObject.Find ( "SPIDER" ).activeInHierarchy ) 
+		if ( ! GameObject.FindWithTag ("Player").activeInHierarchy ) 
+		{
+			audio.clip = gameOver;
+
+			if ( ! audio.isPlaying ) audio.Play ();
+
+		}
+
+		/*else if ( GameObject.FindWithTag ( "Spider" ).activeInHierarchy ) 
 		{
 			audio.clip = fight;
 
 			if ( ! audio.isPlaying ) audio.Play ();
 
-		} else {*/
+		} */
+
+		else {
 			audio.clip = catacumba;
 
 			if ( ! audio.isPlaying ) audio.Play ();
 
-		//}
+		}
 	
 	}
 }
