@@ -23,7 +23,7 @@ public class AmbientalMusic : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-		if ( ! GameObject.Find ("papertex22").activeInHierarchy ) 
+		if ( ! GameObject.FindWithTag ("Player").activeInHierarchy ) 
 		{
 			audio.clip = gameOver;
 
@@ -31,13 +31,13 @@ public class AmbientalMusic : MonoBehaviour
 
 		}
 
-		else if ( GameObject.Find ( "Spider" ).activeInHierarchy ) 
+		/*else if ( GameObject.FindWithTag ( "Spider" ).activeInHierarchy ) 
 		{
 			audio.clip = fight;
 
 			if ( ! audio.isPlaying ) audio.Play ();
 
-		} 
+		} */
 
 		else {
 			audio.clip = catacumba;
