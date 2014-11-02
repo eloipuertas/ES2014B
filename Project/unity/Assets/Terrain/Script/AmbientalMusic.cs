@@ -10,6 +10,8 @@ public class AmbientalMusic : MonoBehaviour
 
 	public AudioClip gameOver;
 
+	public bool pause = false;
+
 	// Use this for initialization
 	void Start () 
 	{
@@ -23,30 +25,37 @@ public class AmbientalMusic : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-		GameObject player = GameObject.FindWithTag ("Player");
-		GameObject spider = GameObject.FindWithTag ("Spider");
-		if (player == null || spider == null) {
-			audio.clip = catacumba;
-			if ( ! audio.isPlaying ) audio.Play ();
-			return;
-		}
-		if ( ! GameObject.FindWithTag ("Player").activeInHierarchy ) 
-		{
-			audio.clip = gameOver;
-
-			if ( ! audio.isPlaying ) audio.Play ();
-
-		} else if ( spider.activeInHierarchy ){
-			audio.clip = fight;
-
-			if ( ! audio.isPlaying ) audio.Play ();
-
-		} else {
-			audio.clip = catacumba;
-
-			if ( ! audio.isPlaying ) audio.Play ();
-
-		}
+		if ( pause )
+			audio.Stop ();
+		
+		else if ( ! audio.isPlaying )
+				audio.Play ();
 	
 	}
+
+	public void PlayGameOver()
+	{
+		audio.clip = gameOver;
+	}
+
+	public void PlayFight()
+	{
+		audio.clip = fight;
+	}
+
+	public void PlayCatacumba()
+	{
+		audio.clip = catacumba;
+	}
+
+	public void PauseAudio()
+	{
+		pause = true;
+	}
+
+	public void UnPauseAudio()
+	{
+		pause = false;
+	}
+
 }
