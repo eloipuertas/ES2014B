@@ -3,23 +3,20 @@ using System.Collections;
 
 [ RequireComponent( typeof( ParticleSystem ) ) ]
 
-public class Particules : MonoBehaviour 
+public class ParticleSystem : MonoBehaviour 
 {
-
-	public ParticleSystem Mage;
 
 	// Use this for initialization
 	void Start () 
 	{
-		Mage.enableEmission = true;
-	
+		particleSystem.enableEmission = false;
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
-		if ( Input.GetKeyDown ( KeyCode.A ) )
-			Mage.Play();
+		if (Input.GetKeyDown (KeyCode.A))
+			particleSystem.Play ();
 	
 	}
 }
