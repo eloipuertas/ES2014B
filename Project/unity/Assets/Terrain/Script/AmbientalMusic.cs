@@ -26,7 +26,7 @@ public class AmbientalMusic : MonoBehaviour
 	void Update () 
 	{
 		if ( pause )
-			audio.Stop ();
+			audio.Pause ();
 		
 		else if ( ! audio.isPlaying )
 				audio.Play ();
