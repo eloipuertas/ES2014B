@@ -10,7 +10,7 @@ public class SpiderAI : MonoBehaviour {
 	private const int PASSIVE = 0;
 	private const int MOVING = 1;
 	private const int ATTACKING = 2;
-	public int currentAction = MOVING;
+	public int currentAction = PASSIVE;
 		
 	void Start () {
 
@@ -35,11 +35,9 @@ public class SpiderAI : MonoBehaviour {
 			GameObject goTarget = getPlayerGameObject();
 			target = goTarget.transform;
 		}
-
+		float dist;
 		if ( target != null ) {
-			// TODO Before calculating distance, check if the target is in VISUAL range!
-			float dist = Vector3.Distance (transform.position, target.position);
-			//Debug.Log("dist: " + dist, gameObject);
+			dist = Vector3.Distance (transform.position, target.position);
 
 			if (myState.isAlive()){
 				if (dist<attackRange){
@@ -48,14 +46,22 @@ public class SpiderAI : MonoBehaviour {
 					}
 					AbstractEntity targetEntity = target.GetComponent<AbstractEntity>();
 					if ( targetEntity != null ) {
-						myState.attack(targetEntity); //TODO Swap to whatever implements the interface on the main character when integrating to devel
+						myState.attack(targetEntity); 
 						currentAction = ATTACKING;
 					}
 				}else if (dist<aggroRange){
-					if (currentAction != MOVING){
-						currentAction = MOVING;
+					if (currentAction == PASSIVE){
+						RaycastHit hit;
+						if(Physics.Raycast(transform.position, target.position-transform.position, out hit, dist)) {
+							if ((hit.point-target.position).magnitude<1){ //TODO to change when the main character fixes their tag
+								currentAction = MOVING;
+								myState.setDestination (target.position.x, target.position.y, target.position.z);
+							}
+						}
+					}else{
+						if (currentAction == ATTACKING) currentAction = MOVING;
+						myState.setDestination (target.position.x, target.position.y, target.position.z);
 					}
-					myState.setDestination (target.position.x, target.position.y, target.position.z);
 				}
 			}else if (currentAction == MOVING){
 				myState.setDestination (transform.position.x, transform.position.y, transform.position.z);
