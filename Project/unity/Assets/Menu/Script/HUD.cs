@@ -22,7 +22,7 @@ public class HUD : MonoBehaviour
 		public Texture gameOverTexture;
 		private float xPos = Screen.width / 2.7f;
 		private float yPos = Screen.height / 3.2f;
-		private PjPrincipal pj;
+		//private PjPrincipal pj;descomentar al fer integracio a master
 		private Player player;
 		private float buttonSizeWidth, buttonSizeHeight;
 		public GUISkin myskin;
@@ -36,11 +36,11 @@ public class HUD : MonoBehaviour
 		{
 		
 		
-				
+				/*borrar comentari al fer l'integracio a master
 				GameObject go = GameObject.FindGameObjectWithTag ("Player");
 		
 				player = go.GetComponent ("Player") as Player;
-				pj = player.pj;
+				pj = player.pj;*/
 				audioTexture = audioON;
 		
 				
@@ -61,15 +61,16 @@ public class HUD : MonoBehaviour
 				buttonSizeWidth = Screen.width / 5;
 				
 				if (!debugON)
-						vida = pj.getVida ();
+						//vida = pj.getVida ();descomentar al integrar a master
+						vida = 100;//borrar al integrar a master
 				else if (debugON && !debugInit) {
 						vida = 100;
 						debugInit = true;
 				}
 				
 				
-				vidapercent = vida / pj.getMaxVida ();
-				
+				//vidapercent = vida / pj.getMaxVida ();descomentar al integrar a master
+				vidapercent = 20;
 				if (vidapercent < 0)
 						vidapercent = 0;
 				if (vidapercent > 100)
@@ -77,8 +78,9 @@ public class HUD : MonoBehaviour
 		
 				alturaVida = vidapercent * diametro;
 		
-				float mana = pj.getMana ();
-				manapercent = mana / pj.getMaxMana ();
+				/*float mana = pj.getMana ();
+				manapercent = mana / pj.getMaxMana ();borrar al fer integracio a master*/
+				manapercent = 50;//borrar aquesta linia al fer la integracio a master
 				if (manapercent < 0)
 						manapercent = 0;
 				if (manapercent > 100)
@@ -86,7 +88,7 @@ public class HUD : MonoBehaviour
 				
 				alturaMana = manapercent * diametro;
 				
-				Debug.Log ("diametre=" + diametro + " Screen.height=" + Screen.height + " alturaVida=" + alturaVida);
+				
 				GUI.BeginGroup (new Rect (Screen.width / 10, Screen.height - (alturaVida + 10), diametro, diametro));
 				GUI.DrawTexture (new Rect (0, -diametro + alturaVida, diametro, diametro), this.texVida);
 				GUI.EndGroup ();
@@ -97,10 +99,10 @@ public class HUD : MonoBehaviour
 				GUI.DrawTexture (new Rect (0, -diametro + alturaMana, diametro, diametro), texMana);
 				GUI.EndGroup ();
 				
-				if (player.canShowMenuPause () && !mort) {
-						
+				//if (player.canShowMenuPause () && !mort) {descomentar al integrar a masteer
+				if (!mort) {
 						if (GUI.Button (new Rect (xPos, yPos, buttonSizeWidth, buttonSizeHeight), continueTexture)) {
-								player.hideMenuPause ();	
+								//player.hideMenuPause ();	descomentar al integrar a master
 
 				
 						}
@@ -139,7 +141,7 @@ public class HUD : MonoBehaviour
 						
 
 				}
-				Debug.Log ("vida=" + vida);
+				
 				if (vida <= 0) {
 						mort = true;
 						AmbientAudio.PlayGameOver ();
