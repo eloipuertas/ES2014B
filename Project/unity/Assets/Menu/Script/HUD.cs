@@ -55,18 +55,20 @@ public class HUD : MonoBehaviour
 		{
 				xPos = Screen.width / 2.7f;
 				yPos = Screen.height / 3.2f;
-				GUI.skin = myskin;
+				//GUI.skin = myskin;
 				
 				buttonSizeHeight = Screen.height / 15;
 				buttonSizeWidth = Screen.width / 5;
 				
+		/*
 				if (!debugON)
 						//vida = pj.getVida ();descomentar al integrar a master
 						vida = 100;//borrar al integrar a master
 				else if (debugON && !debugInit) {
 						vida = 100;
 						debugInit = true;
-				}
+				}*/
+
 				
 				
 				//vidapercent = vida / pj.getMaxVida ();descomentar al integrar a master
@@ -87,7 +89,8 @@ public class HUD : MonoBehaviour
 						manapercent = 100;
 				
 				alturaMana = manapercent * diametro;
-				
+		Debug.Log ("vida=" + vida + " vidapercent=" + vidapercent + " diametro=" + diametro+" manapercent=" + manapercent);
+
 				
 				GUI.BeginGroup (new Rect (Screen.width / 10, Screen.height - (alturaVida + 10), diametro, diametro));
 				GUI.DrawTexture (new Rect (0, -diametro + alturaVida, diametro, diametro), this.texVida);
@@ -99,8 +102,8 @@ public class HUD : MonoBehaviour
 				GUI.DrawTexture (new Rect (0, -diametro + alturaMana, diametro, diametro), texMana);
 				GUI.EndGroup ();
 				
-				//if (player.canShowMenuPause () && !mort) {descomentar al integrar a masteer
-				if (!mort) {
+				/*if (player.canShowMenuPause () && !mort) {descomentar al integrar a masteer
+				
 						if (GUI.Button (new Rect (xPos, yPos, buttonSizeWidth, buttonSizeHeight), continueTexture)) {
 								//player.hideMenuPause ();	descomentar al integrar a master
 
@@ -127,7 +130,7 @@ public class HUD : MonoBehaviour
 								Application.LoadLevel (0);
 							
 						}
-				} 
+				} */
 		
 				//per debugar
 
