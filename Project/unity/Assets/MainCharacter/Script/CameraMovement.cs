@@ -64,7 +64,7 @@ public class CameraMovement : MonoBehaviour
 				
 				distancia = Mathf.Clamp (actWheel * zoomSpeed, distanciaMin, distanciaMax);
 				
-				Debug.Log (distancia);
+				//Debug.Log (distancia);
 
 				
 				if (distanciaAnt != distancia && actWheel != 0) {
