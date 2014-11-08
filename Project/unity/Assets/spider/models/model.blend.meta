@@ -90,6 +90,11 @@ ModelImporter:
     100168: Bone_042
     100170: Bone_043
     100172: Cylinder_018
+    100174: Cylinder_000
+    100176: Cylinder_009
+    100178: Cylinder_014
+    100180: Sphere
+    100182: Sphere_001
     400000: aguijon_left
     400002: Aguijon_right
     400004: Armature
@@ -177,8 +182,28 @@ ModelImporter:
     400168: Bone_042
     400170: Bone_043
     400172: Cylinder_018
+    400174: Cylinder_000
+    400176: Cylinder_009
+    400178: Cylinder_014
+    400180: Sphere
+    400182: Sphere_001
+    2300000: Cylinder_000
+    2300002: Cylinder_009
+    2300004: Cylinder_014
+    2300006: Sphere
+    2300008: Sphere_001
+    3300000: Cylinder_000
+    3300002: Cylinder_009
+    3300004: Cylinder_014
+    3300006: Sphere
+    3300008: Sphere_001
     4300000: Cylinder_022
     4300002: Cylinder_018
+    4300004: Cylinder_014
+    4300006: Cylinder_009
+    4300008: Cylinder_000
+    4300010: Sphere_001
+    4300012: Sphere
     7400000: Default Take
     7400002: walk
     9500000: //RootNode
