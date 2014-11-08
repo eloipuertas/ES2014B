@@ -24,7 +24,7 @@ public class HUD : MonoBehaviour
 		public Texture gameOverTexture;
 		private float xPos;
 		private float yPos;
-		private PjPrincipal pj;
+		//private PjPrincipal pj;descomentar a master
 		private Player player;
 		private float buttonSizeWidth, buttonSizeHeight;
 		public GUISkin myskin;
@@ -37,9 +37,11 @@ public class HUD : MonoBehaviour
 
 		void Start ()
 		{
+		/*
 				GameObject go = GameObject.FindGameObjectWithTag ("Player");
 				player = go.GetComponent ("Player") as Player;
 				pj = player.pj;
+		descomentar a master*/
 
 				audioTexture = audioON;
 				AmbientAudio = GameObject.FindObjectOfType (typeof(AmbientalMusic)) as AmbientalMusic;
@@ -60,12 +62,18 @@ public class HUD : MonoBehaviour
 				buttonSizeWidth = Screen.width / 5;
 				float maxVida = 100, maxMana = 100;
 				if (!debugON) {
+			/*
 						vida = pj.getVida ();
 						mana = pj.getMana ();
 						magiaEscollida = pj.getSelectedSpell ();
 						maxVida = pj.getMaxVida ();
 						maxMana = pj.getMaxMana ();
-				} else if (debugON && !debugInit) {
+						descomentar a master*/
+					mana = 100;
+					vida = 100;
+
+
+		} else if (debugON && !debugInit) {
 						mana = 100;
 						vida = 100;
 						debugInit = true;
