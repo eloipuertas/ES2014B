@@ -10,36 +10,61 @@ public class SpiderAI : MonoBehaviour {
 	private const int PASSIVE = 0;
 	private const int MOVING = 1;
 	private const int ATTACKING = 2;
-	public int currentAction = PASSIVE;
+	private int currentAction = PASSIVE;
+
+	private Vector3 lastTargetPos;
+	private NavMeshAgent agent;
+	private NavMeshPath path;
+	private int current_corner = 1;
 		
 	void Start () {
 
 	}
-	void awake () {
+	void Awake () {
 		myState = this.gameObject.GetComponent<SpiderState> ();
+		agent = GetComponent<NavMeshAgent>();
+		agent.updatePosition = false;
+		agent.updateRotation = false;
 
 		GameObject goTarget = getPlayerGameObject();
 
 		target = goTarget.transform;
 
-		if (target != null) {
-			myState.setDestination (target.position.x, target.position.y, target.position.z);
+		path = new NavMeshPath ();
+		lastTargetPos = target.position;
+		InvokeRepeating ("checkPath", 0, 0.25f);
+	}
+
+	private void checkPath(){
+		if (!Vector3.Equals (lastTargetPos, target.position) && currentAction==MOVING) {
+			agent.CalculatePath(target.position, path);
+			lastTargetPos = target.position;
+			current_corner = 1;
+			/**
+			Debug.Log ("===========================");
+			Debug.Log ("My position: " +transform.position);
+			Debug.Log ("---------------------------");
+			for (int i=0;i<path.corners.Length;i++){
+				if (i==current_corner) Debug.Log (">>>>>"+path.corners[i]);
+				else Debug.Log (path.corners[i]);
+			}
+			Debug.Log ("---------------------------");
+			Debug.Log ("Enemy Position: " +target.position);
+			Debug.Log ("===========================");
+			**/
 		}
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
-		myState = this.gameObject.GetComponent<SpiderState> ();
-
 		if (target == null) {
 			GameObject goTarget = getPlayerGameObject();
 			target = goTarget.transform;
 		}
 		float dist;
 		if ( target != null ) {
-			dist = Vector3.Distance (transform.position, target.position);
-
 			if (myState.isAlive()){
+				dist = Vector3.Distance (transform.position, target.position);
 				if (dist<attackRange){
 					if (currentAction==MOVING){
 						myState.setDestination (transform.position.x, transform.position.y, transform.position.z);
@@ -50,18 +75,21 @@ public class SpiderAI : MonoBehaviour {
 						currentAction = ATTACKING;
 					}
 				}else if (dist<aggroRange){
+					if (path.corners.Length>0){
+						if (Vector3.Equals(path.corners[current_corner],transform.position)){
+							current_corner++;
+						}
+						Vector3 dest = path.corners[current_corner];
+						myState.setDestination (dest.x, dest.y, dest.z);
+					}
 					if (currentAction == PASSIVE){
 						RaycastHit hit;
 						if(Physics.Raycast(transform.position, target.position-transform.position, out hit, dist)) {
 							if ((hit.point-target.position).magnitude<1){ //TODO to change when the main character fixes their tag
 								currentAction = MOVING;
-								myState.setDestination (target.position.x, target.position.y, target.position.z);
 							}
 						}
-					}else{
-						if (currentAction == ATTACKING) currentAction = MOVING;
-						myState.setDestination (target.position.x, target.position.y, target.position.z);
-					}
+					}else if (currentAction == ATTACKING) currentAction = MOVING;
 				}
 			}else if (currentAction == MOVING){
 				myState.setDestination (transform.position.x, transform.position.y, transform.position.z);
