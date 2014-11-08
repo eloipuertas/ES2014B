@@ -37,19 +37,11 @@ public class HUD : MonoBehaviour
 
 		void Start ()
 		{
-		
-		
-				
 				GameObject go = GameObject.FindGameObjectWithTag ("Player");
-		
 				player = go.GetComponent ("Player") as Player;
-
 				pj = player.pj;
+
 				audioTexture = audioON;
-
-
-
-		
 				AmbientAudio = GameObject.FindObjectOfType (typeof(AmbientalMusic)) as AmbientalMusic;
 		
 		
@@ -100,28 +92,20 @@ public class HUD : MonoBehaviour
 				alturaMana = manapercent * altura;
 				
 				float xVida = Screen.width / 10;
-				//float yVida = Screen.height*0.98f - (alturaVida);
 				float yVida = Screen.height - alturaVida;
 				float yMana = Screen.height - alturaMana;
 				float xMana = Screen.width - Screen.width * 2 / 10;
 				float xActual = xVida + amplada;
 				float alturaMagia = Screen.height / 15;
-				
 				float yMagies = Screen.height - alturaMagia;
 
 
-				/*
-				GUI.BeginGroup (new Rect (xVida, yVida, amplada, altura));
-				GUI.DrawTexture (new Rect (0, -amplada + alturaVida, amplada, altura), this.texVida);
-				GUI.EndGroup ();
-				*/
 				int numTextures = magicTextures.Length + 2;
 
 				for (int i = 0; i < numTextures; i++) {
 						
-						//Debug.Log ("yVida= " + yVida + " ymagies= " + (yMagies) + " heightMagia= " + (Screen.height - alturaMagia));
+						
 						if (i == 0) {//vida
-//								GUI.BeginGroup (new Rect (xVida, yVida, amplada, altura));
 								GUI.BeginGroup (new Rect (xVida, yVida, amplada, Screen.height - yVida));
 								GUI.DrawTexture (new Rect (0, alturaVida - altura, amplada, altura), this.texVida);
 								GUI.EndGroup ();
@@ -129,7 +113,6 @@ public class HUD : MonoBehaviour
 						} else if (i == numTextures - 1) {//mana
 								GUI.BeginGroup (new Rect (xMana, yMana, amplada, Screen.height - yMana));
 								GUI.DrawTexture (new Rect (0, alturaMana - altura, amplada, altura), this.texMana);
-
 								GUI.EndGroup ();
 
 						} else {//altres
@@ -148,11 +131,7 @@ public class HUD : MonoBehaviour
 						xActual += alturaMagia;
 				}
 			
-				/*
-				GUI.BeginGroup (new Rect (xMana, yVida, amplada, amplada));
-				GUI.DrawTexture (new Rect (0, -amplada + alturaMana, altura, amplada), this.texMana);
-				GUI.EndGroup ();
-*/
+
 				
 				if (player.canShowMenuPause () && !mort) {
 						
