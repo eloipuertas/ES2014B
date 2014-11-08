@@ -6,25 +6,24 @@ public class HUD : MonoBehaviour
 	
 	
 	
-		private float amplada; 
+		private float amplada;
 		private float altura;
 	
 		//atributos de la vida
 		public Texture texVida;
-		private float vida, alturaVida;
-		private float vidapercent;
+		private float vida, alturaVida, vidapercent;
+
 	
 		//atributos del mana
 		public Texture texMana;
-		private float alturaMana;
-		private float manapercent;
+		private float mana, alturaMana, manapercent;
 		public Texture[] magicTextures = new Texture[3];
 		public Texture[] magicTexturesSpelled = new Texture[3];
 		
 		//textura que saldra cuando el personaje muera
 		public Texture gameOverTexture;
-		private float xPos = Screen.width / 2.7f;
-		private float yPos = Screen.height / 3.2f;
+		private float xPos;
+		private float yPos;
 		private PjPrincipal pj;
 		private Player player;
 		private float buttonSizeWidth, buttonSizeHeight;
@@ -67,62 +66,70 @@ public class HUD : MonoBehaviour
 				
 				buttonSizeHeight = Screen.height / 15;
 				buttonSizeWidth = Screen.width / 5;
-				
-				if (!debugON)
+				float maxVida = 100, maxMana = 100;
+				if (!debugON) {
 						vida = pj.getVida ();
-				else if (debugON && !debugInit) {
+						mana = pj.getMana ();
+						magiaEscollida = pj.getSelectedSpell ();
+						maxVida = pj.getMaxVida ();
+						maxMana = pj.getMaxMana ();
+				} else if (debugON && !debugInit) {
+						mana = 100;
 						vida = 100;
 						debugInit = true;
 				}
 				
+				vidapercent = vida / maxVida;
 				
-				vidapercent = vida / pj.getMaxVida ();
-				
+
 				if (vidapercent < 0)
 						vidapercent = 0;
 				if (vidapercent > 100)
 						vidapercent = 100;
 		
-				alturaVida = vidapercent * amplada;
-		
-				float mana = pj.getMana ();
+				alturaVida = vidapercent * altura;
+
 				
-				manapercent = mana / pj.getMaxMana ();
+				manapercent = mana / maxMana;
 
 				if (manapercent < 0)
 						manapercent = 0;
 				if (manapercent > 100)
 						manapercent = 100;
 				
-				alturaMana = manapercent * amplada;
+				alturaMana = manapercent * altura;
 				
 				float xVida = Screen.width / 10;
-				float yVida = Screen.height - (alturaVida + 10);
-				float yMana = Screen.height - (alturaMana + 10);
+				//float yVida = Screen.height*0.98f - (alturaVida);
+				float yVida = Screen.height - alturaVida;
+				float yMana = Screen.height - alturaMana;
 				float xMana = Screen.width - Screen.width * 2 / 10;
 				float xActual = xVida + amplada;
 				float alturaMagia = Screen.height / 15;
+				
 				float yMagies = Screen.height - alturaMagia;
 
-				if (!debugON)
-						magiaEscollida = pj.getSelectedSpell ();
+
 				/*
-				GUI.BeginGroup (new Rect (xVida, yVida, altura, amplada));
-				GUI.DrawTexture (new Rect (0, -amplada + alturaVida, altura, amplada), this.texVida);
+				GUI.BeginGroup (new Rect (xVida, yVida, amplada, altura));
+				GUI.DrawTexture (new Rect (0, -amplada + alturaVida, amplada, altura), this.texVida);
 				GUI.EndGroup ();
 				*/
 				int numTextures = magicTextures.Length + 2;
+
 				for (int i = 0; i < numTextures; i++) {
 						
 						//Debug.Log ("yVida= " + yVida + " ymagies= " + (yMagies) + " heightMagia= " + (Screen.height - alturaMagia));
 						if (i == 0) {//vida
-								GUI.BeginGroup (new Rect (xVida, yVida, amplada, altura));
-								GUI.DrawTexture (new Rect (0, -amplada + alturaVida, amplada, altura), this.texVida);
+//								GUI.BeginGroup (new Rect (xVida, yVida, amplada, altura));
+								GUI.BeginGroup (new Rect (xVida, yVida, amplada, Screen.height - yVida));
+								GUI.DrawTexture (new Rect (0, alturaVida - altura, amplada, altura), this.texVida);
 								GUI.EndGroup ();
 
 						} else if (i == numTextures - 1) {//mana
-								GUI.BeginGroup (new Rect (xMana, yMana, amplada, altura));
-								GUI.DrawTexture (new Rect (0, -amplada + alturaMana, amplada, altura), this.texMana);
+								GUI.BeginGroup (new Rect (xMana, yMana, amplada, Screen.height - yMana));
+								GUI.DrawTexture (new Rect (0, alturaMana - altura, amplada, altura), this.texMana);
+
 								GUI.EndGroup ();
 
 						} else {//altres
@@ -176,20 +183,57 @@ public class HUD : MonoBehaviour
 		
 				//per debugar
 
-				if (debugON && GUI.Button (new Rect (xPos, 2 * buttonSizeHeight + yPos, buttonSizeWidth, buttonSizeHeight), "Click here select random magic")) {
-						
-						/*
-						vida -= 20;
-						if (vida <= 0)
-								vida = 0;
-			
-						*/
-						
+				if (debugON && GUI.Button (new Rect (0, 0, buttonSizeWidth, buttonSizeHeight), "Select random magic")) {
+
 						magiaEscollida = Random.Range (-1, magicTextures.Length);
 						Debug.Log ("magiaEscollida=  " + magiaEscollida);
 
 				}
-//				Debug.Log ("vida=" + vida);
+				if (debugON && GUI.Button (new Rect (0, buttonSizeHeight, buttonSizeWidth, buttonSizeHeight), "+ Vida")) {
+			
+			
+						vida += 20;
+						if (vida > 100)
+								vida = 100;
+						Debug.Log ("vida=" + vida);
+			
+				}
+				if (debugON && GUI.Button (new Rect (0, 2 * buttonSizeHeight, buttonSizeWidth, buttonSizeHeight), "- Vida")) {
+			
+
+						vida -= 20;
+						if (vida <= 0)
+								vida = 0;
+						
+
+						Debug.Log ("vida=" + vida);
+			
+				}
+
+				if (debugON && GUI.Button (new Rect (0, 3 * buttonSizeHeight, buttonSizeWidth, buttonSizeHeight), "+ Mana")) {
+			
+			
+						mana += 20;
+						if (mana > 100)
+								mana = 100;
+			
+						Debug.Log ("mana=" + mana);
+			
+			
+				}
+				if (debugON && GUI.Button (new Rect (0, 4 * buttonSizeHeight, buttonSizeWidth, buttonSizeHeight), "- Mana")) {
+			
+
+						mana -= 20;
+						if (mana <= 0)
+								mana = 0;
+			
+						Debug.Log ("mana=" + mana);
+
+			
+				}
+
+
 				if (vida <= 0) {
 						mort = true;
 						AmbientAudio.PlayGameOver ();
