@@ -140,7 +140,7 @@ public class HUD : MonoBehaviour
 				}
 			
 
-				
+				/*
 				if (player.canShowMenuPause () && !mort) {
 						
 						if (GUI.Button (new Rect (xPos, yPos, buttonSizeWidth, buttonSizeHeight), continueTexture)) {
@@ -166,7 +166,7 @@ public class HUD : MonoBehaviour
 								Application.LoadLevel (0);
 							
 						}
-				} 
+				} descomentar a master*/
 		
 				//per debugar
 
