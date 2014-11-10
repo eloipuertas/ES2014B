@@ -15,7 +15,7 @@ public class SpiderAI : MonoBehaviour {
 	private Vector3 lastTargetPos;
 	private NavMeshAgent agent;
 	private NavMeshPath path;
-	private int current_corner = 1;
+	private int current_corner;
 		
 	void Start () {
 
@@ -32,12 +32,14 @@ public class SpiderAI : MonoBehaviour {
 		}
 
 		path = new NavMeshPath ();
+		agent.CalculatePath(target.position, path);
 		lastTargetPos = target.position;
+		current_corner = 1;
 		InvokeRepeating ("checkPath", 0, 0.25f);
 	}
 
 	private void checkPath(){
-		if ((!Vector3.Equals (lastTargetPos, target.position)||target.tag!="Player") && currentAction==MOVING) {
+		if (!Vector3.Equals (lastTargetPos, target.position) && currentAction==MOVING) {
 			agent.CalculatePath(target.position, path);
 			lastTargetPos = target.position;
 			current_corner = 1;
@@ -58,14 +60,9 @@ public class SpiderAI : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		if (target == null) {
-			GameObject goTarget = getPlayerGameObject();
-			target = goTarget.transform;
-		}
-		float dist;
 		if ( target != null ) {
 			if (myState.isAlive()){
-				dist = Vector3.Distance (transform.position, target.position);
+				float dist = Vector3.Distance (transform.position, target.position);
 				if (dist<attackRange){
 					if (currentAction==MOVING){
 						myState.setDestination (transform.position.x, transform.position.y, transform.position.z);
@@ -76,21 +73,23 @@ public class SpiderAI : MonoBehaviour {
 						currentAction = ATTACKING;
 					}
 				}else if (dist<aggroRange){
-					if (path.corners.Length>0){
-						if (Vector3.Equals(path.corners[current_corner],transform.position)){
-							current_corner++;
-						}
-						Vector3 dest = path.corners[current_corner];
-						myState.setDestination (dest.x, dest.y, dest.z);
+					if (Vector3.Equals(path.corners[current_corner],transform.position)){
+						current_corner++;
 					}
+					Vector3 dest = path.corners[current_corner];
+
 					if (currentAction == PASSIVE){
 						RaycastHit hit;
 						if(Physics.Raycast(transform.position, target.position-transform.position, out hit, dist)) {
 							if ((hit.point-target.position).magnitude<1){ //TODO to change when the main character fixes their tag
 								currentAction = MOVING;
+								myState.setDestination (dest.x, dest.y, dest.z);
 							}
 						}
-					}else if (currentAction == ATTACKING) currentAction = MOVING;
+					}else if (currentAction == ATTACKING){
+						currentAction = MOVING;
+						myState.setDestination (dest.x, dest.y, dest.z);
+					}
 				}
 			}else if (currentAction == MOVING){
 				myState.setDestination (transform.position.x, transform.position.y, transform.position.z);

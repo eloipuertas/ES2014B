@@ -52,10 +52,12 @@ public class SpiderState : AbstractEntity {
 		/*if((destination - transform.position).magnitude < 0.1){
 			return;
 		}*/
-		Quaternion newRotation = Quaternion.LookRotation(destination - transform.position);
-		newRotation.x = 0f;
-		newRotation.z = 0f;
-		transform.rotation = Quaternion.Slerp(transform.rotation,newRotation,(rotationSpeed/1)*Time.deltaTime);
+		if (!Vector3.Equals (destination, transform.position)) {
+			Quaternion newRotation = Quaternion.LookRotation (destination - transform.position);
+			newRotation.x = 0f;
+			newRotation.z = 0f;
+			transform.rotation = Quaternion.Slerp (transform.rotation, newRotation, (rotationSpeed / 1) * Time.deltaTime);
+		}
 	}
 	
 	// ATTACK
