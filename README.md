@@ -1,4 +1,4 @@
-ES2014B
+﻿ES2014B
 =======
 
 Universitat de Barcelona Software Engineering Class B VideoGame Project
@@ -7,4 +7,4 @@ Universitat de Barcelona Software Engineering Class B VideoGame Project
 
 **Poseu-lo en el vostre usuari!!!!!!**
 
-Sprint: `2`
+Sprint: '3' --> c-83-mejora_terreno

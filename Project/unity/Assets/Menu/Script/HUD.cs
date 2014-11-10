@@ -37,10 +37,10 @@ public class HUD : MonoBehaviour
 
 		void Start ()
 		{
-		/*
+
 				GameObject go = GameObject.FindGameObjectWithTag ("Player");
 				player = go.GetComponent ("Player") as Player;
-				pj = player.pj;
+				/*pj = player.pj;
 		descomentar a master*/
 
 				audioTexture = audioON;
@@ -140,7 +140,7 @@ public class HUD : MonoBehaviour
 				}
 			
 
-				/*
+				
 				if (player.canShowMenuPause () && !mort) {
 						
 						if (GUI.Button (new Rect (xPos, yPos, buttonSizeWidth, buttonSizeHeight), continueTexture)) {
@@ -166,7 +166,7 @@ public class HUD : MonoBehaviour
 								Application.LoadLevel (0);
 							
 						}
-				} descomentar a master*/
+				} 
 		
 				//per debugar
 
