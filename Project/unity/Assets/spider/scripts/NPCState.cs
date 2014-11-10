@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class NPCState : EntityState {
+public class NPCState : EntityState{
 	
 	public float moveSpeed = 1.5f;
 	public float rotationSpeed = 4.0f;

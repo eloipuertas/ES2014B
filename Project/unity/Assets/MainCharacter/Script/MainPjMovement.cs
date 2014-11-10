@@ -13,8 +13,18 @@
 	private CharacterController controller;
 	public float lerpMoving;
 	public int i;
+
+
+	private Animator anim;
+
+
+
+
+
 	// Use this for initialization
 	void Start () {
+		anim = GetComponent<Animator> ();
+		anim.SetBool ("Walk", false);
 		this.setHP (400);
 		this.setMAXHP (400);
 		this.setFOR (30);
@@ -28,30 +38,41 @@
 	public override void onAttackReceived(int dmg){
 		this.setHP (this.getHP () - dmg);
 		//si s'ha mort, cridar escena de morir
-		if (this.getHP() <= 0) {
-			//Application.LoadLevel();
-		}
+		if (this.getHP () <= 0) {
+						//Application.LoadLevel();
+						anim.SetBool ("Die", true);
+				}
 	}
 	//Update is called once per frame
 	void Update () {
+		//prova per morir
+		if (Input.GetKeyDown(KeyCode.Alpha2)){
+			anim.SetTrigger("attackMelee");
+			/*anim.SetBool("attackMelee",false);
+			anim.SetBool("attackMelee",true);*/
+		}
+		if (Input.GetKeyDown(KeyCode.Alpha3)){
+			anim.SetBool("Die",true);
+		}
 		//Magia de Foc apretant la tecla 1
 		if (Input.GetKeyDown(KeyCode.Alpha1)){
 			Debug.Log("Apretat 1");
 			nextMagicAttack = 1;
 		}
 		if (Input.GetMouseButtonDown (0)) {
-			if (Physics.Raycast (Camera.main.ScreenPointToRay (Input.mousePosition), out hit, 1000.0f, ~(1 << 8))) {
-				if (hit.transform) {
-					targetPosition = hit.point;
-					targetPosition.y = 0;
+						if (Physics.Raycast (Camera.main.ScreenPointToRay (Input.mousePosition), out hit, 1000.0f, ~(1 << 8))) {
+								if (hit.transform) {
+										targetPosition = hit.point;
+										targetPosition.y = 0;
+										anim.SetBool ("Walk", true);
+								}
+						}
 				}
-			}
-
 
 
 			//RaycastHit hit; // cast a ray from mouse pointer: 
 			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition); // if enemy hit... 
-			if (Physics.Raycast(ray, out hit) && hit.transform.CompareTag("Spider")){ 
+		if (Physics.Raycast(ray, out hit) && hit.transform.CompareTag("Spider") && Input.GetMouseButtonDown (1)){ 
 				//distancia entre el personatge principal i l'enemic
 				//es calcula en metres
 				float distancia = hit.distance;
@@ -66,12 +87,12 @@
 					if (distancia > 90){
 						Debug.Log("Cal fer una magia de foc pero estas massa lluny");
 					}else{
-
 						//cal restar mana
 						//cal restar vida de l'aranya, parlar amb Jordi
 						//cal cridar animacio magia de foc
 
 						//Aranya.onAttackReceived(80);
+						//anim.setBool("spellFire",true);
 						Debug.Log("Magia de foc!");
 						nextMagicAttack = 0;
 
@@ -97,28 +118,33 @@
 					}else{
 						//ataco a l'aranya
 						//Aranya.onAttackReceived(this.getFOR());
+						anim.SetBool("attackMelee",true);
 						Debug.Log("Atac cos a cos");
 					}
 					break;
 				}
 
 			} 
-			Debug.Log("Ara nextMagicAttack val"+ nextMagicAttack);
+			
+			MoveTowardsTarget (targetPosition);
+
 		}
 
-		MoveTowardsTarget (targetPosition);
-	}
+
 
 	void MoveTowardsTarget(Vector3 target) {
 		var offset = target - transform.position;
-		if(offset.magnitude > 0.5f) {
-			offset = offset.normalized * speed;
-			controller.Move(offset * Time.deltaTime);
-			Quaternion newRotation = Quaternion.LookRotation (targetPosition - transform.position);
-			newRotation.x = 0f;
-			newRotation.z = 0f;
-			transform.rotation = Quaternion.Slerp (transform.rotation, newRotation,  (speed/5)*Time.deltaTime);
-		}
+
+		if (offset.magnitude > 0.5f) {
+						offset = offset.normalized * speed;
+						controller.Move (offset * Time.deltaTime);
+						Quaternion newRotation = Quaternion.LookRotation (targetPosition - transform.position);
+						newRotation.x = 0f;
+						newRotation.z = 0f;
+						transform.rotation = Quaternion.Slerp (transform.rotation, newRotation, (speed / 5) * Time.deltaTime);
+				} else {
+						anim.SetBool ("Walk", false);
+				}
 	}
 
 }
