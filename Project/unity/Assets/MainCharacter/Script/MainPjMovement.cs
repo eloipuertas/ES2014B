@@ -16,6 +16,7 @@
 	// Use this for initialization
 	void Start () {
 		controller = this.GetComponent<CharacterController>();
+
 		targetPosition = transform.position;
 		hit = new RaycastHit();
 		i = 0;
@@ -52,18 +53,34 @@
 					
 				switch(nextMagicAttack){
 				case 1:
-					//cridar animacio magia de foc
-					//aranya.receiveDamage(80);
+
 					if (distancia > 90){
 						Debug.Log("Cal fer una magia de foc pero estas massa lluny");
-						nextMagicAttack = 0;
 					}else{
+						//cal restar mana
+						//cal restar vida de l'aranya, parlar amb Jordi
+						//cal cridar animacio magia de foc
 						Debug.Log("Magia de foc!");
+						nextMagicAttack = 0;
+
 					}
 
 					break;
+				case 2:
+					//magia de gel
+					if (distancia > 90){
+						Debug.Log("Cal fer una magia de foc pero estas massa lluny");
+					}else{
+						//cal restar mana
+						//cal restar vida de l'aranya, parlar amb Jordi
+						//cal cridar animacio magia de gel
+						Debug.Log("Magia de foc!");
+						nextMagicAttack = 0;
+					}
+					break;
 				case 0:
 					if (distancia > 80){
+						//cal restar vida de l'aranya, parlar amb Jordi
 						Debug.Log("No puc atacar cos a cos");
 					}else{
 						Debug.Log("Atac cos a cos");
