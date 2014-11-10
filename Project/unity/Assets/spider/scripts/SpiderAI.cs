@@ -37,7 +37,7 @@ public class SpiderAI : MonoBehaviour {
 	}
 
 	private void checkPath(){
-		//if (!Vector3.Equals (lastTargetPos, target.position) && currentAction==MOVING) {
+		if ((!Vector3.Equals (lastTargetPos, target.position)||target.tag!="Player") && currentAction==MOVING) {
 			agent.CalculatePath(target.position, path);
 			lastTargetPos = target.position;
 			current_corner = 1;
@@ -53,7 +53,7 @@ public class SpiderAI : MonoBehaviour {
 			Debug.Log ("Enemy Position: " +target.position);
 			Debug.Log ("===========================");
 			**/
-		//}
+		}
 	}
 
 	// Update is called once per frame
@@ -84,12 +84,12 @@ public class SpiderAI : MonoBehaviour {
 						myState.setDestination (dest.x, dest.y, dest.z);
 					}
 					if (currentAction == PASSIVE){
-						//RaycastHit hit;
-						//if(Physics.Raycast(transform.position, target.position-transform.position, out hit, dist)) {
-							//if ((hit.point-target.position).magnitude<1){ //TODO to change when the main character fixes their tag
+						RaycastHit hit;
+						if(Physics.Raycast(transform.position, target.position-transform.position, out hit, dist)) {
+							if ((hit.point-target.position).magnitude<1){ //TODO to change when the main character fixes their tag
 								currentAction = MOVING;
-							//}
-						//}
+							}
+						}
 					}else if (currentAction == ATTACKING) currentAction = MOVING;
 				}
 			}else if (currentAction == MOVING){
