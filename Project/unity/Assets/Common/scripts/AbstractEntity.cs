@@ -18,9 +18,7 @@ public abstract class AbstractEntity : MonoBehaviour {
 
 	
 
-	public abstract void onAttackReceived(int baseDMG){
-		this.setHP (this.getHP () - baseDMG);
-	}
+	public abstract void onAttackReceived (int baseDMG);
 
 	public bool isAlive(){
 		return (this.HP >0);

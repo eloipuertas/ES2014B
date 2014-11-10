@@ -2,7 +2,7 @@
 	using System.Collections;
 	
 
-	public class MainPjMovement : MonoBehaviour {
+	public class MainPjMovement :  AbstractEntity {
 	private GameObject player;
 	private RaycastHit hit;
 	public float speed = 50;
@@ -15,6 +15,9 @@
 	public int i;
 	// Use this for initialization
 	void Start () {
+		this.setHP (400);
+		this.setMAXHP (400);
+		this.setFOR (30);
 		controller = this.GetComponent<CharacterController>();
 
 		targetPosition = transform.position;
@@ -22,7 +25,13 @@
 		i = 0;
 		nextMagicAttack = 0;
 	}
-	
+	public override void onAttackReceived(int dmg){
+		this.setHP (this.getHP () - dmg);
+		//si s'ha mort, cridar escena de morir
+		if (this.getHP() <= 0) {
+			//Application.LoadLevel();
+		}
+	}
 	//Update is called once per frame
 	void Update () {
 		//Magia de Foc apretant la tecla 1
@@ -57,9 +66,12 @@
 					if (distancia > 90){
 						Debug.Log("Cal fer una magia de foc pero estas massa lluny");
 					}else{
+
 						//cal restar mana
 						//cal restar vida de l'aranya, parlar amb Jordi
 						//cal cridar animacio magia de foc
+
+						//Aranya.onAttackReceived(80);
 						Debug.Log("Magia de foc!");
 						nextMagicAttack = 0;
 
@@ -83,6 +95,8 @@
 						//cal restar vida de l'aranya, parlar amb Jordi
 						Debug.Log("No puc atacar cos a cos");
 					}else{
+						//ataco a l'aranya
+						//Aranya.onAttackReceived(this.getFOR());
 						Debug.Log("Atac cos a cos");
 					}
 					break;
