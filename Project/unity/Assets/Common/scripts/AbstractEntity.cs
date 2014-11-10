@@ -13,10 +13,12 @@ public abstract class AbstractEntity : MonoBehaviour {
 	private int ARM;
 	private int DMG;
 
+	private int MAXMP;
+	private int MAXHP;
 
 	
 
-	public void onAttackReceived(int baseDMG){
+	public abstract void onAttackReceived(int baseDMG){
 		this.setHP (this.getHP () - baseDMG);
 	}
 
@@ -62,7 +64,12 @@ public abstract class AbstractEntity : MonoBehaviour {
 	public void setdmg(int valor){
 		this.DMG = valor;
 	}
-	
+	public void setMAXHP(int valor){
+		this.MAXHP = valor;
+	}
+	public void setMAXMP(int valor){
+		this.MAXMP = valor;
+	}
 	public int getSTR(){
 		return this.STR;
 	}
@@ -100,6 +107,14 @@ public abstract class AbstractEntity : MonoBehaviour {
 	
 	public int getDMG(){
 		return this.DMG;
+	}
+
+	public int getMAXMP(){
+		return this.MAXMP;
+	}
+
+	public int getMAXHP(){
+		return this.MAXHP;
 	}
 
 }
