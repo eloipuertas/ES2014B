@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System;
 
 public class SpiderAI : MonoBehaviour {
@@ -58,8 +58,33 @@ public class SpiderAI : MonoBehaviour {
 		}
 	}
 
+	// DebugRays are only visible in SCENE view, not in GAME view!
+	private void debugDrawPath()
+	{
+		Vector3[] corners = path.corners;
+
+		if ( corners.Length >= 2 ) {
+			//Debug.Log("Drawing path, corners.Length: " + corners.Length);
+
+			for ( int i = 1 ; i < corners.Length ; i++ ) {
+			//while ( i < corners.Length ) {
+				Vector3 u = corners[i - 1];
+				Vector3 v = corners[i];
+				// UnityEngine.Debug.DrawRay(UnityEngine.Vector3, UnityEngine.Vector3, UnityEngine.Color, float, bool)
+
+				if ( i % 2 != 0 ) {
+					Debug.DrawRay(v, u, Color.green, 100, true);
+				} else {
+					Debug.DrawRay(u, v, Color.green, 100, true);
+				}
+				//Debug.Log("i: " + i + ", u: " + u + ", v: " + v);
+			}
+		}
+	}
+
 	// Update is called once per frame
 	void Update () {
+		//debugDrawPath();
 		if ( target != null ) {
 			if (myState.isAlive()){
 				float dist = Vector3.Distance (transform.position, target.position);
