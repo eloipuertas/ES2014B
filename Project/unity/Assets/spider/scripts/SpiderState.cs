@@ -1,7 +1,11 @@
 using UnityEngine;
 using System.Collections;
 
+<<<<<<< HEAD:Project/unity/Assets/spider/scripts/SpiderState.cs
 public class SpiderState : AbstractEntity {
+=======
+public class NPCState : EntityState{
+>>>>>>> devel-A:Project/unity/Assets/spider/scripts/NPCState.cs
 	
 	public float moveSpeed = 1.5f;
 	public float rotationSpeed = 4.0f;

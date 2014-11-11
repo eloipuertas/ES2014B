@@ -2,6 +2,7 @@
 using System.Collections;
 
 public abstract class AbstractEntity : MonoBehaviour {
+<<<<<<< HEAD
 	protected int STR; 
 	protected int DEX; 
 	protected int CON;
@@ -13,6 +14,26 @@ public abstract class AbstractEntity : MonoBehaviour {
 	protected int ARM;
 	protected int DMG;
 	
+=======
+	private int STR; 
+	private int DEX; 
+	private int CON;
+	private int INT;
+	private int HP;
+	private int MP;
+	private int FOR;
+	private int REF;
+	private int ARM;
+	private int DMG;
+
+	private int MAXMP;
+	private int MAXHP;
+
+	
+
+	public abstract void onAttackReceived (int baseDMG);
+
+>>>>>>> devel-A
 	public bool isAlive(){
 		return (this.HP >0);
 	}
@@ -55,7 +76,12 @@ public abstract class AbstractEntity : MonoBehaviour {
 	public void setDMG(int valor){
 		this.DMG = valor;
 	}
-	
+	public void setMAXHP(int valor){
+		this.MAXHP = valor;
+	}
+	public void setMAXMP(int valor){
+		this.MAXMP = valor;
+	}
 	public int getSTR(){
 		return this.STR;
 	}
@@ -95,6 +121,16 @@ public abstract class AbstractEntity : MonoBehaviour {
 		return this.DMG;
 	}
 
+<<<<<<< HEAD
 	public abstract void onAttackReceived (int baseDMG);
+=======
+	public int getMAXMP(){
+		return this.MAXMP;
+	}
+
+	public int getMAXHP(){
+		return this.MAXHP;
+	}
+>>>>>>> devel-A
 
 }
