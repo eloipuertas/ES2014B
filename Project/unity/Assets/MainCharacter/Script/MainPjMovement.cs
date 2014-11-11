@@ -79,7 +79,7 @@
 				Debug.Log("Distancia:"+distancia);
 
 				//obtinc la aranya
-				NPCState Aranya = (NPCState)hit.collider.GetComponent("Spider");
+				AbstractEntity Aranya = (AbstractEntity)hit.collider.GetComponent("Spider");
 					
 				switch(nextMagicAttack){
 				case 1:

@@ -2,38 +2,24 @@
 using System.Collections;
 
 public abstract class AbstractEntity : MonoBehaviour {
-<<<<<<< HEAD
-	protected int STR; 
-	protected int DEX; 
-	protected int CON;
-	protected int INT;
-	protected int HP;
-	protected int MP;
-	protected int FOR;
-	protected int REF;
-	protected int ARM;
-	protected int DMG;
-	
-=======
-	private int STR; 
-	private int DEX; 
-	private int CON;
-	private int INT;
-	private int HP;
-	private int MP;
-	private int FOR;
-	private int REF;
-	private int ARM;
-	private int DMG;
 
-	private int MAXMP;
-	private int MAXHP;
+	public int STR; 
+	public int DEX; 
+	public int CON;
+	public int INT;
+	public int HP;
+	public int MP;
+	public int FOR;
+	public int REF;
+	public int ARM;
+	public int DMG;
 
-	
 
-	public abstract void onAttackReceived (int baseDMG);
+	public int MAXMP;
+	public int MAXHP;
 
->>>>>>> devel-A
+
+
 	public bool isAlive(){
 		return (this.HP >0);
 	}
@@ -121,9 +107,9 @@ public abstract class AbstractEntity : MonoBehaviour {
 		return this.DMG;
 	}
 
-<<<<<<< HEAD
+
 	public abstract void onAttackReceived (int baseDMG);
-=======
+
 	public int getMAXMP(){
 		return this.MAXMP;
 	}
@@ -131,6 +117,6 @@ public abstract class AbstractEntity : MonoBehaviour {
 	public int getMAXHP(){
 		return this.MAXHP;
 	}
->>>>>>> devel-A
+
 
 }

@@ -1,11 +1,9 @@
 using UnityEngine;
 using System.Collections;
 
-<<<<<<< HEAD:Project/unity/Assets/spider/scripts/SpiderState.cs
+
 public class SpiderState : AbstractEntity {
-=======
-public class NPCState : EntityState{
->>>>>>> devel-A:Project/unity/Assets/spider/scripts/NPCState.cs
+
 	
 	public float moveSpeed = 1.5f;
 	public float rotationSpeed = 4.0f;
@@ -21,7 +19,7 @@ public class NPCState : EntityState{
 		
 		//TODO fix attributes using D&D formulaes on the base stats
 		HP = 100;
-		DMG = 5;
+		DMG = 0;
 		
 		setDestination(transform.position.x,transform.position.y,transform.position.z);
 		
