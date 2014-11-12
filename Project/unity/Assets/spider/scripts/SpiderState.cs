@@ -19,7 +19,7 @@ public class SpiderState : AbstractEntity {
 		
 		//TODO fix attributes using D&D formulaes on the base stats
 		HP = 100;
-		DMG = 0;
+		DMG = 1;
 		
 		setDestination(transform.position.x,transform.position.y,transform.position.z);
 		

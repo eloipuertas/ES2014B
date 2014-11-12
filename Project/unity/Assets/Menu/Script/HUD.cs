@@ -24,8 +24,12 @@ public class HUD : MonoBehaviour
 		public Texture gameOverTexture;
 		private float xPos;
 		private float yPos;
-		//private PjPrincipal pj;descomentar a master
+
+
+		private MainPjMovement pj;
+
 		private Player player;
+
 		private float buttonSizeWidth, buttonSizeHeight;
 		public GUISkin myskin;
 		public Texture continueTexture, backMainMenuTexture, audioOFF, audioON;
@@ -39,10 +43,9 @@ public class HUD : MonoBehaviour
 		{
 
 				GameObject go = GameObject.FindGameObjectWithTag ("Player");
+				pj = go.GetComponent ("MainPjMovement") as MainPjMovement;
 				player = go.GetComponent ("Player") as Player;
-				/*pj = player.pj;
-		descomentar a master*/
-
+		
 				audioTexture = audioON;
 				AmbientAudio = GameObject.FindObjectOfType (typeof(AmbientalMusic)) as AmbientalMusic;
 		
@@ -62,15 +65,12 @@ public class HUD : MonoBehaviour
 				buttonSizeWidth = Screen.width / 5;
 				float maxVida = 100, maxMana = 100;
 				if (!debugON) {
-			/*
-						vida = pj.getVida ();
-						mana = pj.getMana ();
-						magiaEscollida = pj.getSelectedSpell ();
-						maxVida = pj.getMaxVida ();
-						maxMana = pj.getMaxMana ();
-						descomentar a master*/
-					mana = 100;
-					vida = 100;
+
+					vida = pj.getHP();
+					mana = pj.getMP();
+					magiaEscollida = pj.getSelectedSpell();
+					maxVida = pj.getMAXHP ();
+					maxMana = pj.getMAXMP ();
 
 
 		} else if (debugON && !debugInit) {
@@ -139,9 +139,9 @@ public class HUD : MonoBehaviour
 						xActual += alturaMagia;
 				}
 			
-
 				
-				if (player.canShowMenuPause () && !mort) {
+				
+			if (player.canShowMenuPause () && !mort) { //TODO: Tens un metode que es diu: isAlive en AbstractEntity!!
 						
 						if (GUI.Button (new Rect (xPos, yPos, buttonSizeWidth, buttonSizeHeight), continueTexture)) {
 								player.hideMenuPause ();	

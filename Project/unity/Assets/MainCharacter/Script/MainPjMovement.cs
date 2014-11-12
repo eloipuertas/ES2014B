@@ -20,13 +20,15 @@
 
 
 
-
+	public int getSelectedSpell(){
+		return nextMagicAttack-1;
+	}
 	// Use this for initialization
 	void Start () {
 		anim = GetComponent<Animator> ();
 		anim.SetBool ("Walk", false);
-		this.setHP (400);
-		this.setMAXHP (400);
+		this.setHP (1500);
+		this.setMAXHP (1500);
 		this.setFOR (30);
 		controller = this.GetComponent<CharacterController>();
 
@@ -36,6 +38,7 @@
 		nextMagicAttack = 0;
 	}
 	public override void onAttackReceived(int dmg){
+		Debug.Log ("Damage: "+dmg);
 		this.setHP (this.getHP () - dmg);
 		//si s'ha mort, cridar escena de morir
 		if (this.getHP () <= 0) {
