@@ -10,13 +10,12 @@ public class EmitParticles : MonoBehaviour
 	float siz = 3;
 	float lif = 5;
 	Color32 col = Color.white;
-
-
-
+	
 	// Use this for initialization
 	void Start () 
 	{
 		particleSystem.playOnAwake = false;
+		particleSystem.startRotation = 90;
 
 	}
 	
