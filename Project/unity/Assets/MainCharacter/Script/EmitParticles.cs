@@ -7,9 +7,9 @@ public class EmitParticles : MonoBehaviour
 {
 	Vector3 pos = new Vector3 ( 0, 15, 0 );
 	Vector3 vel = new Vector3 ( 100, 0, 0 );
-	float siz = 5;
-	float lif = 3;
-	Color32 col = Color.cyan;
+	float siz = 3;
+	float lif = 5;
+	Color32 col = Color.white;
 
 
 
