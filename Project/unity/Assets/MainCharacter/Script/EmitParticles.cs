@@ -5,8 +5,8 @@ using System.Collections;
 
 public class EmitParticles : MonoBehaviour 
 {
-	Vector3 pos = new Vector3 ( 0, 15, 0 );
-	Vector3 vel = new Vector3 ( 100, 0, 0 );
+	Vector3 pos = new Vector3 ( 0, 13, 0 );
+	Vector3 vel = new Vector3 ( 0, 0, 70 );
 	float siz = 3;
 	float lif = 5;
 	Color32 col = Color.white;
@@ -15,7 +15,6 @@ public class EmitParticles : MonoBehaviour
 	void Start () 
 	{
 		particleSystem.playOnAwake = false;
-		particleSystem.startRotation = 90;
 
 	}
 	
