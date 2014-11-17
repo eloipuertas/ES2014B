@@ -3,7 +3,7 @@ using System.Collections;
 
 
 public class SpiderState : AbstractEntity {
-
+	
 	
 	public float moveSpeed = 1.5f;
 	public float rotationSpeed = 4.0f;
@@ -45,30 +45,27 @@ public class SpiderState : AbstractEntity {
 				animator.SetBool("walk_enabled",false);
 			}
 			characterController.Move (moveDirection * Time.deltaTime);
-			this.lookAt();
+			this.lookAt(destination);
 		}
 	}
 	
 	// LOOK
-	public void lookAt(){
-		/*if((destination - transform.position).magnitude < 0.1){
-			return;
-		}*/
-		if (!Vector3.Equals (destination, transform.position)) {
-			Quaternion newRotation = Quaternion.LookRotation (destination - transform.position);
+	public void lookAt(Vector3 lookAtPos){
+		if(!Vector3.Equals(lookAtPos, transform.position)){
+			Quaternion newRotation = Quaternion.LookRotation(lookAtPos - transform.position);
 			newRotation.x = 0f;
 			newRotation.z = 0f;
-			transform.rotation = Quaternion.Slerp (transform.rotation, newRotation, (rotationSpeed / 1) * Time.deltaTime);
+			transform.rotation = Quaternion.Slerp(transform.rotation, newRotation, (rotationSpeed / 1) * Time.deltaTime);
 		}
 	}
 	
 	// ATTACK
-	public void attack(AbstractEntity enemy){
-		this.lookAt ();
-		if (this.isAlive()) {
+	public void attack(AbstractEntity enemy, Vector3 enemyPos){
+		this.lookAt(enemyPos);
+		if(this.isAlive()){
 			animator.SetBool ("attack_enabled", true);
 			enemy.onAttackReceived (DMG);
-		} else {
+		}else{
 			animator.SetBool("attack_enabled",false);
 		}
 	}
