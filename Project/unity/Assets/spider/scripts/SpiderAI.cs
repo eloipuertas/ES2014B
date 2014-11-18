@@ -86,50 +86,51 @@ public class SpiderAI : MonoBehaviour {
 	void Update () {
 		//debugDrawPath();
 		if ( target != null ) {
-			if (myState.isAlive()){
-				float dist = Vector3.Distance (transform.position, target.position);
-				if (dist<attackRange){
-					if (currentAction==MOVING){
-						myState.setDestination (transform.position.x, transform.position.y, transform.position.z);
-					}
-					AbstractEntity targetEntity = target.GetComponent<AbstractEntity>();
-					if ( targetEntity != null ) {
-						myState.attack(targetEntity); 
+			AbstractEntity targetEntity = target.GetComponent<AbstractEntity>();
+			if ( targetEntity != null) {
+				if (myState.isAlive() && targetEntity.isAlive ()){
+					float dist = Vector3.Distance (transform.position, target.position);
+					if (dist<attackRange){
+						if (currentAction==MOVING){
+							myState.setDestination (transform.position.x, transform.position.y, transform.position.z);
+						}
+						myState.attack(targetEntity,target.position); 
 						currentAction = ATTACKING;
-					}
-				}else if (dist<aggroRange){
-					if (currentAction == PASSIVE){
-						RaycastHit hit;
-						if(Physics.Raycast(transform.position, target.position-transform.position, out hit, dist)) {
-							if ((hit.point-target.position).magnitude<1){ //TODO to change when the main character fixes their tag
-								currentAction = MOVING;
-								checkPath ();
-								if (Vector3.Equals(path.corners[current_corner],transform.position)){
-									current_corner++;
+
+					}else if (dist<aggroRange){
+						if (currentAction == PASSIVE){
+							RaycastHit hit;
+							if(Physics.Raycast(transform.position, target.position-transform.position, out hit, dist)) {
+								if ((hit.point-target.position).magnitude<1){ //TODO to change when the main character fixes their tag
+									currentAction = MOVING;
+									checkPath ();
+									if (Vector3.Equals(path.corners[current_corner],transform.position)){
+										current_corner++;
+									}
+									Vector3 dest = path.corners[current_corner];
+									myState.setDestination (dest.x, dest.y, dest.z);
 								}
-								Vector3 dest = path.corners[current_corner];
-								myState.setDestination (dest.x, dest.y, dest.z);
 							}
+						}else if (currentAction == ATTACKING){
+							currentAction = MOVING;
+							checkPath ();
+							if (Vector3.Equals(path.corners[current_corner],transform.position)){
+								current_corner++;
+							}
+							Vector3 dest = path.corners[current_corner];
+							myState.setDestination (dest.x, dest.y, dest.z);
+						}else{
+							if (Vector3.Equals(path.corners[current_corner],transform.position)){
+								current_corner++;
+							}
+							Vector3 dest = path.corners[current_corner];
+							myState.setDestination (dest.x, dest.y, dest.z);
 						}
-					}else if (currentAction == ATTACKING){
-						currentAction = MOVING;
-						checkPath ();
-						if (Vector3.Equals(path.corners[current_corner],transform.position)){
-							current_corner++;
-						}
-						Vector3 dest = path.corners[current_corner];
-						myState.setDestination (dest.x, dest.y, dest.z);
-					}else{
-						if (Vector3.Equals(path.corners[current_corner],transform.position)){
-							current_corner++;
-						}
-						Vector3 dest = path.corners[current_corner];
-						myState.setDestination (dest.x, dest.y, dest.z);
 					}
+				}else if (currentAction != PASSIVE){
+					myState.setDestination (transform.position.x, transform.position.y, transform.position.z);
+					currentAction = PASSIVE;
 				}
-			}else if (currentAction == MOVING){
-				myState.setDestination (transform.position.x, transform.position.y, transform.position.z);
-				currentAction = PASSIVE;
 			}
 		}
 	}
