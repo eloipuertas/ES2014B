@@ -17,6 +17,8 @@ public class SpiderState : AbstractEntity {
 		characterController = GetComponent<CharacterController>();
 		animator = GetComponent<Animator>();
 		
+		characterController.radius = 2.5f;
+		
 		//TODO fix attributes using D&D formulaes on the base stats
 		HP = 100;
 		DMG = 1;
