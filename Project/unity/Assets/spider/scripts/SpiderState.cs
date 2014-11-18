@@ -71,7 +71,7 @@ public class SpiderState : AbstractEntity {
 	}
 	
 	// THROW PROJECTILE
-	public boolean throwProj(AbstractEntity enemy,Vector3 enemyPos{
+	public bool throwProj(AbstractEntity enemy,Vector3 enemyPos){
 		// TODO
 		return false;
 	}
