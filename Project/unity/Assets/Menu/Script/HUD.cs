@@ -32,6 +32,7 @@ public class HUD : MonoBehaviour
 
 		private float buttonSizeWidth, buttonSizeHeight;
 		public GUISkin myskin;
+		public Texture backgroundHud;
 		public Texture continueTexture, backMainMenuTexture, audioOFF, audioON;
 		private Texture audioTexture;
 		private bool sona = true, mort = false, debugInit = false;
@@ -59,8 +60,9 @@ public class HUD : MonoBehaviour
 				altura = Screen.height / 8;
 				xPos = Screen.width / 2.7f;
 				yPos = Screen.height / 3.2f;
-				GUI.skin = myskin;
 				
+				GUI.skin = myskin;
+				GUI.DrawTexture (new Rect (100,478,700,120),backgroundHud);
 				buttonSizeHeight = Screen.height / 15;
 				buttonSizeWidth = Screen.width / 5;
 				float maxVida = 100, maxMana = 100;
@@ -78,6 +80,7 @@ public class HUD : MonoBehaviour
 						vida = 100;
 						debugInit = true;
 				}
+		        
 				
 				vidapercent = vida / maxVida;
 				
@@ -115,6 +118,7 @@ public class HUD : MonoBehaviour
 						
 						if (i == 0) {//vida
 								GUI.BeginGroup (new Rect (xVida, yVida, amplada, Screen.height - yVida));
+								
 								GUI.DrawTexture (new Rect (0, alturaVida - altura, amplada, altura), this.texVida);
 								GUI.EndGroup ();
 
