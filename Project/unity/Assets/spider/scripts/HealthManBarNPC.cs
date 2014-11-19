@@ -21,10 +21,10 @@ public class HealthManBarNPC:MonoBehaviour{
 
 	public void set(float maxHealth,float maxMana,float currentHealth,float currentMana,
 	                float leftX,float topY,float width,float height){
-		this.maxValueHealth = maxHealth;
-		this.maxValueMana = maxMana;
-		this.currentHealth = currentHealth;
-		this.currentMana = currentMana;
+		this.maxValueHealth = Mathf.Max(0,maxHealth);
+		this.maxValueMana = Mathf.Max(0,maxMana);
+		this.currentHealth = Mathf.Min(this.maxValueHealth,Mathf.Max(0,currentHealth));
+		this.currentMana = Mathf.Min(this.maxValueMana,Mathf.Max(0,currentMana));
 		this.leftX = leftX;
 		this.topY = topY;
 		this.width = width;

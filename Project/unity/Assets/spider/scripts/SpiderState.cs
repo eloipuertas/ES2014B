@@ -24,7 +24,7 @@ public class SpiderState : AbstractEntity {
 		setMAXMP(100);
 		setHP(75);
 		setMP(50);
-		DMG = 10;
+		DMG = 5;
 		
 		setDestination(transform.position.x,transform.position.y,transform.position.z);
 		
