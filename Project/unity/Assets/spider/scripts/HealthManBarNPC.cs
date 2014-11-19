@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class HealthBarNPC : MonoBehaviour {
+public class HealthManBarNPC : MonoBehaviour {
 	
 	public float maxValueHealth;
 	public float maxValueMana;
@@ -30,23 +30,56 @@ public class HealthBarNPC : MonoBehaviour {
 	}
 
 	void Update(){
+		// TODO ?
 	}
 	
 	void OnGUI(){
-		// container
+		// BG container
 		GUI.BeginGroup(new Rect(this.leftX,this.bottomY,this.width,this.height));
 		GUI.Box(new Rect(this.leftX,this.bottomY,this.width,this.height),bgBar);
 			
-			// health container
+			// health FG container
 			GUI.BeginGroup(new Rect(this.leftX,this.bottomY+this.height*0.5f,(this.currentHealth/this.maxValueHealth)*this.width,this.height*0.5f));
 			GUI.Box(new Rect(tthis.leftX,this.bottomY+this.height*0.5f,(this.currentHealth/this.maxValueHealth)*this.width,this.height*0.5f),healthBarFGTexture);
 			GUI.EndGroup();
 		
-			// mana container
+			// mana FG container
 			GUI.BeginGroup(new Rect(this.leftX,this.bottomY,(this.currentMana/this.maxValueMana)*this.width,this.height*0.5f));
 			GUI.Box(new Rect(tthis.leftX,this.bottomY,(this.currentMana/this.maxValueMana)*this.width,this.height*0.5f),manaBarFGTexture);
 			GUI.EndGroup();
 
 		GUI.EndGroup();
+	}
+	
+	public void setHealth(float health){
+		this.currentHealth = health;
+	}
+	
+	public void setMana(float mana){
+		this.currentMana = mana;
+	}
+	
+	public void setMaxHealth(float maxHealth){
+		this.maxValueHealth = maxHealth;
+	}
+	
+	public void setMana(float maxMana){
+		this.maxValueMana = maxMana;
+	}
+	
+	public void setLeftX(float leftX){
+		this.leftX = leftX;
+	}
+	
+	public void setBottomY(float bottomY){
+		this.bottomY = bottomY;
+	}
+	
+	public void setWidth(float width){
+		this.width = width;
+	}
+	
+	public void setHeight(float height){
+		this.height = height;
 	}
 }
