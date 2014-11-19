@@ -4,11 +4,11 @@ using System.Collections;
 public class HealthManBarNPC:MonoBehaviour{
 	
 	private SpiderState myState;
-	public float maxValueHealth;
-	public float maxValueMana;
-	public float currentHealth;
-	public float currentMana;
-	public float leftX,bottomY,width,height;
+	public float maxValueHealth = 100;
+	public float maxValueMana = 100;
+	public float currentHealth = 100;
+	public float currentMana = 100;
+	public float leftX=0,bottomY=0,width=200,height=50;
 		
 	public Texture2D bgBarTexture;
 	public Texture2D healthBarFGTexture;
@@ -16,7 +16,7 @@ public class HealthManBarNPC:MonoBehaviour{
 	
 	void Awake(){
 		myState = this.gameObject.GetComponent<SpiderState>();
-		set(1,1,1,1,0,0,200,50);
+		set(myState.getMAXHP(),myState.getMAXMP(),myState.getHP(),myState.getMP(),leftX,bottomY,width,height);
 	}
 
 	public void set(float maxHealth,float maxMana,float currentHealth,float currentMana,
@@ -33,6 +33,7 @@ public class HealthManBarNPC:MonoBehaviour{
 	
 	void Update(){
 		// TODO ?
+		set(myState.getMAXHP(),myState.getMAXMP(),myState.getHP(),myState.getMP(),leftX,bottomY,width,height);
 		//myState.transform.position
 		//Vector3 pos = myState.getPosition();
 		Vector3 screenPos = Camera.main.WorldToScreenPoint(myState.transform.position);
@@ -46,10 +47,10 @@ public class HealthManBarNPC:MonoBehaviour{
 		GUI.DrawTexture(new Rect(this.leftX,this.bottomY,this.width,this.height),bgBarTexture);
 
 		// health FG container
-		GUI.DrawTexture(new Rect(this.leftX,this.bottomY,this.width,this.height*0.5f),healthBarFGTexture);
+		GUI.DrawTexture(new Rect(this.leftX,this.bottomY,(this.currentHealth/this.maxValueHealth)*this.width,this.height*0.5f),healthBarFGTexture);
 
 		// mana FG container
-		GUI.DrawTexture(new Rect(this.leftX,this.bottomY+this.height*0.5f,this.width,this.height*0.5f),manaBarFGTexture);
+		GUI.DrawTexture(new Rect(this.leftX,this.bottomY+this.height*0.5f,(this.currentMana/this.maxValueMana)*this.width,this.height*0.5f),manaBarFGTexture);
 	}
 	
 	public void setHealth(float health){
