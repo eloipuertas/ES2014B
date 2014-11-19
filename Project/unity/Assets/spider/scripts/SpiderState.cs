@@ -20,8 +20,11 @@ public class SpiderState : AbstractEntity {
 		characterController.radius = 2.5f;
 		
 		//TODO fix attributes using D&D formulaes on the base stats
-		HP = 100;
-		DMG = 1;
+		setMAXHP(100);
+		setMAXMP(100);
+		setHP(75);
+		setMP(50);
+		DMG = 10;
 		
 		setDestination(transform.position.x,transform.position.y,transform.position.z);
 		

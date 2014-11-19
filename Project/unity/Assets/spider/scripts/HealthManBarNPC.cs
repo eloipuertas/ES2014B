@@ -34,12 +34,9 @@ public class HealthManBarNPC:MonoBehaviour{
 	void Update(){
 		// TODO ?
 		set(myState.getMAXHP(),myState.getMAXMP(),myState.getHP(),myState.getMP(),leftX,topY,width,height);
-		//myState.transform.position
-		//Vector3 pos = myState.getPosition();
 		Vector3 screenPos = Camera.main.WorldToScreenPoint(myState.transform.position);
-		//print("target is " + screenPos.x + " pixels from the left");
 		this.leftX = screenPos.x-this.width*0.5f;
-		this.topY = Screen.height-screenPos.y-this.height*0.5f;
+		this.topY = Screen.height-screenPos.y-this.height*0.5f-50;
 	}
 	
 	void OnGUI(){
