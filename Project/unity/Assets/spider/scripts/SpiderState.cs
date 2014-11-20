@@ -58,9 +58,11 @@ public class SpiderState : AbstractEntity {
 		}
 	}
 	
-	public override void onAttackReceived (int baseDMG)
-	{
+	public override void onAttackReceived (int baseDMG){
 		int damage = Mathf.RoundToInt((1-((float)ARM / 15 * 0.75f))*baseDMG);
+		animator.SetBool("walk_enabled",false);
+		animator.SetBool("attack_enabled",false);
+		animator.SetBool("receive_attack_enabled",true);
 		this.substractHealth(damage);
 	}
 	
@@ -151,5 +153,11 @@ public class SpiderState : AbstractEntity {
 	}
 	public void substractHealth(int healthToSubstract){
 		setHP(HP - healthToSubstract);
+		if(!isAlive()){
+			animator.SetBool("walk_enabled",false);
+			animator.SetBool("attack_enabled",false);
+			animator.SetBool("receive_attack_enabled",false);
+			animator.SetBool("die",true);
+		}
 	}
 }
