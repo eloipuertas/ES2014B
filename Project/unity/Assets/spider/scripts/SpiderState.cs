@@ -45,7 +45,6 @@ public class SpiderState : AbstractEntity {
 		
 		setDestination(transform.position.x,transform.position.y,transform.position.z);
 		InvokeRepeating ("TimeBasedUpdate", 0, 0.025f);
-		MP = 0;
 	}
 
 	private void TimeBasedUpdate(){

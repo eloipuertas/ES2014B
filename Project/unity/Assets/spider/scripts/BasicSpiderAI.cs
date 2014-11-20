@@ -1,7 +1,7 @@
 using UnityEngine;
 using System;
 
-public class SpiderAI : MonoBehaviour {
+public class BasicSpiderAI : MonoBehaviour {
 	public Transform target;
 	public float aggroRange = 3.5f;
 	public float attackRange = 1.5f; 
