@@ -6,11 +6,11 @@ public class SpiderState : AbstractEntity {
 	public float moveSpeed = 1.5f;
 	public float rotationSpeed = 4.0f;
 	public Vector3 destination;
-	public float delay_between_attacks;
+	public float timecost_perAction;
 	
 	private CharacterController characterController;
 	private Animator animator;
-	private float time_until_attack = 0;
+	private float timeForNextAction = 0;
 	
 	void Awake(){
 		characterController = GetComponent<CharacterController>();
@@ -41,14 +41,14 @@ public class SpiderState : AbstractEntity {
 		if (MAXMP == 0) setMAXMP (MP);
 		if (DMG == 0) setDMG ((int)((float) STR * 0.5));
 
-		if (delay_between_attacks == 0) delay_between_attacks = 1/((float)DEX/18 * 20);
-		
+		if (timecost_perAction == 0) timecost_perAction = 1/((float)DEX/18 * 20);
+
 		setDestination(transform.position.x,transform.position.y,transform.position.z);
-		InvokeRepeating ("TimeBasedUpdate", 0, 0.025f);
+		InvokeRepeating ("TimeBasedUpdate", 0, 0.05f);
 	}
 
 	private void TimeBasedUpdate(){
-		if (time_until_attack > 0.0) time_until_attack = time_until_attack - 0.05f;
+		if (timeForNextAction > 0.0) timeForNextAction = timeForNextAction - 0.05f;
 		if (MP < MAXMP) MP = MP + 1;
 	}
 
@@ -65,7 +65,7 @@ public class SpiderState : AbstractEntity {
 	}
 	
 	private void move(){
-		if ( animator != null && characterController != null ) { 
+		if ( animator != null && characterController != null) { 
 			Vector3 moveDirection = destination-transform.position;
 			moveDirection.Normalize();
 			moveDirection *= moveSpeed;
@@ -91,10 +91,10 @@ public class SpiderState : AbstractEntity {
 	public void attack(AbstractEntity enemy, Vector3 enemyPos){
 		this.lookAt(enemyPos);
 		if(this.isAlive() && enemy.isAlive()){
-			if (time_until_attack<=0){
+			if (timeForNextAction<=0){
 				if (!animator.GetBool("attack_enabled")) animator.SetBool ("attack_enabled", true);
 				enemy.onAttackReceived (DMG);
-				time_until_attack = delay_between_attacks;
+				timeForNextAction = timecost_perAction;
 			}
 		}else if (animator.GetBool("attack_enabled")){
 			animator.SetBool("attack_enabled",false);
@@ -103,9 +103,17 @@ public class SpiderState : AbstractEntity {
 	
 	// THROW PROJECTILE
 	public void throwProj(AbstractEntity enemy,Vector3 enemyPos, int manacost){
+			
 		if (MP > manacost) {
-			MP = MP - manacost;
 			this.lookAt (enemyPos);
+			MP = MP - manacost;
+			GameObject projectile = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+			projectile.transform.position = new Vector3(transform.position.x,2,transform.position.z);
+			projectile.transform.localScale = new Vector3(0.5f,0.5f,0.5f);
+			projectile.AddComponent<Web>();
+			Rigidbody rgproj = projectile.AddComponent<Rigidbody>();
+			rgproj.velocity = (enemyPos-projectile.transform.position).normalized*10;
+			rgproj.useGravity = false;
 		}
 	}
 	
@@ -120,7 +128,7 @@ public class SpiderState : AbstractEntity {
 				if (animator.GetBool("attack_enabled")) animator.SetBool ("attack_enabled", false);
 				if (!animator.GetBool("walk_enabled")) animator.SetBool ("walk_enabled", true);
 				destination = new Vector3 (x, y, z);
-				if (time_until_attack!=(delay_between_attacks/2)) time_until_attack = delay_between_attacks/2;
+				if (timeForNextAction!=(timecost_perAction/2)) timeForNextAction = timecost_perAction/2;
 			} else {
 				if (animator.GetBool("attack_enabled")) animator.SetBool ("attack_enabled", false);
 				if (animator.GetBool("walk_enabled")) animator.SetBool ("walk_enabled", false);
