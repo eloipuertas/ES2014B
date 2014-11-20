@@ -4,7 +4,8 @@ using System;
 public class SpiderAI : MonoBehaviour {
 	public Transform target;
 	public float aggroRange = 3.5f;
-	public float attackRange = 1.5f; //TODO move to NPCState
+	public float attackRange = 1.5f; 
+	public int manacost_web = 100;
 	private SpiderState myState;
 	
 	private const int PASSIVE = 0;
