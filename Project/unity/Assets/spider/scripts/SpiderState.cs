@@ -60,7 +60,8 @@ public class SpiderState : AbstractEntity {
 	
 	public override void onAttackReceived (int baseDMG)
 	{
-		this.substractHealth(baseDMG);
+		int damage = Mathf.RoundToInt((1-((float)ARM / 15 * 0.75f))*baseDMG);
+		this.substractHealth(damage);
 	}
 	
 	private void move(){
