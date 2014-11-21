@@ -39,16 +39,16 @@ public class SpiderState : AbstractEntity {
 
 		if (MP == 0) setMP (Mathf.RoundToInt (((float)INT/18) * 500));
 		if (MAXMP == 0) setMAXMP (MP);
-		if (DMG == 0) setDMG ((int)((float) STR * 0.5));
+		if (DMG == 0) setDMG (Mathf.RoundToInt ((float) STR * 1f));
 
-		if (timecost_perAction == 0) timecost_perAction = 1/((float)DEX/18 * 20);
+		if (timecost_perAction == 0) timecost_perAction = 1/((float)DEX/18 * 5);
 
 		setDestination(transform.position.x,transform.position.y,transform.position.z);
-		InvokeRepeating ("TimeBasedUpdate", 0, 0.05f);
+		InvokeRepeating ("TimeBasedUpdate", 0, 0.2f);
 	}
 
 	private void TimeBasedUpdate(){
-		if (timeForNextAction > 0.0) timeForNextAction = timeForNextAction - 0.05f;
+		if (timeForNextAction > 0.0) timeForNextAction = timeForNextAction - 0.2f;
 		if (MP < MAXMP) MP = MP + 1;
 	}
 
@@ -64,6 +64,7 @@ public class SpiderState : AbstractEntity {
 		animator.SetBool("attack_enabled",false);
 		animator.SetBool("receive_attack_enabled",true);
 		this.substractHealth(damage);
+		if (timeForNextAction<(timecost_perAction/2)) timeForNextAction = timecost_perAction/2;
 	}
 	
 	private void move(){
@@ -130,7 +131,6 @@ public class SpiderState : AbstractEntity {
 				if (animator.GetBool("attack_enabled")) animator.SetBool ("attack_enabled", false);
 				if (!animator.GetBool("walk_enabled")) animator.SetBool ("walk_enabled", true);
 				destination = new Vector3 (x, y, z);
-				if (timeForNextAction!=(timecost_perAction/2)) timeForNextAction = timecost_perAction/2;
 			} else {
 				if (animator.GetBool("attack_enabled")) animator.SetBool ("attack_enabled", false);
 				if (animator.GetBool("walk_enabled")) animator.SetBool ("walk_enabled", false);

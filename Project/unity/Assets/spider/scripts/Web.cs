@@ -4,9 +4,13 @@ using System.Collections;
 public class Web : MonoBehaviour {
 
 	void OnCollisionEnter(Collision collision) {
-		Destroy(gameObject);
+		this.gameObject.SetActive (false);
+		Invoke ("destroyObject",5);
 	}
 
+	void destroyObject(){
+		Destroy(gameObject);
+	}
 	// Use this for initialization
 	void Start () {
 	
