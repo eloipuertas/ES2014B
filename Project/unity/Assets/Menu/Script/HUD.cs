@@ -169,6 +169,7 @@ public class HUD : MonoBehaviour
 						}
 						if (GUI.Button (new Rect (xPos, 2 * buttonSizeHeight + yPos, buttonSizeWidth, buttonSizeHeight), backMainMenuTexture)) {
 								Destroy (this.gameObject);
+								Object.Destroy(GameObject.FindGameObjectWithTag ("Player"));
 								Application.LoadLevel (0);
 							
 						}

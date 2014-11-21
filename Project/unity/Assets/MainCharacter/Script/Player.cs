@@ -47,6 +47,7 @@ public class Player : MonoBehaviour
 	{
 		showPauseMenu = false;
 		Object.Destroy (this.gameObject);
+		Object.Destroy(GameObject.FindGameObjectWithTag ("Player"));
 		Application.LoadLevel (0);//menu principal
 		
 		
