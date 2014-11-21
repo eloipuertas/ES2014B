@@ -7,12 +7,14 @@ public class SpiderState : AbstractEntity {
 	public float rotationSpeed = 4.0f;
 	public Vector3 destination;
 	public float timecost_perAction;
-	
+
+	private PNJMusicManager PNJAudio;
 	private CharacterController characterController;
 	private Animator animator;
 	private float timeForNextAction = 0;
 	
 	void Awake(){
+		PNJAudio = GameObject.FindObjectOfType(typeof(PNJMusicManager)) as PNJMusicManager;
 		characterController = GetComponent<CharacterController>();
 		animator = GetComponent<Animator>();
 		
@@ -96,6 +98,7 @@ public class SpiderState : AbstractEntity {
 		if(this.isAlive() && enemy.isAlive()){
 			if (timeForNextAction<=0){
 				if (!animator.GetBool("attack_enabled")) animator.SetBool ("attack_enabled", true);
+				PNJAudio.PlayAttackOK();
 				enemy.onAttackReceived (DMG);
 				timeForNextAction = timecost_perAction;
 			}
@@ -158,6 +161,7 @@ public class SpiderState : AbstractEntity {
 			animator.SetBool("attack_enabled",false);
 			animator.SetBool("receive_attack_enabled",false);
 			animator.SetBool("die",true);
+			PNJAudio.PlayPNJKilled();
 		}
 	}
 }
