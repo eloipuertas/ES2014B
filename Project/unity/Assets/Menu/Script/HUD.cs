@@ -24,19 +24,14 @@ public class HUD : MonoBehaviour
 		public Texture gameOverTexture;
 		private float xPos;
 		private float yPos;
-
-
 		private MainPjMovement pj;
-
 		private Player player;
-
 		private float buttonSizeWidth, buttonSizeHeight;
 		public GUISkin myskin;
 		public Texture backgroundHud;
 		public Texture continueTexture, backMainMenuTexture, audioOFF, audioON;
 		private Texture audioTexture;
-		private bool sona = true, mort = false, debugInit = false;
-		public bool debugON = false;
+		private bool sona = true;
 		private AmbientalMusic AmbientAudio;
 		private int  magiaEscollida = -1;
 
@@ -55,7 +50,7 @@ public class HUD : MonoBehaviour
 	
 		void OnGUI ()
 		{
-
+				Time.timeScale = 1;
 				amplada = Screen.width / 10;
 				altura = Screen.height / 8;
 				xPos = Screen.width / 2.7f;
@@ -67,21 +62,17 @@ public class HUD : MonoBehaviour
 
 				buttonSizeHeight = Screen.height / 15;
 				buttonSizeWidth = Screen.width / 5;
-				float maxVida = 100, maxMana = 100;
-				if (!debugON) {
+				float maxVida, maxMana;
+				
 
-					vida = pj.getHP();
-					mana = pj.getMP();
-					magiaEscollida = pj.getSelectedSpell();
-					maxVida = pj.getMAXHP ();
-					maxMana = pj.getMAXMP ();
+				vida = pj.getHP ();
+				mana = pj.getMP ();
+				magiaEscollida = pj.getSelectedSpell ();
+				maxVida = pj.getMAXHP ();
+				maxMana = pj.getMAXMP ();
 
 
-		} else if (debugON && !debugInit) {
-						mana = 100;
-						vida = 100;
-						debugInit = true;
-				}
+				
 		        
 				
 				vidapercent = vida / maxVida;
@@ -147,8 +138,8 @@ public class HUD : MonoBehaviour
 			
 				
 				
-			if (player.canShowMenuPause () && !mort) { //TODO: Tens un metode que es diu: isAlive en AbstractEntity!!
-						
+				if (player.canShowMenuPause () && pj.isAlive ()) { 
+						Time.timeScale = 0;
 						if (GUI.Button (new Rect (xPos, yPos, buttonSizeWidth, buttonSizeHeight), continueTexture)) {
 								player.hideMenuPause ();	
 
@@ -169,67 +160,13 @@ public class HUD : MonoBehaviour
 						}
 						if (GUI.Button (new Rect (xPos, 2 * buttonSizeHeight + yPos, buttonSizeWidth, buttonSizeHeight), backMainMenuTexture)) {
 								Destroy (this.gameObject);
-								Object.Destroy(GameObject.FindGameObjectWithTag ("Player"));
+								Object.Destroy (GameObject.FindGameObjectWithTag ("Player"));
 								Application.LoadLevel (0);
 							
 						}
 				} 
-		
-				//per debugar
-
-				if (debugON && GUI.Button (new Rect (0, 0, buttonSizeWidth, buttonSizeHeight), "Select random magic")) {
-
-						magiaEscollida = Random.Range (-1, magicTextures.Length);
-						Debug.Log ("magiaEscollida=  " + magiaEscollida);
-
-				}
-				if (debugON && GUI.Button (new Rect (0, buttonSizeHeight, buttonSizeWidth, buttonSizeHeight), "+ Vida")) {
-			
-			
-						vida += 20;
-						if (vida > 100)
-								vida = 100;
-						Debug.Log ("vida=" + vida);
-			
-				}
-				if (debugON && GUI.Button (new Rect (0, 2 * buttonSizeHeight, buttonSizeWidth, buttonSizeHeight), "- Vida")) {
-			
-
-						vida -= 20;
-						if (vida <= 0)
-								vida = 0;
-						
-
-						Debug.Log ("vida=" + vida);
-			
-				}
-
-				if (debugON && GUI.Button (new Rect (0, 3 * buttonSizeHeight, buttonSizeWidth, buttonSizeHeight), "+ Mana")) {
-			
-			
-						mana += 20;
-						if (mana > 100)
-								mana = 100;
-			
-						Debug.Log ("mana=" + mana);
-			
-			
-				}
-				if (debugON && GUI.Button (new Rect (0, 4 * buttonSizeHeight, buttonSizeWidth, buttonSizeHeight), "- Mana")) {
-			
-
-						mana -= 20;
-						if (mana <= 0)
-								mana = 0;
-			
-						Debug.Log ("mana=" + mana);
-
-			
-				}
-
 
 				if (vida <= 0) {
-						mort = true;
 						AmbientAudio.PlayGameOver ();
 						GUI.Label (new Rect (xPos, yPos, Screen.width / 3, Screen.height / 3), gameOverTexture);
 						if (GUI.Button (new Rect (xPos * 1.1f, 2f * yPos, buttonSizeWidth, buttonSizeHeight), backMainMenuTexture)) {
