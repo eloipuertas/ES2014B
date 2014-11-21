@@ -62,7 +62,9 @@ public class HUD : MonoBehaviour
 				yPos = Screen.height / 3.2f;
 				
 				GUI.skin = myskin;
-				GUI.DrawTexture (new Rect (100,478,700,120),backgroundHud);
+
+				//GUI.DrawTexture (new Rect (100,478,700,120),backgroundHud);
+
 				buttonSizeHeight = Screen.height / 15;
 				buttonSizeWidth = Screen.width / 5;
 				float maxVida = 100, maxMana = 100;
