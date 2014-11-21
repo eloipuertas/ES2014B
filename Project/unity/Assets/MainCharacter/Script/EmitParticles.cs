@@ -2,17 +2,18 @@
 using System.Collections;
 
 [ RequireComponent( typeof( ParticleSystem ) ) ]
+[ RequireComponent( typeof( AudioSource ) ) ]
 
 public class EmitParticles : MonoBehaviour 
 {
-	Vector3 pos = new Vector3 ( 0, 15, 0 );
-	Vector3 vel = new Vector3 ( 100, 0, 0 );
-	float siz = 5;
-	float lif = 3;
-	Color32 col = Color.cyan;
+	Vector3 pos = new Vector3 ( 0, 13, 0 );
+	Vector3 vel = new Vector3 ( 0, 0, 70 );
+	float siz = 3;
+	float lif = 5;
+	Color32 col = Color.white;
 
-
-
+	public AudioClip[] fire_ball;
+	
 	// Use this for initialization
 	void Start () 
 	{
@@ -26,6 +27,10 @@ public class EmitParticles : MonoBehaviour
 		if ( Input.GetKeyDown ( KeyCode.A ) ) 
 		{
 			particleSystem.Emit ( pos, vel, siz, lif, col );
+
+			audio.clip = fire_ball[Random.Range(0, fire_ball.Length)];
+			audio.Play ();
+
 		}
 
 	}

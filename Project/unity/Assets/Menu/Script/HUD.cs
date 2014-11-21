@@ -24,10 +24,15 @@ public class HUD : MonoBehaviour
 		public Texture gameOverTexture;
 		private float xPos;
 		private float yPos;
-		//private PjPrincipal pj;descomentar a master
+
+
+		private MainPjMovement pj;
+
 		private Player player;
+
 		private float buttonSizeWidth, buttonSizeHeight;
 		public GUISkin myskin;
+		public Texture backgroundHud;
 		public Texture continueTexture, backMainMenuTexture, audioOFF, audioON;
 		private Texture audioTexture;
 		private bool sona = true, mort = false, debugInit = false;
@@ -39,10 +44,9 @@ public class HUD : MonoBehaviour
 		{
 
 				GameObject go = GameObject.FindGameObjectWithTag ("Player");
+				pj = go.GetComponent ("MainPjMovement") as MainPjMovement;
 				player = go.GetComponent ("Player") as Player;
-				/*pj = player.pj;
-		descomentar a master*/
-
+		
 				audioTexture = audioON;
 				AmbientAudio = GameObject.FindObjectOfType (typeof(AmbientalMusic)) as AmbientalMusic;
 		
@@ -56,21 +60,21 @@ public class HUD : MonoBehaviour
 				altura = Screen.height / 8;
 				xPos = Screen.width / 2.7f;
 				yPos = Screen.height / 3.2f;
-				GUI.skin = myskin;
 				
+				GUI.skin = myskin;
+
+				//GUI.DrawTexture (new Rect (100,478,700,120),backgroundHud);
+
 				buttonSizeHeight = Screen.height / 15;
 				buttonSizeWidth = Screen.width / 5;
 				float maxVida = 100, maxMana = 100;
 				if (!debugON) {
-			/*
-						vida = pj.getVida ();
-						mana = pj.getMana ();
-						magiaEscollida = pj.getSelectedSpell ();
-						maxVida = pj.getMaxVida ();
-						maxMana = pj.getMaxMana ();
-						descomentar a master*/
-					mana = 100;
-					vida = 100;
+
+					vida = pj.getHP();
+					mana = pj.getMP();
+					magiaEscollida = pj.getSelectedSpell();
+					maxVida = pj.getMAXHP ();
+					maxMana = pj.getMAXMP ();
 
 
 		} else if (debugON && !debugInit) {
@@ -78,6 +82,7 @@ public class HUD : MonoBehaviour
 						vida = 100;
 						debugInit = true;
 				}
+		        
 				
 				vidapercent = vida / maxVida;
 				
@@ -115,6 +120,7 @@ public class HUD : MonoBehaviour
 						
 						if (i == 0) {//vida
 								GUI.BeginGroup (new Rect (xVida, yVida, amplada, Screen.height - yVida));
+								
 								GUI.DrawTexture (new Rect (0, alturaVida - altura, amplada, altura), this.texVida);
 								GUI.EndGroup ();
 
@@ -139,9 +145,9 @@ public class HUD : MonoBehaviour
 						xActual += alturaMagia;
 				}
 			
-
 				
-				if (player.canShowMenuPause () && !mort) {
+				
+			if (player.canShowMenuPause () && !mort) { //TODO: Tens un metode que es diu: isAlive en AbstractEntity!!
 						
 						if (GUI.Button (new Rect (xPos, yPos, buttonSizeWidth, buttonSizeHeight), continueTexture)) {
 								player.hideMenuPause ();	

@@ -1,142 +1,143 @@
 using UnityEngine;
 using System.Collections;
 
-using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
 
 public class CameraMovement : MonoBehaviour
 {
-		public float smooth = 1.5f;         // suavitat de moviment de la camera
-		private Vector3 posCamera = new Vector3 (0f, 0f, 0f);
-		public Vector3 distCamera = new Vector3 (-20f, 15f, -20f);
+	
+		private Vector3 posCamera = new Vector3 (4, 25, 4);
+		public float distanciaMin = 30f;
+		public float distanciaMax = 80.0f;
+
+
 		private Transform player;
 		private Vector3 relCameraPos;
 		private float relCameraPosMag;
 		private Vector3 newPos;
-		public int distanciaMin = 0;
-		public int distanciaMax = 10;
 		private float zoomSpeed = 4.0f;
 		private float distancia, distanciaAnt = 0;
-		private Vector3 antigaPos = new Vector3 (0, 0, 0);
-	
+		public float smooth = 1.5f;         // suavitat de moviment de la camera
+		private List<GameObject> amagats;
+		private Vector3 firstMovement;
+		
 		void Awake ()
 		{
-
-				player = GameObject.FindGameObjectWithTag ("Player").transform;
 		
-				//posCamera = new Vector3 (-0.25f, 0.3f, -0.25f);
-				
+				player = GameObject.FindGameObjectWithTag ("Player").transform;
+				amagats = new List<GameObject> ();
+						
+				firstMovement = player.transform.position;
+				transform.position = posCamera;
+				transform.LookAt (player.position);
+
+
 				relCameraPos = transform.position - player.position;
 				relCameraPosMag = relCameraPos.magnitude; //- 0.5f;
 
+
+
+		
 		}
 	
-		void FixedUpdate ()
+		void Update ()
 		{
-
-				Vector3 standardPos = player.position + relCameraPos;
+			if (Mathf.Abs(player.transform.position.x - firstMovement[0]) > 3 && Mathf.Abs(player.transform.position.z - firstMovement[2]) > 3) {
+						Vector3 standardPos = player.position + relCameraPos;
+		
+						Vector3 abovePos = player.position + Vector3.up * relCameraPosMag;
+		
+		
+		
+						Vector3[] checkPoints = new Vector3[5];
+		
+		
+						checkPoints [0] = standardPos;
+		
+		
+						checkPoints [1] = Vector3.Lerp (standardPos, abovePos, 0.25f);
+						checkPoints [2] = Vector3.Lerp (standardPos, abovePos, 0.5f);
+						checkPoints [3] = Vector3.Lerp (standardPos, abovePos, 0.75f);
+		
+		
+						checkPoints [4] = abovePos;
+		
+		
+						for (int i = 0; i < checkPoints.Length; i++) {
+								//si la camera pot veure al player parem
+								if (ViewingPosCheck (checkPoints [i]))
 				
-				Vector3 abovePos = player.position + Vector3.up * relCameraPosMag;
-		
-
-
-				Vector3[] checkPoints = new Vector3[5];
-		
-
-				checkPoints [0] = standardPos;
-		
-
-				checkPoints [1] = Vector3.Lerp (standardPos, abovePos, 0.25f);
-				checkPoints [2] = Vector3.Lerp (standardPos, abovePos, 0.5f);
-				checkPoints [3] = Vector3.Lerp (standardPos, abovePos, 0.75f);
-		
-
-				checkPoints [4] = abovePos;
-
-				
-
-				for (int i = 0; i < checkPoints.Length; i++) {
-						//si la camera pot veure al player parem
-						if (ViewingPosCheck (checkPoints [i])) {
-								
-								break;
+										break;
 						}
-				}
-				//Debug.Log (distancia);
-
-				float actWheel = Input.GetAxis ("Mouse ScrollWheel");
-				
-				distancia = Mathf.Clamp (actWheel * zoomSpeed, distanciaMin, distanciaMax);
-				
-				//Debug.Log (distancia);
-
-				
-				/*if (distanciaAnt != distancia && actWheel != 0) {
-						for (int i = 0; i < 3; i++) {
-								if (i == 1) {
-
-										posCamera [i] = distancia;
-										//posCamera [i] = Mathf.Min (posCamera [i], 0.3f);
-								} else
-										posCamera [i] = distancia;
+						bool enmig;
+						for (int j = 0; j < amagats.Count; j++) {
+						
+								enmig = changeAlpha (amagats [j]);
+								if (enmig)
+										amagats.Remove (amagats [j]);
 								
+						
 						}
-						
-						distanciaAnt = distancia;
-				}*/
 				
+		
+						distancia = Mathf.Clamp (distancia + Input.GetAxis ("Mouse ScrollWheel") * zoomSpeed, distanciaMin, distanciaMax);
 
-				//for (int i = 0; i < 3; i++) 						Debug.Log ("posCamera[" + i + "]= " + posCamera [i]);
-				/*if (potVeure) {
-						transform.position = Vector3.Lerp (transform.position, newPos, smooth * Time.deltaTime) + posCamera + distCamera;
-				} else {
-						transform.position = Vector3.Lerp (transform.position, newPos, smooth * Time.deltaTime)-distCamera;
-				}*/
 
-				//si no el veig a +dist
-				//posar camera a transform.position = Vector3.Lerp (transform.position, newPos, smooth * Time.deltaTime)
-				//si el veig a +dist
-				//posar camera a +dist
-				
-				if (ViewingPosCheck (Vector3.Lerp (transform.position, abovePos + distCamera, smooth * Time.deltaTime))) {
-						
-						
-						//transform.position = abovePos + distCamera;
-						transform.position = Vector3.Lerp (transform.position, abovePos+distCamera, smooth * Time.deltaTime);
-						
-						
-					
-				} else {
-						transform.position = Vector3.Lerp (transform.position, newPos, smooth * Time.deltaTime);
+						posCamera [0] = player.position.x - distancia;
+						posCamera [1] = player.position.y + distancia;
+						posCamera [2] = player.position.z - distancia;			
+
+						transform.position = posCamera;
+
+						transform.LookAt (player.position);
 				}
-				SmoothLookAt ();
 		}
-	
+
 		bool ViewingPosCheck (Vector3 checkPos)
 		{
 				RaycastHit hit;
+				Vector4 color = new Vector4 (0, 0, 0, 0);
 		
-
-				if (Physics.Raycast (checkPos, player.position - checkPos, out hit, relCameraPosMag))
+				if (Physics.Raycast (checkPos, player.position - checkPos, out hit, relCameraPosMag)) {
+			
+						if (hit.transform != player) {
+								if (hit.transform.gameObject.renderer != null) {
+										//if (hit.transform.gameObject.layer == 8) {
+										//hit.transform.gameObject.renderer.enabled = false;
+										
+										color = hit.transform.gameObject.renderer.material.color;
+										
+										hit.transform.gameObject.renderer.material.shader = Shader.Find ("Transparent/Diffuse");
+										
+										color [3] = 0.5f;
+				
+										hit.transform.gameObject.renderer.material.color = color;
+					
+										amagats.Add (hit.transform.gameObject);
+								}
+								return false;
+						}
 		
-				if (hit.transform != player)
-		
-						return false;
-		
-	
-				newPos = checkPos;
+				}
 				return true;
 		}
-	
-		void SmoothLookAt ()
+
+		bool changeAlpha (GameObject obj)
 		{
-	
-				Vector3 relPlayerPosition = player.position - transform.position;
-		
-	
-				Quaternion lookAtRotation = Quaternion.LookRotation (relPlayerPosition, Vector3.up);
-				
-	
-				transform.rotation = Quaternion.Lerp (transform.rotation, lookAtRotation, smooth * Time.deltaTime);
+				Vector3 posObj = obj.transform.position;
+
+				if ((posObj [0] < transform.position.x) || (posObj [0] > player.transform.position.x) && (posObj [2] < transform.position.z) || (posObj [2] > player.transform.position.z)) {
+						//no transparent
+						obj.renderer.material.shader = Shader.Find ("Diffuse");
+						
+						return true;
+
+				} else {//transparent
+						
+						return false;
+				}
+
 		}
+
 }
+

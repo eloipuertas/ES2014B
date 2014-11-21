@@ -2,7 +2,16 @@ fileFormatVersion: 2
 guid: 75da2f196cf942d4d83e7ceeb7b5b440
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - texVida: {instanceID: 0}
+  - texMana: {instanceID: 0}
+  - gameOverTexture: {instanceID: 0}
+  - myskin: {instanceID: 0}
+  - backgroundHud: {fileID: 2800000, guid: 9407938f4eef0424182739db2f70fa34, type: 3}
+  - continueTexture: {instanceID: 0}
+  - backMainMenuTexture: {instanceID: 0}
+  - audioOFF: {instanceID: 0}
+  - audioON: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
