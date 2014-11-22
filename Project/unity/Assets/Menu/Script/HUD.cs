@@ -30,7 +30,7 @@ public class HUD : MonoBehaviour
 	private float buttonSizeWidth, buttonSizeHeight;
 	public GUISkin myskin;
 	public Texture backgroundHud;
-	public Texture continueTextureSelected,continueTextureNormal, backMainMenuTextureNormal,backMainMenuTextureSelected, audioOFF, audioON,titolPausa;
+	public Texture continueTextureSelected,continueTextureNormal, backMainMenuTextureNormal,backMainMenuTextureSelected, audioOFFSelected,audioOFFNormal, audioONSelected,audioONNormal,titolPausa;
 	private Texture audioTexture;
 	private bool sona = true;
 	private AmbientalMusic AmbientAudio;
@@ -46,7 +46,7 @@ public class HUD : MonoBehaviour
 		pj = go.GetComponent ("MainPjMovement") as MainPjMovement;
 		player = go.GetComponent ("Player") as Player;
 		
-		audioTexture = audioON;
+		audioTexture = audioONNormal;
 		AmbientAudio = GameObject.FindObjectOfType (typeof(AmbientalMusic)) as AmbientalMusic;
 
 		string playerSelected = PlayerPrefs.GetString ("player");
@@ -169,19 +169,18 @@ public class HUD : MonoBehaviour
 
 				
 			}
+			Rect audioRect = new Rect (xPos, buttonSizeHeight + yPos, buttonSizeWidth, buttonSizeHeight);
+			if (sona) {//pausar audio
+				AmbientAudio.PauseAudio ();
+				audioTexture = audioRect.Contains(Event.current.mousePosition)?this.audioOFFSelected:this.audioOFFNormal;
+			} else {//reproduir audio
+				AmbientAudio.UnPauseAudio ();
+				audioTexture = audioRect.Contains(Event.current.mousePosition)?this.audioONSelected:this.audioONNormal;
 
-			if (GUI.Button (new Rect (xPos, buttonSizeHeight + yPos, buttonSizeWidth, buttonSizeHeight), audioTexture)) {
-
-				if (sona) {//pausar audio
-					AmbientAudio.PauseAudio ();
-					audioTexture = audioOFF;
-				} else {//reproduir audio
-					AmbientAudio.UnPauseAudio ();
-					audioTexture = audioON;
-										
-				}
-				sona = !sona;
 				
+			}
+			if (GUI.Button (audioRect, audioTexture)) {
+				sona = !sona;
 			}
 			Rect returnPause = new Rect (xPos, 2 * buttonSizeHeight + yPos, buttonSizeWidth, buttonSizeHeight);
 			backMainMenuTexture = returnPause.Contains(Event.current.mousePosition)?this.backMainMenuTextureSelected:this.backMainMenuTextureNormal;
