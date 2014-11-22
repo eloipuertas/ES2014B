@@ -4,12 +4,13 @@ using System.Collections;
 public class main_background : MonoBehaviour {
 	
 	private static float MAX_COLOR_VAL = 0.5f;
-	public float secondsToAppear = 1.0f;
-	public float delayToAppear = 0.1f;
+	private float secondsToAppear = 1.0f;
+	private float delayToAppear = 0.0f;
 	public Texture2D texture;
-	public Color color;
+	private Color color;
 	
-	void Start(){
+	void Awake(){
+		Time.timeScale = 1;
 		guiTexture.texture = texture;
 		
 		Rect initPixelInset = new Rect(0,0,1,1);
@@ -26,7 +27,7 @@ public class main_background : MonoBehaviour {
 		guiTexture.color = color;
 	}
 	
-	void OnGUI(){
+	void Update(){
 		delayToAppear = Mathf.Max(0,delayToAppear-Time.deltaTime);
 		if(delayToAppear <= 0){
 			color = guiTexture.color;

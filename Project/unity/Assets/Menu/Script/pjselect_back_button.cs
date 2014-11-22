@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class main_newgame_button : MonoBehaviour{
+public class pjselect_back_button : MonoBehaviour {
 	
 	private static float MAX_COLOR_VAL = 0.5f;
-	private float secondsToAppear = 1.5f;
+	private float secondsToAppear = 1.0f;
 	private float delayToAppear = 1.0f;
 	public Texture2D textureS;
 	public Texture2D textureUnS;
@@ -13,16 +13,16 @@ public class main_newgame_button : MonoBehaviour{
 	void Awake(){
 		Time.timeScale = 1;
 		Rect initPixelInset = new Rect(0,0,1,1);
-		initPixelInset.width = Screen.width*0.25f;
-		initPixelInset.height = initPixelInset.width/3f;
-		initPixelInset.x = 0-initPixelInset.width*0.5f;
-		initPixelInset.y = -Screen.height*0.275f;
+		initPixelInset.height = Screen.height*0.10f;
+		initPixelInset.width = initPixelInset.height*3f;
+		initPixelInset.x = -Screen.width*0.40f;
+		initPixelInset.y = -Screen.height*0.475f;
 		guiTexture.pixelInset = initPixelInset;
 		color = guiTexture.color;
 		color.a = 0;
 		guiTexture.color = color;
 	}
-
+	
 	void Update(){
 		delayToAppear = Mathf.Max(0,delayToAppear-Mathf.Abs(Time.deltaTime));
 		if(delayToAppear <= 0){
@@ -41,6 +41,6 @@ public class main_newgame_button : MonoBehaviour{
 	}
 	
 	public void OnMouseUpAsButton(){
-		Application.LoadLevel(1); //Load the pjselect (next scene)
+		Application.LoadLevel(0); //Load the main menu (prev scene)
 	}
 }

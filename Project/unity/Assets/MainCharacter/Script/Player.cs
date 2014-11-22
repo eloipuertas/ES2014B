@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
 	public int mass;
 	private float timeESC;
 	private GameObject mesh;
-//	public PjPrincipal pj; descomentar a master
+
 	
 	void Awake ()
 	{
@@ -21,7 +21,6 @@ public class Player : MonoBehaviour
 	void Start ()
 	{
 
-		//this.pj = new PjPrincipal (PjPrincipal.VIVO, 30, 70);descomentar a master
 
 
 		firstposition = false;
