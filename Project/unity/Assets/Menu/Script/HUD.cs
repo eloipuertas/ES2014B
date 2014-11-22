@@ -194,7 +194,7 @@ public class HUD : MonoBehaviour
 			timeLeft -= Time.deltaTime;
 			if (timeLeft < 0) {
 				AmbientAudio.PlayGameOver ();
-				GUI.Label (new Rect (xPos-Screen.width*0.1f, 0, Screen.width*0.4f, Screen.height*0.4f), gameOverTexture);
+				GUI.Label (new Rect (Screen.width*0.5f - gameOverTexture.width*0.5f, 0, Screen.width*0.4f, Screen.height*0.4f), gameOverTexture);
 				Time.timeScale = 0;
 				Rect returnOver = new Rect (xPos+Screen.width*0.01f, Screen.height*0.4f, Screen.width*0.2f, Screen.height*0.2f);
 				backMainMenuTexture = returnOver.Contains(Event.current.mousePosition)?this.backMainMenuTextureSelected:this.backMainMenuTextureNormal;
