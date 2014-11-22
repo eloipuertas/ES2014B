@@ -30,14 +30,14 @@ public class HUD : MonoBehaviour
 	private float buttonSizeWidth, buttonSizeHeight;
 	public GUISkin myskin;
 	public Texture backgroundHud;
-	public Texture continueTextureSelected,continueTextureNormal, backMainMenuTexture, audioOFF, audioON,titolPausa;
+	public Texture continueTextureSelected,continueTextureNormal, backMainMenuTextureNormal,backMainMenuTextureSelected, audioOFF, audioON,titolPausa;
 	private Texture audioTexture;
 	private bool sona = true;
 	private AmbientalMusic AmbientAudio;
 	private int  magiaEscollida = -1;
 	private float timeLeft = 2f;
 
-	private Texture magiaSelect,magiaNormal,continueTexture;
+	private Texture magiaSelect,magiaNormal,continueTexture,backMainMenuTexture;
 
 	void Start ()
 	{
@@ -106,7 +106,7 @@ public class HUD : MonoBehaviour
 			manapercent = 0;
 		if (manapercent > 100)
 			manapercent = 100;
-		manapercent = 100;//borrar
+
 		alturaMana = manapercent * altura;
 				
 		float xVida = Screen.width*0.31f;
@@ -183,8 +183,9 @@ public class HUD : MonoBehaviour
 				sona = !sona;
 				
 			}
-
-			if (GUI.Button (new Rect (xPos, 2 * buttonSizeHeight + yPos, buttonSizeWidth, buttonSizeHeight), backMainMenuTexture)) {
+			Rect returnPause = new Rect (xPos, 2 * buttonSizeHeight + yPos, buttonSizeWidth, buttonSizeHeight);
+			backMainMenuTexture = returnPause.Contains(Event.current.mousePosition)?this.backMainMenuTextureSelected:this.backMainMenuTextureNormal;
+			if (GUI.Button (returnPause, backMainMenuTexture)) {
 				Destroy (this.gameObject);
 				Object.Destroy (GameObject.FindGameObjectWithTag ("Player"));
 				Application.LoadLevel (0);
@@ -195,10 +196,14 @@ public class HUD : MonoBehaviour
 		if (!pj.isAlive()) {
 			timeLeft -= Time.deltaTime;
 			if (timeLeft < 0) {
-				AmbientAudio.PlayGameOver ();
-				GUI.Label (new Rect (xPos, 0, gameOverTexture.width, gameOverTexture.height), gameOverTexture);
+				//AmbientAudio.PlayGameOver ();
+				GUI.Label (new Rect (xPos-Screen.width*0.1f, 0, Screen.width*0.4f, Screen.height*0.4f), gameOverTexture);
 				Time.timeScale = 0;
-				if (GUI.Button (new Rect (xPos+gameOverTexture.width*0.01f, gameOverTexture.height, gameOverTexture.width, gameOverTexture.width/2), backMainMenuTexture)) {
+				Rect returnOver = new Rect (xPos+Screen.width*0.01f, Screen.height*0.4f, Screen.width*0.2f, Screen.height*0.2f);
+				backMainMenuTexture = returnOver.Contains(Event.current.mousePosition)?this.backMainMenuTextureSelected:this.backMainMenuTextureNormal;
+
+
+				if (GUI.Button (returnOver, backMainMenuTexture)) {
 					Destroy (this.gameObject);
 					Object.Destroy (GameObject.FindGameObjectWithTag ("Player"));
 					Application.LoadLevel (0);
