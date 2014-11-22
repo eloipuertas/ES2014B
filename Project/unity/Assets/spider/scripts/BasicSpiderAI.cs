@@ -104,7 +104,7 @@ public class BasicSpiderAI : MonoBehaviour {
 						if (currentAction == PASSIVE){
 							RaycastHit hit;
 							if(Physics.Raycast(transform.position, target.position-transform.position, out hit, dist)) {
-								if ((hit.point-target.position).magnitude<0.5){ //TODO to change when the main character fixes their tag
+								if ((hit.point-target.position).magnitude<1){ //TODO to change when the main character fixes their tag
 									currentAction = MOVING;
 									checkPath ();
 									if (Vector3.Equals(path.corners[current_corner],transform.position)){
