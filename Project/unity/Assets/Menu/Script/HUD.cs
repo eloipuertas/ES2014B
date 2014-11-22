@@ -171,15 +171,16 @@ public class HUD : MonoBehaviour
 			}
 			Rect audioRect = new Rect (xPos, buttonSizeHeight + yPos, buttonSizeWidth, buttonSizeHeight);
 			if (sona) {//pausar audio
-				AmbientAudio.PauseAudio ();
 				audioTexture = audioRect.Contains(Event.current.mousePosition)?this.audioOFFSelected:this.audioOFFNormal;
 			} else {//reproduir audio
-				AmbientAudio.UnPauseAudio ();
 				audioTexture = audioRect.Contains(Event.current.mousePosition)?this.audioONSelected:this.audioONNormal;
-
-				
 			}
 			if (GUI.Button (audioRect, audioTexture)) {
+				if (sona) {//pausar audio
+					AmbientAudio.PauseAudio ();
+				} else {//reproduir audio
+					AmbientAudio.UnPauseAudio ();
+				}
 				sona = !sona;
 			}
 			Rect returnPause = new Rect (xPos, 2 * buttonSizeHeight + yPos, buttonSizeWidth, buttonSizeHeight);
