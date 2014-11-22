@@ -10,31 +10,33 @@ public class HUD : MonoBehaviour
 	private float altura;
 	
 	//atributos de la vida
-	public Texture texVida;
+	public Texture texVida,vidaCover;
 	private float vida, alturaVida, vidapercent;
 
 	
 	//atributos del mana
-	public Texture texMana;
+	public Texture texMana,manaCover;
 	private float mana, alturaMana, manapercent;
 	public Texture[] magicTextures = new Texture[3];
 	public Texture[] magicTexturesSpelled = new Texture[3];
-		
+
+	public Texture texEscut;
 	//textura que saldra cuando el personaje muera
-	public Texture gameOverTexture;
+	public Texture gameOverTexture,hud_bg;
 	private float xPos;
 	private float yPos;
 	private MainPjMovement pj;
 	private Player player;
 	private float buttonSizeWidth, buttonSizeHeight;
 	public GUISkin myskin;
-	public Texture backgroundHud;
-	public Texture continueTexture, backMainMenuTexture, audioOFF, audioON;
+	public Texture continueTextureSelected,continueTextureNormal, backMainMenuTextureNormal,backMainMenuTextureSelected, audioOFFSelected,audioOFFNormal, audioONSelected,audioONNormal,titolPausa;
 	private Texture audioTexture;
 	private bool sona = true;
 	private AmbientalMusic AmbientAudio;
 	private int  magiaEscollida = -1;
 	private float timeLeft = 2f;
+
+	private Texture magiaSelect,magiaNormal,continueTexture,backMainMenuTexture;
 
 	void Start ()
 	{
@@ -43,8 +45,20 @@ public class HUD : MonoBehaviour
 		pj = go.GetComponent ("MainPjMovement") as MainPjMovement;
 		player = go.GetComponent ("Player") as Player;
 		
-		audioTexture = audioON;
+		audioTexture = audioONNormal;
 		AmbientAudio = GameObject.FindObjectOfType (typeof(AmbientalMusic)) as AmbientalMusic;
+
+		string playerSelected = PlayerPrefs.GetString ("player");
+		if (playerSelected.Equals("player1")) {
+			magiaNormal = magicTextures[0];
+			magiaSelect = magicTexturesSpelled[0];
+		}else if(playerSelected.Equals("player2")){
+			magiaNormal = magicTextures[1];
+			magiaSelect = magicTexturesSpelled[1];
+		}else{
+			magiaNormal = magicTextures[2];
+			magiaSelect = magicTexturesSpelled[2];
+		}
 		
 		
 	}
@@ -59,8 +73,6 @@ public class HUD : MonoBehaviour
 				
 		GUI.skin = myskin;
 
-		//GUI.DrawTexture (new Rect (100,478,700,120),backgroundHud);
-
 		buttonSizeHeight = Screen.height / 15;
 		buttonSizeWidth = Screen.width / 5;
 		float maxVida, maxMana;
@@ -68,7 +80,7 @@ public class HUD : MonoBehaviour
 
 		vida = pj.getHP ();
 		mana = pj.getMP ();
-		magiaEscollida = pj.getSelectedSpell ();
+		magiaEscollida = pj.getSelectedSpell () +1;
 		maxVida = pj.getMAXHP ();
 		maxMana = pj.getMAXMP ();
 
@@ -85,7 +97,6 @@ public class HUD : MonoBehaviour
 			vidapercent = 100;
 		
 		alturaVida = vidapercent * altura;
-
 				
 		manapercent = mana / maxMana;
 
@@ -93,73 +104,85 @@ public class HUD : MonoBehaviour
 			manapercent = 0;
 		if (manapercent > 100)
 			manapercent = 100;
-				
+
 		alturaMana = manapercent * altura;
 				
-		float xVida = Screen.width / 10;
+		float xVida = Screen.width*0.31f;
+		float xBG = Screen.width*0.25f;
 		float yVida = Screen.height - alturaVida;
 		float yMana = Screen.height - alturaMana;
-		float xMana = Screen.width - Screen.width * 2 / 10;
+		float ampladaBG = Screen.width/2;
+		//float xMana = Screen.width - Screen.width * 2 / 10;
+		float xMana = xBG+ampladaBG-amplada-Screen.width*0.06f;
 		float xActual = xVida + amplada;
 		float alturaMagia = Screen.height / 15;
-		float yMagies = Screen.height - alturaMagia;
+		float yMagies = Screen.height - alturaMagia -Screen.height*0.01f;
 
 
-		int numTextures = magicTextures.Length + 2;
+		int numTextures = 3;
 
+		GUI.DrawTexture (new Rect (xBG, Screen.height-Screen.height / 5,ampladaBG,Screen.height / 5),this.hud_bg);
 		for (int i = 0; i < numTextures; i++) {
 						
-						
-			if (i == 0) {//vida
-				GUI.BeginGroup (new Rect (xVida, yVida, amplada, Screen.height - yVida));
-								
-				GUI.DrawTexture (new Rect (0, alturaVida - altura, amplada, altura), this.texVida);
-				GUI.EndGroup ();
 
+			if (i == 0) {//vida
+
+				GUI.BeginGroup (new Rect (xVida, yVida, amplada, Screen.height - yVida));
+				GUI.DrawTexture (new Rect (0, alturaVida - altura, amplada, altura), this.texVida);
+				GUI.DrawTexture (new Rect (0, alturaVida - altura, amplada, altura), this.vidaCover);
+				GUI.EndGroup ();
 			} else if (i == numTextures - 1) {//mana
+				//GUI.BeginGroup (new Rect (xMana, yMana, amplada, Screen.height - yMana));
+
 				GUI.BeginGroup (new Rect (xMana, yMana, amplada, Screen.height - yMana));
 				GUI.DrawTexture (new Rect (0, alturaMana - altura, amplada, altura), this.texMana);
+				GUI.DrawTexture (new Rect (0, alturaMana - altura, amplada, altura), this.manaCover);
 				GUI.EndGroup ();
-
 			} else {//altres
-				i--;
+				Texture texturaMagia = magiaEscollida == i ? magiaNormal : magiaSelect;
+				GUI.DrawTexture (new Rect (xActual, yMagies, alturaMagia, alturaMagia), texturaMagia);
 
-				//si hi ha 3 magies anira de 0,1,2
-				Texture texturaMagia = magiaEscollida == i ? this.magicTexturesSpelled [i] : this.magicTextures [i];
-				
-				GUI.BeginGroup (new Rect (xActual, yMagies, alturaMagia, alturaMagia));
-				GUI.DrawTexture (new Rect (0, 0, alturaMagia, alturaMagia), texturaMagia);
-				GUI.EndGroup ();
-				i++;
+
 			}
 						
 						
 			xActual += alturaMagia;
 		}
-			
-				
+		//if(pj.getShield())//descomentar a devel
+			GUI.DrawTexture (new Rect (xMana-alturaMagia-Screen.width*0.01f, yMagies, alturaMagia, alturaMagia), texEscut);
+
+
 				
 		if (player.canShowMenuPause () && pj.isAlive ()) { 
 			Time.timeScale = 0;
-			if (GUI.Button (new Rect (xPos, yPos, buttonSizeWidth, buttonSizeHeight), continueTexture)) {
+			GUI.DrawTexture (new Rect (xPos-Screen.width*0.12f, yPos-Screen.height*0.3f, Screen.width*0.45f, Screen.height*0.25f), this.titolPausa);
+
+			Rect pauseRect = new Rect (xPos, yPos, buttonSizeWidth, buttonSizeHeight);
+
+			continueTexture = pauseRect.Contains(Event.current.mousePosition)?this.continueTextureSelected:this.continueTextureNormal;
+
+			if (GUI.Button (pauseRect, continueTexture)) {
 				player.hideMenuPause ();	
 
 				
 			}
-			if (GUI.Button (new Rect (xPos, buttonSizeHeight + yPos, buttonSizeWidth, buttonSizeHeight), audioTexture)) {
-
+			Rect audioRect = new Rect (xPos, buttonSizeHeight + yPos, buttonSizeWidth, buttonSizeHeight);
+			if (sona) {//pausar audio
+				audioTexture = audioRect.Contains(Event.current.mousePosition)?this.audioOFFSelected:this.audioOFFNormal;
+			} else {//reproduir audio
+				audioTexture = audioRect.Contains(Event.current.mousePosition)?this.audioONSelected:this.audioONNormal;
+			}
+			if (GUI.Button (audioRect, audioTexture)) {
 				if (sona) {//pausar audio
 					AmbientAudio.PauseAudio ();
-					audioTexture = audioOFF;
 				} else {//reproduir audio
 					AmbientAudio.UnPauseAudio ();
-					audioTexture = audioON;
-										
 				}
 				sona = !sona;
-				
 			}
-			if (GUI.Button (new Rect (xPos, 2 * buttonSizeHeight + yPos, buttonSizeWidth, buttonSizeHeight), backMainMenuTexture)) {
+			Rect returnPause = new Rect (xPos, 2 * buttonSizeHeight + yPos, buttonSizeWidth, buttonSizeHeight);
+			backMainMenuTexture = returnPause.Contains(Event.current.mousePosition)?this.backMainMenuTextureSelected:this.backMainMenuTextureNormal;
+			if (GUI.Button (returnPause, backMainMenuTexture)) {
 				Destroy (this.gameObject);
 				Object.Destroy (GameObject.FindGameObjectWithTag ("Player"));
 				Application.LoadLevel (0);
@@ -167,14 +190,17 @@ public class HUD : MonoBehaviour
 			}
 		} 
 
-		if (vida <= 0) {
+		if (!pj.isAlive()) {
 			timeLeft -= Time.deltaTime;
 			if (timeLeft < 0) {
-
 				AmbientAudio.PlayGameOver ();
-				GUI.Label (new Rect (xPos, 0, gameOverTexture.width, gameOverTexture.height), gameOverTexture);
+				GUI.Label (new Rect (xPos-Screen.width*0.1f, 0, Screen.width*0.4f, Screen.height*0.4f), gameOverTexture);
 				Time.timeScale = 0;
-				if (GUI.Button (new Rect (xPos+gameOverTexture.width*0.01f, gameOverTexture.height, gameOverTexture.width, gameOverTexture.width/2), backMainMenuTexture)) {
+				Rect returnOver = new Rect (xPos+Screen.width*0.01f, Screen.height*0.4f, Screen.width*0.2f, Screen.height*0.2f);
+				backMainMenuTexture = returnOver.Contains(Event.current.mousePosition)?this.backMainMenuTextureSelected:this.backMainMenuTextureNormal;
+
+
+				if (GUI.Button (returnOver, backMainMenuTexture)) {
 					Destroy (this.gameObject);
 					Object.Destroy (GameObject.FindGameObjectWithTag ("Player"));
 					Application.LoadLevel (0);

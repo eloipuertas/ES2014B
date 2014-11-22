@@ -30,10 +30,13 @@ public class choosePlayer : MonoBehaviour
 
 
 				if (first) {
+						PlayerPrefs.SetString("player", "player1");
 						jug = (GameObject)Instantiate (Resources.Load ("papertex22"));
 				} else if (second) {
+						PlayerPrefs.SetString("player", "player2");
 						jug = (GameObject)Instantiate (Resources.Load ("player2"));
 				} else if (third) {
+						PlayerPrefs.SetString("player", "player3");
 						jug = (GameObject)Instantiate (Resources.Load ("player3"));
 				}
 				if (jug != null)
