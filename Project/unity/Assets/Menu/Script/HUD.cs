@@ -53,7 +53,6 @@ public class HUD : MonoBehaviour
 		if (playerSelected.Equals("player1")) {
 			magiaNormal = magicTextures[0];
 			magiaSelect = magicTexturesSpelled[0];
-			Debug.Log ("player1");
 		}else if(playerSelected.Equals("player2")){
 			magiaNormal = magicTextures[1];
 			magiaSelect = magicTexturesSpelled[1];
