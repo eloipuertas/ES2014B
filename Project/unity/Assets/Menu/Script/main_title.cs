@@ -4,10 +4,10 @@ using System.Collections;
 public class main_title : MonoBehaviour {
 	
 	private static float MAX_COLOR_VAL = 0.5f;
-	public float secondsToAppear = 1.0f;
-	public float delayToAppear = 1.0f;
+	private float secondsToAppear = 1.0f;
+	private float delayToAppear = 1.0f;
 	public Texture2D texture;
-	public Color color;
+	private Color color;
 	
 	void Awake(){
 		Time.timeScale = 1;

@@ -4,11 +4,11 @@ using System.Collections;
 public class main_exit_button : MonoBehaviour {
 	
 	private static float MAX_COLOR_VAL = 0.5f;
-	public float secondsToAppear = 2.0f;
-	public float delayToAppear = 1.0f;
+	private float secondsToAppear = 2.0f;
+	private float delayToAppear = 1.0f;
 	public Texture2D textureS;
 	public Texture2D textureUnS;
-	public Color color;
+	private Color color;
 
 	void Awake(){
 		Time.timeScale = 1;

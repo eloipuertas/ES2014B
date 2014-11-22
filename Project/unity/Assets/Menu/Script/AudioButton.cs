@@ -25,7 +25,7 @@ public class AudioButton : MonoBehaviour{
 
 	void OnMouseExit(){
 		if(isOver){
-			audio.PlayOneShot(button);
+			//audio.PlayOneShot(button);
 			isOver = false;
 		}
 
