@@ -8,6 +8,8 @@ public class PJMusicManager : MonoBehaviour
 	public AudioClip attackOK;
 	public AudioClip[] attackFAIL;
 
+	public AudioClip[] walkSounds;
+
 	public AudioClip killed;
 
 	public void PlayAttackOK()
@@ -26,6 +28,17 @@ public class PJMusicManager : MonoBehaviour
 	{
 		audio.clip = killed;
 		audio.Play ();		
+	}
+	
+	public void PlayWalkSounds()
+	{
+		audio.clip = walkSounds[Random.Range(0, walkSounds.Length)];;
+		audio.Play ();		
+	}
+	
+	public void StopWalkSounds()
+	{
+		audio.Stop ();		
 	}
 
 }
