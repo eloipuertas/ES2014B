@@ -3,38 +3,33 @@ using System.Collections;
 
 [ RequireComponent( typeof( AudioSource ) ) ]
 
-public class AudioButton : MonoBehaviour 
-{
+public class AudioButton : MonoBehaviour{
 	
 	public AudioClip button;
-
+	
+	public bool isOver = false;
 	public bool isPressed = false;
 
-	void OnMouseOver () 
-	{
-		if ( !isPressed )
-			audio.PlayOneShot( button );
+	void OnMouseOver(){
+		if(!isOver){
+			audio.PlayOneShot(button);
+			isOver = true;
+		}
+		if (!isPressed){
+			audio.PlayOneShot(button);
+		}
 
 		isPressed = true;
 
 	}
 
-	void OnMouseExit ()
-	{
-		audio.PlayOneShot( button );
+	void OnMouseExit(){
+		if(isOver){
+			audio.PlayOneShot(button);
+			isOver = false;
+		}
 
 		isPressed = false;
 
 	}
-
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
-
 }
