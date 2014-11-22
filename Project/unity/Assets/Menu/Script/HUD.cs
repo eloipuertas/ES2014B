@@ -10,18 +10,19 @@ public class HUD : MonoBehaviour
 	private float altura;
 	
 	//atributos de la vida
-	public Texture texVida;
+	public Texture texVida,vidaCover;
 	private float vida, alturaVida, vidapercent;
 
 	
 	//atributos del mana
-	public Texture texMana;
+	public Texture texMana,manaCover;
 	private float mana, alturaMana, manapercent;
-	public Texture[] magicTextures = new Texture[3];
-	public Texture[] magicTexturesSpelled = new Texture[3];
-		
+	public Texture[] magicTextures = new Texture[1];
+	public Texture[] magicTexturesSpelled = new Texture[1];
+
+	public Texture texEscut;
 	//textura que saldra cuando el personaje muera
-	public Texture gameOverTexture;
+	public Texture gameOverTexture,hud_bg;
 	private float xPos;
 	private float yPos;
 	private MainPjMovement pj;
@@ -85,7 +86,6 @@ public class HUD : MonoBehaviour
 			vidapercent = 100;
 		
 		alturaVida = vidapercent * altura;
-
 				
 		manapercent = mana / maxMana;
 
@@ -96,7 +96,7 @@ public class HUD : MonoBehaviour
 				
 		alturaMana = manapercent * altura;
 				
-		float xVida = Screen.width / 10;
+		float xVida = Screen.width*0.25f;
 		float yVida = Screen.height - alturaVida;
 		float yMana = Screen.height - alturaMana;
 		float xMana = Screen.width - Screen.width * 2 / 10;
@@ -106,36 +106,38 @@ public class HUD : MonoBehaviour
 
 
 		int numTextures = magicTextures.Length + 2;
-
+		float ampladaBG = Screen.width/2;
+		GUI.DrawTexture (new Rect (xVida, Screen.height-Screen.height / 8,ampladaBG,Screen.height / 8),this.hud_bg);
 		for (int i = 0; i < numTextures; i++) {
 						
-						
+
 			if (i == 0) {//vida
+
 				GUI.BeginGroup (new Rect (xVida, yVida, amplada, Screen.height - yVida));
-								
 				GUI.DrawTexture (new Rect (0, alturaVida - altura, amplada, altura), this.texVida);
+				GUI.DrawTexture (new Rect (0, alturaVida - altura, amplada, altura), this.vidaCover);
 				GUI.EndGroup ();
-
 			} else if (i == numTextures - 1) {//mana
-				GUI.BeginGroup (new Rect (xMana, yMana, amplada, Screen.height - yMana));
+				//GUI.BeginGroup (new Rect (xMana, yMana, amplada, Screen.height - yMana));
+				GUI.BeginGroup (new Rect (xVida+ampladaBG-amplada, yMana, amplada, Screen.height - yMana));
 				GUI.DrawTexture (new Rect (0, alturaMana - altura, amplada, altura), this.texMana);
+				GUI.DrawTexture (new Rect (0, alturaMana - altura, amplada, altura), this.manaCover);
 				GUI.EndGroup ();
-
 			} else {//altres
 				i--;
 
 				//si hi ha 3 magies anira de 0,1,2
 				Texture texturaMagia = magiaEscollida == i ? this.magicTexturesSpelled [i] : this.magicTextures [i];
-				
-				GUI.BeginGroup (new Rect (xActual, yMagies, alturaMagia, alturaMagia));
-				GUI.DrawTexture (new Rect (0, 0, alturaMagia, alturaMagia), texturaMagia);
-				GUI.EndGroup ();
+				GUI.DrawTexture (new Rect (xActual, yMagies, alturaMagia, alturaMagia), texturaMagia);
+
 				i++;
 			}
 						
 						
 			xActual += alturaMagia;
 		}
+
+		GUI.DrawTexture (new Rect (xVida+ampladaBG-amplada-alturaMagia-10, yMagies, alturaMagia, alturaMagia), texEscut);
 			
 				
 				
