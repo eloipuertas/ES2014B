@@ -22,7 +22,7 @@ public class HUD : MonoBehaviour
 
 	public Texture texEscut;
 	//textura que saldra cuando el personaje muera
-	public Texture gameOverTexture,hud_bg,magiaSelect,magiaNormal;
+	public Texture gameOverTexture,hud_bg;
 	private float xPos;
 	private float yPos;
 	private MainPjMovement pj;
@@ -30,12 +30,14 @@ public class HUD : MonoBehaviour
 	private float buttonSizeWidth, buttonSizeHeight;
 	public GUISkin myskin;
 	public Texture backgroundHud;
-	public Texture continueTexture, backMainMenuTexture, audioOFF, audioON;
+	public Texture continueTextureSelected,continueTextureNormal, backMainMenuTexture, audioOFF, audioON,titolPausa;
 	private Texture audioTexture;
 	private bool sona = true;
 	private AmbientalMusic AmbientAudio;
 	private int  magiaEscollida = -1;
 	private float timeLeft = 2f;
+
+	private Texture magiaSelect,magiaNormal,continueTexture;
 
 	void Start ()
 	{
@@ -51,6 +53,7 @@ public class HUD : MonoBehaviour
 		if (playerSelected.Equals("player1")) {
 			magiaNormal = magicTextures[0];
 			magiaSelect = magicTexturesSpelled[0];
+			Debug.Log ("player1");
 		}else if(playerSelected.Equals("player2")){
 			magiaNormal = magicTextures[1];
 			magiaSelect = magicTexturesSpelled[1];
@@ -148,31 +151,39 @@ public class HUD : MonoBehaviour
 						
 			xActual += alturaMagia;
 		}
-		//if(pj.getShield())
-		GUI.DrawTexture (new Rect (xMana-alturaMagia-Screen.width*0.01f, yMagies, alturaMagia, alturaMagia), texEscut);//descomentar a devel
+		//if(pj.getShield())//descomentar a devel
+		GUI.DrawTexture (new Rect (xMana-alturaMagia-Screen.width*0.01f, yMagies, alturaMagia, alturaMagia), texEscut);
 
 
 				
 		if (player.canShowMenuPause () && pj.isAlive ()) { 
 			Time.timeScale = 0;
-			if (GUI.Button (new Rect (xPos, yPos, buttonSizeWidth, buttonSizeHeight), continueTexture)) {
+			GUI.DrawTexture (new Rect (xPos-Screen.width*0.12f, yPos-Screen.height*0.3f, Screen.width*0.45f, Screen.height*0.25f), this.titolPausa);
+
+			Rect pauseRect = new Rect (xPos, yPos, buttonSizeWidth, buttonSizeHeight);
+
+			continueTexture = pauseRect.Contains(Event.current.mousePosition)?this.continueTextureSelected:this.continueTextureNormal;
+
+			if (GUI.Button (pauseRect, continueTexture)) {
 				player.hideMenuPause ();	
 
 				
 			}
+
 			if (GUI.Button (new Rect (xPos, buttonSizeHeight + yPos, buttonSizeWidth, buttonSizeHeight), audioTexture)) {
 
 				if (sona) {//pausar audio
-					AmbientAudio.PauseAudio ();
+					//AmbientAudio.PauseAudio ();
 					audioTexture = audioOFF;
 				} else {//reproduir audio
-					AmbientAudio.UnPauseAudio ();
+					//AmbientAudio.UnPauseAudio ();
 					audioTexture = audioON;
 										
 				}
 				sona = !sona;
 				
 			}
+
 			if (GUI.Button (new Rect (xPos, 2 * buttonSizeHeight + yPos, buttonSizeWidth, buttonSizeHeight), backMainMenuTexture)) {
 				Destroy (this.gameObject);
 				Object.Destroy (GameObject.FindGameObjectWithTag ("Player"));
@@ -181,10 +192,9 @@ public class HUD : MonoBehaviour
 			}
 		} 
 
-		if (vida <= 0) {
+		if (!pj.isAlive()) {
 			timeLeft -= Time.deltaTime;
 			if (timeLeft < 0) {
-
 				AmbientAudio.PlayGameOver ();
 				GUI.Label (new Rect (xPos, 0, gameOverTexture.width, gameOverTexture.height), gameOverTexture);
 				Time.timeScale = 0;
