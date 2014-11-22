@@ -3,7 +3,8 @@ using System;
 
 public class BasicSpiderAI : MonoBehaviour {
 	public Transform target;
-	public float aggroRange = 3.5f;
+
+	public float aggroRange = 50f;
 	public float attackRange = 1.5f; 
 	public int manacost_web = 100;
 	private SpiderState myState;
@@ -86,6 +87,7 @@ public class BasicSpiderAI : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		//debugDrawPath();
+
 		if ( target != null ) {
 			AbstractEntity targetEntity = target.GetComponent<AbstractEntity>();
 			if ( targetEntity != null) {
@@ -102,7 +104,7 @@ public class BasicSpiderAI : MonoBehaviour {
 						if (currentAction == PASSIVE){
 							RaycastHit hit;
 							if(Physics.Raycast(transform.position, target.position-transform.position, out hit, dist)) {
-								if ((hit.point-target.position).magnitude<1){ //TODO to change when the main character fixes their tag
+								if ((hit.point-target.position).magnitude<0.5){ //TODO to change when the main character fixes their tag
 									currentAction = MOVING;
 									checkPath ();
 									if (Vector3.Equals(path.corners[current_corner],transform.position)){

@@ -164,4 +164,10 @@ public class SpiderState : AbstractEntity {
 			PNJAudio.PlayPNJKilled();
 		}
 	}
+	public void destroyWithDelay(float delay){
+		Invoke ("destroyObject",delay);
+	}
+	void destroyObject(){
+		Destroy(transform.gameObject);
+	}
 }

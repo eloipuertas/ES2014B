@@ -15,7 +15,7 @@ public class DummyEntity : AbstractEntity {
 
 	public override void onAttackReceived (int baseDMG)
 	{
-		HP = HP - baseDMG;
+		//HP = HP - baseDMG;
 	}
 
 }
