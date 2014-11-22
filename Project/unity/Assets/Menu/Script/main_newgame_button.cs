@@ -8,10 +8,10 @@ public class main_newgame_button : MonoBehaviour {
 	
 	void Awake(){
 		Rect initPixelInset = new Rect(0,0,1,1);
-		initPixelInset.width = 450*0.5f;
-		initPixelInset.height = 150*0.5f;
+		initPixelInset.width = Screen.width*0.35f;
+		initPixelInset.height = initPixelInset.width/3f;
 		initPixelInset.x = 0-initPixelInset.width*0.5f;
-		initPixelInset.y = 0-initPixelInset.height*1.0f;
+		initPixelInset.y = -Screen.height*0.25f;
 		guiTexture.pixelInset = initPixelInset;
 	}
 	
