@@ -8,10 +8,10 @@ public class main_exit_button : MonoBehaviour {
 
 	void Awake(){
 		Rect initPixelInset = new Rect(0,0,1,1);
-		initPixelInset.width = Screen.width*0.25f;
+		initPixelInset.width = Screen.width*0.18f;
 		initPixelInset.height = initPixelInset.width/3f;
 		initPixelInset.x = 0-initPixelInset.width*0.5f;
-		initPixelInset.y = -Screen.height*0.25f-initPixelInset.height*1.15f;
+		initPixelInset.y = -Screen.height*0.25f-initPixelInset.height*1.5f;
 		guiTexture.pixelInset = initPixelInset;
 	}
 	
