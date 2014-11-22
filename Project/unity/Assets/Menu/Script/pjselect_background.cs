@@ -1,16 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class main_background : MonoBehaviour {
+public class NewBehaviourScript : MonoBehaviour {
 	
 	private static float MAX_COLOR_VAL = 0.5f;
-	public float secondsToAppear = 1.0f;
+	public float secondsToAppear = 0.0f;
 	public float delayToAppear = 0.0f;
 	public Texture2D texture;
 	public Color color;
 	
 	void Awake(){
-		Time.timeScale = 1;
 		guiTexture.texture = texture;
 		
 		Rect initPixelInset = new Rect(0,0,1,1);
