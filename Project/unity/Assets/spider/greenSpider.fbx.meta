@@ -50,6 +50,7 @@ ModelImporter:
     100088: Cylinder.018
     100090: //RootNode
     100092: Lamp
+    100094: GreenSpider
     400000: Armature
     400002: Bone
     400004: Bone.001
@@ -97,10 +98,13 @@ ModelImporter:
     400088: Cylinder.018
     400090: //RootNode
     400092: Lamp
+    400094: GreenSpider
     4300000: Cylinder.018
+    4300002: GreenSpider
     7400000: Armature|attak_recieved
     9500000: //RootNode
     13700000: Cylinder.018
+    13700002: GreenSpider
   materials:
     importMaterials: 1
     materialName: 0
