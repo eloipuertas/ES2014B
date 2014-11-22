@@ -173,10 +173,10 @@ public class HUD : MonoBehaviour
 			if (GUI.Button (new Rect (xPos, buttonSizeHeight + yPos, buttonSizeWidth, buttonSizeHeight), audioTexture)) {
 
 				if (sona) {//pausar audio
-					//AmbientAudio.PauseAudio ();
+					AmbientAudio.PauseAudio ();
 					audioTexture = audioOFF;
 				} else {//reproduir audio
-					//AmbientAudio.UnPauseAudio ();
+					AmbientAudio.UnPauseAudio ();
 					audioTexture = audioON;
 										
 				}
@@ -196,7 +196,7 @@ public class HUD : MonoBehaviour
 		if (!pj.isAlive()) {
 			timeLeft -= Time.deltaTime;
 			if (timeLeft < 0) {
-				//AmbientAudio.PlayGameOver ();
+				AmbientAudio.PlayGameOver ();
 				GUI.Label (new Rect (xPos-Screen.width*0.1f, 0, Screen.width*0.4f, Screen.height*0.4f), gameOverTexture);
 				Time.timeScale = 0;
 				Rect returnOver = new Rect (xPos+Screen.width*0.01f, Screen.height*0.4f, Screen.width*0.2f, Screen.height*0.2f);
