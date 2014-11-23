@@ -16,7 +16,7 @@ public class main_exit_button : MonoBehaviour {
 		initPixelInset.width = Screen.width*0.18f;
 		initPixelInset.height = initPixelInset.width/3f;
 		initPixelInset.x = 0-initPixelInset.width*0.5f;
-		initPixelInset.y = -Screen.height*0.25f-initPixelInset.height*1.5f;
+		initPixelInset.y = -Screen.height*0.25f-initPixelInset.height*2.0f;
 		guiTexture.pixelInset = initPixelInset;
 		color = guiTexture.color;
 		color.a = 0;

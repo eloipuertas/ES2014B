@@ -16,14 +16,14 @@ public class main_newgame_button : MonoBehaviour{
 		initPixelInset.width = Screen.width*0.25f;
 		initPixelInset.height = initPixelInset.width/3f;
 		initPixelInset.x = 0-initPixelInset.width*0.5f;
-		initPixelInset.y = -Screen.height*0.275f;
+		initPixelInset.y = Screen.height*0.00f;
 		guiTexture.pixelInset = initPixelInset;
 		color = guiTexture.color;
 		color.a = 0;
 		guiTexture.color = color;
 	}
 
-	void Update(){
+	void OnGUI(){
 		delayToAppear = Mathf.Max(0,delayToAppear-Mathf.Abs(Time.deltaTime));
 		if(delayToAppear <= 0){
 			color = guiTexture.color;
