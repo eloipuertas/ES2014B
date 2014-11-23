@@ -53,8 +53,12 @@ public class EnvController : MonoBehaviour {
 			target.increaseMana(100);
 			Destroy(hit.gameObject);
 		}
-		if (hit.gameObject.tag == "shield") {
+		if (hit.gameObject.tag == "Shield") {
 			target.setShield(true);
+			Destroy(hit.gameObject);
+		}
+		if (hit.gameObject.tag == "Rocket") {
+			target.setFreeze(2.0);
 			Destroy(hit.gameObject);
 		}
 	}
