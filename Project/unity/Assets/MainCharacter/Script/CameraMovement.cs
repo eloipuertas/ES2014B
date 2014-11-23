@@ -8,7 +8,7 @@ using System.Collections.Generic;
 public class CameraMovement : MonoBehaviour
 {
 	
-		private Vector3 posCamera = new Vector3 (4, 25, 4);
+		private Vector3 posCamera = new Vector3 (9, 25, 9);
 		public float distanciaMin = 30f;
 		public float distanciaMax = 80.0f;
 
@@ -44,7 +44,7 @@ public class CameraMovement : MonoBehaviour
 	
 		void Update ()
 		{
-			if (Mathf.Abs(player.transform.position.x - firstMovement[0]) > 3 && Mathf.Abs(player.transform.position.z - firstMovement[2]) > 3) {
+			if (Mathf.Abs(player.transform.position.x - firstMovement[0]) > 2 && Mathf.Abs(player.transform.position.z - firstMovement[2]) > 3) {
 						Vector3 standardPos = player.position + relCameraPos;
 		
 						Vector3 abovePos = player.position + Vector3.up * relCameraPosMag;
