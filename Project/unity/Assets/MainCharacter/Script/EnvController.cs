@@ -42,7 +42,7 @@ public class EnvController : MonoBehaviour {
 			Destroy(hit.gameObject);
 		}
 		if (hit.gameObject.tag == "LittleHealPotion") {
-			target.increaseHeal(200);
+			target.increaseHeal(100);
 			Destroy(hit.gameObject);
 		}
 		if (hit.gameObject.tag == "BigManaPotion") {
@@ -58,7 +58,7 @@ public class EnvController : MonoBehaviour {
 			Destroy(hit.gameObject);
 		}
 		if (hit.gameObject.tag == "Rocket") {
-			target.setFreeze(2.0);
+			target.setFreeze(2.0f);
 			Destroy(hit.gameObject);
 		}
 	}
