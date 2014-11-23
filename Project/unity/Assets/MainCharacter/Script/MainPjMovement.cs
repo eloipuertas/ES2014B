@@ -12,10 +12,10 @@
 	public Vector3 targetPosition;
 	private CharacterController controller;
 	public float lerpMoving;
-	public int i;
 	public bool shield;
 	private Animator anim;
-
+	public bool paused;
+	public float freeze;
 	PJMusicManager PJAudio;
 	
 
@@ -46,10 +46,19 @@
 			this.setHP(dif);
 		}
 	}
+	public bool substractManaSpell(int n){
+		int dif = this.getHP() - n;
+		if (dif > 0) {
+			this.setMP(dif);
+			return true;
+		}
+		return false;
+	}
 	// Use this for initialization
 	void Start () {
+		this.freeze = 0.0f;
 		PJAudio = GameObject.FindObjectOfType(typeof(PJMusicManager)) as PJMusicManager;
-		
+		this.paused = false;
 
 		anim = GetComponent<Animator> ();
 		anim.SetBool ("Walk", false);
@@ -60,12 +69,11 @@
 
 		targetPosition = transform.position;
 		hit = new RaycastHit();
-		i = 0;
 		nextMagicAttack = 0;
 	}
 	public override void onAttackReceived(int dmg){
 		Debug.Log ("Damage: "+dmg);
-		this.setHP (this.getHP () - dmg);
+		this.setHP (this.getHP () - dmg+this.getFOR());
 		//si s'ha mort, cridar escena de morir
 		if (this.getHP () <= 0) {
 						//Application.LoadLevel();
@@ -74,101 +82,103 @@
 	}
 	//Update is called once per frame
 	void Update () {
-		//prova per morir
-		if (Input.GetKeyDown(KeyCode.Alpha2)){
-			anim.SetTrigger("attackMelee");
-			/*anim.SetBool("attackMelee",false);
-			anim.SetBool("attackMelee",true);*/
-		}
-		if (Input.GetKeyDown(KeyCode.Alpha3)){
-			anim.SetBool("Die",true);
-		}
-		//Magia de Foc apretant la tecla 1
-		if (Input.GetKeyDown(KeyCode.Alpha1)){
-			Debug.Log("Apretat 1");
-			nextMagicAttack = 1;
-		}
-		if (Input.GetMouseButtonDown (0)) {
-						if (Physics.Raycast (Camera.main.ScreenPointToRay (Input.mousePosition), out hit, 1000.0f, ~(1 << 8))) {
-								if (hit.transform) {
-										targetPosition = hit.point;
-										targetPosition.y = 0;
-										anim.SetBool ("Walk", true);
+
+			if (! this.paused) {
+						if (freeze < 0.0) {
+								//prova per morir
+								if (Input.GetKeyDown (KeyCode.Alpha2)) {
+										anim.SetTrigger ("attackMelee");
+										/*anim.SetBool("attackMelee",false);
+				anim.SetBool("attackMelee",true);*/
 								}
+								if (Input.GetKeyDown (KeyCode.Alpha3)) {
+										anim.SetBool ("Die", true);
+								}
+								//Magia de Foc apretant la tecla 1
+								if (Input.GetKeyDown (KeyCode.Alpha1)) {
+										Debug.Log ("Apretat 1");
+										nextMagicAttack = 1;
+								}
+
+								if (Input.GetMouseButtonDown (0)) {
+										if (Physics.Raycast (Camera.main.ScreenPointToRay (Input.mousePosition), out hit, 1000.0f, ~(1 << 8))) {
+												if (hit.transform) {
+														targetPosition = hit.point;
+														targetPosition.y = 0;
+														anim.SetBool ("Walk", true);
+												}
+										}
+								}
+
+
+								//RaycastHit hit; // cast a ray from mouse pointer: 
+								Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition); // if enemy hit... 
+								if (Physics.Raycast (ray, out hit) && hit.transform.CompareTag ("Spider") && Input.GetMouseButtonDown (1)) { 
+										//distancia entre el personatge principal i l'enemic
+										//es calcula en metres
+										float distancia = hit.distance;
+										Debug.Log ("Distancia:" + distancia);
+
+										//obtinc la aranya
+										SpiderState Aranya = (SpiderState)hit.collider.GetComponent ("SpiderState");
+
+										switch (nextMagicAttack) {
+										case 1:
+
+												if (distancia > 90) {
+														Debug.Log ("Cal fer una magia de foc pero estas massa lluny");
+												} else {
+														//anim.setBool("spellFire",true);
+														if (this.substractManaSpell (80)) {
+																//so de llencar la magia de foc
+																//animacio de la magia
+																Aranya.onAttackReceived (Random.Range (100, 200));
+														} else {
+																//
+														}
+														Debug.Log ("Magia de foc!");
+														nextMagicAttack = 0;
+
+												}
+
+												break;
+										case 0:
+												if (distancia > 80) {
+														//cal restar vida de l'aranya, parlar amb Jordi
+														Debug.Log ("No puc atacar cos a cos");
+												} else {
+														//ataco a l'aranya
+														Aranya.onAttackReceived (this.getFOR ());
+														int probFailAttack = Random.Range (0, 10);
+														//si falla (10% dels cops fallara)
+														if (probFailAttack < 1) {
+																PJAudio.PlayAttackFAIL ();
+														} else {
+																Aranya.onAttackReceived (Random.Range (this.getFOR () / 2, this.getFOR ()));
+														}
+														anim.SetBool ("attackMelee", true);
+														Debug.Log ("Atac cos a cos");
+												}
+												break;
+										}
+
+								} 
+								MoveTowardsTarget (targetPosition);
+
 						}
+				} else {
+					this.freeze -= Time.deltaTime;
 				}
-
-
-			//RaycastHit hit; // cast a ray from mouse pointer: 
-			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition); // if enemy hit... 
-		if (Physics.Raycast(ray, out hit) && hit.transform.CompareTag("Spider") && Input.GetMouseButtonDown (1)){ 
-				//distancia entre el personatge principal i l'enemic
-				//es calcula en metres
-				float distancia = hit.distance;
-				Debug.Log("Distancia:"+distancia);
-
-				//obtinc la aranya
-				SpiderState Aranya = (SpiderState)hit.collider.GetComponent("SpiderState");
-
-				switch(nextMagicAttack){
-				case 1:
-
-					if (distancia > 90){
-						Debug.Log("Cal fer una magia de foc pero estas massa lluny");
-					}else{
-						//cal restar mana
-						//cal restar vida de l'aranya, parlar amb Jordi
-						//cal cridar animacio magia de foc
-
-						//Aranya.onAttackReceived(80);
-						//anim.setBool("spellFire",true);
-						Debug.Log("Magia de foc!");
-						nextMagicAttack = 0;
-
-					}
-
-					break;
-				case 2:
-					//magia de gel
-					if (distancia > 90){
-						Debug.Log("Cal fer una magia de foc pero estas massa lluny");
-					}else{
-						//cal restar mana
-						//cal restar vida de l'aranya, parlar amb Jordi
-						//cal cridar animacio magia de gel
-						Debug.Log("Magia de foc!");
-						nextMagicAttack = 0;
-					}
-					break;
-				case 0:
-					if (distancia > 80){
-						//cal restar vida de l'aranya, parlar amb Jordi
-						Debug.Log("No puc atacar cos a cos");
-					}else{
-						//ataco a l'aranya
-						Aranya.onAttackReceived(this.getFOR());
-						int probFailAttack = Random.Range(0,10);
-						//si falla (10% dels cops fallara)
-						if (probFailAttack < 1){
-							//so que falla
-						}else{
-							Aranya.onAttackReceived(this.getFOR());
-							PJAudio.PlayAttackFAIL();
-						}
-						anim.SetBool("attackMelee",true);
-						Debug.Log("Atac cos a cos");
-					}
-					break;
-				}
-
-			} 
-			
-			MoveTowardsTarget (targetPosition);
 
 		}
 
 
-
+	public void setFreeze(float n){
+		this.freeze = n;
+	}
+	public float getFreeze(){
+		return this.freeze;
+	}
 	void MoveTowardsTarget(Vector3 target) {
 		var offset = target - transform.position;
 
