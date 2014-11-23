@@ -4,26 +4,26 @@ using System.Collections;
 public class main_newgame_button : MonoBehaviour{
 	
 	private static float MAX_COLOR_VAL = 0.5f;
-	public float secondsToAppear = 1.5f;
-	public float delayToAppear = 1.0f;
+	private float secondsToAppear = 1.5f;
+	private float delayToAppear = 1.0f;
 	public Texture2D textureS;
 	public Texture2D textureUnS;
-	public Color color;
+	private Color color;
 	
 	void Awake(){
 		Time.timeScale = 1;
 		Rect initPixelInset = new Rect(0,0,1,1);
-		initPixelInset.width = Screen.width*0.20f;
+		initPixelInset.width = Screen.width*0.25f;
 		initPixelInset.height = initPixelInset.width/3f;
 		initPixelInset.x = 0-initPixelInset.width*0.5f;
-		initPixelInset.y = -Screen.height*0.25f;
+		initPixelInset.y = Screen.height*0.00f;
 		guiTexture.pixelInset = initPixelInset;
 		color = guiTexture.color;
 		color.a = 0;
 		guiTexture.color = color;
 	}
 
-	void Update(){
+	void OnGUI(){
 		delayToAppear = Mathf.Max(0,delayToAppear-Mathf.Abs(Time.deltaTime));
 		if(delayToAppear <= 0){
 			color = guiTexture.color;
