@@ -1,15 +1,30 @@
 fileFormatVersion: 2
-guid: 7f8d66de5730e8f49b7cc0d0ad4e979c
+guid: ad14db4ffea879d478bc4c4a1f09c5f0
 ModelImporter:
   serializedVersion: 16
   fileIDToRecycleName:
-    100000: cube
-    100002: //RootNode
-    400000: cube
-    400002: //RootNode
-    2300000: cube
-    3300000: cube
-    4300000: cube
+    100000: jaw
+    100002: lteeth
+    100004: skull
+    100006: //RootNode
+    100008: uteeth
+    400000: jaw
+    400002: lteeth
+    400004: skull
+    400006: //RootNode
+    400008: uteeth
+    2300000: jaw
+    2300002: lteeth
+    2300004: skull
+    2300006: uteeth
+    3300000: jaw
+    3300002: lteeth
+    3300004: skull
+    3300006: uteeth
+    4300000: jaw
+    4300002: lteeth
+    4300004: skull
+    4300006: uteeth
     9500000: //RootNode
   materials:
     importMaterials: 1
