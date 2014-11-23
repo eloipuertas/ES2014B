@@ -3,6 +3,7 @@ using System.Collections;
 
 [ RequireComponent( typeof( ParticleSystem ) ) ]
 
+
 public class EmitParticles : MonoBehaviour 
 {
 	public Vector3 pos = new Vector3 ( 0, 13, 0 ); // Setejar a la posicio de la ma
