@@ -16,6 +16,8 @@
 	public bool shield;
 	private Animator anim;
 
+	PJMusicManager PJAudio;
+	
 
 
 
@@ -46,6 +48,9 @@
 	}
 	// Use this for initialization
 	void Start () {
+		PJAudio = GameObject.FindObjectOfType(typeof(PJMusicManager)) as PJMusicManager;
+		
+
 		anim = GetComponent<Animator> ();
 		anim.SetBool ("Walk", false);
 		this.setHP (1500);
@@ -141,7 +146,15 @@
 						Debug.Log("No puc atacar cos a cos");
 					}else{
 						//ataco a l'aranya
-						//Aranya.onAttackReceived(this.getFOR());
+						Aranya.onAttackReceived(this.getFOR());
+						int probFailAttack = Random.Range(0,10);
+						//si falla (10% dels cops fallara)
+						if (probFailAttack < 1){
+							//so que falla
+						}else{
+							Aranya.onAttackReceived(this.getFOR());
+							PJAudio.PlayAttackFAIL();
+						}
 						anim.SetBool("attackMelee",true);
 						Debug.Log("Atac cos a cos");
 					}
