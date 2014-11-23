@@ -15,9 +15,9 @@ public class pjselect_pj1 : MonoBehaviour{
 		
 		Rect initPixelInset = new Rect(0,0,1,1);
 		initPixelInset.width = Screen.width*0.20f;
-		initPixelInset.height = Screen.height*0.50f;
+		initPixelInset.height = Screen.height*0.45f;
 		initPixelInset.x = -Screen.width*0.375f;
-		initPixelInset.y = -Screen.height*0.20f;
+		initPixelInset.y = -Screen.height*0.175f;
 		guiTexture.pixelInset = initPixelInset;
 		color = guiTexture.color;
 		color.a = 0;
