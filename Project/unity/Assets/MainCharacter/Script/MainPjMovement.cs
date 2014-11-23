@@ -14,6 +14,7 @@
 	public float lerpMoving;
 	public int i;
 
+	private PJMusicManager PJAudio;
 
 	private Animator anim;
 
@@ -32,6 +33,8 @@
 		this.setFOR (30);
 		controller = this.GetComponent<CharacterController>();
 
+		PJAudio = GameObject.FindObjectOfType(typeof(PJMusicManager)) as PJMusicManager;
+
 		targetPosition = transform.position;
 		hit = new RaycastHit();
 		i = 0;
@@ -44,6 +47,7 @@
 		if (this.getHP () <= 0) {
 						//Application.LoadLevel();
 						anim.SetBool ("Die", true);
+						PJAudio.PlayKilled();
 				}
 	}
 	//Update is called once per frame
@@ -68,6 +72,7 @@
 										targetPosition = hit.point;
 										targetPosition.y = 0;
 										anim.SetBool ("Walk", true);
+										PJAudio.PlayWalkSounds();
 								}
 						}
 				}
@@ -122,6 +127,7 @@
 						//ataco a l'aranya
 						//Aranya.onAttackReceived(this.getFOR());
 						anim.SetBool("attackMelee",true);
+						PJAudio.PlayAttackOK();
 						Debug.Log("Atac cos a cos");
 					}
 					break;
@@ -147,6 +153,7 @@
 						transform.rotation = Quaternion.Slerp (transform.rotation, newRotation, (speed / 5) * Time.deltaTime);
 				} else {
 						anim.SetBool ("Walk", false);
+						PJAudio.StopWalkSounds();
 				}
 	}
 
