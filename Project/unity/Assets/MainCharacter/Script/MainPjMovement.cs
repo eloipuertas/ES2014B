@@ -13,8 +13,7 @@
 	private CharacterController controller;
 	public float lerpMoving;
 	public int i;
-
-
+	public bool shield;
 	private Animator anim;
 
 
@@ -22,6 +21,28 @@
 
 	public int getSelectedSpell(){
 		return nextMagicAttack-1;
+	}
+	public void setShield(bool n){
+		this.shield = n;
+	}
+	public bool getShield(){
+		return this.shield;
+	}
+	public void increaseMana(int n){
+		int dif = this.getMP()+n;
+		if (dif > this.getMAXMP()){
+			this.setMP (this.getMAXMP());
+		}else{
+			this.setMP(dif);
+		}
+	}
+	public void increaseHeal(int n){
+		int dif = this.getHP()+n;
+		if (dif > this.getMAXHP()){
+			this.setHP (this.getMAXHP());
+		}else{
+			this.setHP(dif);
+		}
 	}
 	// Use this for initialization
 	void Start () {
@@ -82,8 +103,8 @@
 				Debug.Log("Distancia:"+distancia);
 
 				//obtinc la aranya
-				AbstractEntity Aranya = (AbstractEntity)hit.collider.GetComponent("Spider");
-					
+				SpiderState Aranya = (SpiderState)hit.collider.GetComponent("SpiderState");
+
 				switch(nextMagicAttack){
 				case 1:
 

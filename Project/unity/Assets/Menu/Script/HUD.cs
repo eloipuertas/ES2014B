@@ -78,7 +78,7 @@ public class HUD : MonoBehaviour
 						vida = 100;
 						debugInit = true;
 				}
-				
+				Debug.Log ("Vida:" + vida + " max vida:" + maxVida);
 				vidapercent = vida / maxVida;
 				
 
