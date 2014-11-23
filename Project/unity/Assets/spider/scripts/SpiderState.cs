@@ -55,7 +55,7 @@ public class SpiderState : AbstractEntity {
 	}
 
 	void Update(){
-		if(this.isAlive()){
+		if(this.isAlive() && Time.timeScale>0){
 			move();
 		}
 	}

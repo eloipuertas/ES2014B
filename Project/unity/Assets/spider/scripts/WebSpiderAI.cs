@@ -87,7 +87,7 @@ public class WebSpiderAI : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		//debugDrawPath();
-		if ( target != null ) {
+		if ( target != null && Time.timeScale>0 ) {
 			AbstractEntity targetEntity = target.GetComponent<AbstractEntity>();
 			if ( targetEntity != null) {
 				if (myState.isAlive() && targetEntity.isAlive ()){
