@@ -41,14 +41,13 @@
 		nextMagicAttack = 0;
 	}
 	public override void onAttackReceived(int dmg){
-		Debug.Log ("Damage: "+dmg);
 		this.setHP (this.getHP () - dmg);
 		//si s'ha mort, cridar escena de morir
 		if (this.getHP () <= 0) {
-						//Application.LoadLevel();
-						anim.SetBool ("Die", true);
-						PJAudio.PlayKilled();
-				}
+			//Application.LoadLevel();
+			PJAudio.PlayKilled();
+			anim.SetBool ("Die", true);				
+		}
 	}
 	//Update is called once per frame
 	void Update () {
@@ -72,7 +71,8 @@
 										targetPosition = hit.point;
 										targetPosition.y = 0;
 										anim.SetBool ("Walk", true);
-										PJAudio.PlayWalkSounds();
+										if(this.isAlive())
+											PJAudio.PlayWalkSounds();
 								}
 						}
 				}
@@ -126,8 +126,8 @@
 					}else{
 						//ataco a l'aranya
 						//Aranya.onAttackReceived(this.getFOR());
+						PJAudio.PlayAttackOK();	
 						anim.SetBool("attackMelee",true);
-						PJAudio.PlayAttackOK();
 						Debug.Log("Atac cos a cos");
 					}
 					break;

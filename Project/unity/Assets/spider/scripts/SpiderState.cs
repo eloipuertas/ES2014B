@@ -71,6 +71,7 @@ public class SpiderState : AbstractEntity {
 	
 	// ATTACK
 	public void attack(AbstractEntity enemy){
+
 		this.lookAt ();
 		if (this.isAlive()) {
 			PNJAudio.PlayAttackOK();

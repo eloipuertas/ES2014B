@@ -11,8 +11,10 @@ public class PNJMusicManager : MonoBehaviour
 
 	public void PlayAttackOK()
 	{
-		audio.clip = attackOK;
-		audio.Play ();
+		if (!audio.isPlaying) {
+				audio.clip = attackOK;
+				audio.Play ();
+		}
 
 	}
 	

@@ -14,9 +14,11 @@ public class PJMusicManager : MonoBehaviour
 	
 	public void PlayAttackOK()
 	{
-		audio.loop = false;
-		audio.clip = attackOK;
-		audio.Play ();
+		if (!audio.isPlaying) {
+			audio.loop = false;
+			audio.clip = attackOK;
+			audio.Play ();
+		}
 	}
 	
 	public void PlayAttackFAIL()
@@ -28,9 +30,11 @@ public class PJMusicManager : MonoBehaviour
 	
 	public void PlayKilled()
 	{
-		audio.loop = false;
-		audio.clip = killed;
-		audio.Play ();	
+		if (!audio.isPlaying) {
+			audio.loop = false;
+			audio.clip = killed;
+			audio.Play ();	
+		}
 	}
 	
 	public void PlayWalkSounds()
@@ -44,8 +48,10 @@ public class PJMusicManager : MonoBehaviour
 	
 	public void StopWalkSounds()
 	{
-		audio.loop = false;
-		audio.Stop ();		
+		if (audio.clip == walkSounds [0] || audio.clip == walkSounds [1] || audio.clip == walkSounds [2] || audio.clip == walkSounds [3]) {
+			audio.loop = false;
+			audio.Stop ();	
+		}
 	}
 	
 }
