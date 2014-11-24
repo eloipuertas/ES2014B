@@ -15,6 +15,10 @@ public class SpiderState : AbstractEntity {
 
 	private PNJMusicManager PNJAudio;
 
+	void Start() {
+		PNJAudio = GameObject.FindObjectOfType(typeof(PNJMusicManager)) as PNJMusicManager;
+	}
+
 	void Awake(){
 		characterController = GetComponent<CharacterController>();
 		animator = GetComponent<Animator>();
@@ -24,9 +28,8 @@ public class SpiderState : AbstractEntity {
 		DMG = 1;
 		
 		setDestination(transform.position.x,transform.position.y,transform.position.z);
-
-		PNJAudio = GameObject.FindObjectOfType(typeof(PNJMusicManager)) as PNJMusicManager;
 		
+
 	}
 	
 	void Update(){
@@ -70,9 +73,9 @@ public class SpiderState : AbstractEntity {
 	public void attack(AbstractEntity enemy){
 		this.lookAt ();
 		if (this.isAlive()) {
+			PNJAudio.PlayAttackOK();
 			animator.SetBool ("attack_enabled", true);
 			enemy.onAttackReceived (DMG);
-			PNJAudio.PlayAttackOK();
 		} else {
 			animator.SetBool("attack_enabled",false);
 		}

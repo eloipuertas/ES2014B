@@ -13,12 +13,14 @@ public class PNJMusicManager : MonoBehaviour
 	{
 		audio.clip = attackOK;
 		audio.Play ();
+
 	}
 	
 	public void PlayPNJKilled()
 	{
 		audio.clip = PNJKilled;
 		audio.Play ();		
+
 	}
 
 }
