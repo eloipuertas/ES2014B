@@ -47,8 +47,8 @@
 		}
 	}
 	public bool substractManaSpell(int n){
-		int dif = this.getHP() - n;
-		if (dif > 0) {
+		int dif = this.getMP() - n;
+		if (dif >= 0) {
 			this.setMP(dif);
 			return true;
 		}
@@ -130,7 +130,7 @@
 														Debug.Log ("Cal fer una magia de foc pero estas massa lluny");
 												} else {
 														//anim.setBool("spellFire",true);
-														if (this.substractManaSpell (80)) {
+														if (this.substractManaSpell (this.getMAXMP())) {
 																//so de llencar la magia de foc
 																//animacio de la magia
 																Aranya.onAttackReceived (Random.Range (100, 200));
