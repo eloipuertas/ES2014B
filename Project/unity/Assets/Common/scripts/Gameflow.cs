@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class Gameflow : MonoBehaviour {
-	public Transform[] spawnPoints;
+	private Transform[] spawnPoints;
 	public float minTimeBetweenSpawns = 10;
 	public float maxTimeBetweenSpawns = 20;
 
@@ -16,8 +16,14 @@ public class Gameflow : MonoBehaviour {
 	void Awake() {
 		phase = INITIAL_PHASE;
 		GameObject player = GameObject.FindGameObjectWithTag("Player");
+
 		if (player != null) {
 			playerEntity = player.GetComponent<AbstractEntity>();
+		}
+		GameObject[] goSpawnPoints = GameObject.FindGameObjectsWithTag ("Spawner");
+		spawnPoints = new Transform[goSpawnPoints.Length];
+		for (int i=0; i<goSpawnPoints.Length; i++) {
+			spawnPoints[i] = goSpawnPoints[i].transform;
 		}
 
 		if (playerEntity != null) {
