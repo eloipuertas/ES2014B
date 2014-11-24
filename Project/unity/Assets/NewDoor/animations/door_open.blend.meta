@@ -1,27 +1,21 @@
 fileFormatVersion: 2
-guid: 0c3bb965f10e2a44a84badde8875ebae
+guid: dc02aca57784dd84d9648e5dc9e0da5f
 ModelImporter:
   serializedVersion: 16
   fileIDToRecycleName:
-    100000: //RootNode
-    100002: Armature
-    100004: Bone
-    100006: Bone_001
-    100008: Bone_002
-    100010: Cube_003
-    400000: //RootNode
-    400002: Armature
-    400004: Bone
-    400006: Bone_001
-    400008: Bone_002
-    400010: Cube_003
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: Cube
-    4300002: Cube_003
+    100000: Armature
+    100002: Bone
+    100004: Bone_001
+    100006: Bone_002
+    100008: //RootNode
+    400000: Armature
+    400002: Bone
+    400004: Bone_001
+    400006: Bone_002
+    400008: //RootNode
     7400000: Default Take
+    7400002: open
     9500000: //RootNode
-    13700000: Cube_003
   materials:
     importMaterials: 1
     materialName: 0

@@ -2,8 +2,7 @@
 using System.Collections;
 
 public class triggerDoor : MonoBehaviour {
-	public Transform door;                  
-	//private GameObject player;
+	public Transform door;      
 	private Animator anim;
 	
 	void start ()
@@ -13,19 +12,29 @@ public class triggerDoor : MonoBehaviour {
 	void Awake ()
 	{
 		anim = door.GetComponent<Animator>();
-		anim.SetBool ("player_approaching", false);
+
+		anim.SetBool ("open", false);
+		anim.SetBool ("closed", false);
 	}
 	
 	
 	void OnTriggerEnter (Collider other)
 	{
-		anim.SetBool ("player_approaching", true);
+		Debug.Log ("OnTriggerEnter");
+
+		if ( !anim.GetBool("open") && anim.GetBool("closed") ) {
+			anim.SetBool("closed", false);
+		}
+
+		anim.SetBool ("open", true);
 	}
 	
 	
 	void OnTriggerExit (Collider other)
 	{
-		anim.SetBool ("player_approaching", false);
+		Debug.Log ("OnTriggerExit");
+		anim.SetBool ("open", false);
+		anim.SetBool ("closed", true);
 	}
 	
 	
