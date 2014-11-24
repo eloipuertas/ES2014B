@@ -5,7 +5,7 @@ public class EnvController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		Debug.Log ("Sesta carregant EnvController al papertext");
+		//Debug.Log ("Sesta carregant EnvController al papertext");
 	}
 	
 	// Update is called once per frame
@@ -55,6 +55,7 @@ public class EnvController : MonoBehaviour {
 		}
 		if (hit.gameObject.tag == "Shield") {
 			target.setShield(true);
+
 			Destroy(hit.gameObject);
 		}
 		if (hit.gameObject.tag == "Rocket") {

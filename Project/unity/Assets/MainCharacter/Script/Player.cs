@@ -18,38 +18,22 @@ public class Player : MonoBehaviour
 	}
 	
 	// Use this for initialization	
-	void Start ()
-	{
-
-
-
+	void Start () {
 		firstposition = false;
 		timeESC = 0;
-		mesh = GameObject.FindGameObjectWithTag ("mesh_pj");
-		mesh.renderer.enabled = false;
-		showPauseMenu = false;
-		
-		
-		
-		
+		showPauseMenu = false;	
 	}
 	
-	private void firstESC ()
-	{
+	private void firstESC () {
 		timeESC = Time.time;
 		showPauseMenu = true;
-		
-		
 	}
 	
-	private void secondESC ()
-	{
+	private void secondESC () {
 		showPauseMenu = false;
 		Object.Destroy (this.gameObject);
 		Object.Destroy(GameObject.FindGameObjectWithTag ("Player"));
 		Application.LoadLevel (0);//menu principal
-		
-		
 	}
 	// Update is called once per frame
 	void Update ()
@@ -63,8 +47,6 @@ public class Player : MonoBehaviour
 				firstESC ();
 		} 
 		if (Application.loadedLevel == 1 && !firstposition) {
-			
-			mesh.renderer.enabled = true;
 			Vector3 temp = new Vector3 (posInicialX, posInicialY, posInicialZ);
 			this.transform.position = temp;
 			firstposition = true;

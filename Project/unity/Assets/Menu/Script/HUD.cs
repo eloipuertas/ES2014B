@@ -154,7 +154,7 @@ public class HUD : MonoBehaviour
 						
 			xActual += alturaMagia;
 		}
-		//if(pj.getShield())//descomentar a devel
+		if(pj.getShield())//descomentar a devel
 			GUI.DrawTexture (new Rect (xMana-alturaMagia-Screen.width*0.01f, yMagies, alturaMagia, alturaMagia), texEscut);
 
 

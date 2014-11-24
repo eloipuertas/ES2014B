@@ -9,13 +9,11 @@ public class RegenerationPj : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		this.time = 1.0f;
-		GameObject go = GameObject.FindGameObjectWithTag ("Player");
-		MainPjMovement pj = go.GetComponent ("MainPjMovement") as MainPjMovement;
+		pj = this.GetComponent ("MainPjMovement") as MainPjMovement;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-
 		if (this.time > 0){
 			this.time -= Time.deltaTime;
 		}else{

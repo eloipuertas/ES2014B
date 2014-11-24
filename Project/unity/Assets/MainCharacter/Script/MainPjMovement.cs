@@ -19,15 +19,13 @@
 	private Animator anim;
 	public bool paused;
 	public float freeze;
-	
-
-
 
 	public int getSelectedSpell(){
 		return nextMagicAttack-1;
 	}
 	public void setShield(bool n){
 		this.shield = n;
+		this.setFOR(3);
 	}
 	public bool getShield(){
 		return this.shield;
@@ -66,7 +64,7 @@
 		anim.SetBool ("Walk", false);
 		this.setHP (1500);
 		this.setMAXHP (1500);
-		this.setFOR (30);
+		this.setFOR (0);
 		controller = this.GetComponent<CharacterController>();
 
 		PJAudio = GameObject.FindObjectOfType(typeof(PJMusicManager)) as PJMusicManager;
@@ -91,16 +89,7 @@
 
 
 			if (! this.paused) {
-						if (freeze < 0.0) {
-								//prova per morir
-								if (Input.GetKeyDown (KeyCode.Alpha2)) {
-										anim.SetTrigger ("attackMelee");
-										/*anim.SetBool("attackMelee",false);
-				anim.SetBool("attackMelee",true);*/
-								}
-								if (Input.GetKeyDown (KeyCode.Alpha3)) {
-										anim.SetBool ("Die", true);
-								}
+						if (freeze <= 0.0) {
 								//Magia de Foc apretant la tecla 1
 								if (Input.GetKeyDown (KeyCode.Alpha1)) {
 										Debug.Log ("Apretat 1");
