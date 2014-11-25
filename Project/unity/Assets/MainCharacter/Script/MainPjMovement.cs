@@ -74,8 +74,8 @@
 		nextMagicAttack = 0;
 	}
 	public override void onAttackReceived(int dmg){
-		Debug.Log("MainPjMovement: onAttackReceived");
-		Debug.Log ("pj dmg: " + dmg);
+		//Debug.Log("MainPjMovement: onAttackReceived");
+		//Debug.Log ("pj dmg: " + dmg);
 		this.setHP (this.getHP () - dmg+this.getFOR());
 
 		//si s'ha mort, cridar escena de morir

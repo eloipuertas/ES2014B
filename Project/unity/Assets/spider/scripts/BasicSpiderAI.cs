@@ -1,18 +1,12 @@
 using UnityEngine;
 using System;
 
-public class BasicSpiderAI : MonoBehaviour {
-	public Transform target;
+public class BasicSpiderAI : SpiderAI {
 
 	public float aggroRange = 50f;
 	public float attackRange = 1.5f; 
 	public int manacost_web = 100;
 	private SpiderState myState;
-	
-	private const int PASSIVE = 0;
-	private const int MOVING = 1;
-	private const int ATTACKING = 2;
-	private int currentAction = PASSIVE;
 	
 	private Vector3 lastTargetPos;
 	private NavMeshAgent agent;
@@ -128,13 +122,13 @@ public class BasicSpiderAI : MonoBehaviour {
 						}else if (currentAction == ATTACKING){
 							currentAction = MOVING;
 							checkPath ();
-							if (Vector3.Equals(path.corners[current_corner],transform.position)){
+							if ( current_corner < path.corners.Length && Vector3.Equals(path.corners[current_corner],transform.position) ){
 								current_corner++;
 							}
 							Vector3 dest = path.corners[current_corner];
 							myState.setDestination (dest.x, dest.y, dest.z);
 						}else{
-							if (Vector3.Equals(path.corners[current_corner],transform.position)){
+							if ( current_corner < path.corners.Length && Vector3.Equals(path.corners[current_corner],transform.position) ){
 								current_corner++;
 							}
 							Vector3 dest = path.corners[current_corner];

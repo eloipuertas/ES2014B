@@ -4,6 +4,7 @@ using System.Collections;
 public class HealthManBarNPC:MonoBehaviour{
 	
 	private SpiderState myState;
+	private SpiderAI ai;
 	public float maxValueHealth = 100;
 	public float maxValueMana = 100;
 	public float currentHealth = 100;
@@ -16,6 +17,7 @@ public class HealthManBarNPC:MonoBehaviour{
 	
 	void Awake(){
 		myState = this.gameObject.GetComponent<SpiderState>();
+		ai = this.gameObject.GetComponent<SpiderAI>();
 		set(myState.getMAXHP(),myState.getMAXMP(),myState.getHP(),myState.getMP(),leftX,topY,width,height);
 	}
 
@@ -32,7 +34,7 @@ public class HealthManBarNPC:MonoBehaviour{
 	}
 	
 	void Update(){
-		if ( myState.isAlive() ) {
+		if ( myState.isAlive() && ai.currentAction != SpiderAI.PASSIVE ) {
 			// TODO ?
 			set(myState.getMAXHP(),myState.getMAXMP(),myState.getHP(),myState.getMP(),leftX,topY,width,height);
 			if ( Camera.main != null ) {

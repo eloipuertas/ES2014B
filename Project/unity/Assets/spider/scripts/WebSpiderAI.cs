@@ -1,18 +1,13 @@
 using UnityEngine;
 using System;
 
-public class WebSpiderAI : MonoBehaviour {
-	public Transform target;
+public class WebSpiderAI : SpiderAI {
+
 	public float aggroRange = 20f;
 	public float spellRange = 10f;
 	public float attackRange = 1.5f; 
 	public int web_manacost = 100;
 	private SpiderState myState;
-	
-	private const int PASSIVE = 0;
-	private const int MOVING = 1;
-	private const int ATTACKING = 2;
-	private int currentAction = PASSIVE;
 	
 	private Vector3 lastTargetPos;
 	private NavMeshAgent agent;

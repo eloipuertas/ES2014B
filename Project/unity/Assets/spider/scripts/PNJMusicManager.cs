@@ -12,6 +12,8 @@ public class PNJMusicManager : MonoBehaviour
 	public void PlayAttackOK()
 	{
 		if (!audio.isPlaying) {
+			Debug.Log("PNJMusicManager: PlayAttackOK");
+				audio.loop = false;
 				audio.clip = attackOK;
 				audio.Play ();
 		}
@@ -20,6 +22,7 @@ public class PNJMusicManager : MonoBehaviour
 	
 	public void PlayPNJKilled()
 	{
+		Debug.Log("PNJMusicManager: PlayPNJKilled");
 		audio.clip = PNJKilled;
 		audio.Play ();		
 

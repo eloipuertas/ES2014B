@@ -4,11 +4,7 @@ using System.Collections;
 public class triggerDoor : MonoBehaviour {
 	public Transform door;      
 	private Animator anim;
-	
-	void start ()
-	{
 
-	}
 	void Awake ()
 	{
 		anim = door.GetComponent<Animator>();
