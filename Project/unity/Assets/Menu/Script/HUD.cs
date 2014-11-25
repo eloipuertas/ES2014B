@@ -65,6 +65,17 @@ public class HUD : MonoBehaviour
 	
 	void OnGUI ()
 	{
+		GameObject go = GameObject.FindGameObjectWithTag ("Player");
+
+		if ( go != null ) {
+			pj = go.GetComponent ("MainPjMovement") as MainPjMovement;
+			player = go.GetComponent ("Player") as Player;
+		}
+
+		if ( pj == null ) {
+			return;
+		}
+
 		Time.timeScale = 1;
 		amplada = Screen.width / 10;
 		altura = Screen.height / 8;
@@ -77,7 +88,6 @@ public class HUD : MonoBehaviour
 		buttonSizeWidth = Screen.width / 5;
 		float maxVida, maxMana;
 				
-
 		vida = pj.getHP ();
 		mana = pj.getMP ();
 		magiaEscollida = pj.getSelectedSpell () +1;

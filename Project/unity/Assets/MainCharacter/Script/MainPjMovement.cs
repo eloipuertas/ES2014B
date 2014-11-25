@@ -62,8 +62,8 @@
 
 		anim = GetComponent<Animator> ();
 		anim.SetBool ("Walk", false);
-		this.setHP (1500);
-		this.setMAXHP (1500);
+		this.setHP (150);
+		this.setMAXHP (150);
 		this.setFOR (0);
 		controller = this.GetComponent<CharacterController>();
 
@@ -74,7 +74,8 @@
 		nextMagicAttack = 0;
 	}
 	public override void onAttackReceived(int dmg){
-
+		Debug.Log("MainPjMovement: onAttackReceived");
+		Debug.Log ("pj dmg: " + dmg);
 		this.setHP (this.getHP () - dmg+this.getFOR());
 
 		//si s'ha mort, cridar escena de morir
@@ -114,14 +115,14 @@
 
 								//RaycastHit hit; // cast a ray from mouse pointer: 
 								Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition); // if enemy hit... 
-								if (Physics.Raycast (ray, out hit) && hit.transform.CompareTag ("Spider") && Input.GetMouseButtonDown (1)) { 
+								if (Physics.Raycast (ray, out hit) && hit.transform.CompareTag ("Enemy") && Input.GetMouseButtonDown (1)) { 
 										//distancia entre el personatge principal i l'enemic
 										//es calcula en metres
 										float distancia = hit.distance;
 										Debug.Log ("Distancia:" + distancia);
 
 										//obtinc la aranya
-										SpiderState Aranya = (SpiderState)hit.collider.GetComponent ("SpiderState");
+										AbstractEntity Aranya = (AbstractEntity) hit.collider.GetComponent ("AbstractEntity");
 
 										switch (nextMagicAttack) {
 										case 1:
@@ -149,14 +150,14 @@
 														Debug.Log ("No puc atacar cos a cos");
 												} else {
 														//ataco a l'aranya
-														Aranya.onAttackReceived (this.getFOR ());
+														Aranya.onAttackReceived (this.getDMG ());
 														int probFailAttack = Random.Range (0, 10);
 														//si falla (10% dels cops fallara)
 														if (probFailAttack < 1) {
 																PJAudio.PlayAttackFAIL ();
 														} else {
 																PJAudio.PlayAttackOK();	
-																Aranya.onAttackReceived (Random.Range (this.getFOR () / 2, this.getFOR ()));
+																Aranya.onAttackReceived (Random.Range (this.getDMG () / 2, this.getDMG ()));
 														}
 														anim.SetBool ("attackMelee", true);
 														Debug.Log ("Atac cos a cos");

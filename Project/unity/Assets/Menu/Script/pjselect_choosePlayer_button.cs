@@ -49,16 +49,14 @@ public class pjselect_choosePlayer_button : MonoBehaviour{
 	public void OnMouseUpAsButton(){
 		if(first){
 			PlayerPrefs.SetString("player", "player1");
-			jug = (GameObject)Instantiate (Resources.Load ("player1"));
+			//jug = (GameObject)Instantiate (Resources.Load ("player1"));
 		}else if(second){
 			PlayerPrefs.SetString("player", "player2");
-			jug = (GameObject)Instantiate (Resources.Load ("player2"));
+			//jug = (GameObject)Instantiate (Resources.Load ("player2"));
 		}else if(third){
 			PlayerPrefs.SetString("player", "player3");
-			jug = (GameObject)Instantiate (Resources.Load ("player3"));
+			//jug = (GameObject)Instantiate (Resources.Load ("player3"));
 		}
-		if(jug != null){
-			Application.LoadLevel (2); //Load the game (next scene)
-		}
+		Application.LoadLevel (2); //Load the game (next scene)
 	}
 }

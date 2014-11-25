@@ -8,42 +8,52 @@ using System.Collections.Generic;
 public class CameraMovement : MonoBehaviour
 {
 	
-		private Vector3 posCamera = new Vector3 (9, 25, 9);
+		public Vector3 posCamera = new Vector3 (9, 25, 9);
 		public float distanciaMin = 30f;
 		public float distanciaMax = 80.0f;
 
 
-		private Transform player;
-		private Vector3 relCameraPos;
-		private float relCameraPosMag;
-		private Vector3 newPos;
-		private float zoomSpeed = 4.0f;
-		private float distancia, distanciaAnt = 0;
+		public GameObject playerGo;
+		public Transform player;
+		public Vector3 relCameraPos;
+		public float relCameraPosMag;
+		public Vector3 newPos;
+		public float zoomSpeed = 4.0f;
+		public float distancia, distanciaAnt = 0;
 		public float smooth = 1.5f;         // suavitat de moviment de la camera
 		private List<GameObject> amagats;
 		private Vector3 firstMovement;
 		
 		void Awake ()
 		{
-		
-				player = GameObject.FindGameObjectWithTag ("Player").transform;
+			updatePlayerGo();
+		}
+
+	void updatePlayerGo() {
+		if ( player == null ) {
+			playerGo = GameObject.FindGameObjectWithTag ("Player");
+			if ( playerGo != null ) {
+				player = playerGo.transform;
 				amagats = new List<GameObject> ();
-						
+				
 				firstMovement = player.transform.position;
 				transform.position = posCamera;
 				transform.LookAt (player.position);
-
-
+				
+				
 				relCameraPos = transform.position - player.position;
 				relCameraPosMag = relCameraPos.magnitude; //- 0.5f;
-
-
-
-		
+			}
 		}
+	}
 	
 		void Update ()
 		{
+			updatePlayerGo();
+			if ( playerGo == null ) {
+				return;
+			}
+
 			if (Mathf.Abs(player.transform.position.x - firstMovement[0]) > 2 && Mathf.Abs(player.transform.position.z - firstMovement[2]) > 3) {
 						Vector3 standardPos = player.position + relCameraPos;
 		
@@ -126,6 +136,7 @@ public class CameraMovement : MonoBehaviour
 
 		bool changeAlpha (GameObject obj)
 		{
+			if ( obj != null ) {
 				Vector3 posObj = obj.transform.position;
 
 				if ((posObj [0] < transform.position.x) || (posObj [0] > player.transform.position.x) && (posObj [2] < transform.position.z) || (posObj [2] > player.transform.position.z)) {
@@ -138,7 +149,9 @@ public class CameraMovement : MonoBehaviour
 						
 						return false;
 				}
-
+			} else {
+				return true;
+			}
 		}
 
 }
