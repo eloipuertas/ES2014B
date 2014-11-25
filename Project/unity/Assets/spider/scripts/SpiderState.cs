@@ -8,7 +8,7 @@ public class SpiderState : AbstractEntity {
 	public Vector3 destination;
 	public float timecost_perAction;
 	public float timeCostDivisor = 2;
-
+	
 	private PNJMusicManager PNJAudio;
 	private CharacterController characterController;
 	private Animator animator;
@@ -20,7 +20,7 @@ public class SpiderState : AbstractEntity {
 		animator = GetComponent<Animator>();
 		
 		characterController.radius = 2.5f;
-
+		
 		if (STR == 0) setSTR (6);
 		else if (STR < 0) setSTR (1);
 		else if (STR > 18) setSTR (18);
@@ -32,40 +32,39 @@ public class SpiderState : AbstractEntity {
 		else if (CON > 18) setCON (18);
 		if (INT == 0) setINT (6);
 		else if (INT < 0) setINT (1);
-
+		
 		if (HP == 0) setHP (Mathf.RoundToInt (((float)CON/18) * 500));
-
+		
 		if (MAXHP == 0) setMAXHP (HP);
 		if (FOR == 0) setFOR (Mathf.RoundToInt ((float) CON * 0.25f));
 		if (REF == 0) setREF (Mathf.RoundToInt ((float) DEX * 0.5f));
 		if (ARM == 0) setARM (FOR+REF);
-
+		
 		if (MP == 0) setMP (Mathf.RoundToInt (((float)INT/18) * 500));
 		if (MAXMP == 0) setMAXMP (MP);
 		if (DMG == 0) setDMG (Mathf.RoundToInt ((float) STR * 1f));
-
+		
 		if (timecost_perAction == 0) timecost_perAction = 1/((float)DEX/18 * 5);
-
-		setDestination(transform.position.x,transform.position.y,transform.position.z);
+		
 		InvokeRepeating ("TimeBasedUpdate", 0, 0.2f);
 	}
-
+	
 	private void TimeBasedUpdate(){
 		if (timeForNextAction > 0.0) timeForNextAction = timeForNextAction - 0.2f;
 		if (MP < MAXMP) MP = MP + 1;
 	}
-
+	
 	void Update(){
-		if(this.isAlive() && Time.timeScale>0){
+		if(this.isAlive() && Time.timeScale>0 && !Vector3.Equals(destination,new Vector3(0,0,0))){
 			move();
 		}
 	}
 	
 	public override void onAttackReceived (int baseDMG){
-		//Debug.Log("SpiderState: onAttackReceived");
+		Debug.Log("SpiderState: onAttackReceived");
 		int damage = Mathf.RoundToInt((1-((float)ARM / 15 * 0.75f))*baseDMG);
-		//Debug.Log("spider_baseDMG: " + baseDMG);
-		//Debug.Log("spider_damage: " + damage);
+		Debug.Log("spider_baseDMG: " + baseDMG);
+		Debug.Log("spider_damage: " + damage);
 		animator.SetBool("walk_enabled",false);
 		animator.SetBool("attack_enabled",false);
 		animator.SetBool("receive_attack_enabled",true);
@@ -113,7 +112,7 @@ public class SpiderState : AbstractEntity {
 	
 	// THROW PROJECTILE
 	public void throwProj(AbstractEntity enemy,Vector3 enemyPos, int manacost){
-			
+		
 		if (MP > manacost) {
 			this.lookAt (enemyPos);
 			MP = MP - manacost;
@@ -171,7 +170,7 @@ public class SpiderState : AbstractEntity {
 	public void destroyWithDelay(float delay){
 		Invoke ("destroyObject",delay);
 	}
-	void destroyObject(){
+	public void destroyObject(){
 		Destroy(transform.gameObject);
 	}
 }

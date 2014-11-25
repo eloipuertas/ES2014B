@@ -34,7 +34,7 @@ public class HealthManBarNPC:MonoBehaviour{
 	}
 	
 	void Update(){
-		if ( myState.isAlive() && ai.currentAction != SpiderAI.PASSIVE ) {
+		if ( isReady() ) {
 			// TODO ?
 			set(myState.getMAXHP(),myState.getMAXMP(),myState.getHP(),myState.getMP(),leftX,topY,width,height);
 			if ( Camera.main != null ) {
@@ -46,7 +46,7 @@ public class HealthManBarNPC:MonoBehaviour{
 	}
 	
 	void OnGUI(){
-		if ( myState.isAlive() ) {
+		if ( isReady() ) {
 			// BG container
 			GUI.DrawTexture(new Rect(this.leftX,this.topY,this.width,this.height),bgBarTexture);
 
@@ -56,6 +56,10 @@ public class HealthManBarNPC:MonoBehaviour{
 			// mana FG container
 			GUI.DrawTexture(new Rect(this.leftX,this.topY+this.height*0.5f,(this.currentMana/this.maxValueMana)*this.width,this.height*0.5f),manaBarFGTexture);
 		}
+	}
+	
+	bool isReady(){
+		return myState.isAlive() && ai.currentAction != SpiderAI.PASSIVE;
 	}
 	
 	public void setHealth(float health){

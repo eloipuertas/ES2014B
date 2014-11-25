@@ -112,27 +112,33 @@ public class BasicSpiderAI : SpiderAI {
 								if ((hit.point-target.position).magnitude<1){ //TODO to change when the main character fixes their tag
 									currentAction = MOVING;
 									checkPath ();
-									if (Vector3.Equals(path.corners[current_corner],transform.position)){
-										current_corner++;
+									if ( current_corner < path.corners.Length ) {
+										if (Vector3.Equals(path.corners[current_corner],transform.position)){
+											current_corner++;
+										}
+										Vector3 dest = path.corners[current_corner];
+										myState.setDestination (dest.x, dest.y, dest.z);
 									}
-									Vector3 dest = path.corners[current_corner];
-									myState.setDestination (dest.x, dest.y, dest.z);
 								}
 							}
 						}else if (currentAction == ATTACKING){
 							currentAction = MOVING;
 							checkPath ();
-							if ( current_corner < path.corners.Length && Vector3.Equals(path.corners[current_corner],transform.position) ){
-								current_corner++;
+							if ( current_corner < path.corners.Length ) {
+								if ( Vector3.Equals(path.corners[current_corner],transform.position) ){
+									current_corner++;
+								}
+								Vector3 dest = path.corners[current_corner];
+								myState.setDestination (dest.x, dest.y, dest.z);
 							}
-							Vector3 dest = path.corners[current_corner];
-							myState.setDestination (dest.x, dest.y, dest.z);
 						}else{
-							if ( current_corner < path.corners.Length && Vector3.Equals(path.corners[current_corner],transform.position) ){
-								current_corner++;
+							if ( current_corner < path.corners.Length ) {
+								if ( Vector3.Equals(path.corners[current_corner],transform.position) ){
+									current_corner++;
+								}
+								Vector3 dest = path.corners[current_corner];
+								myState.setDestination (dest.x, dest.y, dest.z);
 							}
-							Vector3 dest = path.corners[current_corner];
-							myState.setDestination (dest.x, dest.y, dest.z);
 						}
 					}
 				}else if (currentAction != PASSIVE){

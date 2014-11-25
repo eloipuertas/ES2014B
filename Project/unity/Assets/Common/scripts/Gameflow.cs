@@ -5,6 +5,7 @@ public class Gameflow : MonoBehaviour {
 	private Transform[] spawnPoints;
 	public float minTimeBetweenSpawns = 10;
 	public float maxTimeBetweenSpawns = 20;
+	public int maxSpidersSpawned = 0;
 
 	private AbstractEntity playerEntity;
 	private int phase;
@@ -61,10 +62,24 @@ public class Gameflow : MonoBehaviour {
 				}
 				if (spidersCleared){
 					phase = TROLL_FIGHT;
-					spawnSpiders ();
+
+					for (int i=0;i<enemies.Length;i++){
+						enemy = enemies[i];
+						enemyEntity = enemy.GetComponent<AbstractEntity>();
+						if (enemyEntity!=null){
+							if (!enemyEntity.isAlive ()){
+								enemy.GetComponent<SpiderState>().destroyObject();
+							}
+						}
+					}
+
+					//spawnSpiders ();
+					Invoke ("spawnSpiders",3f);
 					//TODO enable door
 					//TODO spawn troll
 				}
+			}
+			/* // Disabled to allow no more horde-massive-spiderduspawning shit-storm-scale
 			} else if (phase == TROLL_FIGHT) {
 				SpiderState spiderstate;
 				//TrollState trollstate;
@@ -82,19 +97,23 @@ public class Gameflow : MonoBehaviour {
 						}
 					}
 				}
-			}
+			} */
 		}else if (phase != GAME_OVER){
 			phase = GAME_OVER;
 		}
 	}
 	private void spawnSpiders(){
+		Debug.Log ("Gameflow: spawnSpiders");
+		int curr_enemies = GameObject.FindGameObjectsWithTag ("Enemy").Length;
 		for (int i=0; i<spawnPoints.Length; i++) {
-			if (!Physics.CheckSphere (spawnPoints[i].position, 0.5f)) {
-				Object prefab = Resources.LoadAssetAtPath("Assets/spider/prefabs/base_spider.prefab", typeof(GameObject));
+			if (!Physics.CheckSphere (spawnPoints[i].position, 0.5f) && curr_enemies < maxSpidersSpawned) {
+				Debug.Log ("Gameflow: Spawning spider");
+
+				Object prefab = Resources.LoadAssetAtPath("Assets/spider/prefabs/black_spider.prefab", typeof(GameObject));
 				GameObject clone = Instantiate(prefab, Vector3.zero, Quaternion.identity) as GameObject;
 				clone.transform.position = spawnPoints[i].position;
-				//clone.GetComponent<SpiderState> ().enabled = true;
-				//clone.GetComponent<BasicSpiderAI> ().enabled = true;
+				clone.GetComponent<SpiderState> ().enabled = true;
+				clone.GetComponent<BasicSpiderAI> ().enabled = true;
 			} 
 		}
 	}
