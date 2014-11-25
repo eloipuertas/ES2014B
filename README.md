@@ -7,4 +7,4 @@ Universitat de Barcelona Software Engineering Class B VideoGame Project
 
 **Poseu-lo en el vostre usuari!!!!!!**
 
-Sprint: '4' --> terreno
+Sprint: '5'
