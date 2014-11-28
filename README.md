@@ -3,8 +3,4 @@
 
 Universitat de Barcelona Software Engineering Class B VideoGame Project
 
-**No pugeu l'exercici de l'sprint 0 aquí!!!!!**
-
-**Poseu-lo en el vostre usuari!!!!!!**
-
-Sprint: '4' --> terreno
+Sprint: '5' --> mejora del terreno
