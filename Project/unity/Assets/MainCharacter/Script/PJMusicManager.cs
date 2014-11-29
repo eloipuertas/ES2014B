@@ -7,6 +7,9 @@ public class PJMusicManager : MonoBehaviour
 {
 	public AudioClip attackOK;
 	public AudioClip[] attackFAIL;
+
+	public AudioClip girl_hurt;
+	public AudioClip[] man_hurt;
 	
 	public AudioClip[] walkSounds;
 	
@@ -25,6 +28,20 @@ public class PJMusicManager : MonoBehaviour
 	{
 		audio.loop = false;
 		audio.clip = attackFAIL[Random.Range(0, attackFAIL.Length)];
+		audio.Play ();
+	}
+
+	public void PlayGirlHurt()
+	{
+		audio.loop = false;
+		audio.clip = girl_hurt;
+		audio.Play ();
+	}
+
+	public void PlayManHurt()
+	{
+		audio.loop = false;
+		audio.clip = man_hurt[Random.Range(0, man_hurt.Length)];;
 		audio.Play ();
 	}
 	
