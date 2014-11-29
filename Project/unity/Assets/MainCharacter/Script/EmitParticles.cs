@@ -2,7 +2,7 @@
 using System.Collections;
 
 [ RequireComponent( typeof( ParticleSystem ) ) ]
-
+[ RequireComponent( typeof( AudioSource ) ) ]
 
 public class EmitParticles : MonoBehaviour 
 {
