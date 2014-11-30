@@ -14,6 +14,8 @@ public class PJMusicManager : MonoBehaviour
 	public AudioClip[] walkSounds;
 	
 	public AudioClip killed;
+
+	public AudioClip potion;
 	
 	public void PlayAttackOK()
 	{
@@ -68,6 +70,15 @@ public class PJMusicManager : MonoBehaviour
 		if (audio.clip == walkSounds [0] || audio.clip == walkSounds [1] || audio.clip == walkSounds [2] || audio.clip == walkSounds [3]) {
 			audio.loop = false;
 			audio.Stop ();	
+		}
+	}
+	
+	public void DrinkPotion()
+	{
+		if (!audio.isPlaying) {
+			audio.loop = false;
+			audio.clip = potion;
+			audio.Play ();	
 		}
 	}
 	
