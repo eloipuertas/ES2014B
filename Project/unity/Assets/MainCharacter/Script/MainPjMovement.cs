@@ -20,6 +20,9 @@
 	public bool paused;
 	public float freeze;
 
+	private EmitParticles Magia;
+	private BitParticles ParticulesSang;
+
 	public int getSelectedSpell(){
 		return nextMagicAttack-1;
 	}
@@ -72,18 +75,25 @@
 		targetPosition = transform.position;
 		hit = new RaycastHit();
 		nextMagicAttack = 0;
+
+		Magia = GameObject.FindObjectOfType(typeof(EmitParticles)) as EmitParticles;
+		ParticulesSang = GameObject.FindObjectOfType(typeof(BitParticles)) as BitParticles;
 	}
 	public override void onAttackReceived(int dmg){
 		//Debug.Log("MainPjMovement: onAttackReceived");
 		//Debug.Log ("pj dmg: " + dmg);
 		this.setHP (this.getHP () - dmg+this.getFOR());
 
+		ParticulesSang.SpiderBit (transform.position);
 		//si s'ha mort, cridar escena de morir
 		if (this.getHP () <= 0) {
 			//Application.LoadLevel();
-			PJAudio.PlayKilled();
+			PJAudio.PlayKilled ();
 			anim.SetBool ("Die", true);				
+		} else {
+			PJAudio.PlayHurt();
 		}
+
 	}
 	//Update is called once per frame
 	void Update () {
@@ -93,13 +103,13 @@
 						if (freeze <= 0.0) {
 								//Magia de Foc apretant la tecla 1
 								if (Input.GetKeyDown (KeyCode.Alpha1)) {
-										Debug.Log ("Apretat 1");
-										nextMagicAttack = 1;
-
+									Debug.Log ("Apretat 1");
+									nextMagicAttack = 1;
+									
 								}
 
 								if (Input.GetMouseButtonDown (0)) {
-										if (Physics.Raycast (Camera.main.ScreenPointToRay (Input.mousePosition), out hit, 1000.0f, ~(1 << 8))) {
+										if (Physics.Raycast (Camera.main.ScreenPointToRay (Input.mousePosition), out hit, float.PositiveInfinity, ~(1 << 8))) {
 												if (hit.transform) {
 														targetPosition = hit.point;
 														targetPosition.y = 0;
@@ -115,7 +125,7 @@
 
 								//RaycastHit hit; // cast a ray from mouse pointer: 
 								Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition); // if enemy hit... 
-								if (Physics.Raycast (ray, out hit) && hit.transform.CompareTag ("Enemy") && Input.GetMouseButtonDown (1)) { 
+								if (Physics.Raycast (ray, out hit, float.PositiveInfinity, ~(1 << 8)) && hit.transform.CompareTag ("Enemy") && Input.GetMouseButtonDown (1)) { 
 										//distancia entre el personatge principal i l'enemic
 										//es calcula en metres
 										float distancia = hit.distance;
@@ -123,7 +133,7 @@
 
 										//obtinc la aranya
 										AbstractEntity Aranya = (AbstractEntity) hit.collider.GetComponent ("AbstractEntity");
-
+										
 										switch (nextMagicAttack) {
 										case 1:
 
@@ -134,6 +144,7 @@
 														if (this.substractManaSpell (this.getMAXMP())) {
 																//so de llencar la magia de foc
 																//animacio de la magia
+																Magia.throwParticle(this.gameObject, hit.point);
 																Aranya.onAttackReceived (Random.Range (100, 200));
 														} else {
 																//

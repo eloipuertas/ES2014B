@@ -6,14 +6,13 @@ using System.Collections;
 public class BitParticles : MonoBehaviour 
 {
 
-	public void SpiderBit ( GameObject spider ) 
+	public void SpiderBit ( Vector3 pos ) 
 	{
 		// Definim origen de la particula
-		transform.position = spider.transform.position;
-		transform.rotation = spider.transform.rotation;
+		transform.position = pos + new Vector3(0,7,0);
+		transform.LookAt (pos);
 
-		if(!particleSystem.isPlaying)
-			particleSystem.Emit ( 5 );
+		particleSystem.Emit ( 15 );
 
 	}
 	

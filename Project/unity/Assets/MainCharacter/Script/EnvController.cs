@@ -3,9 +3,12 @@ using System.Collections;
 
 public class EnvController : MonoBehaviour {
 
+	private PJMusicManager PJAudio;
+
 	// Use this for initialization
 	void Start () {
 		//Debug.Log ("Sesta carregant EnvController al papertext");
+		PJAudio = GameObject.FindObjectOfType(typeof(PJMusicManager)) as PJMusicManager;
 	}
 	
 	// Update is called once per frame
@@ -38,10 +41,12 @@ public class EnvController : MonoBehaviour {
 		GameObject go = GameObject.FindGameObjectWithTag ("Player");
 		MainPjMovement target = go.GetComponent ("MainPjMovement") as MainPjMovement;
 		if (hit.gameObject.tag == "BigHealPotion") {
+			PJAudio.DrinkPotion();
 			target.increaseHeal(200);
 			Destroy(hit.gameObject);
 		}
 		if (hit.gameObject.tag == "LittleHealPotion") {
+			PJAudio.DrinkPotion();
 			target.increaseHeal(100);
 			Destroy(hit.gameObject);
 		}
