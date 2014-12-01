@@ -10,7 +10,7 @@ public class EmitParticles : MonoBehaviour
 
 	private Vector3 vel = new Vector3();
 
-	public int velocitat = 70;
+	public int velocitat = 2;
 
 	public float siz = 3;
 	public float lif = 5;
@@ -21,36 +21,50 @@ public class EmitParticles : MonoBehaviour
 	
 	public AudioClip fire_ball;
 
-	public void throwParticle ( GameObject player, GameObject target ) 
+	public void throwParticle ( GameObject player, Vector3 target ) 
 	{
 		// Definim origen de la particula
-		transform.position = player.transform.position;
-		transform.rotation = player.transform.rotation;
+		transform.position = player.transform.position + pos;
+		//transform.rotation = player.transform.rotation;
+		transform.LookAt (target);
+		//transform.localScale.z = target.magnitude;
 
 		// Definim la velocitat ( direccio de la bola ) a partir del target
 
-		vel [0] = (target.transform.position.x - player.transform.position.x) * velocitat;
-		vel [1] = (target.transform.position.y - player.transform.position.y) * velocitat;
-		vel [2] = (target.transform.position.z - player.transform.position.z) * velocitat;
+		//vel [0] =  velocitat;
+		//vel [1] =  velocitat;
+		//vel [2] = velocitat;
+
+
+		//vel = Vector3.Lerp(player.transform.position, target.transform.position, 0.1f);
 		
 		// Definim vector director
 
-		velx = (target.transform.position.x - player.transform.position.x);
+		/*velx = (target.transform.position.x - player.transform.position.x);
 		vely = (target.transform.position.y - player.transform.position.y);
-		velz = (target.transform.position.z - player.transform.position.z);
+		velz = (target.transform.position.z - player.transform.position.z);*/
+		//vel = target - player.transform.position;
 
 		// Normalitzem vector director i donem velocitat
 
-		normal = Mathf.Sqrt( velx *velx +vely *vely +velz *velz );
+		//normal = Mathf.Sqrt( velx *velx +vely *vely +velz *velz );
 
-		velx = velx /normal * velocitat;
+		/*
+		 * var distance = heading.magnitude;
+			var direction = heading / distance;
+		 */
+		//float distance = vel.magnitude;
+		//vel = (vel / distance) * velocitat;
+
+		/*velx = velx /normal * velocitat;
 		vely = vely /normal * velocitat;
 		velz = velz /normal * velocitat;
 
-		vel = new Vector3 ( velx, vely, velz );
+		vel = new Vector3 ( velx, vely, velz );*/
+
 		
 		if(!particleSystem.isPlaying)
-			particleSystem.Emit ( pos, vel, siz, lif, col );
+			particleSystem.Emit (1);
 		
 		audio.clip = fire_ball;
 		audio.Play ();

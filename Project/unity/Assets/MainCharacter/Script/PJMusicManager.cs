@@ -40,10 +40,15 @@ public class PJMusicManager : MonoBehaviour
 		audio.Play ();
 	}
 
-	public void PlayManHurt()
+	public void PlayHurt()
 	{
 		audio.loop = false;
-		audio.clip = man_hurt[Random.Range(0, man_hurt.Length)];;
+		string player = PlayerPrefs.GetString ("player");
+		if (player.Equals("player1")) {
+			audio.clip = girl_hurt;
+		} else {
+			audio.clip = man_hurt[Random.Range(0, man_hurt.Length)];
+		}
 		audio.Play ();
 	}
 	
@@ -75,11 +80,9 @@ public class PJMusicManager : MonoBehaviour
 	
 	public void DrinkPotion()
 	{
-		if (!audio.isPlaying) {
-			audio.loop = false;
-			audio.clip = potion;
-			audio.Play ();	
-		}
+		audio.loop = false;
+		audio.clip = potion;
+		audio.Play ();	
 	}
 	
 }
