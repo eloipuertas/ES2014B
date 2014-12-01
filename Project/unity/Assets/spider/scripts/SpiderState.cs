@@ -129,6 +129,7 @@ public class SpiderState : AbstractEntity {
 			Object prefab = Resources.LoadAssetAtPath("Assets/SpiderProjectile/Prefab/SpiderWeb.prefab", typeof(GameObject));
 			GameObject projectile = Instantiate(prefab, Vector3.zero, Quaternion.identity) as GameObject;
 			projectile.transform.position = new Vector3(transform.position.x,2,transform.position.z);
+			projectile.transform.rotation = projectile.transform.rotation * Quaternion.Euler(90, 0, 0); // Rotate x axis 90 degrees
 			projectile.AddComponent<Web>();
 			Rigidbody rgproj = projectile.AddComponent<Rigidbody>();
 			rgproj.velocity = (enemyPos-projectile.transform.position).normalized*projectileSpeed;
