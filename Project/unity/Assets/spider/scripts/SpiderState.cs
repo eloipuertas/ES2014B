@@ -116,9 +116,11 @@ public class SpiderState : AbstractEntity {
 		if (MP > manacost) {
 			this.lookAt (enemyPos);
 			MP = MP - manacost;
-			GameObject projectile = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+			//GameObject projectile = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+			Object prefab = Resources.LoadAssetAtPath("Assets/SpiderProjectile/Prefab/SpiderWeb.prefab", typeof(GameObject));
+			GameObject projectile = Instantiate(prefab, Vector3.zero, Quaternion.identity) as GameObject;
 			projectile.transform.position = new Vector3(transform.position.x,2,transform.position.z);
-			projectile.transform.localScale = new Vector3(0.5f,0.5f,0.5f);
+			//projectile.transform.localScale = new Vector3(0.25f,0.25f,0.25f);
 			projectile.AddComponent<Web>();
 			Rigidbody rgproj = projectile.AddComponent<Rigidbody>();
 			rgproj.velocity = (enemyPos-projectile.transform.position).normalized*10;
