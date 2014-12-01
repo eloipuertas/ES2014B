@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class main_title : MonoBehaviour {
 	
@@ -24,7 +25,7 @@ public class main_title : MonoBehaviour {
 		guiTexture.color = color;
 	}
 	
-	void Update(){
+	void OnGUI(){
 		delayToAppear = Mathf.Max(0,delayToAppear-Time.deltaTime);
 		if(delayToAppear <= 0){
 			color = guiTexture.color;
