@@ -5,7 +5,7 @@ public class Gameflow : MonoBehaviour {
 	private Transform[] spawnPoints;
 	public float minTimeBetweenSpawns = 10;
 	public float maxTimeBetweenSpawns = 20;
-	public int maxSpidersSpawned = 0;
+	public int maxEnemies = 0;
 
 	private AbstractEntity playerEntity;
 	private int phase;
@@ -17,7 +17,7 @@ public class Gameflow : MonoBehaviour {
 	void Awake() {
 		phase = INITIAL_PHASE;
 		
-		Debug.Log("PlayerPrefs.GetString(\"player\"): " + PlayerPrefs.GetString("player"));
+		//Debug.Log("PlayerPrefs.GetString(\"player\"): " + PlayerPrefs.GetString("player"));
 
 		string playerTemplate = PlayerPrefs.GetString("player");
 		if ( playerTemplate != null ) {
@@ -42,7 +42,6 @@ public class Gameflow : MonoBehaviour {
 	}
 
 	void phase_control(){
-
 		if (playerEntity.isAlive ()) {
 			GameObject[] enemies = GameObject.FindGameObjectsWithTag ("Enemy");
 			GameObject enemy;
@@ -73,13 +72,10 @@ public class Gameflow : MonoBehaviour {
 						}
 					}
 
-					//spawnSpiders ();
-					Invoke ("spawnSpiders",3f);
+					Invoke ("spawnSpiders",2f);
 					//TODO enable door
 					//TODO spawn troll
 				}
-			}
-			/* // Disabled to allow no more horde-massive-spiderduspawning shit-storm-scale
 			} else if (phase == TROLL_FIGHT) {
 				SpiderState spiderstate;
 				//TrollState trollstate;
@@ -91,29 +87,33 @@ public class Gameflow : MonoBehaviour {
 							spiderstate = enemy.GetComponent<SpiderState>();
 							//trollstate = enemy.GetComponent<TrollState>();
 							if (spiderstate!=null){
-								spiderstate.destroyWithDelay(2.5f);
+								spiderstate.destroyWithDelay(2f);
 								Invoke ("spawnSpiders",2f);
 							}//else if trollstate!=null
+
 						}
 					}
 				}
-			} */
-		}else if (phase != GAME_OVER){
-			phase = GAME_OVER;
+			}else if (phase != GAME_OVER){
+				phase = GAME_OVER;
+			}
 		}
 	}
 	private void spawnSpiders(){
-		Debug.Log ("Gameflow: spawnSpiders");
+		//Debug.Log ("Gameflow: spawnSpiders");
 		int curr_enemies = GameObject.FindGameObjectsWithTag ("Enemy").Length;
 		for (int i=0; i<spawnPoints.Length; i++) {
-			if (!Physics.CheckSphere (spawnPoints[i].position, 0.5f) && curr_enemies < maxSpidersSpawned) {
-				Debug.Log ("Gameflow: Spawning spider");
+			if (!Physics.CheckSphere (spawnPoints[i].position, 0.5f) && curr_enemies < maxEnemies) {
+				//Debug.Log ("Gameflow: Spawning spider");
 
 				Object prefab = Resources.LoadAssetAtPath("Assets/spider/prefabs/black_spider.prefab", typeof(GameObject));
 				GameObject clone = Instantiate(prefab, Vector3.zero, Quaternion.identity) as GameObject;
 				clone.transform.position = spawnPoints[i].position;
+				clone.transform.localScale = new Vector3(0.25f,0.25f,0.25f);
+				clone.GetComponent<NavMeshAgent> ().enabled = true;
 				clone.GetComponent<SpiderState> ().enabled = true;
 				clone.GetComponent<BasicSpiderAI> ().enabled = true;
+				curr_enemies++;
 			} 
 		}
 	}
