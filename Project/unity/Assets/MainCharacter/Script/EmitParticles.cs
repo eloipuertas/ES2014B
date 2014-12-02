@@ -25,44 +25,8 @@ public class EmitParticles : MonoBehaviour
 	{
 		// Definim origen de la particula
 		transform.position = player.transform.position + pos;
-		//transform.rotation = player.transform.rotation;
 		transform.LookAt (target);
-		//transform.localScale.z = target.magnitude;
 
-		// Definim la velocitat ( direccio de la bola ) a partir del target
-
-		//vel [0] =  velocitat;
-		//vel [1] =  velocitat;
-		//vel [2] = velocitat;
-
-
-		//vel = Vector3.Lerp(player.transform.position, target.transform.position, 0.1f);
-		
-		// Definim vector director
-
-		/*velx = (target.transform.position.x - player.transform.position.x);
-		vely = (target.transform.position.y - player.transform.position.y);
-		velz = (target.transform.position.z - player.transform.position.z);*/
-		//vel = target - player.transform.position;
-
-		// Normalitzem vector director i donem velocitat
-
-		//normal = Mathf.Sqrt( velx *velx +vely *vely +velz *velz );
-
-		/*
-		 * var distance = heading.magnitude;
-			var direction = heading / distance;
-		 */
-		//float distance = vel.magnitude;
-		//vel = (vel / distance) * velocitat;
-
-		/*velx = velx /normal * velocitat;
-		vely = vely /normal * velocitat;
-		velz = velz /normal * velocitat;
-
-		vel = new Vector3 ( velx, vely, velz );*/
-
-		
 		if(!particleSystem.isPlaying)
 			particleSystem.Emit (1);
 		

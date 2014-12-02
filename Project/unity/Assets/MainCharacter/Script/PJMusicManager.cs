@@ -33,13 +33,6 @@ public class PJMusicManager : MonoBehaviour
 		audio.Play ();
 	}
 
-	public void PlayGirlHurt()
-	{
-		audio.loop = false;
-		audio.clip = girl_hurt;
-		audio.Play ();
-	}
-
 	public void PlayHurt()
 	{
 		audio.loop = false;
