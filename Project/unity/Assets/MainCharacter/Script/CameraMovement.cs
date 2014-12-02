@@ -10,7 +10,7 @@ public class CameraMovement : MonoBehaviour
 	
 		public Vector3 posCamera = new Vector3 (9, 25, 9);
 		public float distanciaMin = 30f;
-		public float distanciaMax = 80.0f;
+		public float distanciaMax = 50f;
 		public int marge = 20;
 		public GameObject playerGo;
 		public Transform player;
@@ -113,7 +113,7 @@ public class CameraMovement : MonoBehaviour
 				Vector4 color = new Vector4 (0, 0, 0, 0);
 			
 				if (Physics.Raycast (checkPos, player.position - checkPos, out hit, relCameraPosMag)) {
-						//Debug.Log("objecte que xoca = "+hit.transform.gameObject.name +" Te renderer?= "+hit.transform.gameObject.renderer);
+						Debug.Log("objecte que xoca = "+hit.transform.gameObject.name +" Te renderer?= "+hit.transform.gameObject.renderer);
 						if (hit.transform != player) {
 								if (hit.transform.gameObject.renderer != null) {
 										//if (hit.transform.gameObject.layer == 8) {
