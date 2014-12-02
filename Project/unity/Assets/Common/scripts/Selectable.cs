@@ -15,7 +15,7 @@ public class Selectable : MonoBehaviour {
 		childRenderer = GetComponentInChildren<Renderer>();
 	}
 	
-	void Update ()
+	void LateUpdate ()
 	{
 		RaycastHit hit;
 

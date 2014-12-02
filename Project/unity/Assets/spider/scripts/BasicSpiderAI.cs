@@ -30,10 +30,10 @@ public class BasicSpiderAI : SpiderAI {
 		}
 		
 		path = new NavMeshPath ();
-		if ( target != null ) {
+		/* if ( target != null ) {
 			agent.CalculatePath(target.position, path);
 			lastTargetPos = target.position;
-		}
+		} */
 		current_corner = 1;
 		InvokeRepeating ("checkPath", 0, 0.25f);
 	}
