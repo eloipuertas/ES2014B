@@ -109,7 +109,6 @@ public class Gameflow : MonoBehaviour {
 				Object prefab = Resources.LoadAssetAtPath("Assets/spider/prefabs/black_spider.prefab", typeof(GameObject));
 				GameObject clone = Instantiate(prefab, Vector3.zero, Quaternion.identity) as GameObject;
 				clone.transform.position = spawnPoints[i].position;
-				clone.transform.localScale = new Vector3(0.25f,0.25f,0.25f);
 				clone.GetComponent<NavMeshAgent> ().enabled = true;
 				clone.GetComponent<SpiderState> ().enabled = true;
 				clone.GetComponent<BasicSpiderAI> ().enabled = true;
