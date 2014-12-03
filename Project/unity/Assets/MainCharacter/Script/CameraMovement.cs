@@ -10,14 +10,14 @@ public class CameraMovement : MonoBehaviour
 	
 		public Vector3 posCamera = new Vector3 (9, 25, 9);
 		public float distanciaMin = 30f;
-		public float distanciaMax = 50f;
+		public float distanciaMax = 40f;
 		public int marge = 20;
 		public GameObject playerGo;
 		public Transform player;
 		public Vector3 relCameraPos;
 		public float relCameraPosMag;
 		public Vector3 newPos;
-		public float zoomSpeed = 4.0f;
+		public float zoomSpeed = 25f;
 		public float distancia, distanciaAnt = 0;
 		public float smooth = 1.5f;         // suavitat de moviment de la camera
 		private List<GameObject> amagats;
