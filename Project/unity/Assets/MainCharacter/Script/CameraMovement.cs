@@ -22,10 +22,12 @@ public class CameraMovement : MonoBehaviour
 		public float smooth = 1.5f;         // suavitat de moviment de la camera
 		private List<GameObject> amagats;
 		private Vector3 firstMovement;
+		private Vector3 anterior;
 		
 		void Awake ()
 		{
 				updatePlayerGo ();
+				
 		}
 
 		void updatePlayerGo ()
@@ -35,7 +37,7 @@ public class CameraMovement : MonoBehaviour
 						if (playerGo != null) {
 								player = playerGo.transform;
 								amagats = new List<GameObject> ();
-				
+								anterior = player.position;	
 								firstMovement = player.transform.position;
 								transform.position = posCamera;
 								transform.LookAt (player.position);
@@ -74,23 +76,22 @@ public class CameraMovement : MonoBehaviour
 		
 						checkPoints [4] = abovePos;
 		
-
-						for (int i = 0; i < checkPoints.Length; i++) {
-								//si la camera pot veure al player parem
-								ViewingPosCheck (checkPoints [i]);
-								/*if (ViewingPosCheck (checkPoints [i]))
-				
-										break;*/
-						}
-						ViewingPosCheck (transform.position);
-						bool enmig;
-						for (int j = 0; j < amagats.Count; j++) {
+						if (player.position != anterior) {
+								anterior = player.position;
+								for (int i = 0; i < checkPoints.Length; i++) {
+										ViewingPosCheck (checkPoints [i]);
 						
-								enmig = changeAlpha (amagats [j]);
-								if (enmig)
-										amagats.Remove (amagats [j]);
+								}
+								ViewingPosCheck (transform.position);
+								bool enmig;
+								for (int j = 0; j < amagats.Count; j++) {
+						
+										enmig = changeAlpha (amagats [j]);
+										if (enmig)
+												amagats.Remove (amagats [j]);
 								
 						
+								}
 						}
 				
 		
@@ -110,25 +111,35 @@ public class CameraMovement : MonoBehaviour
 		void ViewingPosCheck (Vector3 checkPos)
 		{
 				RaycastHit hit;
-				Vector4 color = new Vector4 (0, 0, 0, 0);
-			
+				
+				Transform pare = null;
 				if (Physics.Raycast (checkPos, player.position - checkPos, out hit, relCameraPosMag)) {
-						Debug.Log("objecte que xoca = "+hit.transform.gameObject.name +" Te renderer?= "+hit.transform.gameObject.renderer);
+						
+						
 						if (hit.transform != player) {
-								if (hit.transform.gameObject.renderer != null) {
-										//if (hit.transform.gameObject.layer == 8) {
-										//hit.transform.gameObject.renderer.enabled = false;
-						
-										color = hit.transform.gameObject.renderer.material.color;
-						
-										hit.transform.gameObject.renderer.material.shader = Shader.Find ("Transparent/Diffuse");
-						
-										color [3] = 0.5f;
-						
-										hit.transform.gameObject.renderer.material.color = color;
-						
-										amagats.Add (hit.transform.gameObject);
+								GameObject go = null;
+								
+								List<GameObject> jerarquia = new List<GameObject> ();
+								
+								if (hit.transform.gameObject.name.Contains ("ID")) {
+										pare = hit.transform.parent;
+										while (pare.parent != null && !pare.name.Contains("chaflan")) {
+												pare = pare.parent;
+												
+										}
+										go = pare.gameObject;
+										
+								} else {
+										go = hit.transform.gameObject;
+										pare = go.transform;
+										
 								}
+								
+								transparentar (pare.gameObject);
+								recorrerArbre (pare);
+					
+										
+								
 					
 						}
 				
@@ -136,15 +147,42 @@ public class CameraMovement : MonoBehaviour
 			
 		}
 
+		void recorrerArbre (Transform pare)
+		{
+				if (pare.childCount == 0)
+						return;
+			
+				for (int j = 0; j < pare.childCount; j++) {
+						Transform fill = pare.GetChild (j);
+						transparentar (fill.gameObject);
+						recorrerArbre (fill);
+				}
+		}
+
+		void transparentar (GameObject obj)
+		{
+				if (obj.renderer != null) {
+						Vector4 color = obj.renderer.material.color;
+		
+						obj.renderer.material.shader = Shader.Find ("Transparent/Diffuse");
+		
+						color [3] = 0.5f;
+		
+						obj.renderer.material.color = color;
+						
+						if (!amagats.Contains (obj))
+								amagats.Add (obj);
+				}
+		}
+
 		bool changeAlpha (GameObject obj)
 		{
 				if (obj != null) {
 						Vector3 posObj = obj.transform.position;
 
-
+						 
 						if ((transform.position.x - posObj [0]) > marge || (posObj [0] - player.transform.position.x) > marge && (transform.position.z - posObj [2]) > marge || (posObj [2] - player.transform.position.z) > marge) {
 								//no transparent
-						
 								obj.renderer.material.shader = Shader.Find ("Diffuse");
 						
 								return true;
