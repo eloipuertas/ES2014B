@@ -12,14 +12,31 @@ public class HealthManBarNPC:MonoBehaviour{
 	public float leftX=0,topY=0,width=100,height=25;
 		
 	public Texture2D bgBarTexture;
-	public Texture2D healthBarFGTexture;
-	public Texture2D manaBarFGTexture;
 	public Texture2D coverGlassFGTexture;
+
+	// animation
+	private float timeBetweenAnimation = 0.05f;
+	private float timeLeftAnimationChange = 0;
+	private bool animationHealthForward;
+	private bool animationManaForward;
+	private int animationHealthIndex;
+	private int animationManaIndex;
+	public List<Texture2D> healthBarFGTextures;
+	public List<Texture2D> manaBarFGTextures;
+
 	
 	void Awake(){
 		myState = this.gameObject.GetComponent<SpiderState>();
 		ai = this.gameObject.GetComponent<SpiderAI>();
 		set(myState.getMAXHP(),myState.getMAXMP(),myState.getHP(),myState.getMP(),leftX,topY,width,height);
+		
+		
+		// animation
+		timeLeftAnimationChange = timeBetweenAnimation;
+		animationHealthForward = true;
+		animationManaForward = true;
+		animationHealthIndex = 0;
+		animationManaIndex = 0;
 	}
 
 	public void set(float maxHealth,float maxMana,float currentHealth,float currentMana,
@@ -51,12 +68,49 @@ public class HealthManBarNPC:MonoBehaviour{
 			// BG container
 			GUI.DrawTexture(new Rect(this.leftX,this.topY,this.width,this.height),bgBarTexture);
 
+			// animation
+			timeLeftAnimationChange = Mathf.Max(0,timeLeftAnimationChange-Mathf.Abs(Time.deltaTime));
+			if(timeLeftAnimationChange <= 0){
+				timeLeftAnimationChange = timeBetweenAnimation;
+				if(animationHealthForward){
+					if(animationHealthIndex < healthBarFGTextures.Count-1){
+						animationHealthIndex++;
+					}else{
+						animationHealthIndex=healthBarFGTextures.Count-2;
+						animationHealthForward = false;
+					}
+				}else{
+					if(animationHealthIndex > 0){
+						animationHealthIndex--;
+					}else{
+						animationHealthIndex=1;
+						animationHealthForward = true;
+					}
+				}
+				if(animationManaForward){
+					if(animationManaIndex < manaBarFGTextures.Count-1){
+						animationManaIndex++;
+					}else{
+						animationManaIndex=manaBarFGTextures.Count-2;
+						animationManaForward = false;
+					}
+				}else{
+					if(animationManaIndex > 0){
+						animationManaIndex--;
+					}else{
+						animationManaIndex=1;
+						animationManaForward = true;
+					}
+				}
+			}
+
+
 			// health FG container
-			GUI.DrawTexture(new Rect(this.leftX,this.topY,(this.currentHealth/this.maxValueHealth)*this.width,this.height*0.5f),healthBarFGTexture);
+			GUI.DrawTexture(new Rect(this.leftX,this.topY,(this.currentHealth/this.maxValueHealth)*this.width,this.height*0.5f),healthBarFGTextures[animationHealthIndex]);
 			GUI.DrawTexture(new Rect(this.leftX,this.topY,this.width,this.height*0.5f),coverGlassFGTexture);
 
 			// mana FG container
-			GUI.DrawTexture(new Rect(this.leftX,this.topY+this.height*0.5f,(this.currentMana/this.maxValueMana)*this.width,this.height*0.5f),manaBarFGTexture);
+			GUI.DrawTexture(new Rect(this.leftX,this.topY+this.height*0.5f,(this.currentMana/this.maxValueMana)*this.width,this.height*0.5f),manaBarFGTextures[animationManaIndex]);
 			GUI.DrawTexture(new Rect(this.leftX,this.topY+this.height*0.5f,this.width,this.height*0.5f),coverGlassFGTexture);
 		}
 	}
