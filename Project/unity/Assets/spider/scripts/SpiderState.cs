@@ -30,6 +30,12 @@ public class SpiderState : AbstractEntity {
 		
 		characterController.radius = 2.5f;
 		
+		updateStats ();
+
+		InvokeRepeating ("TimeBasedUpdate", 0, 1f/max_attacks_per_second); 
+	}
+
+	public void updateStats(){
 		if (STR == 0) setSTR (6);
 		else if (STR < 0) setSTR (1);
 		else if (STR > 18) setSTR (18);
@@ -54,10 +60,8 @@ public class SpiderState : AbstractEntity {
 		if (DMG == 0) setDMG (Mathf.RoundToInt ((float) STR * coeff_StrToDMG));
 		
 		timecost_perAction = (1f/((float)DEX/18f * max_attacks_per_second));
-
-		InvokeRepeating ("TimeBasedUpdate", 0, 1f/max_attacks_per_second); 
 	}
-	
+
 	private void TimeBasedUpdate(){ 
 		if (timeForNextAction > 0.0) timeForNextAction = timeForNextAction - 1f/max_attacks_per_second;
 		if (MP < MAXMP) MP = MP + 1;
