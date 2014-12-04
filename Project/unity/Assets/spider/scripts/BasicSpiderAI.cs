@@ -3,8 +3,8 @@ using System;
 
 public class BasicSpiderAI : SpiderAI {
 
-	public float aggroRange = 50f;
-	public float attackRange = 1.5f; 
+	public float aggroRange = 75f;
+	public float attackRange = 10f; 
 	public int manacost_web = 100;
 	private SpiderState myState;
 	

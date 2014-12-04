@@ -4,8 +4,8 @@ using System.Collections;
 
 public class SpiderState : AbstractEntity {
 	public float timeForNextAction = 0;
-	public float moveSpeed = 1.5f;
-	public float rotationSpeed = 4.0f;
+	public float moveSpeed = 10f;
+	public float rotationSpeed = 15f;
 	public Vector3 destination;
 	public float timecost_perAction;
 	public float timeCostDivisor = 2;
@@ -14,7 +14,7 @@ public class SpiderState : AbstractEntity {
 	private CharacterController characterController;
 	private Animator animator;
 	
-	public float projectileSpeed = 10f;
+	public float projectileSpeed = 75f;
 	public float max_attacks_per_second = 5; //Also means MP restored per second
 	public int maxHPPossible = 500;
 	public int maxMPPossible = 500;
@@ -121,19 +121,20 @@ public class SpiderState : AbstractEntity {
 	
 	// THROW PROJECTILE
 	public void throwProj(AbstractEntity enemy,Vector3 enemyPos, int manacost){
-		
 		if (MP > manacost) {
 			this.lookAt (enemyPos);
 			MP = MP - manacost;
 			//GameObject projectile = GameObject.CreatePrimitive(PrimitiveType.Sphere);
 			Object prefab = Resources.LoadAssetAtPath("Assets/SpiderProjectile/Prefab/SpiderWeb.prefab", typeof(GameObject));
 			GameObject projectile = Instantiate(prefab, Vector3.zero, Quaternion.identity) as GameObject;
-			projectile.transform.position = new Vector3(transform.position.x,2,transform.position.z);
+			//Physics.IgnoreCollision(projectile.collider,characterController);
+			projectile.transform.position = new Vector3(transform.position.x,transform.position.y/2,transform.position.z);
 			projectile.transform.rotation = projectile.transform.rotation * Quaternion.Euler(90, 0, 0); // Rotate x axis 90 degrees
-			projectile.AddComponent<Web>();
 			Rigidbody rgproj = projectile.AddComponent<Rigidbody>();
-			rgproj.velocity = (enemyPos-projectile.transform.position).normalized*projectileSpeed;
+			Vector3 moveDirection = enemyPos-transform.position;
+			rgproj.velocity = new Vector3(moveDirection.x,0,moveDirection.z).normalized * projectileSpeed;
 			rgproj.useGravity = false;
+			Physics.IgnoreCollision(rgproj.collider,characterController);
 		}
 	}
 	

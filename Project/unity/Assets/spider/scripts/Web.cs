@@ -5,7 +5,9 @@ public class Web : MonoBehaviour {
 
 	void OnCollisionEnter(Collision collision) {
 		this.gameObject.SetActive (false);
-		Invoke ("destroyObject",5);
+		Invoke ("destroyObject",5f);
+		Debug.Log (transform.position);
+		Debug.Log (collision.collider.tag);
 	}
 
 	void destroyObject(){

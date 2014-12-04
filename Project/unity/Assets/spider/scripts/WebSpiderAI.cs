@@ -3,9 +3,9 @@ using System;
 
 public class WebSpiderAI : SpiderAI {
 
-	public float aggroRange = 20f;
-	public float spellRange = 10f;
-	public float attackRange = 1.5f; 
+	public float aggroRange = 75f;
+	public float spellRange;
+	public float attackRange = 10f; 
 	public int web_manacost = 100;
 	private SpiderState myState;
 	
@@ -27,11 +27,11 @@ public class WebSpiderAI : SpiderAI {
 			GameObject goTarget = getPlayerGameObject ();
 			target = goTarget.transform;
 		}
-		
 		path = new NavMeshPath ();
 		agent.CalculatePath(target.position, path);
 		lastTargetPos = target.position;
 		current_corner = 1;
+		spellRange = attackRange * 5f;
 		InvokeRepeating ("checkPath", 0, 0.25f);
 	}
 	
