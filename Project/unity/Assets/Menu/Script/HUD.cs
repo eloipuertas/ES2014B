@@ -29,8 +29,9 @@ public class HUD : MonoBehaviour
 	private Player player;
 	private float buttonSizeWidth, buttonSizeHeight;
 	public GUISkin myskin;
-	public Texture continueTextureSelected,continueTextureNormal, backMainMenuTextureNormal,backMainMenuTextureSelected, audioOFFSelected,audioOFFNormal, audioONSelected,audioONNormal,titolPausa;
-	private Texture audioTexture;
+	public Texture continueTextureSelected,continueTextureNormal, backMainMenuTextureNormal,backMainMenuTextureSelected, 
+	audioOFFSelected,audioOFFNormal, audioONSelected,audioONNormal,titolPausa,restartTextureSelected,restartTextureNormal;
+	private Texture audioTexture,restartTexture;
 	private bool sona = true;
 	private AmbientalMusic AmbientAudio;
 	private int  magiaEscollida = -1;
@@ -196,7 +197,15 @@ public class HUD : MonoBehaviour
 				}
 				sona = !sona;
 			}
-			Rect returnPause = new Rect (xPos, 2 * buttonSizeHeight + yPos, buttonSizeWidth, buttonSizeHeight);
+			Rect restart = new Rect (xPos, 2 * buttonSizeHeight + yPos, buttonSizeWidth, buttonSizeHeight);
+			restartTexture = restart.Contains(Event.current.mousePosition)?this.restartTextureSelected:this.restartTextureNormal;
+			if (GUI.Button (restart, restartTexture)) {
+				Destroy (this.gameObject);
+				Object.Destroy (GameObject.FindGameObjectWithTag ("Player"));
+				Application.LoadLevel (Application.loadedLevel);
+				
+			}
+			Rect returnPause = new Rect (xPos, 3 * buttonSizeHeight + yPos, buttonSizeWidth, buttonSizeHeight);
 			backMainMenuTexture = returnPause.Contains(Event.current.mousePosition)?this.backMainMenuTextureSelected:this.backMainMenuTextureNormal;
 			if (GUI.Button (returnPause, backMainMenuTexture)) {
 				Destroy (this.gameObject);
@@ -212,7 +221,15 @@ public class HUD : MonoBehaviour
 				AmbientAudio.PlayGameOver ();
 				GUI.Label (new Rect (Screen.width*0.5f - gameOverTexture.width*0.5f, 0, Screen.width*0.4f, Screen.height*0.4f), gameOverTexture);
 				Time.timeScale = 0;
-				Rect returnOver = new Rect (xPos+Screen.width*0.01f, Screen.height*0.4f, Screen.width*0.2f, Screen.height*0.2f);
+				Rect restart = new Rect (xPos+Screen.width*0.01f, Screen.height*0.4f, Screen.width*0.2f, Screen.height*0.1f);
+				restartTexture = restart.Contains(Event.current.mousePosition)?this.restartTextureSelected:this.restartTextureNormal;
+				if (GUI.Button (restart, restartTexture)) {
+					Destroy (this.gameObject);
+					Object.Destroy (GameObject.FindGameObjectWithTag ("Player"));
+					Application.LoadLevel (Application.loadedLevel);
+					
+				}
+				Rect returnOver = new Rect (xPos+Screen.width*0.01f, Screen.height*0.5f, Screen.width*0.2f, Screen.height*0.2f);
 				backMainMenuTexture = returnOver.Contains(Event.current.mousePosition)?this.backMainMenuTextureSelected:this.backMainMenuTextureNormal;
 
 
