@@ -14,6 +14,7 @@ public class HealthManBarNPC:MonoBehaviour{
 	public Texture2D bgBarTexture;
 	public Texture2D healthBarFGTexture;
 	public Texture2D manaBarFGTexture;
+	public Texture2D coverGlassFGTexture;
 	
 	void Awake(){
 		myState = this.gameObject.GetComponent<SpiderState>();
@@ -52,9 +53,11 @@ public class HealthManBarNPC:MonoBehaviour{
 
 			// health FG container
 			GUI.DrawTexture(new Rect(this.leftX,this.topY,(this.currentHealth/this.maxValueHealth)*this.width,this.height*0.5f),healthBarFGTexture);
+			GUI.DrawTexture(new Rect(this.leftX,this.topY,this.width,this.height*0.5f),coverGlassFGTexture);
 
 			// mana FG container
 			GUI.DrawTexture(new Rect(this.leftX,this.topY+this.height*0.5f,(this.currentMana/this.maxValueMana)*this.width,this.height*0.5f),manaBarFGTexture);
+			GUI.DrawTexture(new Rect(this.leftX,this.topY+this.height*0.5f,this.width,this.height*0.5f),coverGlassFGTexture);
 		}
 	}
 	
