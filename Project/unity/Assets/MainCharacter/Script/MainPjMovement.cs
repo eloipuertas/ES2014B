@@ -86,13 +86,15 @@
 		}
 	}
 	//Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
 
 
 			if (! this.paused) {
 						if (freeze <= 0.0) {
 								//Magia de Foc apretant la tecla 1
 								if (Input.GetKeyDown (KeyCode.Alpha1)) {
+										anim.SetBool("magic",true);
+										//anim.SetBool("magic",false);
 										Debug.Log ("Apretat 1");
 										nextMagicAttack = 1;
 
@@ -123,7 +125,7 @@
 
 										//obtinc la aranya
 										AbstractEntity Aranya = (AbstractEntity) hit.collider.GetComponent ("AbstractEntity");
-
+										//transform.LookAt(Aranya.transform.position);
 										switch (nextMagicAttack) {
 										case 1:
 
