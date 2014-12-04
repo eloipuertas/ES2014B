@@ -95,7 +95,7 @@ public class CameraMovement : MonoBehaviour
 						}
 				
 		
-						distancia = Mathf.Clamp (distancia + Input.GetAxis ("Mouse ScrollWheel") * zoomSpeed, distanciaMin, distanciaMax);
+						distancia = Mathf.Clamp (distancia + -1*Input.GetAxis ("Mouse ScrollWheel") * zoomSpeed, distanciaMin, distanciaMax);
 
 
 						posCamera [0] = player.position.x - distancia;
