@@ -16,7 +16,7 @@ public class HealthManBarNPC:MonoBehaviour{
 	public Texture2D coverGlassFGTexture;
 
 	// animation
-	private float timeBetweenAnimation = 0.05f;
+	private float timeBetweenAnimation = 0.15f;
 	private float timeLeftAnimationChange = 0;
 	private bool animationHealthForward;
 	private bool animationManaForward;
@@ -35,7 +35,7 @@ public class HealthManBarNPC:MonoBehaviour{
 		// animation
 		timeLeftAnimationChange = timeBetweenAnimation;
 		animationHealthForward = true;
-		animationManaForward = true;
+		animationManaForward = false;
 		animationHealthIndex = 0;
 		animationManaIndex = 0;
 	}
@@ -107,12 +107,12 @@ public class HealthManBarNPC:MonoBehaviour{
 
 
 			// health FG container
-			GUI.DrawTexture(new Rect(this.leftX,this.topY,(this.currentHealth/this.maxValueHealth)*this.width,this.height*0.5f),healthBarFGTextures[animationHealthIndex]);
-			GUI.DrawTexture(new Rect(this.leftX,this.topY,this.width,this.height*0.5f),coverGlassFGTexture);
+			GUI.DrawTexture(new Rect(this.leftX+2,this.topY+2,(this.currentHealth/this.maxValueHealth)*this.width-4,this.height*0.5f-4),healthBarFGTextures[animationHealthIndex]);
+			GUI.DrawTexture(new Rect(this.leftX+2,this.topY+2,this.width-4,this.height*0.5f-4),coverGlassFGTexture);
 
 			// mana FG container
-			GUI.DrawTexture(new Rect(this.leftX,this.topY+this.height*0.5f,(this.currentMana/this.maxValueMana)*this.width,this.height*0.5f),manaBarFGTextures[animationManaIndex]);
-			GUI.DrawTexture(new Rect(this.leftX,this.topY+this.height*0.5f,this.width,this.height*0.5f),coverGlassFGTexture);
+			GUI.DrawTexture(new Rect(this.leftX+2,this.topY+this.height*0.5f+2,(this.currentMana/this.maxValueMana)*this.width-4,this.height*0.5f-4),manaBarFGTextures[animationManaIndex]);
+			GUI.DrawTexture(new Rect(this.leftX+2,this.topY+this.height*0.5f+2,this.width-4,this.height*0.5f-4),coverGlassFGTexture);
 		}
 	}
 	
