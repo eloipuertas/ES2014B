@@ -37,8 +37,8 @@ public class HUD : MonoBehaviour
 		private int  magiaEscollida = -1;
 		private float timeLeft = 2f;
 		private float lifetime, pintadatime;
-		private float intervalPintada = 0f, alphaValue, tempsPintada = 0.4f,minAlpha = 0.5f;
-		public float bloodTantPerCentVida = 0.9f;
+		private float intervalPintada = 0f, alphaValue, tempsPintada = 0.4f,minAlpha = 0.4f,maxAlpha = 0.75f;
+		public float bloodTantPerCentVida = 0.4f;
 		private Texture magiaSelect, magiaNormal, continueTexture, backMainMenuTexture;
 		
 		void Start ()
@@ -150,7 +150,7 @@ public class HUD : MonoBehaviour
 								pintadatime = tempsPintada;
 									
 								alphaValue += 0.1f;
-								if (alphaValue >= 1) {
+								if (alphaValue >= maxAlpha) {
 										incrementar = false;
 					
 								}
