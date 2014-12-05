@@ -2,6 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 
+[ RequireComponent( typeof( AudioSource ) ) ]
+
+
 public class hardButton : MonoBehaviour {
 	
 	private static float MAX_COLOR_VAL = 0.5f;
@@ -21,6 +24,7 @@ public class hardButton : MonoBehaviour {
 	public normalButton normalButton;
 	public easyButton easyButton;
 	private List<Texture2D> currentAnimation;
+	public AudioClip level_hard;
 	
 	void Awake(){
 		Time.timeScale = 1;
@@ -85,6 +89,7 @@ public class hardButton : MonoBehaviour {
 	}
 	
 	public void OnMouseUpAsButton(){
+		audio.PlayOneShot(level_hard);
 		this.active = true;
 		animationIndex=0;
 		timeLeftAnimationChange = timeBetweenAnimationS;
