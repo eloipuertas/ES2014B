@@ -27,7 +27,7 @@ public class main_background : MonoBehaviour {
 		guiTexture.color = color;
 	}
 	
-	void Update(){
+	void OnGUI(){
 		delayToAppear = Mathf.Max(0,delayToAppear-Time.deltaTime);
 		if(delayToAppear <= 0){
 			color = guiTexture.color;
