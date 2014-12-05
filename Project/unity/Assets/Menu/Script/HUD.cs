@@ -29,15 +29,16 @@ public class HUD : MonoBehaviour
 		private float buttonSizeWidth, buttonSizeHeight;
 		public GUISkin myskin;
 		public Texture continueTextureSelected, continueTextureNormal, backMainMenuTextureNormal, backMainMenuTextureSelected, 
-				audioOFFSelected, audioOFFNormal, audioONSelected, audioONNormal, titolPausa, restartTextureSelected, restartTextureNormal;
+				audioOFFSelected, audioOFFNormal, audioONSelected, audioONNormal, titolPausa, restartTextureSelected, restartTextureNormal,
+				fonsMenuPausa, fonsMenuGameover;
 		public Texture bloodTexture;
 		private Texture audioTexture, restartTexture;
-		private bool sona = true,incrementar = true;
+		private bool sona = true, incrementar = true;
 		private AmbientalMusic AmbientAudio;
 		private int  magiaEscollida = -1;
 		private float timeLeft = 2f;
 		private float lifetime, pintadatime;
-		private float intervalPintada = 0f, alphaValue, tempsPintada = 0.4f,minAlpha = 0.4f,maxAlpha = 0.75f;
+		private float intervalPintada = 0f, alphaValue, tempsPintada = 0.4f, minAlpha = 0.4f, maxAlpha = 0.75f;
 		public float bloodTantPerCentVida = 0.4f;
 		private Texture magiaSelect, magiaNormal, continueTexture, backMainMenuTexture;
 		
@@ -156,7 +157,7 @@ public class HUD : MonoBehaviour
 								}
 						} else if (pintadatime < 0f && !incrementar) {
 								alphaValue -= 0.1f;
-								if (alphaValue <  minAlpha) {
+								if (alphaValue < minAlpha) {
 										incrementar = true;
 					
 								}
@@ -207,7 +208,7 @@ public class HUD : MonoBehaviour
 				if (player.canShowMenuPause () && pj.isAlive ()) { 
 						Time.timeScale = 0;
 						GUI.DrawTexture (new Rect (xPos - Screen.width * 0.12f, yPos - Screen.height * 0.3f, Screen.width * 0.45f, Screen.height * 0.25f), this.titolPausa);
-
+						GUI.DrawTexture (new Rect (xPos - Screen.width * 0.05f, Screen.height * 0.32f, Screen.width * 0.3f, Screen.height * 0.25f), this.fonsMenuPausa);
 						Rect pauseRect = new Rect (xPos, yPos, buttonSizeWidth, buttonSizeHeight);
 
 						continueTexture = pauseRect.Contains (Event.current.mousePosition) ? this.continueTextureSelected : this.continueTextureNormal;
@@ -251,7 +252,8 @@ public class HUD : MonoBehaviour
 						timeLeft -= Time.deltaTime;
 						if (timeLeft < 0) {
 								AmbientAudio.PlayGameOver ();
-								GUI.Label (new Rect (Screen.width * 0.5f - gameOverTexture.width * 0.5f, 0, Screen.width * 0.4f, Screen.height * 0.4f), gameOverTexture);
+								GUI.DrawTexture (new Rect (Screen.width * 0.5f - gameOverTexture.width * 0.5f, 0, Screen.width * 0.4f, Screen.height * 0.4f), gameOverTexture);
+								GUI.DrawTexture (new Rect (xPos + Screen.width * 0.01f, Screen.height * 0.4f, Screen.width * 0.2f, Screen.height * 0.27f), this.fonsMenuGameover);
 								Time.timeScale = 0;
 								Rect restart = new Rect (xPos + Screen.width * 0.01f, Screen.height * 0.4f, Screen.width * 0.2f, Screen.height * 0.1f);
 								restartTexture = restart.Contains (Event.current.mousePosition) ? this.restartTextureSelected : this.restartTextureNormal;
