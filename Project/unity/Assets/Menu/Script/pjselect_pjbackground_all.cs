@@ -14,9 +14,9 @@ public class pjselect_pjbackground_all : MonoBehaviour{
 		guiTexture.texture = texture;
 
 		Rect initPixelInset = new Rect(0,0,1,1);
-		initPixelInset.width = Screen.width*0.90f;
+		initPixelInset.width = Screen.width*0.80f;
 		initPixelInset.height = Screen.height*0.825f;
-		initPixelInset.x = -Screen.width*0.45f;
+		initPixelInset.x = -Screen.width*0.40f;
 		initPixelInset.y = -Screen.height*0.35f;
 		guiTexture.pixelInset = initPixelInset;
 		color = guiTexture.color;
