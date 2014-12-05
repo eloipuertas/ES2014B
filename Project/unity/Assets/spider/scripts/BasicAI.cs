@@ -1,7 +1,7 @@
 using UnityEngine;
 using System;
 
-public class SpiderAI : MonoBehaviour
+public class BasicAI : MonoBehaviour
 {
 	public Transform target;
 	
