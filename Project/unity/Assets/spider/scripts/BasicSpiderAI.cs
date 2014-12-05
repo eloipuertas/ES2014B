@@ -1,7 +1,7 @@
 using UnityEngine;
 using System;
 
-public class BasicSpiderAI : SpiderAI {
+public class BasicSpiderAI : BasicAI {
 
 	public float aggroRange = 75f;
 	public float attackRange = 10f; 

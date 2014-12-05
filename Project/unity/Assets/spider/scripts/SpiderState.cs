@@ -47,17 +47,16 @@ public class SpiderState : AbstractEntity {
 		else if (CON > 18) setCON (18);
 		if (INT == 0) setINT (6);
 		else if (INT < 0) setINT (1);
-		
-		if (HP == 0) setHP (Mathf.RoundToInt (((float)CON/18f) * maxHPPossible));
-		
-		if (MAXHP == 0) setMAXHP (HP);
-		if (FOR == 0) setFOR (Mathf.RoundToInt ((float) CON * coeff_ConToFor));
-		if (REF == 0) setREF (Mathf.RoundToInt ((float) DEX * coeff_DexToRef));
-		if (ARM == 0) setARM (FOR+REF);
-		
-		if (MP == 0) setMP (Mathf.RoundToInt (((float)INT/18f) * maxMPPossible));
-		if (MAXMP == 0) setMAXMP (MP);
-		if (DMG == 0) setDMG (Mathf.RoundToInt ((float) STR * coeff_StrToDMG));
+
+		setMAXHP (Mathf.RoundToInt (((float)CON/18f) * maxHPPossible));
+		setHP (MAXHP);
+		setFOR (Mathf.RoundToInt ((float) CON * coeff_ConToFor));
+		setREF (Mathf.RoundToInt ((float) DEX * coeff_DexToRef));
+		setARM (FOR+REF);
+
+		setMAXMP (Mathf.RoundToInt (((float)INT/18f) * maxMPPossible));
+		setMP (MAXMP);
+		setDMG (Mathf.RoundToInt ((float) STR * coeff_StrToDMG));
 		
 		timecost_perAction = (1f/((float)DEX/18f * max_attacks_per_second));
 	}

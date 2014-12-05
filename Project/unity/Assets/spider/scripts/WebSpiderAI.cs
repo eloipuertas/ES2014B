@@ -1,7 +1,7 @@
 using UnityEngine;
 using System;
 
-public class WebSpiderAI : SpiderAI {
+public class WebSpiderAI : BasicAI {
 
 	public float aggroRange = 75f;
 	public float spellRange;
