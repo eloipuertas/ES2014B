@@ -2,36 +2,33 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class pjselect_choosePlayer_button2 : MonoBehaviour{
-
+public class hardButton : MonoBehaviour {
+	
 	private static float MAX_COLOR_VAL = 0.5f;
-	private float secondsToAppear = 0.5f;
-	private float delayToAppear = 0.5f;
+	private float secondsToAppear = 1.0f;
+	private float delayToAppear = 1.0f;
 	private Color color;
 	
 	// animation
 	private float timeBetweenAnimationS = 0.05f;
 	private float timeBetweenAnimationUnS = 0.05f;
 	private float timeLeftAnimationChange = 0;
-	private bool selected;
+	private bool active;
 	private bool animationForward;
 	private int animationIndex;
 	public List<Texture2D> texturesS;
 	public List<Texture2D> texturesUnS;
+	public normalButton normalButton;
+	public easyButton easyButton;
 	private List<Texture2D> currentAnimation;
-	
-	public bool first;
-	public bool second;
-	public bool third;
-	private GameObject jug = null;
 	
 	void Awake(){
 		Time.timeScale = 1;
 		Rect initPixelInset = new Rect(0,0,1,1);
-		initPixelInset.width = Screen.width*0.125f;
-		initPixelInset.height = initPixelInset.width/3f;
-		initPixelInset.x = Screen.width*0.1150f;
-		initPixelInset.y = -Screen.height*0.250f;
+		initPixelInset.height = Screen.height*0.10f;
+		initPixelInset.width = initPixelInset.height*3f;
+		initPixelInset.x = Screen.width*0.25f;
+		initPixelInset.y = -Screen.height*0.475f;
 		guiTexture.pixelInset = initPixelInset;
 		color = guiTexture.color;
 		color.a = 0;
@@ -39,7 +36,7 @@ public class pjselect_choosePlayer_button2 : MonoBehaviour{
 		
 		// animation
 		timeLeftAnimationChange = timeBetweenAnimationUnS;
-		selected = false;
+		active = false;
 		animationForward = true;
 		animationIndex = 0;
 		currentAnimation = texturesUnS;
@@ -56,7 +53,7 @@ public class pjselect_choosePlayer_button2 : MonoBehaviour{
 		// animation
 		timeLeftAnimationChange = Mathf.Max(0,timeLeftAnimationChange-Mathf.Abs(Time.deltaTime));
 		if(timeLeftAnimationChange <= 0){
-			if(selected){
+			if(active){
 				timeLeftAnimationChange = timeBetweenAnimationS;
 			}else{
 				timeLeftAnimationChange = timeBetweenAnimationUnS;
@@ -80,32 +77,30 @@ public class pjselect_choosePlayer_button2 : MonoBehaviour{
 		}
 	}
 	
-	public void OnMouseExit(){
-		selected = false;
+	public void noActive(){
+		active = false;
 		animationIndex=0;
 		timeLeftAnimationChange = timeBetweenAnimationUnS;
 		currentAnimation = texturesUnS;
 	}
 	
-	public void OnMouseEnter(){
-		selected = true;
+	public void OnMouseUpAsButton(){
+		this.active = true;
 		animationIndex=0;
 		timeLeftAnimationChange = timeBetweenAnimationS;
 		currentAnimation = texturesS;
-	}
-
-	//This function is called when the user has released the mouse button
-	public void OnMouseUpAsButton(){
-		if(first){
-			PlayerPrefs.SetString("player", "player1");
-			//jug = (GameObject)Instantiate (Resources.Load ("player1"));
-		}else if(second){
-			PlayerPrefs.SetString("player", "player2");
-			//jug = (GameObject)Instantiate (Resources.Load ("player2"));
-		}else if(third){
-			PlayerPrefs.SetString("player", "player3");
-			//jug = (GameObject)Instantiate (Resources.Load ("player3"));
-		}
-		Application.LoadLevel (2); //Load the game (next scene)
+		
+		easyButton.noActive();
+		normalButton.noActive();
+		// easy button NO active
+		// normal button NO active
+		
+		
+		PlayerPrefs.SetString("easy", "n");
+		PlayerPrefs.SetString("normal", "n");
+		PlayerPrefs.SetString("hard", "y");
+		// save the easy mode NO active
+		// save the normal mode NO active
+		// save the hard mode active
 	}
 }
