@@ -5,7 +5,7 @@ public class pjselect_pj2 : MonoBehaviour{
 	
 	private static float MAX_COLOR_VAL = 0.5f;
 	private float secondsToAppear = 1.0f;
-	private float delayToAppear = 0.5f;
+	private float delayToAppear = 0.75f;
 	public Texture2D texture;
 	private Color color;
 	
