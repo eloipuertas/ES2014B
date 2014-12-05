@@ -5,6 +5,7 @@ using System.Collections;
 
 public class AudioButtons : MonoBehaviour 
 {
+	public AudioSource audio;
 	public AudioClip level_easy;
 	public AudioClip level_medium;
 	public AudioClip level_hard;
@@ -18,19 +19,19 @@ public class AudioButtons : MonoBehaviour
 	public void PlayLevelEasy()
 	{
 		audio.clip = level_easy;
-		audio.play();
+		audio.Play();
 	}
 	
 	public void PlayLevelMedium()
 	{
 		audio.clip = level_medium;
-		audio.play();
+		audio.Play();
 	}
 	
 	public void PlayLevelHard()
 	{
 		audio.clip = level_hard;
-		audio.play();
+		audio.Play();
 	}
 	
 }
