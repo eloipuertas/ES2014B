@@ -20,7 +20,7 @@ public class pjselect_choosePlayer_button : MonoBehaviour{
 		Rect initPixelInset = new Rect(0,0,1,1);
 		initPixelInset.width = Screen.width*0.125f;
 		initPixelInset.height = initPixelInset.width/3f;
-		initPixelInset.x = -Screen.width*0.3375f;
+		initPixelInset.x = -Screen.width*0.2375f;
 		initPixelInset.y = -Screen.height*0.250f;
 		guiTexture.pixelInset = initPixelInset;
 		color = guiTexture.color;

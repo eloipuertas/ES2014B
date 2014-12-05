@@ -19,8 +19,9 @@ public class HUD : MonoBehaviour
 	private float mana, alturaMana, manapercent;
 	public Texture[] magicTextures = new Texture[3];
 	public Texture[] magicTexturesSpelled = new Texture[3];
-
+	
 	public Texture texEscut;
+	public Texture texRedCover;
 	//textura que saldra cuando el personaje muera
 	public Texture gameOverTexture,hud_bg;
 	private float xPos;
@@ -128,6 +129,12 @@ public class HUD : MonoBehaviour
 		float alturaMagia = Screen.height / 15;
 		float yMagies = Screen.height - alturaMagia -Screen.height*0.01f;
 
+		if(pj.isAlive() && (((float)vida)/((float)maxVida)) <= 0.5f){
+			Color tmpColor = GUI.color;
+			GUI.color = new Color(1,1,1,1f-((float)vida)/((float)maxVida*0.5f));
+			GUI.DrawTexture (new Rect (0,0,Screen.width,Screen.height),this.texRedCover);
+			GUI.color = tmpColor;
+		}
 
 		int numTextures = 3;
 
