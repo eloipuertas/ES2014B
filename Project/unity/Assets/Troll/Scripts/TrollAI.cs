@@ -48,6 +48,8 @@ public class TrollAI : BasicAI {
 								if ((hit.point-target.position).magnitude<1){ //TODO to change when the main character fixes their tag
 									currentAction = MOVING;
 									agent.SetDestination(target.position);
+									AmbientalMusic AmbientAudio = GameObject.FindObjectOfType(typeof(AmbientalMusic)) as AmbientalMusic;
+									if (AmbientAudio!=null) AmbientAudio.PlayFight();
 								}
 							}
 						}else if (currentAction == ATTACKING){
