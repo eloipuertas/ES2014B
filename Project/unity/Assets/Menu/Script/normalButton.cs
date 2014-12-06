@@ -37,7 +37,7 @@ public class normalButton : MonoBehaviour {
 		color = guiTexture.color;
 		color.a = 0;
 		guiTexture.color = color;
-		
+		Gameflow.SetDifficulty (Gameflow.MEDIUM);
 		// animation
 		timeLeftAnimationChange = timeBetweenAnimationUnS;
 		this.active = true;
@@ -46,9 +46,6 @@ public class normalButton : MonoBehaviour {
 		currentAnimation = texturesS;
 		easyButton.noActive();
 		hardButton.noActive();
-		PlayerPrefs.SetString("easy", "n");
-		PlayerPrefs.SetString("normal", "y");
-		PlayerPrefs.SetString("hard", "n");
 		animationForward = true;
 		animationIndex = 0;
 	}
@@ -109,5 +106,6 @@ public class normalButton : MonoBehaviour {
 		
 		
 		Gameflow.SetDifficulty(Gameflow.MEDIUM);
+
 	}
 }

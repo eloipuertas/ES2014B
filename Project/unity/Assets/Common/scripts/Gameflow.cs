@@ -141,7 +141,7 @@ public class Gameflow : MonoBehaviour
 		public static int GetDifficulty ()
 		{
 				string difficulty = PlayerPrefs.GetString ("difficulty");
-				difficulty = difficulty != null && difficulty.Length == 1 ? difficulty : MEDIUM;
+				difficulty = difficulty != null && difficulty.Length == 1 ? difficulty : MEDIUM+"";
 				return System.Int32.Parse (difficulty);
 		}
 	
@@ -150,6 +150,7 @@ public class Gameflow : MonoBehaviour
 				mode = mode < EASY ? EASY : mode;
 				mode = mode > HARD ? HARD : mode;
 				PlayerPrefs.SetString ("difficulty", "" + mode);
+
 		}
 	
 		public static bool IsDifficulty (int mode)

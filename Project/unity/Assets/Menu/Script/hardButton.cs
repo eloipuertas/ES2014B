@@ -102,5 +102,6 @@ public class hardButton : MonoBehaviour {
 		
 		Gameflow.SetDifficulty(Gameflow.HARD);
 
+
 	}
 }

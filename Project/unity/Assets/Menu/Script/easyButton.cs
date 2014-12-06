@@ -101,5 +101,6 @@ public class easyButton : MonoBehaviour {
 
 
 		Gameflow.SetDifficulty(Gameflow.EASY);
+
 	}
 }
