@@ -25,7 +25,9 @@ public class WebSpiderAI : BasicAI {
 
 		if (target == null) {
 			GameObject goTarget = getPlayerGameObject ();
-			target = goTarget.transform;
+			if ( goTarget != null ) {
+				target = goTarget.transform;
+			}
 		}
 		path = new NavMeshPath ();
 		agent.CalculatePath(target.position, path);
@@ -82,6 +84,12 @@ public class WebSpiderAI : BasicAI {
 	// Update is called once per frame
 	void Update () {
 		//debugDrawPath();
+		if (target == null) {
+			GameObject goTarget = getPlayerGameObject ();
+			if ( goTarget != null ) {
+				target = goTarget.transform;
+			}
+		}
 		if ( target != null && Time.timeScale>0 ) {
 			AbstractEntity targetEntity = target.GetComponent<AbstractEntity>();
 			if ( targetEntity != null) {

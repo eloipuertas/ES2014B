@@ -85,7 +85,6 @@ public class BasicSpiderAI : BasicAI {
 	// Update is called once per frame
 	void Update () {
 		//debugDrawPath();
-		
 		if (target == null) {
 			GameObject goTarget = getPlayerGameObject ();
 			if ( goTarget != null ) {
