@@ -140,7 +140,7 @@ public class HUD : MonoBehaviour
 				int numTextures = 3;
 				
 
-				if (vida < maxVida * bloodTantPerCentVida) {
+				if (vida < maxVida * bloodTantPerCentVida && pj.isAlive()) {
 						
 						//Vector4 alpha = new Vector4 (1, 0, 0, 1 - vida / maxVida);
 						Vector4 alpha = new Vector4 (1, 0, 0, alphaValue);
@@ -150,13 +150,32 @@ public class HUD : MonoBehaviour
 						GUI.color = original;
 						pintadatime -= Time.deltaTime;
 						
-						if (pintadatime < 0f && incrementar) {
+						float timeScale = Time.timeScale;
+						Time.timeScale = 1;
+						print("incrementar "+incrementar+", "+Time.deltaTime);
+						if(incrementar){
+							alphaValue += Time.deltaTime*0.4f;
+							if (alphaValue >= maxAlpha) {
+								incrementar = false;
+							}
+						}else{
+							alphaValue -= Time.deltaTime*0.4f;
+							if (alphaValue <= minAlpha) {
+								incrementar = true;
+							}
+						}
+						Time.timeScale = timeScale;
+						
+						
+						
+						
+						
+						/*if (pintadatime < 0f && incrementar) {
 								pintadatime = tempsPintada;
 									
 								alphaValue += 0.1f;
 								if (alphaValue >= maxAlpha) {
 										incrementar = false;
-					
 								}
 						} else if (pintadatime < 0f && !incrementar) {
 								alphaValue -= 0.1f;
@@ -164,7 +183,7 @@ public class HUD : MonoBehaviour
 										incrementar = true;
 					
 								}
-						}
+						}*/
 
 						
 
@@ -256,7 +275,7 @@ public class HUD : MonoBehaviour
 						timeLeft -= Time.deltaTime;
 						if (timeLeft < 0) {
 								AmbientAudio.PlayGameOver ();
-								GUI.DrawTexture (new Rect (Screen.width * 0.5f - gameOverTexture.width * 0.5f, 0, Screen.width * 0.4f, Screen.height * 0.4f), gameOverTexture);
+								GUI.DrawTexture (new Rect (Screen.width * 0.5f - Screen.width * 0.2f, 0, Screen.width * 0.4f, Screen.height * 0.4f), gameOverTexture);
 								GUI.DrawTexture (new Rect (xPos + Screen.width * 0.01f, Screen.height * 0.4f, Screen.width * 0.2f, Screen.height * 0.27f), this.fonsMenuGameover);
 								Time.timeScale = 0;
 								Rect restart = new Rect (xPos + Screen.width * 0.01f, Screen.height * 0.4f, Screen.width * 0.2f, Screen.height * 0.1f);
