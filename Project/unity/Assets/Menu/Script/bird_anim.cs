@@ -41,7 +41,7 @@ public class bird_anim : MonoBehaviour {
 		animationForward = true;
 		animationIndex = Random.Range(0,textures.Count-1);
 		// move animation
-		vel = Random.Range(0.4f,0.9f);
+		vel = Random.Range(0.5f,1.1f);
 	}
 	
 	void Update(){
@@ -60,11 +60,10 @@ public class bird_anim : MonoBehaviour {
 			float rand = Random.Range(0.3f,1.2f);
 			initPixelInset.height = Screen.height*initHPercent*rand;
 			initPixelInset.width = Screen.width*initWPercent*rand;
-			vel = Random.Range(0.4f,0.9f);
+			vel = Random.Range(0.5f,1.1f);
 		}else{
 			initPixelInset.x += vel;
 		}
-		print("X BIRD "+initPixelInset+" Screen.width*1.05f "+Screen.width*1.05f);
 		guiTexture.pixelInset = initPixelInset;
 
 		
