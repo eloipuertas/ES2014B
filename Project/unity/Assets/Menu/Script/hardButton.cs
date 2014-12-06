@@ -100,12 +100,7 @@ public class hardButton : MonoBehaviour {
 		// easy button NO active
 		// normal button NO active
 		
-		
-		PlayerPrefs.SetString("easy", "n");
-		PlayerPrefs.SetString("normal", "n");
-		PlayerPrefs.SetString("hard", "y");
-		// save the easy mode NO active
-		// save the normal mode NO active
-		// save the hard mode active
+		Gameflow.SetDifficulty(Gameflow.HARD);
+
 	}
 }
