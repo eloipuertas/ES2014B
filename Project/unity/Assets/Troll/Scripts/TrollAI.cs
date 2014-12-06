@@ -27,15 +27,16 @@ public class TrollAI : BasicAI {
 				target = goTarget.transform;
 			}
 		}
-		
+
 		if ( target != null && Time.timeScale>0 ) {
 			AbstractEntity targetEntity = target.GetComponent<AbstractEntity>();
 			if ( targetEntity != null) {
+
 				if (myState.isAlive() && targetEntity.isAlive ()){
 					float dist = Vector3.Distance (transform.position, target.position);
 					if (dist<attackRange){
 						if (currentAction==MOVING){
-							//agent.Stop ();
+							agent.Stop ();
 						}
 						myState.attack(targetEntity,target.position); 
 						currentAction = ATTACKING;
@@ -46,18 +47,18 @@ public class TrollAI : BasicAI {
 							if(Physics.Raycast(transform.position, target.position-transform.position, out hit, dist)) {
 								if ((hit.point-target.position).magnitude<1){ //TODO to change when the main character fixes their tag
 									currentAction = MOVING;
-									//agent.SetDestination(target.position);
+									agent.SetDestination(target.position);
 								}
 							}
 						}else if (currentAction == ATTACKING){
 							currentAction = MOVING;
-							//agent.SetDestination(target.position);
+							agent.SetDestination(target.position);
 						}else{
-							//agent.SetDestination(target.position);
+							agent.SetDestination(target.position);
 						}
 					}
 				}else if (currentAction != PASSIVE){
-					//agent.Stop();
+					agent.Stop();
 					currentAction = PASSIVE;
 				}
 			}

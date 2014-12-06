@@ -18,7 +18,7 @@ public class TrollState : AbstractEntity {
 
 	// Use this for initialization
 	void Awake () {
-		animator = GetComponent<Animator>();
+		//animator = GetComponent<Animator>();
 		updateStats ();
 		InvokeRepeating ("EmulateAttackSpeed", 0, 1f/max_attacks_per_second); 
 	}
