@@ -2,16 +2,17 @@
 using System.Collections;
 
 public class Web : MonoBehaviour {
-
-	void OnCollisionEnter(Collision collision) {
-		if (collision.collider.tag!="Player"&&collision.collider.tag!="Rocket"){
-			this.gameObject.SetActive (false);
-			Invoke ("destroyObject",5f);
-			Debug.Log (transform.position);
-			Debug.Log (collision.collider.tag);
-		}
+	void Awake () {
+		Invoke ("destroyObject",5f);
 	}
-
+	/**
+	void OnCollisionEnter(Collision collision) {
+		Invoke ("destroyObject",5f);
+		this.gameObject.SetActive (false);
+		Debug.Log (transform.position);
+		Debug.Log (collision.collider.tag);
+	}
+	**/
 	void destroyObject(){
 		Destroy(gameObject);
 	}

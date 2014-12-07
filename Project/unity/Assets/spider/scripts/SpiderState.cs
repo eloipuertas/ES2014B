@@ -20,7 +20,7 @@ public class SpiderState : AbstractEntity {
 	public int maxMPPossible = 500;
 	public float coeff_ConToFor = 0.25f;
 	public float coeff_DexToRef = 0.5f;
-	public float coeff_StrToDMG = 1f;
+	public float coeff_StrToDMG = 3f;
 	public float maxPcDMGReduction = 0.75f;
 
 	void Awake(){
