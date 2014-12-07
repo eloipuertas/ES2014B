@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d7c5ac12fa1746e4c9b6c5e36f9b7ecb
+guid: 1a28af93354614349ada45d1e5fa8537
 ModelImporter:
   serializedVersion: 16
   fileIDToRecycleName:
@@ -23,8 +23,11 @@ ModelImporter:
     100034: Bone_016
     100036: Bone_017
     100038: Bone_018
-    100040: Cube_001
-    100042: //RootNode
+    100040: Bone_019
+    100042: Bone_020
+    100044: Cube
+    100046: Cube_001
+    100048: //RootNode
     400000: Armature
     400002: Bone
     400004: Bone_001
@@ -45,11 +48,16 @@ ModelImporter:
     400034: Bone_016
     400036: Bone_017
     400038: Bone_018
-    400040: Cube_001
-    400042: //RootNode
+    400040: Bone_019
+    400042: Bone_020
+    400044: Cube
+    400046: Cube_001
+    400048: //RootNode
+    2300000: Cube
+    3300000: Cube
     4300000: Cube_001
     7400000: Default Take
-    7400002: Walk
+    7400002: atak1
     9500000: //RootNode
     13700000: Cube_001
   materials:
