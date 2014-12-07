@@ -47,6 +47,7 @@ public class TrollAI : BasicAI {
 							if(Physics.Raycast(transform.position, target.position-transform.position, out hit, dist)) {
 								if ((hit.point-target.position).magnitude<1){ //TODO to change when the main character fixes their tag
 									currentAction = MOVING;
+									myState.move ();
 									agent.SetDestination(target.position);
 									AmbientalMusic AmbientAudio = GameObject.FindObjectOfType(typeof(AmbientalMusic)) as AmbientalMusic;
 									if (AmbientAudio!=null) AmbientAudio.PlayFight();
@@ -54,8 +55,10 @@ public class TrollAI : BasicAI {
 							}
 						}else if (currentAction == ATTACKING){
 							currentAction = MOVING;
+							myState.move ();
 							agent.SetDestination(target.position);
 						}else{
+							myState.move ();
 							agent.SetDestination(target.position);
 						}
 					}

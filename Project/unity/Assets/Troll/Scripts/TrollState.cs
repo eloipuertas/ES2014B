@@ -18,7 +18,7 @@ public class TrollState : AbstractEntity {
 
 	// Use this for initialization
 	void Awake () {
-		//animator = GetComponent<Animator>();
+		animator = GetComponent<Animator>();
 		updateStats ();
 		InvokeRepeating ("EmulateAttackSpeed", 0, 1f/max_attacks_per_second); 
 	}
@@ -54,7 +54,14 @@ public class TrollState : AbstractEntity {
 
 	public override void onAttackReceived (int baseDMG){
 		int damage = Mathf.RoundToInt((1-((float)ARM / 15 * maxPcDMGReduction))*baseDMG);
+		if (animator.GetBool("walk_enabled"))animator.SetBool("walk_enabled",false);
+		if (animator.GetBool("attack_enabled"))animator.SetBool("attack_enabled",false);
+		animator.SetBool("receive_attack_enabled",true);
 		this.setHP(HP-damage);
+		if(!isAlive()){
+			animator.SetBool("receive_attack_enabled",false);
+			animator.SetBool("die",true);
+		}
 		if (timeCostDivisor > 0 && timeForNextAction<(timecost_perAction/timeCostDivisor)) timeForNextAction = timecost_perAction/timeCostDivisor;
 	}
 
@@ -72,14 +79,20 @@ public class TrollState : AbstractEntity {
 		if(this.isAlive() && enemy.isAlive()){
 			this.lookAt (enemyPos);
 			if (timeForNextAction<=0){
+				if (animator.GetBool("walk_enabled")) animator.SetBool ("walk_enabled", false);
+				if (!animator.GetBool("attack_enabled")) animator.SetBool ("attack_enabled", true);
 				enemy.onAttackReceived (DMG);
 				timeForNextAction = timecost_perAction;
 			}
+		}else if (animator.GetBool("attack_enabled")){
+			animator.SetBool("attack_enabled",false);
 		}
 	}
 
-	public void move(Vector3 destiny){
-
+	public void move(){
+		if (animator.GetBool("attack_enabled")) animator.SetBool ("attack_enabled", false);
+		if (animator.GetBool("receive_attack_enabled")) animator.SetBool("receive_attack_enabled",false);
+		if (!animator.GetBool("walk_enabled")) animator.SetBool ("walk_enabled", true);
 	}
 	// Update is called once per frame
 	void Update () {
