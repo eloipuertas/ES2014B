@@ -5,8 +5,6 @@ public class Gameflow : MonoBehaviour {
 	private Transform[] spawnPoints;
 	public Transform trigger_door;
 	public Transform trollSpawner;
-	public float minTimeBetweenSpawns = 10;
-	public float maxTimeBetweenSpawns = 20;
 	public int maxEnemies = 0;
 
 	private AbstractEntity playerEntity;
@@ -76,17 +74,14 @@ public class Gameflow : MonoBehaviour {
 
 					Invoke ("spawnSpiders",2f);
 					if (trigger_door!=null) trigger_door.GetComponent<triggerDoor>().enabled = true;
-					//TODO spawn troll
-					/**
+
 					if (trollSpawner!=null){
-						Object prefab = Resources.LoadAssetAtPath("Assets/Troll/Prefab/troll.prefab", typeof(GameObject));
+						Object prefab = Resources.LoadAssetAtPath("Assets/Troll/Prefabs/troll.prefab", typeof(GameObject));
 						GameObject clone = Instantiate(prefab, Vector3.zero, Quaternion.identity) as GameObject;
 						clone.transform.position = trollSpawner.position;
 						clone.GetComponent<NavMeshAgent> ().enabled = true;
-						clone.GetComponent<TrollState> ().enabled = true;
-					clone.GetComponent<TrollAI> ().enabled = true;
+						clone.GetComponent<TrollAI> ().enabled = true;
 					}
-					**/
 				}
 			} else if (phase == TROLL_FIGHT) {
 				SpiderState spiderstate;
