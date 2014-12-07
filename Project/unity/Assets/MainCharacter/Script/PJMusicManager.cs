@@ -58,7 +58,7 @@ public class PJMusicManager : MonoBehaviour
 	{
 		if(!audio.isPlaying){
 			audio.loop = true;
-			audio.clip = walkSounds[Random.Range(0, walkSounds.Length)];;
+			audio.clip = walkSounds[Random.Range(0, walkSounds.Length)];
 			audio.Play ();
 		}
 	}
