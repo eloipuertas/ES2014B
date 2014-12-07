@@ -18,7 +18,7 @@ public class Gameflow : MonoBehaviour {
 
 	void Awake() {
 		phase = INITIAL_PHASE;
-		if (trigger_door!=null) triggerDoor.GetComponent<triggerDoor>().enabled = false;
+		if (trigger_door!=null) trigger_door.GetComponent<triggerDoor>().enabled = false;
 		//Debug.Log("PlayerPrefs.GetString(\"player\"): " + PlayerPrefs.GetString("player"));
 
 		string playerTemplate = PlayerPrefs.GetString("player");
@@ -75,7 +75,7 @@ public class Gameflow : MonoBehaviour {
 					}
 
 					Invoke ("spawnSpiders",2f);
-					if (trigger_door!=null) triggerDoor.GetComponent<triggerDoor>().enabled = true;
+					if (trigger_door!=null) trigger_door.GetComponent<triggerDoor>().enabled = true;
 					//TODO spawn troll
 					/**
 					if (trollSpawner!=null){

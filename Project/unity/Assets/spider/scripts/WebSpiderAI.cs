@@ -30,8 +30,10 @@ public class WebSpiderAI : BasicAI {
 			}
 		}
 		path = new NavMeshPath ();
-		agent.CalculatePath(target.position, path);
-		lastTargetPos = target.position;
+		/* if ( target != null ) {
+			agent.CalculatePath(target.position, path);
+			lastTargetPos = target.position;
+		} */
 		current_corner = 1;
 		spellRange = attackRange * 5f;
 		InvokeRepeating ("checkPath", 0, 0.25f);

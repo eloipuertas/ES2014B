@@ -127,12 +127,11 @@ public class SpiderState : AbstractEntity {
 		if (MP > manacost) {
 			this.lookAt (enemyPos);
 			MP = MP - manacost;
-			//GameObject projectile = GameObject.CreatePrimitive(PrimitiveType.Sphere);
 			Object prefab = Resources.LoadAssetAtPath("Assets/SpiderProjectile/Prefab/SpiderWeb.prefab", typeof(GameObject));
 			GameObject projectile = Instantiate(prefab, Vector3.zero, Quaternion.identity) as GameObject;
-			//Physics.IgnoreCollision(projectile.collider,characterController);
-			projectile.transform.position = new Vector3(transform.position.x,transform.position.y/2,transform.position.z);
-			projectile.transform.rotation = projectile.transform.rotation * Quaternion.Euler(90, 0, 0); // Rotate x axis 90 degrees
+			Physics.IgnoreCollision(projectile.collider,characterController);
+			projectile.transform.position = new Vector3(transform.position.x,transform.position.y,transform.position.z);
+			projectile.transform.rotation = projectile.transform.rotation * Quaternion.Euler(90, 0, transform.rotation.z); 
 			Rigidbody rgproj = projectile.AddComponent<Rigidbody>();
 			Vector3 moveDirection = enemyPos-transform.position;
 			rgproj.velocity = new Vector3(moveDirection.x,0,moveDirection.z).normalized * projectileSpeed;
