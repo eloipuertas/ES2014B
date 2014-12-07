@@ -197,21 +197,21 @@ public class HUD : MonoBehaviour
 						if (i == 0) {//vida
 
 								GUI.BeginGroup (new Rect (xVida, yVida, amplada, Screen.height - yVida));
-								GUI.DrawTexture (new Rect (0, alturaVida - altura, amplada, altura), this.texVida);
+								GUI.DrawTexture (new Rect (0, alturaVida - altura, altura, altura), this.texVida);
 								//GUI.DrawTexture (new Rect (0, alturaVida - altura, amplada, altura), this.vidaCover);
 								GUI.EndGroup ();
 								GUI.BeginGroup (new Rect (xVida, Screen.height - altura, amplada, Screen.height - altura));
-								GUI.DrawTexture (new Rect (0, 0, amplada, altura), this.vidaCover);
+								GUI.DrawTexture (new Rect (0, 0, altura, altura), this.vidaCover);
 								GUI.EndGroup ();
 						} else if (i == numTextures - 1) {//mana
 								//GUI.BeginGroup (new Rect (xMana, yMana, amplada, Screen.height - yMana));
 
 								GUI.BeginGroup (new Rect (xMana, yMana, amplada, Screen.height - yMana));
-								GUI.DrawTexture (new Rect (0, alturaMana - altura, amplada, altura), this.texMana);
+								GUI.DrawTexture (new Rect (Mathf.Abs(altura-amplada), alturaMana - altura, altura, altura), this.texMana);
 								//GUI.DrawTexture (new Rect (0, alturaMana - altura, amplada, altura), this.manaCover);
 								GUI.EndGroup ();
 								GUI.BeginGroup (new Rect (xMana, Screen.height - altura, amplada, Screen.height - altura));
-								GUI.DrawTexture (new Rect (0, 0, amplada, altura), this.manaCover);
+								GUI.DrawTexture (new Rect (Mathf.Abs(altura-amplada), 0, altura, altura), this.manaCover);
 								GUI.EndGroup ();
 						} else {//altres
 								Texture texturaMagia = magiaEscollida == i ? magiaNormal : magiaSelect;
