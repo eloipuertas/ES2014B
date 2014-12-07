@@ -17,15 +17,22 @@ public class EmitParticles : MonoBehaviour
 	public float velx, vely, velz;
 	public float normal;
 
-	public Color32 col = Color.white;
-	
 	public AudioClip fire_ball;
+
+	string playerPref;
 
 	public void throwParticle ( GameObject player, Vector3 target ) 
 	{
 		// Definim origen de la particula
 		transform.position = player.transform.position + pos;
 		transform.LookAt (target);
+
+		playerPref = PlayerPrefs.GetString ("player");
+		if (playerPref.Equals("player1")) {
+			particleSystem.startColor = Color.white;
+		} else {
+			particleSystem.startColor = Color.green;
+		}
 
 		if(!particleSystem.isPlaying)
 			particleSystem.Emit (1);
