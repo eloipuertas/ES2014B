@@ -153,7 +153,6 @@ public class MainPjMovement :  AbstractEntity {
 				if (Input.GetKeyDown (KeyCode.Alpha1)) {
 					Debug.Log ("Apretat 1");
 					nextMagicAttack = 1;
-					anim.SetBool("magic",true);
 				}
 				
 				
@@ -173,8 +172,7 @@ public class MainPjMovement :  AbstractEntity {
 							targetPosition.y = 0;
 							
 							anim.SetBool ("attackMelee",false);
-							//animation.Stop("attackMelee");				
-							
+
 							if(this.isAlive())
 								PJAudio.PlayWalkSounds();
 						}
@@ -219,7 +217,7 @@ public class MainPjMovement :  AbstractEntity {
 						
 						break;
 					case 0:
-						if (distancia > 80) {
+						if (distancia > 55) {
 							//cal restar vida de l'aranya, parlar amb Jordi
 							Debug.Log ("No puc atacar cos a cos");
 						} else {
