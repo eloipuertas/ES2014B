@@ -14,10 +14,12 @@ public class TrollState : AbstractEntity {
 	public float coeff_StrToDMG = 10f;
 	public float maxPcDMGReduction = 0.90f;
 
+	private PNJMusicManager PNJAudio;
 	private Animator animator;
 
 	// Use this for initialization
 	void Awake () {
+		PNJAudio = GameObject.FindObjectOfType(typeof(PNJMusicManager)) as PNJMusicManager;
 		animator = GetComponent<Animator>();
 		updateStats ();
 		InvokeRepeating ("EmulateAttackSpeed", 0, 1f/max_attacks_per_second); 
@@ -57,10 +59,12 @@ public class TrollState : AbstractEntity {
 		if (animator.GetBool("walk_enabled"))animator.SetBool("walk_enabled",false);
 		if (animator.GetBool("attack_enabled"))animator.SetBool("attack_enabled",false);
 		animator.SetBool("receive_attack_enabled",true);
+		//PNJAudio.PlayOgreHurt();
 		this.setHP(HP-damage);
 		if(!isAlive()){
 			animator.SetBool("receive_attack_enabled",false);
 			animator.SetBool("die",true);
+			//PNJAudio.PlayOgreKilled();
 		}
 		if (timeCostDivisor > 0 && timeForNextAction<(timecost_perAction/timeCostDivisor)) timeForNextAction = timecost_perAction/timeCostDivisor;
 	}
@@ -81,6 +85,7 @@ public class TrollState : AbstractEntity {
 			if (timeForNextAction<=0){
 				if (animator.GetBool("walk_enabled")) animator.SetBool ("walk_enabled", false);
 				if (!animator.GetBool("attack_enabled")) animator.SetBool ("attack_enabled", true);
+				//PNJAudio.PlayOgreHit();
 				enemy.onAttackReceived (DMG);
 				timeForNextAction = timecost_perAction;
 			}
