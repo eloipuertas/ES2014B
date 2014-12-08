@@ -275,7 +275,7 @@ public class MainPjMovement :  AbstractEntity {
 		
 	}
 	void OnControllerColliderHit(ControllerColliderHit hit){
-		if (hit.gameObject.tag == "Untagged") {
+		if (hit.gameObject.tag == "Untagged" && !this.leftPressedMouse()) {
 			targetPosition = transform.position;
 		}
 	}
