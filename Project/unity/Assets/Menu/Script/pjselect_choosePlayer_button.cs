@@ -24,6 +24,8 @@ public class pjselect_choosePlayer_button : MonoBehaviour
 		public bool second;
 		public bool third;
 		private GameObject jug = null;
+
+		private AudioButtons BAudio;
 	
 		void Awake ()
 		{
@@ -44,6 +46,8 @@ public class pjselect_choosePlayer_button : MonoBehaviour
 				animationForward = true;
 				animationIndex = 0;
 				currentAnimation = texturesUnS;
+
+				BAudio = GameObject.FindObjectOfType(typeof(AudioButtons)) as AudioButtons;
 		}
 	
 		void Update ()
@@ -105,9 +109,11 @@ public class pjselect_choosePlayer_button : MonoBehaviour
 		public void OnMouseUpAsButton ()
 		{
 				if (first) {
+						//BAudio.PlayLaughGirl();
 						PlayerPrefs.SetString ("player", "player1");
 						//jug = (GameObject)Instantiate (Resources.Load ("player1"));
 				} else if (second) {
+						//BAudio.PlayLaughMan();
 						PlayerPrefs.SetString ("player", "player2");
 						//jug = (GameObject)Instantiate (Resources.Load ("player2"));
 				} else if (third) {
