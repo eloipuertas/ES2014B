@@ -46,8 +46,12 @@ public class PNJMusicManager : MonoBehaviour
 	
 	public void PlayOgreHit()
 	{
-		audio.clip = OHit[Random.Range(0, OHit.Length)];;
-		audio.Play ();		
+		int i = Random.Range(0, OHit.Length - 1);
+		Debug.Log ("OHit.Length " + OHit.Length + " i " + i);
+		if ( OHit.Length > 0 ) {
+			audio.clip = OHit[i];
+			audio.Play ();
+		}
 		
 	}
 

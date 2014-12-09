@@ -5,12 +5,12 @@ public class AISelectable : Selectable {
 
 	void Update()
 	{
-		SpiderAI ai = this.gameObject.GetComponent<SpiderAI>();
-		SpiderState state = this.gameObject.GetComponent<SpiderState>();
+		BasicAI ai = this.gameObject.GetComponent<BasicAI>();
+		AbstractEntity state = this.gameObject.GetComponent<AbstractEntity>();
 
 		if ( state.isAlive() )
 		{
-			if ( ai.currentAction == SpiderAI.PASSIVE )
+			if ( ai.currentAction == BasicAI.PASSIVE )
 			{
 				outlineColor = Color.blue;
 			}

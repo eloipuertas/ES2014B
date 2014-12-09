@@ -1,10 +1,10 @@
 using UnityEngine;
 using System;
 
-public class BasicSpiderAI : SpiderAI {
+public class BasicSpiderAI : BasicAI {
 
-	public float aggroRange = 50f;
-	public float attackRange = 1.5f; 
+	public float aggroRange = 75f;
+	public float attackRange = 10f; 
 	public int manacost_web = 100;
 	private SpiderState myState;
 	
@@ -85,7 +85,6 @@ public class BasicSpiderAI : SpiderAI {
 	// Update is called once per frame
 	void Update () {
 		//debugDrawPath();
-		
 		if (target == null) {
 			GameObject goTarget = getPlayerGameObject ();
 			if ( goTarget != null ) {

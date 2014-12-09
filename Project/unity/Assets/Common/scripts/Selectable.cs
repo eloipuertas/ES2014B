@@ -18,19 +18,28 @@ public class Selectable : MonoBehaviour {
 	void LateUpdate ()
 	{
 		RaycastHit hit;
+		GameObject player = GameObject.FindWithTag("Player");
 
-		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+		if ( Camera.main != null && player != null ) {
+			AbstractEntity entity = player.GetComponent<AbstractEntity>();
 
-		if ( Physics.Raycast(ray, out hit, Mathf.Infinity, 1 << layer) )
-		{
-			Transform target = hit.transform;
+			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-			//Debug.Log("ray.origin: " + ray.origin);
-			//Debug.Log("ray.direction: " + ray.direction);
-
-			if ( target == transform )
+			if ( entity.isAlive() && Physics.Raycast(ray, out hit, Mathf.Infinity, 1 << layer) )
 			{
-				overrideShader();
+				Transform target = hit.transform;
+
+				//Debug.Log("ray.origin: " + ray.origin);
+				//Debug.Log("ray.direction: " + ray.direction);
+
+				if ( target == transform )
+				{
+					overrideShader();
+				}
+				else
+				{
+					restoreShader();
+				}
 			}
 			else
 			{

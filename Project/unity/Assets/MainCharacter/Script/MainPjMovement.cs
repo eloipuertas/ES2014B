@@ -25,7 +25,7 @@ public class MainPjMovement :  AbstractEntity {
 	private EmitParticles Magia;
 	private BitParticles ParticulesSang;
 
-
+	public int physicalAttackRange = 60;
 	
 	public int regenHP;
 	public int regenMP;
@@ -236,8 +236,9 @@ public class MainPjMovement :  AbstractEntity {
 						
 						break;
 					case 0:
-						if (distancia > 55) {
+						if (distancia > physicalAttackRange) {
 							//cal restar vida de l'aranya, parlar amb Jordi
+							Debug.Log("Distancia: " + distancia);
 							Debug.Log ("No puc atacar cos a cos");
 						} else {
 							//ataco a l'aranya
