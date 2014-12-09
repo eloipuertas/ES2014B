@@ -3,8 +3,6 @@ using System.Collections;
 
 public class RegenerationPj : MonoBehaviour {
 	public float time;
-	public int regenHP = 2;
-	public int regenMP = 5;
 	public MainPjMovement pj;
 	// Use this for initialization
 	void Start () {
@@ -18,8 +16,10 @@ public class RegenerationPj : MonoBehaviour {
 			this.time -= Time.deltaTime;
 		}else{
 			this.time = 1.0f;
-			pj.increaseHeal(this.regenHP);
-			pj.increaseMana(this.regenMP);
+			if (pj.isAlive()){
+				pj.increaseHeal(pj.getRegenHP());
+				pj.increaseMana(pj.getRegenMP());
+			}
 		}
 	}
 }
