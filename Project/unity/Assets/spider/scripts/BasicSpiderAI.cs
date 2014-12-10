@@ -39,7 +39,7 @@ public class BasicSpiderAI : BasicAI {
 	}
 	
 	private void checkPath(){
-		if (target != null && !Vector3.Equals (lastTargetPos, target.position) && currentAction==MOVING) {
+		if (target != null && agent && !Vector3.Equals (lastTargetPos, target.position) && currentAction==MOVING) {
 			agent.CalculatePath(target.position, path);
 			lastTargetPos = target.position;
 			current_corner = 1;

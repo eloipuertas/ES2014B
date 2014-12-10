@@ -74,9 +74,9 @@ public class SpiderState : AbstractEntity {
 	
 	public override void onAttackReceived (int baseDMG){
 		//Debug.Log("SpiderState: onAttackReceived");
-		int damage = Mathf.RoundToInt((1-((float)ARM / 15 * maxPcDMGReduction))*baseDMG);
+		int damage = Mathf.RoundToInt((1-((float) ARM / 15 * maxPcDMGReduction))*baseDMG);
 		//Debug.Log("spider_baseDMG: " + baseDMG);
-		//Debug.Log("spider_damage: " + damage);
+		Debug.Log("spider_damage: " + damage);
 		animator.SetBool("walk_enabled",false);
 		animator.SetBool("attack_enabled",false);
 		animator.SetBool("receive_attack_enabled",true);
@@ -178,6 +178,7 @@ public class SpiderState : AbstractEntity {
 			animator.SetBool("attack_enabled",false);
 			animator.SetBool("receive_attack_enabled",false);
 			animator.SetBool("die",true);
+			GetComponent<CharacterController>().enabled = false;
 			PNJAudio.PlayPNJKilled();
 		}
 	}

@@ -26,6 +26,8 @@ public class MainPjMovement :  AbstractEntity {
 	private BitParticles ParticulesSang;
 
 	public int physicalAttackRange = 60;
+
+	public float manaSpellCost = 0.25f;
 	
 	public int regenHP;
 	public int regenMP;
@@ -36,37 +38,37 @@ public class MainPjMovement :  AbstractEntity {
 		return this.clickPressed;
 	}
 	public void modeEasy(){
-		this.setMAXHP (2000);
-		this.setMAXMP (2000);
-		this.setHP (2000);
-		this.setMP (2000);
+		this.setMAXHP (750);
+		this.setMAXMP (1000);
+		this.setHP (750);
+		this.setMP (1000);
 		this.setFOR (0);
-		this.setDMG (200);
-		this.setRegenHP (10);
-		this.setRegenMP (20);
+		this.setDMG (25);
+		this.setRegenHP (15);
+		this.setRegenMP (50);
 		nivellDif = 1;
 	}
 	
 	public void modeMedium(){
-		this.setMAXHP (1500);
-		this.setMAXMP (1500);
-		this.setHP (1500);
-		this.setMP (1500);
+		this.setMAXHP (500);
+		this.setMAXMP (500);
+		this.setHP (500);
+		this.setMP (500);
 		this.setFOR (0);
-		this.setDMG (150);
-		this.setRegenHP (5);
-		this.setRegenMP (10);
+		this.setDMG (15);
+		this.setRegenHP (10);
+		this.setRegenMP (25);
 		nivellDif = 2;
 	}
 	public void modeHard(){
-		this.setMAXHP (1000);
-		this.setMAXMP (1000);
-		this.setHP (1000);
-		this.setMP (1000);
+		this.setMAXHP (300);
+		this.setMAXMP (400);
+		this.setHP (300);
+		this.setMP (400);
 		this.setFOR (0);
-		this.setDMG (100);
-		this.setRegenHP (2);
-		this.setRegenMP (5);
+		this.setDMG (15);
+		this.setRegenHP (3);
+		this.setRegenMP (10);
 		nivellDif = 3;
 	}
 
@@ -111,6 +113,7 @@ public class MainPjMovement :  AbstractEntity {
 	public bool substractManaSpell(int n){
 		int dif = this.getMP() - n;
 		if (dif >= 0) {
+			//Debug.Log ("Substracting mana: " + n);
 			this.setMP(dif);
 			return true;
 		}
@@ -145,7 +148,7 @@ public class MainPjMovement :  AbstractEntity {
 	}
 	public override void onAttackReceived(int dmg){
 		//Debug.Log("MainPjMovement: onAttackReceived");
-		//Debug.Log ("pj dmg: " + dmg);
+		Debug.Log ("pj dmg: " + dmg);
 		this.setHP (this.getHP () - dmg+this.getFOR());
 
 
@@ -202,15 +205,23 @@ public class MainPjMovement :  AbstractEntity {
 				
 				//RaycastHit hit; // cast a ray from mouse pointer: 
 				Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition); // if enemy hit... 
-				if (Physics.Raycast (ray, out hit) && hit.transform.CompareTag ("Enemy") && Input.GetMouseButtonDown (1)) { 
+				if (Physics.Raycast (Camera.main.ScreenPointToRay (Input.mousePosition), out hit, Mathf.Infinity, ~(1 << 8)) && hit.transform.CompareTag ("Enemy") && Input.GetMouseButtonDown (1)) { 
 					//distancia entre el personatge principal i l'enemic
 					//es calcula en metres
-					float distancia = hit.distance;
-					Debug.Log ("Distancia:" + distancia);
+
+
 					
 					//obtinc la aranya
 					AbstractEntity Aranya = (AbstractEntity) hit.collider.GetComponent ("AbstractEntity");
+					float z = transform.rotation.z;
 					transform.LookAt(hit.point);
+					Quaternion r = transform.rotation;
+					r.z = z;
+					transform.rotation = r;
+
+					float distancia = (transform.position - Aranya.transform.position).magnitude - Aranya.distanceRadiusReduction;
+					Debug.Log ("Distancia:" + distancia);
+
 					
 					switch (nextMagicAttack) {
 					case 1:
@@ -219,12 +230,12 @@ public class MainPjMovement :  AbstractEntity {
 							Debug.Log ("Cal fer una magia de foc pero estas massa lluny");
 						} else {
 							//anim.setBool("spellFire",true);
-							if (this.substractManaSpell (this.nivellDif/this.getMAXMP())) {
+							if (this.substractManaSpell ((int)(manaSpellCost*this.getMAXMP()))) {
 								//so de llencar la magia de foc
 								//animacio de la magia
 								Magia.throwParticle(this.gameObject, hit.point); //Merge devel
 								anim.SetBool("magic",true);
-								Aranya.onAttackReceived (Random.Range (100, 200));
+								Aranya.onAttackReceived (Random.Range (150, 200));
 							} else {
 								//so de que no te magia suficient?
 							}

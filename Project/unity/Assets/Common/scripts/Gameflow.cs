@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Gameflow : MonoBehaviour {
 	private Transform[] spawnPoints;
-	public Transform trigger_door;
+	public GameObject trigger_door;
 	public Transform trollSpawner;
 	public int maxEnemies = 0;
 
@@ -22,7 +22,7 @@ public class Gameflow : MonoBehaviour {
 
 	void Awake() {
 		phase = INITIAL_PHASE;
-		if (trigger_door!=null) trigger_door.GetComponent<triggerDoor>().enabled = false;
+		//if (trigger_door!=null) trigger_door.GetComponent<triggerDoor>().enabled = false;
 		//Debug.Log("PlayerPrefs.GetString(\"player\"): " + PlayerPrefs.GetString("player"));
 
 		string playerTemplate = PlayerPrefs.GetString("player");
@@ -79,10 +79,10 @@ public class Gameflow : MonoBehaviour {
 					}
 
 					Invoke ("spawnSpiders",2f);
-					if (trigger_door!=null) trigger_door.GetComponent<triggerDoor>().enabled = true;
+					Invoke ("open_door", 2f);
 
 					if (trollSpawner!=null){
-						Object prefab = Resources.LoadAssetAtPath("Assets/Troll/Prefabs/troll.prefab", typeof(GameObject));
+						Object prefab = Resources.Load("troll", typeof(GameObject));
 						GameObject clone = Instantiate(prefab, Vector3.zero, Quaternion.identity) as GameObject;
 						clone.transform.position = trollSpawner.position;
 						clone.GetComponent<NavMeshAgent> ().enabled = true;
@@ -102,9 +102,14 @@ public class Gameflow : MonoBehaviour {
 							if (spiderstate!=null){
 								spiderstate.destroyWithDelay(2f);
 								Invoke ("spawnSpiders",2f);
-							}else if (trollstate!=null){
+							}
+							if (trollstate!=null){
 								if (!trollstate.isAlive()){
 									phase = GAME_COMPLETE;
+									GameObject player = GameObject.FindGameObjectWithTag("Player");
+									Animator a = player.GetComponent<Animator>();
+									a.SetBool("fanfare", true);
+									Invoke("show_win_message", 3);
 								}
 							}
 						}
@@ -125,6 +130,16 @@ public class Gameflow : MonoBehaviour {
 		}
 	}
 
+	private void open_door() {
+		if (trigger_door!=null) Object.Destroy(trigger_door);
+	}
+
+	private void show_win_message() {
+		Camera camera = Camera.main;
+		HUD h = camera.GetComponent<HUD>();
+		h.show_win_message();
+	}
+
 	private void spawnSpiders(){
 		//Debug.Log ("Gameflow: spawnSpiders");
 		int curr_enemies = GameObject.FindGameObjectsWithTag ("Enemy").Length;
@@ -132,7 +147,7 @@ public class Gameflow : MonoBehaviour {
 			if (!Physics.CheckSphere (spawnPoints[i].position, 0.5f) && curr_enemies < maxEnemies) {
 				//Debug.Log ("Gameflow: Spawning spider");
 
-				Object prefab = Resources.LoadAssetAtPath("Assets/spider/prefabs/black_spider.prefab", typeof(GameObject));
+				Object prefab = Resources.Load("black_spider", typeof(GameObject));
 				GameObject clone = Instantiate(prefab, Vector3.zero, Quaternion.identity) as GameObject;
 				clone.transform.position = spawnPoints[i].position;
 				clone.GetComponent<NavMeshAgent> ().enabled = true;
