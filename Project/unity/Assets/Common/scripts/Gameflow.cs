@@ -3,21 +3,27 @@ using System.Collections;
 
 public class Gameflow : MonoBehaviour {
 	private Transform[] spawnPoints;
-	public float minTimeBetweenSpawns = 10;
-	public float maxTimeBetweenSpawns = 20;
-	public int maxSpidersSpawned = 0;
+	public GameObject trigger_door;
+	public Transform trollSpawner;
+	public int maxEnemies = 0;
 
 	private AbstractEntity playerEntity;
 	private int phase;
 	private const int INITIAL_PHASE = 1;
 	private const int TROLL_FIGHT = 2;
-	private const int LEVEL_CLEARED = 3;
+	private const int GAME_COMPLETE = 3;
 	private const int GAME_OVER = 0;
+	
+	//Difficulty levels
+	public const int EASY = 0;
+	public const int MEDIUM = 1;
+	public const int HARD = 2;
+
 
 	void Awake() {
 		phase = INITIAL_PHASE;
-		
-		Debug.Log("PlayerPrefs.GetString(\"player\"): " + PlayerPrefs.GetString("player"));
+		//if (trigger_door!=null) trigger_door.GetComponent<triggerDoor>().enabled = false;
+		//Debug.Log("PlayerPrefs.GetString(\"player\"): " + PlayerPrefs.GetString("player"));
 
 		string playerTemplate = PlayerPrefs.GetString("player");
 		if ( playerTemplate != null ) {
@@ -42,7 +48,6 @@ public class Gameflow : MonoBehaviour {
 	}
 
 	void phase_control(){
-
 		if (playerEntity.isAlive ()) {
 			GameObject[] enemies = GameObject.FindGameObjectsWithTag ("Enemy");
 			GameObject enemy;
@@ -73,47 +78,82 @@ public class Gameflow : MonoBehaviour {
 						}
 					}
 
-					//spawnSpiders ();
-					Invoke ("spawnSpiders",3f);
-					//TODO enable door
-					//TODO spawn troll
+					Invoke ("spawnSpiders",2f);
+					Invoke ("open_door", 2f);
+
+					if (trollSpawner!=null){
+						Object prefab = Resources.Load("troll", typeof(GameObject));
+						GameObject clone = Instantiate(prefab, Vector3.zero, Quaternion.identity) as GameObject;
+						clone.transform.position = trollSpawner.position;
+						clone.GetComponent<NavMeshAgent> ().enabled = true;
+						clone.GetComponent<TrollAI> ().enabled = true;
+					}
 				}
-			}
-			/* // Disabled to allow no more horde-massive-spiderduspawning shit-storm-scale
 			} else if (phase == TROLL_FIGHT) {
 				SpiderState spiderstate;
-				//TrollState trollstate;
-				for (int i=0;i<enemies.Length;i++){
+				TrollState trollstate;
+				for (int i=0;i<enemies.Length && phase==TROLL_FIGHT;i++){
 					enemy = enemies[i];
 					enemyEntity = enemy.GetComponent<AbstractEntity>();
 					if (enemyEntity!=null){
 						if (!enemyEntity.isAlive ()){
 							spiderstate = enemy.GetComponent<SpiderState>();
-							//trollstate = enemy.GetComponent<TrollState>();
+							trollstate = enemy.GetComponent<TrollState>();
 							if (spiderstate!=null){
-								spiderstate.destroyWithDelay(2.5f);
+								spiderstate.destroyWithDelay(2f);
 								Invoke ("spawnSpiders",2f);
-							}//else if trollstate!=null
+							}
+							if (trollstate!=null){
+								if (!trollstate.isAlive()){
+									phase = GAME_COMPLETE;
+									GameObject player = GameObject.FindGameObjectWithTag("Player");
+									Animator a = player.GetComponent<Animator>();
+									a.SetBool("fanfare", true);
+									Invoke("show_win_message", 3);
+								}
+							}
 						}
 					}
 				}
-			} */
-		}else if (phase != GAME_OVER){
+			}else{
+				for (int i=0;i<enemies.Length;i++){
+					enemy = enemies[i];
+					SpiderState spiderstate = enemy.GetComponent<SpiderState>();
+					if (spiderstate!=null){
+						spiderstate.substractHealth(spiderstate.getHP());
+						spiderstate.destroyWithDelay(1f);
+					}
+				}
+			}
+		}else if (phase!=GAME_OVER){
 			phase = GAME_OVER;
 		}
 	}
+
+	private void open_door() {
+		if (trigger_door!=null) Object.Destroy(trigger_door);
+	}
+
+	private void show_win_message() {
+		Camera camera = Camera.main;
+		HUD h = camera.GetComponent<HUD>();
+		h.show_win_message();
+	}
+
 	private void spawnSpiders(){
-		Debug.Log ("Gameflow: spawnSpiders");
+		//Debug.Log ("Gameflow: spawnSpiders");
 		int curr_enemies = GameObject.FindGameObjectsWithTag ("Enemy").Length;
 		for (int i=0; i<spawnPoints.Length; i++) {
-			if (!Physics.CheckSphere (spawnPoints[i].position, 0.5f) && curr_enemies < maxSpidersSpawned) {
-				Debug.Log ("Gameflow: Spawning spider");
+			if (!Physics.CheckSphere (spawnPoints[i].position, 0.5f) && curr_enemies < maxEnemies) {
+				//Debug.Log ("Gameflow: Spawning spider");
 
-				Object prefab = Resources.LoadAssetAtPath("Assets/spider/prefabs/black_spider.prefab", typeof(GameObject));
+				Object prefab = Resources.Load("black_spider", typeof(GameObject));
 				GameObject clone = Instantiate(prefab, Vector3.zero, Quaternion.identity) as GameObject;
 				clone.transform.position = spawnPoints[i].position;
+				clone.GetComponent<NavMeshAgent> ().enabled = true;
 				clone.GetComponent<SpiderState> ().enabled = true;
 				clone.GetComponent<BasicSpiderAI> ().enabled = true;
+				curr_enemies++;
 			} 
 		}
 	}
@@ -126,5 +166,27 @@ public class Gameflow : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	
+	}
+	
+	public static int GetDifficulty ()
+	{
+		string difficulty = PlayerPrefs.GetString ("difficulty");
+		difficulty = difficulty != null && difficulty.Length == 1 ? difficulty : MEDIUM+"";
+		return System.Int32.Parse (difficulty);
+	}
+	
+	public static void SetDifficulty (int mode)
+	{
+		mode = mode < EASY ? EASY : mode;
+		mode = mode > HARD ? HARD : mode;
+		PlayerPrefs.SetString ("difficulty", "" + mode);
+		
+	}
+	
+	public static bool IsDifficulty (int mode)
+	{
+		mode = mode < EASY ? EASY : mode;
+		mode = mode > HARD ? HARD : mode;
+		return GetDifficulty () == mode;
 	}
 }

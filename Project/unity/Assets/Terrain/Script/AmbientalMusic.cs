@@ -10,6 +10,9 @@ public class AmbientalMusic : MonoBehaviour
 
 	public AudioClip gameOver;
 
+	public AudioClip youWin;
+	public AudioClip credits;
+
 	public bool pause = false;
 
 	// Use this for initialization
@@ -21,41 +24,45 @@ public class AmbientalMusic : MonoBehaviour
 		audio.Play ();
 	
 	}
-	
-	// Update is called once per frame
-	void Update () 
-	{
-		if ( pause )
-			audio.Pause ();
-		
-		else if ( ! audio.isPlaying )
-				audio.Play ();
-	
-	}
 
 	public void PlayGameOver()
 	{
 		audio.clip = gameOver;
+		audio.Play ();
 	}
 
 	public void PlayFight()
 	{
 		audio.clip = fight;
+		audio.Play ();
 	}
 
 	public void PlayCatacumba()
 	{
 		audio.clip = catacumba;
+		audio.Play ();
+	}
+
+	public void PlayYouWin()
+	{
+		audio.clip = youWin;
+		audio.Play ();
+	}
+	
+	public void PlayCredits()
+	{
+		audio.clip = credits;
+		audio.Play ();
 	}
 
 	public void PauseAudio()
 	{
-		pause = true;
+		audio.Pause ();
 	}
 
 	public void UnPauseAudio()
 	{
-		pause = false;
+		audio.Play ();
 	}
 
 }

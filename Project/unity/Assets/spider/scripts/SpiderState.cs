@@ -3,8 +3,9 @@ using System.Collections;
 
 
 public class SpiderState : AbstractEntity {
-	public float moveSpeed = 1.5f;
-	public float rotationSpeed = 4.0f;
+	public float timeForNextAction = 0;
+	public float moveSpeed = 10f;
+	public float rotationSpeed = 15f;
 	public Vector3 destination;
 	public float timecost_perAction;
 	public float timeCostDivisor = 2;
@@ -12,8 +13,16 @@ public class SpiderState : AbstractEntity {
 	private PNJMusicManager PNJAudio;
 	private CharacterController characterController;
 	private Animator animator;
-	private float timeForNextAction = 0;
 	
+	public float projectileSpeed = 75f;
+	public float max_attacks_per_second = 5; //Also means MP restored per second
+	public int maxHPPossible = 500;
+	public int maxMPPossible = 500;
+	public float coeff_ConToFor = 0.25f;
+	public float coeff_DexToRef = 0.5f;
+	public float coeff_StrToDMG = 3f;
+	public float maxPcDMGReduction = 0.75f;
+
 	void Awake(){
 		PNJAudio = GameObject.FindObjectOfType(typeof(PNJMusicManager)) as PNJMusicManager;
 		characterController = GetComponent<CharacterController>();
@@ -21,6 +30,12 @@ public class SpiderState : AbstractEntity {
 		
 		characterController.radius = 2.5f;
 		
+		updateStats ();
+
+		InvokeRepeating ("TimeBasedUpdate", 0, 1f/max_attacks_per_second); 
+	}
+
+	public void updateStats(){
 		if (STR == 0) setSTR (6);
 		else if (STR < 0) setSTR (1);
 		else if (STR > 18) setSTR (18);
@@ -32,25 +47,22 @@ public class SpiderState : AbstractEntity {
 		else if (CON > 18) setCON (18);
 		if (INT == 0) setINT (6);
 		else if (INT < 0) setINT (1);
+
+		setMAXHP (Mathf.RoundToInt (((float)CON/18f) * maxHPPossible));
+		setHP (MAXHP);
+		setFOR (Mathf.RoundToInt ((float) CON * coeff_ConToFor));
+		setREF (Mathf.RoundToInt ((float) DEX * coeff_DexToRef));
+		setARM (FOR+REF);
+
+		setMAXMP (Mathf.RoundToInt (((float)INT/18f) * maxMPPossible));
+		setMP (MAXMP);
+		setDMG (Mathf.RoundToInt ((float) STR * coeff_StrToDMG));
 		
-		if (HP == 0) setHP (Mathf.RoundToInt (((float)CON/18) * 500));
-		
-		if (MAXHP == 0) setMAXHP (HP);
-		if (FOR == 0) setFOR (Mathf.RoundToInt ((float) CON * 0.25f));
-		if (REF == 0) setREF (Mathf.RoundToInt ((float) DEX * 0.5f));
-		if (ARM == 0) setARM (FOR+REF);
-		
-		if (MP == 0) setMP (Mathf.RoundToInt (((float)INT/18) * 500));
-		if (MAXMP == 0) setMAXMP (MP);
-		if (DMG == 0) setDMG (Mathf.RoundToInt ((float) STR * 1f));
-		
-		if (timecost_perAction == 0) timecost_perAction = 1/((float)DEX/18 * 5);
-		
-		InvokeRepeating ("TimeBasedUpdate", 0, 0.2f);
+		timecost_perAction = (1f/((float)DEX/18f * max_attacks_per_second));
 	}
-	
-	private void TimeBasedUpdate(){
-		if (timeForNextAction > 0.0) timeForNextAction = timeForNextAction - 0.2f;
+
+	private void TimeBasedUpdate(){ 
+		if (timeForNextAction > 0.0) timeForNextAction = timeForNextAction - 1f/max_attacks_per_second;
 		if (MP < MAXMP) MP = MP + 1;
 	}
 	
@@ -61,9 +73,9 @@ public class SpiderState : AbstractEntity {
 	}
 	
 	public override void onAttackReceived (int baseDMG){
-		Debug.Log("SpiderState: onAttackReceived");
-		int damage = Mathf.RoundToInt((1-((float)ARM / 15 * 0.75f))*baseDMG);
-		Debug.Log("spider_baseDMG: " + baseDMG);
+		//Debug.Log("SpiderState: onAttackReceived");
+		int damage = Mathf.RoundToInt((1-((float) ARM / 15 * maxPcDMGReduction))*baseDMG);
+		//Debug.Log("spider_baseDMG: " + baseDMG);
 		Debug.Log("spider_damage: " + damage);
 		animator.SetBool("walk_enabled",false);
 		animator.SetBool("attack_enabled",false);
@@ -112,17 +124,19 @@ public class SpiderState : AbstractEntity {
 	
 	// THROW PROJECTILE
 	public void throwProj(AbstractEntity enemy,Vector3 enemyPos, int manacost){
-		
 		if (MP > manacost) {
 			this.lookAt (enemyPos);
 			MP = MP - manacost;
-			GameObject projectile = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-			projectile.transform.position = new Vector3(transform.position.x,2,transform.position.z);
-			projectile.transform.localScale = new Vector3(0.5f,0.5f,0.5f);
-			projectile.AddComponent<Web>();
+			Object prefab = Resources.LoadAssetAtPath("Assets/SpiderProjectile/Prefab/SpiderWeb.prefab", typeof(GameObject));
+			GameObject projectile = Instantiate(prefab, Vector3.zero, Quaternion.identity) as GameObject;
+			Physics.IgnoreCollision(projectile.collider,characterController);
+			projectile.transform.position = new Vector3(transform.position.x,transform.position.y,transform.position.z);
+			projectile.transform.rotation = projectile.transform.rotation * Quaternion.Euler(90, transform.rotation.eulerAngles.y, 0);
 			Rigidbody rgproj = projectile.AddComponent<Rigidbody>();
-			rgproj.velocity = (enemyPos-projectile.transform.position).normalized*10;
+			Vector3 moveDirection = enemyPos-transform.position;
+			rgproj.velocity = new Vector3(moveDirection.x,0,moveDirection.z).normalized * projectileSpeed;
 			rgproj.useGravity = false;
+			Physics.IgnoreCollision(rgproj.collider,characterController);
 		}
 	}
 	
@@ -164,6 +178,7 @@ public class SpiderState : AbstractEntity {
 			animator.SetBool("attack_enabled",false);
 			animator.SetBool("receive_attack_enabled",false);
 			animator.SetBool("die",true);
+			GetComponent<CharacterController>().enabled = false;
 			PNJAudio.PlayPNJKilled();
 		}
 	}

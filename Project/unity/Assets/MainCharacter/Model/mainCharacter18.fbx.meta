@@ -1,0 +1,2166 @@
+fileFormatVersion: 2
+guid: 19240f937b06cb64aa06000ccb87a839
+ModelImporter:
+  serializedVersion: 16
+  fileIDToRecycleName:
+    100000: chest
+    100002: f_index.01.L
+    100004: f_index.01.R
+    100006: f_index.02.L
+    100008: f_index.02.R
+    100010: f_index.03.L
+    100012: f_index.03.R
+    100014: f_middle.01.L
+    100016: f_middle.01.R
+    100018: f_middle.02.L
+    100020: f_middle.02.R
+    100022: f_middle.03.L
+    100024: f_middle.03.R
+    100026: f_pinky.01.L
+    100028: f_pinky.01.R
+    100030: f_pinky.02.L
+    100032: f_pinky.02.R
+    100034: f_pinky.03.L
+    100036: f_pinky.03.R
+    100038: f_ring.01.L
+    100040: f_ring.01.R
+    100042: f_ring.02.L
+    100044: f_ring.02.R
+    100046: f_ring.03.L
+    100048: f_ring.03.R
+    100050: femaleArmature
+    100052: femaleMesh
+    100054: foot.L
+    100056: foot.R
+    100058: forearm.L
+    100060: forearm.R
+    100062: HairBone
+    100064: hand.L
+    100066: hand.L.001
+    100068: hand.R
+    100070: head
+    100072: heel.02.L
+    100074: heel.02.R
+    100076: heel.L
+    100078: heel.R
+    100080: hips
+    100082: //RootNode
+    100084: neck
+    100086: palm.01.L
+    100088: palm.01.R
+    100090: palm.02.L
+    100092: palm.02.R
+    100094: palm.03.L
+    100096: palm.03.R
+    100098: palm.04.L
+    100100: palm.04.R
+    100102: shin.L
+    100104: shin.R
+    100106: shoulder.L
+    100108: shoulder.R
+    100110: spine
+    100112: SubHairBone
+    100114: thigh.L
+    100116: thigh.R
+    100118: thumb.01.L
+    100120: thumb.01.R
+    100122: thumb.02.L
+    100124: thumb.02.R
+    100126: thumb.03.L
+    100128: thumb.03.R
+    100130: toe.L
+    100132: toe.R
+    100134: upper_arm.L
+    100136: upper_arm.R
+    400000: chest
+    400002: f_index.01.L
+    400004: f_index.01.R
+    400006: f_index.02.L
+    400008: f_index.02.R
+    400010: f_index.03.L
+    400012: f_index.03.R
+    400014: f_middle.01.L
+    400016: f_middle.01.R
+    400018: f_middle.02.L
+    400020: f_middle.02.R
+    400022: f_middle.03.L
+    400024: f_middle.03.R
+    400026: f_pinky.01.L
+    400028: f_pinky.01.R
+    400030: f_pinky.02.L
+    400032: f_pinky.02.R
+    400034: f_pinky.03.L
+    400036: f_pinky.03.R
+    400038: f_ring.01.L
+    400040: f_ring.01.R
+    400042: f_ring.02.L
+    400044: f_ring.02.R
+    400046: f_ring.03.L
+    400048: f_ring.03.R
+    400050: femaleArmature
+    400052: femaleMesh
+    400054: foot.L
+    400056: foot.R
+    400058: forearm.L
+    400060: forearm.R
+    400062: HairBone
+    400064: hand.L
+    400066: hand.L.001
+    400068: hand.R
+    400070: head
+    400072: heel.02.L
+    400074: heel.02.R
+    400076: heel.L
+    400078: heel.R
+    400080: hips
+    400082: //RootNode
+    400084: neck
+    400086: palm.01.L
+    400088: palm.01.R
+    400090: palm.02.L
+    400092: palm.02.R
+    400094: palm.03.L
+    400096: palm.03.R
+    400098: palm.04.L
+    400100: palm.04.R
+    400102: shin.L
+    400104: shin.R
+    400106: shoulder.L
+    400108: shoulder.R
+    400110: spine
+    400112: SubHairBone
+    400114: thigh.L
+    400116: thigh.R
+    400118: thumb.01.L
+    400120: thumb.01.R
+    400122: thumb.02.L
+    400124: thumb.02.R
+    400126: thumb.03.L
+    400128: thumb.03.R
+    400130: toe.L
+    400132: toe.R
+    400134: upper_arm.L
+    400136: upper_arm.R
+    4300000: femaleMesh
+    7400000: femaleArmature|attack1
+    7400002: femaleArmature|base
+    7400004: femaleArmature|fanfaria
+    7400006: femaleArmature|fanfaria2.001
+    7400008: femaleArmature|idle
+    7400010: femaleArmature|magic
+    7400012: femaleArmature|ready
+    7400014: femaleArmature|run
+    7400016: femaleMesh|fanfaria2.001
+    9500000: //RootNode
+    13700000: femaleMesh
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 3
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: femaleArmature|attack1
+      takeName: femaleArmature|attack1
+      firstFrame: 0
+      lastFrame: 9
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: femaleArmature
+        weight: 1
+      - path: femaleArmature/hips
+        weight: 1
+      - path: femaleArmature/hips/spine
+        weight: 1
+      - path: femaleArmature/hips/spine/chest
+        weight: 1
+      - path: femaleArmature/hips/spine/chest/neck
+        weight: 1
+      - path: femaleArmature/hips/spine/chest/neck/head
+        weight: 1
+      - path: femaleArmature/hips/spine/chest/neck/head/SubHairBone
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/neck/head/SubHairBone/HairBone
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L
+        weight: 1
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L
+        weight: 1
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L
+        weight: 1
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L
+        weight: 1
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/hand.L.001
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.01.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.01.L/f_index.01.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.01.L/f_index.01.L/f_index.02.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.01.L/f_index.01.L/f_index.02.L/f_index.03.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.01.L/thumb.01.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.01.L/thumb.01.L/thumb.02.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.01.L/thumb.01.L/thumb.02.L/thumb.03.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.02.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.02.L/f_middle.01.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.02.L/f_middle.01.L/f_middle.02.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.02.L/f_middle.01.L/f_middle.02.L/f_middle.03.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.03.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.03.L/f_ring.01.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.03.L/f_ring.01.L/f_ring.02.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.03.L/f_ring.01.L/f_ring.02.L/f_ring.03.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.04.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.04.L/f_pinky.01.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.04.L/f_pinky.01.L/f_pinky.02.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.04.L/f_pinky.01.L/f_pinky.02.L/f_pinky.03.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R
+        weight: 1
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R
+        weight: 1
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R
+        weight: 1
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R
+        weight: 1
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.01.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.01.R/f_index.01.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.01.R/f_index.01.R/f_index.02.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.01.R/f_index.01.R/f_index.02.R/f_index.03.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.01.R/thumb.01.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.01.R/thumb.01.R/thumb.02.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.01.R/thumb.01.R/thumb.02.R/thumb.03.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.02.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.02.R/f_middle.01.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.02.R/f_middle.01.R/f_middle.02.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.02.R/f_middle.01.R/f_middle.02.R/f_middle.03.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.03.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.03.R/f_ring.01.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.03.R/f_ring.01.R/f_ring.02.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.03.R/f_ring.01.R/f_ring.02.R/f_ring.03.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.04.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.04.R/f_pinky.01.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.04.R/f_pinky.01.R/f_pinky.02.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.04.R/f_pinky.01.R/f_pinky.02.R/f_pinky.03.R
+        weight: 0
+      - path: femaleArmature/hips/thigh.L
+        weight: 1
+      - path: femaleArmature/hips/thigh.L/shin.L
+        weight: 1
+      - path: femaleArmature/hips/thigh.L/shin.L/foot.L
+        weight: 1
+      - path: femaleArmature/hips/thigh.L/shin.L/foot.L/toe.L
+        weight: 0
+      - path: femaleArmature/hips/thigh.L/shin.L/heel.L
+        weight: 0
+      - path: femaleArmature/hips/thigh.L/shin.L/heel.L/heel.02.L
+        weight: 0
+      - path: femaleArmature/hips/thigh.R
+        weight: 1
+      - path: femaleArmature/hips/thigh.R/shin.R
+        weight: 1
+      - path: femaleArmature/hips/thigh.R/shin.R/foot.R
+        weight: 1
+      - path: femaleArmature/hips/thigh.R/shin.R/foot.R/toe.R
+        weight: 0
+      - path: femaleArmature/hips/thigh.R/shin.R/heel.R
+        weight: 0
+      - path: femaleArmature/hips/thigh.R/shin.R/heel.R/heel.02.R
+        weight: 0
+      - path: femaleMesh
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: femaleArmature|base
+      takeName: femaleArmature|base
+      firstFrame: 0
+      lastFrame: 1
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: femaleArmature
+        weight: 1
+      - path: femaleArmature/hips
+        weight: 1
+      - path: femaleArmature/hips/spine
+        weight: 1
+      - path: femaleArmature/hips/spine/chest
+        weight: 1
+      - path: femaleArmature/hips/spine/chest/neck
+        weight: 1
+      - path: femaleArmature/hips/spine/chest/neck/head
+        weight: 1
+      - path: femaleArmature/hips/spine/chest/neck/head/SubHairBone
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/neck/head/SubHairBone/HairBone
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L
+        weight: 1
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L
+        weight: 1
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L
+        weight: 1
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L
+        weight: 1
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/hand.L.001
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.01.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.01.L/f_index.01.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.01.L/f_index.01.L/f_index.02.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.01.L/f_index.01.L/f_index.02.L/f_index.03.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.01.L/thumb.01.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.01.L/thumb.01.L/thumb.02.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.01.L/thumb.01.L/thumb.02.L/thumb.03.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.02.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.02.L/f_middle.01.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.02.L/f_middle.01.L/f_middle.02.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.02.L/f_middle.01.L/f_middle.02.L/f_middle.03.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.03.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.03.L/f_ring.01.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.03.L/f_ring.01.L/f_ring.02.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.03.L/f_ring.01.L/f_ring.02.L/f_ring.03.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.04.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.04.L/f_pinky.01.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.04.L/f_pinky.01.L/f_pinky.02.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.04.L/f_pinky.01.L/f_pinky.02.L/f_pinky.03.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R
+        weight: 1
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R
+        weight: 1
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R
+        weight: 1
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R
+        weight: 1
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.01.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.01.R/f_index.01.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.01.R/f_index.01.R/f_index.02.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.01.R/f_index.01.R/f_index.02.R/f_index.03.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.01.R/thumb.01.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.01.R/thumb.01.R/thumb.02.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.01.R/thumb.01.R/thumb.02.R/thumb.03.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.02.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.02.R/f_middle.01.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.02.R/f_middle.01.R/f_middle.02.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.02.R/f_middle.01.R/f_middle.02.R/f_middle.03.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.03.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.03.R/f_ring.01.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.03.R/f_ring.01.R/f_ring.02.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.03.R/f_ring.01.R/f_ring.02.R/f_ring.03.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.04.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.04.R/f_pinky.01.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.04.R/f_pinky.01.R/f_pinky.02.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.04.R/f_pinky.01.R/f_pinky.02.R/f_pinky.03.R
+        weight: 0
+      - path: femaleArmature/hips/thigh.L
+        weight: 1
+      - path: femaleArmature/hips/thigh.L/shin.L
+        weight: 1
+      - path: femaleArmature/hips/thigh.L/shin.L/foot.L
+        weight: 1
+      - path: femaleArmature/hips/thigh.L/shin.L/foot.L/toe.L
+        weight: 0
+      - path: femaleArmature/hips/thigh.L/shin.L/heel.L
+        weight: 0
+      - path: femaleArmature/hips/thigh.L/shin.L/heel.L/heel.02.L
+        weight: 0
+      - path: femaleArmature/hips/thigh.R
+        weight: 1
+      - path: femaleArmature/hips/thigh.R/shin.R
+        weight: 1
+      - path: femaleArmature/hips/thigh.R/shin.R/foot.R
+        weight: 1
+      - path: femaleArmature/hips/thigh.R/shin.R/foot.R/toe.R
+        weight: 0
+      - path: femaleArmature/hips/thigh.R/shin.R/heel.R
+        weight: 0
+      - path: femaleArmature/hips/thigh.R/shin.R/heel.R/heel.02.R
+        weight: 0
+      - path: femaleMesh
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: femaleArmature|fanfaria
+      takeName: femaleArmature|fanfaria
+      firstFrame: 0
+      lastFrame: 37
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: femaleArmature
+        weight: 1
+      - path: femaleArmature/hips
+        weight: 1
+      - path: femaleArmature/hips/spine
+        weight: 1
+      - path: femaleArmature/hips/spine/chest
+        weight: 1
+      - path: femaleArmature/hips/spine/chest/neck
+        weight: 1
+      - path: femaleArmature/hips/spine/chest/neck/head
+        weight: 1
+      - path: femaleArmature/hips/spine/chest/neck/head/SubHairBone
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/neck/head/SubHairBone/HairBone
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L
+        weight: 1
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L
+        weight: 1
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L
+        weight: 1
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L
+        weight: 1
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/hand.L.001
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.01.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.01.L/f_index.01.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.01.L/f_index.01.L/f_index.02.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.01.L/f_index.01.L/f_index.02.L/f_index.03.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.01.L/thumb.01.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.01.L/thumb.01.L/thumb.02.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.01.L/thumb.01.L/thumb.02.L/thumb.03.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.02.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.02.L/f_middle.01.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.02.L/f_middle.01.L/f_middle.02.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.02.L/f_middle.01.L/f_middle.02.L/f_middle.03.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.03.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.03.L/f_ring.01.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.03.L/f_ring.01.L/f_ring.02.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.03.L/f_ring.01.L/f_ring.02.L/f_ring.03.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.04.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.04.L/f_pinky.01.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.04.L/f_pinky.01.L/f_pinky.02.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.04.L/f_pinky.01.L/f_pinky.02.L/f_pinky.03.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R
+        weight: 1
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R
+        weight: 1
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R
+        weight: 1
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R
+        weight: 1
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.01.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.01.R/f_index.01.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.01.R/f_index.01.R/f_index.02.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.01.R/f_index.01.R/f_index.02.R/f_index.03.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.01.R/thumb.01.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.01.R/thumb.01.R/thumb.02.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.01.R/thumb.01.R/thumb.02.R/thumb.03.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.02.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.02.R/f_middle.01.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.02.R/f_middle.01.R/f_middle.02.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.02.R/f_middle.01.R/f_middle.02.R/f_middle.03.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.03.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.03.R/f_ring.01.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.03.R/f_ring.01.R/f_ring.02.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.03.R/f_ring.01.R/f_ring.02.R/f_ring.03.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.04.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.04.R/f_pinky.01.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.04.R/f_pinky.01.R/f_pinky.02.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.04.R/f_pinky.01.R/f_pinky.02.R/f_pinky.03.R
+        weight: 0
+      - path: femaleArmature/hips/thigh.L
+        weight: 1
+      - path: femaleArmature/hips/thigh.L/shin.L
+        weight: 1
+      - path: femaleArmature/hips/thigh.L/shin.L/foot.L
+        weight: 1
+      - path: femaleArmature/hips/thigh.L/shin.L/foot.L/toe.L
+        weight: 0
+      - path: femaleArmature/hips/thigh.L/shin.L/heel.L
+        weight: 0
+      - path: femaleArmature/hips/thigh.L/shin.L/heel.L/heel.02.L
+        weight: 0
+      - path: femaleArmature/hips/thigh.R
+        weight: 1
+      - path: femaleArmature/hips/thigh.R/shin.R
+        weight: 1
+      - path: femaleArmature/hips/thigh.R/shin.R/foot.R
+        weight: 1
+      - path: femaleArmature/hips/thigh.R/shin.R/foot.R/toe.R
+        weight: 0
+      - path: femaleArmature/hips/thigh.R/shin.R/heel.R
+        weight: 0
+      - path: femaleArmature/hips/thigh.R/shin.R/heel.R/heel.02.R
+        weight: 0
+      - path: femaleMesh
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: femaleArmature|fanfaria2.001
+      takeName: femaleArmature|fanfaria2.001
+      firstFrame: 0
+      lastFrame: 37
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: femaleArmature
+        weight: 1
+      - path: femaleArmature/hips
+        weight: 1
+      - path: femaleArmature/hips/spine
+        weight: 1
+      - path: femaleArmature/hips/spine/chest
+        weight: 1
+      - path: femaleArmature/hips/spine/chest/neck
+        weight: 1
+      - path: femaleArmature/hips/spine/chest/neck/head
+        weight: 1
+      - path: femaleArmature/hips/spine/chest/neck/head/SubHairBone
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/neck/head/SubHairBone/HairBone
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L
+        weight: 1
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L
+        weight: 1
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L
+        weight: 1
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L
+        weight: 1
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/hand.L.001
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.01.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.01.L/f_index.01.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.01.L/f_index.01.L/f_index.02.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.01.L/f_index.01.L/f_index.02.L/f_index.03.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.01.L/thumb.01.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.01.L/thumb.01.L/thumb.02.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.01.L/thumb.01.L/thumb.02.L/thumb.03.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.02.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.02.L/f_middle.01.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.02.L/f_middle.01.L/f_middle.02.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.02.L/f_middle.01.L/f_middle.02.L/f_middle.03.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.03.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.03.L/f_ring.01.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.03.L/f_ring.01.L/f_ring.02.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.03.L/f_ring.01.L/f_ring.02.L/f_ring.03.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.04.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.04.L/f_pinky.01.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.04.L/f_pinky.01.L/f_pinky.02.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.04.L/f_pinky.01.L/f_pinky.02.L/f_pinky.03.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R
+        weight: 1
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R
+        weight: 1
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R
+        weight: 1
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R
+        weight: 1
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.01.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.01.R/f_index.01.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.01.R/f_index.01.R/f_index.02.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.01.R/f_index.01.R/f_index.02.R/f_index.03.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.01.R/thumb.01.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.01.R/thumb.01.R/thumb.02.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.01.R/thumb.01.R/thumb.02.R/thumb.03.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.02.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.02.R/f_middle.01.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.02.R/f_middle.01.R/f_middle.02.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.02.R/f_middle.01.R/f_middle.02.R/f_middle.03.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.03.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.03.R/f_ring.01.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.03.R/f_ring.01.R/f_ring.02.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.03.R/f_ring.01.R/f_ring.02.R/f_ring.03.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.04.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.04.R/f_pinky.01.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.04.R/f_pinky.01.R/f_pinky.02.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.04.R/f_pinky.01.R/f_pinky.02.R/f_pinky.03.R
+        weight: 0
+      - path: femaleArmature/hips/thigh.L
+        weight: 1
+      - path: femaleArmature/hips/thigh.L/shin.L
+        weight: 1
+      - path: femaleArmature/hips/thigh.L/shin.L/foot.L
+        weight: 1
+      - path: femaleArmature/hips/thigh.L/shin.L/foot.L/toe.L
+        weight: 0
+      - path: femaleArmature/hips/thigh.L/shin.L/heel.L
+        weight: 0
+      - path: femaleArmature/hips/thigh.L/shin.L/heel.L/heel.02.L
+        weight: 0
+      - path: femaleArmature/hips/thigh.R
+        weight: 1
+      - path: femaleArmature/hips/thigh.R/shin.R
+        weight: 1
+      - path: femaleArmature/hips/thigh.R/shin.R/foot.R
+        weight: 1
+      - path: femaleArmature/hips/thigh.R/shin.R/foot.R/toe.R
+        weight: 0
+      - path: femaleArmature/hips/thigh.R/shin.R/heel.R
+        weight: 0
+      - path: femaleArmature/hips/thigh.R/shin.R/heel.R/heel.02.R
+        weight: 0
+      - path: femaleMesh
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: femaleArmature|idle
+      takeName: femaleArmature|idle
+      firstFrame: 0
+      lastFrame: 17
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: femaleArmature
+        weight: 1
+      - path: femaleArmature/hips
+        weight: 1
+      - path: femaleArmature/hips/spine
+        weight: 1
+      - path: femaleArmature/hips/spine/chest
+        weight: 1
+      - path: femaleArmature/hips/spine/chest/neck
+        weight: 1
+      - path: femaleArmature/hips/spine/chest/neck/head
+        weight: 1
+      - path: femaleArmature/hips/spine/chest/neck/head/SubHairBone
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/neck/head/SubHairBone/HairBone
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L
+        weight: 1
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L
+        weight: 1
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L
+        weight: 1
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L
+        weight: 1
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/hand.L.001
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.01.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.01.L/f_index.01.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.01.L/f_index.01.L/f_index.02.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.01.L/f_index.01.L/f_index.02.L/f_index.03.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.01.L/thumb.01.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.01.L/thumb.01.L/thumb.02.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.01.L/thumb.01.L/thumb.02.L/thumb.03.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.02.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.02.L/f_middle.01.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.02.L/f_middle.01.L/f_middle.02.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.02.L/f_middle.01.L/f_middle.02.L/f_middle.03.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.03.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.03.L/f_ring.01.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.03.L/f_ring.01.L/f_ring.02.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.03.L/f_ring.01.L/f_ring.02.L/f_ring.03.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.04.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.04.L/f_pinky.01.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.04.L/f_pinky.01.L/f_pinky.02.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.04.L/f_pinky.01.L/f_pinky.02.L/f_pinky.03.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R
+        weight: 1
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R
+        weight: 1
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R
+        weight: 1
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R
+        weight: 1
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.01.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.01.R/f_index.01.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.01.R/f_index.01.R/f_index.02.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.01.R/f_index.01.R/f_index.02.R/f_index.03.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.01.R/thumb.01.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.01.R/thumb.01.R/thumb.02.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.01.R/thumb.01.R/thumb.02.R/thumb.03.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.02.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.02.R/f_middle.01.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.02.R/f_middle.01.R/f_middle.02.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.02.R/f_middle.01.R/f_middle.02.R/f_middle.03.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.03.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.03.R/f_ring.01.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.03.R/f_ring.01.R/f_ring.02.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.03.R/f_ring.01.R/f_ring.02.R/f_ring.03.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.04.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.04.R/f_pinky.01.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.04.R/f_pinky.01.R/f_pinky.02.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.04.R/f_pinky.01.R/f_pinky.02.R/f_pinky.03.R
+        weight: 0
+      - path: femaleArmature/hips/thigh.L
+        weight: 1
+      - path: femaleArmature/hips/thigh.L/shin.L
+        weight: 1
+      - path: femaleArmature/hips/thigh.L/shin.L/foot.L
+        weight: 1
+      - path: femaleArmature/hips/thigh.L/shin.L/foot.L/toe.L
+        weight: 0
+      - path: femaleArmature/hips/thigh.L/shin.L/heel.L
+        weight: 0
+      - path: femaleArmature/hips/thigh.L/shin.L/heel.L/heel.02.L
+        weight: 0
+      - path: femaleArmature/hips/thigh.R
+        weight: 1
+      - path: femaleArmature/hips/thigh.R/shin.R
+        weight: 1
+      - path: femaleArmature/hips/thigh.R/shin.R/foot.R
+        weight: 1
+      - path: femaleArmature/hips/thigh.R/shin.R/foot.R/toe.R
+        weight: 0
+      - path: femaleArmature/hips/thigh.R/shin.R/heel.R
+        weight: 0
+      - path: femaleArmature/hips/thigh.R/shin.R/heel.R/heel.02.R
+        weight: 0
+      - path: femaleMesh
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: femaleArmature|magic
+      takeName: femaleArmature|magic
+      firstFrame: 0
+      lastFrame: 5
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: femaleArmature
+        weight: 1
+      - path: femaleArmature/hips
+        weight: 1
+      - path: femaleArmature/hips/spine
+        weight: 1
+      - path: femaleArmature/hips/spine/chest
+        weight: 1
+      - path: femaleArmature/hips/spine/chest/neck
+        weight: 1
+      - path: femaleArmature/hips/spine/chest/neck/head
+        weight: 1
+      - path: femaleArmature/hips/spine/chest/neck/head/SubHairBone
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/neck/head/SubHairBone/HairBone
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L
+        weight: 1
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L
+        weight: 1
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L
+        weight: 1
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L
+        weight: 1
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/hand.L.001
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.01.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.01.L/f_index.01.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.01.L/f_index.01.L/f_index.02.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.01.L/f_index.01.L/f_index.02.L/f_index.03.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.01.L/thumb.01.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.01.L/thumb.01.L/thumb.02.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.01.L/thumb.01.L/thumb.02.L/thumb.03.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.02.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.02.L/f_middle.01.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.02.L/f_middle.01.L/f_middle.02.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.02.L/f_middle.01.L/f_middle.02.L/f_middle.03.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.03.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.03.L/f_ring.01.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.03.L/f_ring.01.L/f_ring.02.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.03.L/f_ring.01.L/f_ring.02.L/f_ring.03.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.04.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.04.L/f_pinky.01.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.04.L/f_pinky.01.L/f_pinky.02.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.04.L/f_pinky.01.L/f_pinky.02.L/f_pinky.03.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R
+        weight: 1
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R
+        weight: 1
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R
+        weight: 1
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R
+        weight: 1
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.01.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.01.R/f_index.01.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.01.R/f_index.01.R/f_index.02.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.01.R/f_index.01.R/f_index.02.R/f_index.03.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.01.R/thumb.01.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.01.R/thumb.01.R/thumb.02.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.01.R/thumb.01.R/thumb.02.R/thumb.03.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.02.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.02.R/f_middle.01.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.02.R/f_middle.01.R/f_middle.02.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.02.R/f_middle.01.R/f_middle.02.R/f_middle.03.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.03.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.03.R/f_ring.01.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.03.R/f_ring.01.R/f_ring.02.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.03.R/f_ring.01.R/f_ring.02.R/f_ring.03.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.04.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.04.R/f_pinky.01.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.04.R/f_pinky.01.R/f_pinky.02.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.04.R/f_pinky.01.R/f_pinky.02.R/f_pinky.03.R
+        weight: 0
+      - path: femaleArmature/hips/thigh.L
+        weight: 1
+      - path: femaleArmature/hips/thigh.L/shin.L
+        weight: 1
+      - path: femaleArmature/hips/thigh.L/shin.L/foot.L
+        weight: 1
+      - path: femaleArmature/hips/thigh.L/shin.L/foot.L/toe.L
+        weight: 0
+      - path: femaleArmature/hips/thigh.L/shin.L/heel.L
+        weight: 0
+      - path: femaleArmature/hips/thigh.L/shin.L/heel.L/heel.02.L
+        weight: 0
+      - path: femaleArmature/hips/thigh.R
+        weight: 1
+      - path: femaleArmature/hips/thigh.R/shin.R
+        weight: 1
+      - path: femaleArmature/hips/thigh.R/shin.R/foot.R
+        weight: 1
+      - path: femaleArmature/hips/thigh.R/shin.R/foot.R/toe.R
+        weight: 0
+      - path: femaleArmature/hips/thigh.R/shin.R/heel.R
+        weight: 0
+      - path: femaleArmature/hips/thigh.R/shin.R/heel.R/heel.02.R
+        weight: 0
+      - path: femaleMesh
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: femaleArmature|ready
+      takeName: femaleArmature|ready
+      firstFrame: 0
+      lastFrame: 1
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: femaleArmature
+        weight: 1
+      - path: femaleArmature/hips
+        weight: 1
+      - path: femaleArmature/hips/spine
+        weight: 1
+      - path: femaleArmature/hips/spine/chest
+        weight: 1
+      - path: femaleArmature/hips/spine/chest/neck
+        weight: 1
+      - path: femaleArmature/hips/spine/chest/neck/head
+        weight: 1
+      - path: femaleArmature/hips/spine/chest/neck/head/SubHairBone
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/neck/head/SubHairBone/HairBone
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L
+        weight: 1
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L
+        weight: 1
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L
+        weight: 1
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L
+        weight: 1
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/hand.L.001
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.01.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.01.L/f_index.01.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.01.L/f_index.01.L/f_index.02.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.01.L/f_index.01.L/f_index.02.L/f_index.03.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.01.L/thumb.01.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.01.L/thumb.01.L/thumb.02.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.01.L/thumb.01.L/thumb.02.L/thumb.03.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.02.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.02.L/f_middle.01.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.02.L/f_middle.01.L/f_middle.02.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.02.L/f_middle.01.L/f_middle.02.L/f_middle.03.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.03.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.03.L/f_ring.01.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.03.L/f_ring.01.L/f_ring.02.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.03.L/f_ring.01.L/f_ring.02.L/f_ring.03.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.04.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.04.L/f_pinky.01.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.04.L/f_pinky.01.L/f_pinky.02.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.04.L/f_pinky.01.L/f_pinky.02.L/f_pinky.03.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R
+        weight: 1
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R
+        weight: 1
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R
+        weight: 1
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R
+        weight: 1
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.01.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.01.R/f_index.01.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.01.R/f_index.01.R/f_index.02.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.01.R/f_index.01.R/f_index.02.R/f_index.03.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.01.R/thumb.01.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.01.R/thumb.01.R/thumb.02.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.01.R/thumb.01.R/thumb.02.R/thumb.03.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.02.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.02.R/f_middle.01.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.02.R/f_middle.01.R/f_middle.02.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.02.R/f_middle.01.R/f_middle.02.R/f_middle.03.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.03.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.03.R/f_ring.01.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.03.R/f_ring.01.R/f_ring.02.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.03.R/f_ring.01.R/f_ring.02.R/f_ring.03.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.04.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.04.R/f_pinky.01.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.04.R/f_pinky.01.R/f_pinky.02.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.04.R/f_pinky.01.R/f_pinky.02.R/f_pinky.03.R
+        weight: 0
+      - path: femaleArmature/hips/thigh.L
+        weight: 1
+      - path: femaleArmature/hips/thigh.L/shin.L
+        weight: 1
+      - path: femaleArmature/hips/thigh.L/shin.L/foot.L
+        weight: 1
+      - path: femaleArmature/hips/thigh.L/shin.L/foot.L/toe.L
+        weight: 0
+      - path: femaleArmature/hips/thigh.L/shin.L/heel.L
+        weight: 0
+      - path: femaleArmature/hips/thigh.L/shin.L/heel.L/heel.02.L
+        weight: 0
+      - path: femaleArmature/hips/thigh.R
+        weight: 1
+      - path: femaleArmature/hips/thigh.R/shin.R
+        weight: 1
+      - path: femaleArmature/hips/thigh.R/shin.R/foot.R
+        weight: 1
+      - path: femaleArmature/hips/thigh.R/shin.R/foot.R/toe.R
+        weight: 0
+      - path: femaleArmature/hips/thigh.R/shin.R/heel.R
+        weight: 0
+      - path: femaleArmature/hips/thigh.R/shin.R/heel.R/heel.02.R
+        weight: 0
+      - path: femaleMesh
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: femaleArmature|run
+      takeName: femaleArmature|run
+      firstFrame: 0
+      lastFrame: 16
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: femaleArmature
+        weight: 1
+      - path: femaleArmature/hips
+        weight: 1
+      - path: femaleArmature/hips/spine
+        weight: 1
+      - path: femaleArmature/hips/spine/chest
+        weight: 1
+      - path: femaleArmature/hips/spine/chest/neck
+        weight: 1
+      - path: femaleArmature/hips/spine/chest/neck/head
+        weight: 1
+      - path: femaleArmature/hips/spine/chest/neck/head/SubHairBone
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/neck/head/SubHairBone/HairBone
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L
+        weight: 1
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L
+        weight: 1
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L
+        weight: 1
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L
+        weight: 1
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/hand.L.001
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.01.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.01.L/f_index.01.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.01.L/f_index.01.L/f_index.02.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.01.L/f_index.01.L/f_index.02.L/f_index.03.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.01.L/thumb.01.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.01.L/thumb.01.L/thumb.02.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.01.L/thumb.01.L/thumb.02.L/thumb.03.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.02.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.02.L/f_middle.01.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.02.L/f_middle.01.L/f_middle.02.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.02.L/f_middle.01.L/f_middle.02.L/f_middle.03.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.03.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.03.L/f_ring.01.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.03.L/f_ring.01.L/f_ring.02.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.03.L/f_ring.01.L/f_ring.02.L/f_ring.03.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.04.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.04.L/f_pinky.01.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.04.L/f_pinky.01.L/f_pinky.02.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.04.L/f_pinky.01.L/f_pinky.02.L/f_pinky.03.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R
+        weight: 1
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R
+        weight: 1
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R
+        weight: 1
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R
+        weight: 1
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.01.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.01.R/f_index.01.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.01.R/f_index.01.R/f_index.02.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.01.R/f_index.01.R/f_index.02.R/f_index.03.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.01.R/thumb.01.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.01.R/thumb.01.R/thumb.02.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.01.R/thumb.01.R/thumb.02.R/thumb.03.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.02.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.02.R/f_middle.01.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.02.R/f_middle.01.R/f_middle.02.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.02.R/f_middle.01.R/f_middle.02.R/f_middle.03.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.03.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.03.R/f_ring.01.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.03.R/f_ring.01.R/f_ring.02.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.03.R/f_ring.01.R/f_ring.02.R/f_ring.03.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.04.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.04.R/f_pinky.01.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.04.R/f_pinky.01.R/f_pinky.02.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.04.R/f_pinky.01.R/f_pinky.02.R/f_pinky.03.R
+        weight: 0
+      - path: femaleArmature/hips/thigh.L
+        weight: 1
+      - path: femaleArmature/hips/thigh.L/shin.L
+        weight: 1
+      - path: femaleArmature/hips/thigh.L/shin.L/foot.L
+        weight: 1
+      - path: femaleArmature/hips/thigh.L/shin.L/foot.L/toe.L
+        weight: 0
+      - path: femaleArmature/hips/thigh.L/shin.L/heel.L
+        weight: 0
+      - path: femaleArmature/hips/thigh.L/shin.L/heel.L/heel.02.L
+        weight: 0
+      - path: femaleArmature/hips/thigh.R
+        weight: 1
+      - path: femaleArmature/hips/thigh.R/shin.R
+        weight: 1
+      - path: femaleArmature/hips/thigh.R/shin.R/foot.R
+        weight: 1
+      - path: femaleArmature/hips/thigh.R/shin.R/foot.R/toe.R
+        weight: 0
+      - path: femaleArmature/hips/thigh.R/shin.R/heel.R
+        weight: 0
+      - path: femaleArmature/hips/thigh.R/shin.R/heel.R/heel.02.R
+        weight: 0
+      - path: femaleMesh
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: femaleMesh|fanfaria2.001
+      takeName: femaleMesh|fanfaria2.001
+      firstFrame: 0
+      lastFrame: 37
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: femaleArmature
+        weight: 1
+      - path: femaleArmature/hips
+        weight: 1
+      - path: femaleArmature/hips/spine
+        weight: 1
+      - path: femaleArmature/hips/spine/chest
+        weight: 1
+      - path: femaleArmature/hips/spine/chest/neck
+        weight: 1
+      - path: femaleArmature/hips/spine/chest/neck/head
+        weight: 1
+      - path: femaleArmature/hips/spine/chest/neck/head/SubHairBone
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/neck/head/SubHairBone/HairBone
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L
+        weight: 1
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L
+        weight: 1
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L
+        weight: 1
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L
+        weight: 1
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/hand.L.001
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.01.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.01.L/f_index.01.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.01.L/f_index.01.L/f_index.02.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.01.L/f_index.01.L/f_index.02.L/f_index.03.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.01.L/thumb.01.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.01.L/thumb.01.L/thumb.02.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.01.L/thumb.01.L/thumb.02.L/thumb.03.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.02.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.02.L/f_middle.01.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.02.L/f_middle.01.L/f_middle.02.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.02.L/f_middle.01.L/f_middle.02.L/f_middle.03.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.03.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.03.L/f_ring.01.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.03.L/f_ring.01.L/f_ring.02.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.03.L/f_ring.01.L/f_ring.02.L/f_ring.03.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.04.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.04.L/f_pinky.01.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.04.L/f_pinky.01.L/f_pinky.02.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.04.L/f_pinky.01.L/f_pinky.02.L/f_pinky.03.L
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R
+        weight: 1
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R
+        weight: 1
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R
+        weight: 1
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R
+        weight: 1
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.01.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.01.R/f_index.01.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.01.R/f_index.01.R/f_index.02.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.01.R/f_index.01.R/f_index.02.R/f_index.03.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.01.R/thumb.01.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.01.R/thumb.01.R/thumb.02.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.01.R/thumb.01.R/thumb.02.R/thumb.03.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.02.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.02.R/f_middle.01.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.02.R/f_middle.01.R/f_middle.02.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.02.R/f_middle.01.R/f_middle.02.R/f_middle.03.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.03.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.03.R/f_ring.01.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.03.R/f_ring.01.R/f_ring.02.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.03.R/f_ring.01.R/f_ring.02.R/f_ring.03.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.04.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.04.R/f_pinky.01.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.04.R/f_pinky.01.R/f_pinky.02.R
+        weight: 0
+      - path: femaleArmature/hips/spine/chest/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.04.R/f_pinky.01.R/f_pinky.02.R/f_pinky.03.R
+        weight: 0
+      - path: femaleArmature/hips/thigh.L
+        weight: 1
+      - path: femaleArmature/hips/thigh.L/shin.L
+        weight: 1
+      - path: femaleArmature/hips/thigh.L/shin.L/foot.L
+        weight: 1
+      - path: femaleArmature/hips/thigh.L/shin.L/foot.L/toe.L
+        weight: 0
+      - path: femaleArmature/hips/thigh.L/shin.L/heel.L
+        weight: 0
+      - path: femaleArmature/hips/thigh.L/shin.L/heel.L/heel.02.L
+        weight: 0
+      - path: femaleArmature/hips/thigh.R
+        weight: 1
+      - path: femaleArmature/hips/thigh.R/shin.R
+        weight: 1
+      - path: femaleArmature/hips/thigh.R/shin.R/foot.R
+        weight: 1
+      - path: femaleArmature/hips/thigh.R/shin.R/foot.R/toe.R
+        weight: 0
+      - path: femaleArmature/hips/thigh.R/shin.R/heel.R
+        weight: 0
+      - path: femaleArmature/hips/thigh.R/shin.R/heel.R/heel.02.R
+        weight: 0
+      - path: femaleMesh
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .00999999978
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human:
+    - boneName: hips
+      humanName: Hips
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: thigh.L
+      humanName: LeftUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: thigh.R
+      humanName: RightUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: shin.L
+      humanName: LeftLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: shin.R
+      humanName: RightLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: foot.L
+      humanName: LeftFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: foot.R
+      humanName: RightFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: spine
+      humanName: Spine
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: chest
+      humanName: Chest
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: neck
+      humanName: Neck
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: head
+      humanName: Head
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: upper_arm.L
+      humanName: LeftUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: upper_arm.R
+      humanName: RightUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: forearm.L
+      humanName: LeftLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: forearm.R
+      humanName: RightLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: hand.L
+      humanName: LeftHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: hand.R
+      humanName: RightHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    skeleton:
+    - name: mainCharacter18(Clone)
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: femaleArmature
+      position: {x: 1.3884036e-05, y: .00630408991, z: .0048317099}
+      rotation: {x: -9.41569667e-08, y: .707106888, z: .707106769, w: 9.41569738e-08}
+      scale: {x: 2.67980862, y: 2.67980862, z: 2.67980862}
+      transformModified: 1
+    - name: hips
+      position: {x: 7.00747127e-10, y: -.00176850497, z: .0104437694}
+      rotation: {x: 7.18397217e-08, y: -.778972745, z: -.62705791, w: 5.52895969e-08}
+      scale: {x: .999999583, y: .99999994, z: .999999762}
+      transformModified: 1
+    - name: spine
+      position: {x: 2.86268596e-11, y: .0017790558, z: 3.25962896e-10}
+      rotation: {x: -.0546678118, y: 2.7174335e-10, z: 1.67783987e-09, w: .998504639}
+      scale: {x: .999999881, y: .999999702, z: .999999881}
+      transformModified: 1
+    - name: chest
+      position: {x: 9.39307868e-11, y: .00158990023, z: -9.31322519e-11}
+      rotation: {x: -.0702504665, y: -4.24022906e-09, z: 4.26905483e-10, w: .997529387}
+      scale: {x: 1, y: .999999702, z: 1.00000012}
+      transformModified: 1
+    - name: neck
+      position: {x: 1.17859854e-11, y: .00316591165, z: 8.38190281e-11}
+      rotation: {x: .159324139, y: -4.30292735e-09, z: -1.3225028e-10, w: .987226367}
+      scale: {x: 1.00000024, y: 1.00000012, z: 1.00000024}
+      transformModified: 1
+    - name: head
+      position: {x: 2.17195498e-10, y: .00128284039, z: -1.49011609e-10}
+      rotation: {x: -.142146885, y: 1.63667213e-08, z: -5.70055247e-09, w: .989845574}
+      scale: {x: .999999642, y: 1, z: .999999821}
+      transformModified: 1
+    - name: SubHairBone
+      position: {x: 1.14843954e-10, y: .00153400062, z: -9.31322519e-11}
+      rotation: {x: .948851228, y: -.0111203501, z: .123610675, w: -.290306777}
+      scale: {x: .99999994, y: 1.00000048, z: .999999702}
+      transformModified: 1
+    - name: HairBone
+      position: {x: 5.58793532e-11, y: .00243845931, z: -1.10827381e-09}
+      rotation: {x: -.218835443, y: -.323145807, z: .0444334298, w: .919626892}
+      scale: {x: 1.00000012, y: .999999881, z: .999999642}
+      transformModified: 1
+    - name: shoulder.L
+      position: {x: -.000182999982, y: .00260750577, z: .000779068505}
+      rotation: {x: -.608157754, y: .323567033, z: .324502289, w: .648187459}
+      scale: {x: .999999762, y: .999999821, z: .999999583}
+      transformModified: 1
+    - name: upper_arm.L
+      position: {x: -9.947324e-05, y: .00177414028, z: -.000211328894}
+      rotation: {x: .212323979, y: -.566484571, z: .33950156, w: .720244765}
+      scale: {x: .999999881, y: .999999583, z: .999999702}
+      transformModified: 1
+    - name: forearm.L
+      position: {x: 2.60770322e-10, y: .00317064999, z: -6.33299357e-10}
+      rotation: {x: -.00872009248, y: -.0532297529, z: -.0557751879, w: .996985376}
+      scale: {x: .999999881, y: .999999881, z: .999999523}
+      transformModified: 1
+    - name: hand.L
+      position: {x: -5.58793532e-11, y: .0028122603, z: -4.65661287e-10}
+      rotation: {x: .00403989758, y: -.711915314, z: -.0452539623, w: .700794101}
+      scale: {x: 1.00000048, y: 1.00000024, z: 1.00000012}
+      transformModified: 1
+    - name: palm.01.L
+      position: {x: .00022942209, y: .000394113129, z: -5.32419217e-05}
+      rotation: {x: -.00306645362, y: -.00358581194, z: -.0754669979, w: .997137189}
+      scale: {x: 1, y: .999999821, z: .999999821}
+      transformModified: 1
+    - name: f_index.01.L
+      position: {x: -5.21540644e-10, y: .00069625926, z: 7.45058043e-11}
+      rotation: {x: .169889078, y: -.0346290432, z: .0691311285, w: .982425272}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: f_index.02.L
+      position: {x: -1.36788003e-11, y: .000450400577, z: 1.45286316e-09}
+      rotation: {x: .0778238401, y: .00652798638, z: .00301934686, w: .996941209}
+      scale: {x: 1, y: .999999881, z: .999999821}
+      transformModified: 1
+    - name: f_index.03.L
+      position: {x: -3.53902574e-10, y: .00028223425, z: 5.58793532e-11}
+      rotation: {x: .113962352, y: .00778286112, z: .0330961719, w: .992903113}
+      scale: {x: 1.00000012, y: 1, z: .999999702}
+      transformModified: 1
+    - name: thumb.01.L
+      position: {x: 3.50632436e-05, y: -8.32422811e-05, z: .000243584131}
+      rotation: {x: .0458446033, y: -.703641951, z: -.258574188, w: .66024673}
+      scale: {x: .999999464, y: .999999702, z: .999999821}
+      transformModified: 1
+    - name: thumb.02.L
+      position: {x: 3.25962896e-10, y: .000417445583, z: -2.23517413e-10}
+      rotation: {x: .158667982, y: .00603759708, z: .0734981522, w: .98457408}
+      scale: {x: 1.00000036, y: 1.00000072, z: .999999821}
+      transformModified: 1
+    - name: thumb.03.L
+      position: {x: -5.58793532e-11, y: .000334464014, z: 7.45058043e-11}
+      rotation: {x: .0163495131, y: -.00205207989, z: .0411863364, w: .99901557}
+      scale: {x: .999999881, y: .999999762, z: .999999702}
+      transformModified: 1
+    - name: palm.02.L
+      position: {x: 6.08397058e-05, y: .000419736578, z: -7.72085041e-05}
+      rotation: {x: -.0104431463, y: .00452800747, z: -.0324938446, w: .999407113}
+      scale: {x: .999999821, y: .999999821, z: .999999821}
+      transformModified: 1
+    - name: f_middle.01.L
+      position: {x: 1.86264511e-11, y: .000681870733, z: -5.21540644e-10}
+      rotation: {x: .215453908, y: -.0146361925, z: .02985649, w: .975947738}
+      scale: {x: .999999881, y: 1.00000048, z: .99999994}
+      transformModified: 1
+    - name: f_middle.02.L
+      position: {x: -4.84287721e-10, y: .00049540383, z: 1.86264504e-10}
+      rotation: {x: .118599765, y: .0369937271, z: .0123069873, w: .992176533}
+      scale: {x: 1.00000036, y: 1.00000024, z: 1}
+      transformModified: 1
+    - name: f_middle.03.L
+      position: {x: -4.84287721e-10, y: .000321959553, z: 4.47034826e-10}
+      rotation: {x: .0584006943, y: .0200371947, z: .0201510135, w: .997888744}
+      scale: {x: .999999881, y: .999999821, z: .999999881}
+      transformModified: 1
+    - name: palm.03.L
+      position: {x: -9.39458769e-05, y: .000400360819, z: -6.94620612e-05}
+      rotation: {x: -.0218420308, y: .0220258553, z: .0324287862, w: .998992562}
+      scale: {x: .999999762, y: .99999994, z: .999999821}
+      transformModified: 1
+    - name: f_ring.01.L
+      position: {x: 3.72529022e-11, y: .000697974348, z: -1.04308129e-09}
+      rotation: {x: .282120764, y: .00999960024, z: .00354825472, w: .959320247}
+      scale: {x: 1.00000012, y: 1.00000036, z: 1}
+      transformModified: 1
+    - name: f_ring.02.L
+      position: {x: 2.23517413e-10, y: .000448166131, z: 0}
+      rotation: {x: .0741688386, y: .0208733063, z: .0206952076, w: .996812403}
+      scale: {x: .999999881, y: .999999821, z: .999999583}
+      transformModified: 1
+    - name: f_ring.03.L
+      position: {x: 7.45058043e-11, y: .000318008679, z: -1.49011609e-10}
+      rotation: {x: .156754047, y: .0413846448, z: .0366546549, w: .98608917}
+      scale: {x: .999999642, y: .99999994, z: .999999583}
+      transformModified: 1
+    - name: palm.04.L
+      position: {x: -.000241473346, y: .000359927915, z: -4.5655368e-05}
+      rotation: {x: -.00150033867, y: .00905219093, z: .0946832746, w: .995465159}
+      scale: {x: 1.00000012, y: 1.00000012, z: .999999881}
+      transformModified: 1
+    - name: f_pinky.01.L
+      position: {x: -2.23517413e-10, y: .000748022459, z: 7.45058043e-11}
+      rotation: {x: .350874245, y: .0639467984, z: -.00465759449, w: .934224963}
+      scale: {x: .999999762, y: .99999994, z: .999999404}
+      transformModified: 1
+    - name: f_pinky.02.L
+      position: {x: -7.45058043e-11, y: .000278763095, z: -1.49011609e-10}
+      rotation: {x: .043595612, y: .0107475622, z: .016222544, w: .998859763}
+      scale: {x: 1, y: .99999994, z: 1}
+      transformModified: 1
+    - name: f_pinky.03.L
+      position: {x: 5.21540644e-10, y: .000225925294, z: 4.84287721e-10}
+      rotation: {x: .0863663852, y: .0150731998, z: .0150876893, w: .996035218}
+      scale: {x: 1.00000024, y: 1.0000006, z: 1}
+      transformModified: 1
+    - name: hand.L.001
+      position: {x: -4.47034826e-10, y: .000801608665, z: 0}
+      rotation: {x: .636095881, y: .704836667, z: -.213266358, w: .230444893}
+      scale: {x: 1, y: .99999994, z: 1}
+      transformModified: 1
+    - name: shoulder.R
+      position: {x: .000182999996, y: .00260750577, z: .000779068447}
+      rotation: {x: -.619629502, y: -.30441764, z: -.307731509, w: .654744685}
+      scale: {x: .999999881, y: .999999642, z: .999999821}
+      transformModified: 1
+    - name: upper_arm.R
+      position: {x: .000113272319, y: .00165861333, z: -.000209175661}
+      rotation: {x: -.161431, y: -.732529938, z: .167275608, w: -.639811575}
+      scale: {x: .99999994, y: 1, z: .999999642}
+      transformModified: 1
+    - name: forearm.R
+      position: {x: -7.82310938e-10, y: .00308873737, z: 2.42143861e-10}
+      rotation: {x: -.00217356323, y: .0503540151, z: .0576954409, w: .997061253}
+      scale: {x: 1.00000012, y: 1, z: .999999881}
+      transformModified: 1
+    - name: hand.R
+      position: {x: -3.16649679e-10, y: .00278066238, z: 2.23517413e-10}
+      rotation: {x: -.0540381446, y: .680652022, z: .0509615876, w: .728831708}
+      scale: {x: .999999821, y: 1, z: .999999821}
+      transformModified: 1
+    - name: palm.01.R
+      position: {x: -.000204701864, y: .000394111848, z: -.000116475523}
+      rotation: {x: -.0241352338, y: -.00104184833, z: .0715694055, w: .99714309}
+      scale: {x: 1.00000012, y: .999999642, z: .999999762}
+      transformModified: 1
+    - name: f_index.01.R
+      position: {x: -0, y: .000696259842, z: -1.15484e-09}
+      rotation: {x: -.182740137, y: -.0921411216, z: .00775557617, w: -.978803277}
+      scale: {x: 1, y: 1.00000012, z: 1.00000024}
+      transformModified: 1
+    - name: f_index.02.R
+      position: {x: -3.35276112e-10, y: .00045048591, z: 5.07570819e-10}
+      rotation: {x: .0739185065, y: .0119698923, z: .0262624733, w: .996846557}
+      scale: {x: 1.00000024, y: 1.00000048, z: 1.00000012}
+      transformModified: 1
+    - name: f_index.03.R
+      position: {x: 2.60770322e-10, y: .000282179652, z: -3.72529008e-10}
+      rotation: {x: .116015613, y: .00924024545, z: .0214186609, w: .992973506}
+      scale: {x: .999999762, y: .999999881, z: .999999523}
+      transformModified: 1
+    - name: thumb.01.R
+      position: {x: -.000101012847, y: -8.32416263e-05, z: .000224407195}
+      rotation: {x: .0414020382, y: -.738126695, z: -.259322643, w: -.621455252}
+      scale: {x: 1, y: .999999881, z: 1}
+      transformModified: 1
+    - name: thumb.02.R
+      position: {x: 6.70552225e-10, y: .00041744567, z: 0}
+      rotation: {x: .174625516, y: -.0120279165, z: -.00913944561, w: .984519064}
+      scale: {x: 1, y: 1, z: .99999994}
+      transformModified: 1
+    - name: thumb.03.R
+      position: {x: -2.23517413e-10, y: .000334463926, z: -2.23517413e-10}
+      rotation: {x: .0299042035, y: -.0104870638, z: -.0326995365, w: .99896276}
+      scale: {x: .999999464, y: .999999821, z: .99999994}
+      transformModified: 1
+    - name: palm.02.R
+      position: {x: -3.62870851e-05, y: .00041973585, z: -9.135656e-05}
+      rotation: {x: -.0191306435, y: -.00977687165, z: .028265832, w: .999369621}
+      scale: {x: 1.00000012, y: .999999881, z: .999999881}
+      transformModified: 1
+    - name: f_middle.01.R
+      position: {x: -4.6566126e-11, y: .00068187085, z: -1.75088644e-09}
+      rotation: {x: -.212295413, y: -.0825329572, z: -.0464433171, w: -.972605765}
+      scale: {x: 1.00000036, y: 1.00000012, z: .99999994}
+      transformModified: 1
+    - name: f_middle.02.R
+      position: {x: -0, y: .000495492481, z: 1.12922859e-10}
+      rotation: {x: .113730714, y: -.0151170734, z: .0372042693, w: .992699683}
+      scale: {x: .99999994, y: .999999881, z: .999999642}
+      transformModified: 1
+    - name: f_middle.03.R
+      position: {x: 1.86264511e-11, y: .000321911561, z: 4.36557457e-10}
+      rotation: {x: -.0605012663, y: .0137638934, z: -.0097820526, w: -.998025298}
+      scale: {x: .99999994, y: .999999881, z: .999999821}
+      transformModified: 1
+    - name: palm.03.R
+      position: {x: .000108905704, y: .000400459976, z: -4.00692952e-05}
+      rotation: {x: -.0117844064, y: -.0297638029, z: -.0379105434, w: .99876827}
+      scale: {x: 1.00000012, y: 1.00000012, z: .99999994}
+      transformModified: 1
+    - name: f_ring.01.R
+      position: {x: 1.16415322e-10, y: .000697940413, z: -8.19563861e-10}
+      rotation: {x: .265201747, y: .0715673119, z: .09637063, w: .956691623}
+      scale: {x: 1.00000024, y: 1.0000006, z: 1.00000036}
+      transformModified: 1
+    - name: f_ring.02.R
+      position: {x: 1.49011609e-10, y: .00044816648, z: 5.21540644e-10}
+      rotation: {x: .0757172629, y: -.00944928173, z: .0140068484, w: .996986151}
+      scale: {x: 1.00000012, y: .999999821, z: .99999994}
+      transformModified: 1
+    - name: f_ring.03.R
+      position: {x: -1.25728539e-10, y: .000318008126, z: -6.70552225e-10}
+      rotation: {x: .156234831, y: -.034804225, z: .0388070382, w: .986343503}
+      scale: {x: .999999821, y: .99999994, z: .999999583}
+      transformModified: 1
+    - name: palm.04.R
+      position: {x: .000244464434, y: .000359926402, z: 2.51228921e-05}
+      rotation: {x: .0255361367, y: -.00942965411, z: -.0911869854, w: .995461643}
+      scale: {x: 1, y: 1.00000012, z: .99999994}
+      transformModified: 1
+    - name: f_pinky.01.R
+      position: {x: -3.35276112e-10, y: .000748023507, z: 3.35276112e-10}
+      rotation: {x: .324227303, y: .0208983701, z: .134206161, w: .936177671}
+      scale: {x: .999999702, y: .99999994, z: .999999523}
+      transformModified: 1
+    - name: f_pinky.02.R
+      position: {x: -3.72529022e-11, y: .000278762862, z: -1.67638056e-10}
+      rotation: {x: .0461960994, y: -.00710269995, z: .00544134993, w: .998892307}
+      scale: {x: .99999994, y: 1.00000048, z: 1.00000024}
+      transformModified: 1
+    - name: f_pinky.03.R
+      position: {x: 1.49011609e-10, y: .000225924814, z: -5.21540644e-10}
+      rotation: {x: .0836055428, y: -.0133799538, z: .0264032409, w: .996059239}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: thigh.L
+      position: {x: -.00111057784, y: -.000609447714, z: .000571361568}
+      rotation: {x: .9785285, y: -.0799469501, z: .0084437225, w: .189787492}
+      scale: {x: .999999821, y: .999999464, z: 1.00000107}
+      transformModified: 1
+    - name: shin.L
+      position: {x: 8.38190295e-10, y: .0050085187, z: 5.58793532e-11}
+      rotation: {x: .0404087268, y: -.0374510922, z: .0226766635, w: .998223662}
+      scale: {x: .999999881, y: .999999642, z: .999999464}
+      transformModified: 1
+    - name: foot.L
+      position: {x: 2.79396756e-10, y: .0058909175, z: 9.31322519e-11}
+      rotation: {x: -.364635825, y: .0601839311, z: -.00773139484, w: .929171145}
+      scale: {x: 1.00000048, y: 1.00000036, z: 1.00000012}
+      transformModified: 1
+    - name: toe.L
+      position: {x: 9.31322554e-12, y: .00129245571, z: 1.11758706e-10}
+      rotation: {x: -.0350337811, y: .958360195, z: -.273447663, w: -.0744629726}
+      scale: {x: 1, y: .999999881, z: 1.00000083}
+      transformModified: 1
+    - name: heel.L
+      position: {x: 2.79396756e-10, y: .0058909175, z: 9.31322519e-11}
+      rotation: {x: .212280035, y: .871842444, z: .439661413, w: -.0390617251}
+      scale: {x: .99999994, y: 1.00000012, z: .999999523}
+      transformModified: 1
+    - name: heel.02.L
+      position: {x: -.000236718843, y: .000546187803, z: .000736336049}
+      rotation: {x: .634972155, y: .684581578, z: -.311143935, w: .177053615}
+      scale: {x: .999999166, y: 1, z: 1.00000024}
+      transformModified: 1
+    - name: thigh.R
+      position: {x: .00106161111, y: -.000716657203, z: -.000352049683}
+      rotation: {x: .986090004, y: .0729649067, z: -.0103652077, w: .148980603}
+      scale: {x: .999997735, y: .999999523, z: .999999702}
+      transformModified: 1
+    - name: shin.R
+      position: {x: -1.11758706e-10, y: .00489741005, z: 2.23517413e-10}
+      rotation: {x: .0159780141, y: -.0260548741, z: -.0311791617, w: .999046385}
+      scale: {x: 1, y: 1.00000012, z: 1}
+      transformModified: 1
+    - name: foot.R
+      position: {x: -1.2107193e-10, y: .00616171397, z: -6.51925805e-11}
+      rotation: {x: -.363227159, y: -.0836423784, z: -.0128210168, w: .927850008}
+      scale: {x: .999999166, y: .999999702, z: .999999702}
+      transformModified: 1
+    - name: toe.R
+      position: {x: -0, y: .00129245594, z: -1.58324839e-10}
+      rotation: {x: .0149682909, y: .957219779, z: -.275275826, w: .0879181772}
+      scale: {x: 1, y: 1.00000012, z: .99999994}
+      transformModified: 1
+    - name: heel.R
+      position: {x: -1.2107193e-10, y: .00616171397, z: -6.51925805e-11}
+      rotation: {x: -.185583308, y: .880228639, z: .435402036, w: -.0343724601}
+      scale: {x: 1, y: 1.00000036, z: .999999344}
+      transformModified: 1
+    - name: heel.02.R
+      position: {x: .000179433147, y: .00054618821, z: .00075234985}
+      rotation: {x: -.623377144, y: .691259325, z: -.333767891, w: -.148863897}
+      scale: {x: 1.00000012, y: 1.00000036, z: 1}
+      transformModified: 1
+    - name: femaleMesh
+      position: {x: .000258930435, y: .0411123186, z: .00318961707}
+      rotation: {x: -4.3297803e-17, y: .707106769, z: .707106888, w: -4.32978096e-17}
+      scale: {x: .388563246, y: .229244128, z: .97786051}
+      transformModified: 1
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 3
+  additionalBone: 0
+  userData: 

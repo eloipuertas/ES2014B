@@ -1,10 +1,10 @@
 using UnityEngine;
 using System;
 
-public class BasicSpiderAI : SpiderAI {
+public class BasicSpiderAI : BasicAI {
 
-	public float aggroRange = 50f;
-	public float attackRange = 1.5f; 
+	public float aggroRange = 75f;
+	public float attackRange = 10f; 
 	public int manacost_web = 100;
 	private SpiderState myState;
 	
@@ -30,16 +30,16 @@ public class BasicSpiderAI : SpiderAI {
 		}
 		
 		path = new NavMeshPath ();
-		if ( target != null ) {
+		/* if ( target != null ) {
 			agent.CalculatePath(target.position, path);
 			lastTargetPos = target.position;
-		}
+		} */
 		current_corner = 1;
 		InvokeRepeating ("checkPath", 0, 0.25f);
 	}
 	
 	private void checkPath(){
-		if (target != null && !Vector3.Equals (lastTargetPos, target.position) && currentAction==MOVING) {
+		if (target != null && agent && !Vector3.Equals (lastTargetPos, target.position) && currentAction==MOVING) {
 			agent.CalculatePath(target.position, path);
 			lastTargetPos = target.position;
 			current_corner = 1;
@@ -85,7 +85,6 @@ public class BasicSpiderAI : SpiderAI {
 	// Update is called once per frame
 	void Update () {
 		//debugDrawPath();
-		
 		if (target == null) {
 			GameObject goTarget = getPlayerGameObject ();
 			if ( goTarget != null ) {

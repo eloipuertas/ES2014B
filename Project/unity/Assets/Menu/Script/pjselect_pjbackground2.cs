@@ -5,7 +5,7 @@ public class pjselect_pjbackground2 : MonoBehaviour{
 	
 	private static float MAX_COLOR_VAL = 0.5f;
 	private float secondsToAppear = 1.0f;
-	private float delayToAppear = 0.75f;
+	private float delayToAppear = 0.5f;
 	public Texture2D texture;
 	private Color color;
 	
@@ -16,7 +16,7 @@ public class pjselect_pjbackground2 : MonoBehaviour{
 		Rect initPixelInset = new Rect(0,0,1,1);
 		initPixelInset.width = Screen.width*0.25f;
 		initPixelInset.height = Screen.height*0.70f;
-		initPixelInset.x = -Screen.width*0.125f;
+		initPixelInset.x = Screen.width*0.05f;
 		initPixelInset.y = -Screen.height*0.30f;
 		guiTexture.pixelInset = initPixelInset;
 		color = guiTexture.color;

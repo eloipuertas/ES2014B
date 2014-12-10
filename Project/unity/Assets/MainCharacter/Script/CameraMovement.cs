@@ -10,57 +10,59 @@ public class CameraMovement : MonoBehaviour
 	
 		public Vector3 posCamera = new Vector3 (9, 25, 9);
 		public float distanciaMin = 30f;
-		public float distanciaMax = 80.0f;
-
-
+		public float distanciaMax = 40f;
+		public int marge = 20;
 		public GameObject playerGo;
 		public Transform player;
 		public Vector3 relCameraPos;
 		public float relCameraPosMag;
 		public Vector3 newPos;
-		public float zoomSpeed = 4.0f;
+		public float zoomSpeed = 25f;
 		public float distancia, distanciaAnt = 0;
 		public float smooth = 1.5f;         // suavitat de moviment de la camera
 		private List<GameObject> amagats;
 		private Vector3 firstMovement;
+		private Vector3 anterior;
 		
 		void Awake ()
 		{
-			updatePlayerGo();
+				updatePlayerGo ();
+				
 		}
 
-	void updatePlayerGo() {
-		if ( player == null ) {
-			playerGo = GameObject.FindGameObjectWithTag ("Player");
-			if ( playerGo != null ) {
-				player = playerGo.transform;
-				amagats = new List<GameObject> ();
+		void updatePlayerGo ()
+		{
+				if (player == null) {
+						playerGo = GameObject.FindGameObjectWithTag ("Player");
+						if (playerGo != null) {
+								player = playerGo.transform;
+								amagats = new List<GameObject> ();
+								anterior = player.position;	
+								firstMovement = player.transform.position;
+								transform.position = posCamera;
+								transform.LookAt (player.position);
 				
-				firstMovement = player.transform.position;
-				transform.position = posCamera;
-				transform.LookAt (player.position);
 				
-				
-				relCameraPos = transform.position - player.position;
-				relCameraPosMag = relCameraPos.magnitude; //- 0.5f;
-			}
+								relCameraPos = transform.position - player.position;
+								relCameraPosMag = relCameraPos.magnitude; //- 0.5f;
+						}
+				}
 		}
-	}
 	
 		void Update ()
 		{
-			updatePlayerGo();
-			if ( playerGo == null ) {
-				return;
-			}
+				updatePlayerGo ();
+				if (playerGo == null) {
+						return;
+				}
 
-			if (Mathf.Abs(player.transform.position.x - firstMovement[0]) > 2 && Mathf.Abs(player.transform.position.z - firstMovement[2]) > 3) {
+				if (Mathf.Abs (player.transform.position.x - firstMovement [0]) > 2 && Mathf.Abs (player.transform.position.z - firstMovement [2]) > 3) {
 						Vector3 standardPos = player.position + relCameraPos;
-		
+						
 						Vector3 abovePos = player.position + Vector3.up * relCameraPosMag;
 		
 		
-		
+						
 						Vector3[] checkPoints = new Vector3[5];
 		
 		
@@ -74,25 +76,26 @@ public class CameraMovement : MonoBehaviour
 		
 						checkPoints [4] = abovePos;
 		
-		
-						for (int i = 0; i < checkPoints.Length; i++) {
-								//si la camera pot veure al player parem
-								if (ViewingPosCheck (checkPoints [i]))
-				
-										break;
-						}
-						bool enmig;
-						for (int j = 0; j < amagats.Count; j++) {
+						if (player.position != anterior) {
+								anterior = player.position;
+								for (int i = 0; i < checkPoints.Length; i++) {
+										ViewingPosCheck (checkPoints [i]);
 						
-								enmig = changeAlpha (amagats [j]);
-								if (enmig)
-										amagats.Remove (amagats [j]);
+								}
+								ViewingPosCheck (transform.position);
+								bool enmig;
+								for (int j = 0; j < amagats.Count; j++) {
+						
+										enmig = changeAlpha (amagats [j]);
+										if (enmig)
+												amagats.Remove (amagats [j]);
 								
 						
+								}
 						}
 				
 		
-						distancia = Mathf.Clamp (distancia + Input.GetAxis ("Mouse ScrollWheel") * zoomSpeed, distanciaMin, distanciaMax);
+						distancia = Mathf.Clamp (distancia + -1*Input.GetAxis ("Mouse ScrollWheel") * zoomSpeed, distanciaMin, distanciaMax);
 
 
 						posCamera [0] = player.position.x - distancia;
@@ -105,53 +108,92 @@ public class CameraMovement : MonoBehaviour
 				}
 		}
 
-		bool ViewingPosCheck (Vector3 checkPos)
+		void ViewingPosCheck (Vector3 checkPos)
 		{
 				RaycastHit hit;
-				Vector4 color = new Vector4 (0, 0, 0, 0);
-		
-				if (Physics.Raycast (checkPos, player.position - checkPos, out hit, relCameraPosMag)) {
-			
-						if (hit.transform != player) {
-								if (hit.transform.gameObject.renderer != null) {
-										//if (hit.transform.gameObject.layer == 8) {
-										//hit.transform.gameObject.renderer.enabled = false;
-										
-										color = hit.transform.gameObject.renderer.material.color;
-										
-										hit.transform.gameObject.renderer.material.shader = Shader.Find ("Transparent/Diffuse");
-										
-										color [3] = 0.5f;
 				
-										hit.transform.gameObject.renderer.material.color = color;
-					
-										amagats.Add (hit.transform.gameObject);
+				Transform pare = null;
+				if (Physics.Raycast (checkPos, player.position - checkPos, out hit, relCameraPosMag)) {
+						
+						
+						if (hit.transform != player) {
+								GameObject go = null;
+								
+								List<GameObject> jerarquia = new List<GameObject> ();
+								
+								if (hit.transform.gameObject.name.Contains ("ID")) {
+										pare = hit.transform.parent;
+										while (pare.parent != null && !pare.name.Contains("chaflan")) {
+												pare = pare.parent;
+												
+										}
+										go = pare.gameObject;
+										
+								} else {
+										go = hit.transform.gameObject;
+										pare = go.transform;
+										
 								}
-								return false;
+								
+								transparentar (pare.gameObject);
+								recorrerArbre (pare);
+					
+										
+								
+					
 						}
-		
+				
 				}
-				return true;
+			
+		}
+
+		void recorrerArbre (Transform pare)
+		{
+				if (pare.childCount == 0)
+						return;
+			
+				for (int j = 0; j < pare.childCount; j++) {
+						Transform fill = pare.GetChild (j);
+						transparentar (fill.gameObject);
+						recorrerArbre (fill);
+				}
+		}
+
+		void transparentar (GameObject obj)
+		{
+				if (obj.renderer != null) {
+						Vector4 color = obj.renderer.material.color;
+		
+						obj.renderer.material.shader = Shader.Find ("Transparent/Diffuse");
+		
+						color [3] = 0.5f;
+		
+						obj.renderer.material.color = color;
+						
+						if (!amagats.Contains (obj))
+								amagats.Add (obj);
+				}
 		}
 
 		bool changeAlpha (GameObject obj)
 		{
-			if ( obj != null ) {
-				Vector3 posObj = obj.transform.position;
+				if (obj != null) {
+						Vector3 posObj = obj.transform.position;
 
-				if ((posObj [0] < transform.position.x) || (posObj [0] > player.transform.position.x) && (posObj [2] < transform.position.z) || (posObj [2] > player.transform.position.z)) {
-						//no transparent
-						obj.renderer.material.shader = Shader.Find ("Diffuse");
+						 
+						if ((transform.position.x - posObj [0]) > marge || (posObj [0] - player.transform.position.x) > marge && (transform.position.z - posObj [2]) > marge || (posObj [2] - player.transform.position.z) > marge) {
+								//no transparent
+								obj.renderer.material.shader = Shader.Find ("Diffuse");
 						
+								return true;
+
+						} else {//transparent
+						
+								return false;
+						}
+				} else {
 						return true;
-
-				} else {//transparent
-						
-						return false;
 				}
-			} else {
-				return true;
-			}
 		}
 
 }

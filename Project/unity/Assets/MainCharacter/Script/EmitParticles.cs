@@ -2,7 +2,7 @@
 using System.Collections;
 
 [ RequireComponent( typeof( ParticleSystem ) ) ]
-
+[ RequireComponent( typeof( AudioSource ) ) ]
 
 public class EmitParticles : MonoBehaviour 
 {
@@ -10,47 +10,32 @@ public class EmitParticles : MonoBehaviour
 
 	private Vector3 vel = new Vector3();
 
-	public int velocitat = 70;
+	public int velocitat = 2;
 
 	public float siz = 3;
 	public float lif = 5;
 	public float velx, vely, velz;
 	public float normal;
 
-	public Color32 col = Color.white;
-	
 	public AudioClip fire_ball;
 
-	public void throwParticle ( GameObject player, GameObject target ) 
+	string playerPref;
+
+	public void throwParticle ( GameObject player, Vector3 target ) 
 	{
 		// Definim origen de la particula
-		transform.position = player.transform.position;
-		transform.rotation = player.transform.rotation;
+		transform.position = player.transform.position + pos;
+		transform.LookAt (target);
 
-		// Definim la velocitat ( direccio de la bola ) a partir del target
+		playerPref = PlayerPrefs.GetString ("player");
+		if (playerPref.Equals("player1")) {
+			particleSystem.startColor = Color.white;
+		} else {
+			particleSystem.startColor = Color.green;
+		}
 
-		vel [0] = (target.transform.position.x - player.transform.position.x) * velocitat;
-		vel [1] = (target.transform.position.y - player.transform.position.y) * velocitat;
-		vel [2] = (target.transform.position.z - player.transform.position.z) * velocitat;
-		
-		// Definim vector director
-
-		velx = (target.transform.position.x - player.transform.position.x);
-		vely = (target.transform.position.y - player.transform.position.y);
-		velz = (target.transform.position.z - player.transform.position.z);
-
-		// Normalitzem vector director i donem velocitat
-
-		normal = Mathf.Sqrt( velx *velx +vely *vely +velz *velz );
-
-		velx = velx /normal * velocitat;
-		vely = vely /normal * velocitat;
-		velz = velz /normal * velocitat;
-
-		vel = new Vector3 ( velx, vely, velz );
-		
 		if(!particleSystem.isPlaying)
-			particleSystem.Emit ( pos, vel, siz, lif, col );
+			particleSystem.Emit (1);
 		
 		audio.clip = fire_ball;
 		audio.Play ();

@@ -18,6 +18,8 @@ public abstract class AbstractEntity : MonoBehaviour {
 	public int MAXMP;
 	public int MAXHP;
 
+	public float distanceRadiusReduction = 0.0f;
+
 
 
 	public bool isAlive(){
