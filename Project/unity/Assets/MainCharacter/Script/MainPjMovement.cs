@@ -288,7 +288,7 @@ public class MainPjMovement :  AbstractEntity {
 		this.freeze = n;
 		targetPosition = transform.position;
 		MoveTowardsTarget (transform.position);
-		Object prefab = Resources.LoadAssetAtPath("Assets/PlayerSpiderTrap/Prefab/trapedPlayer.prefab", typeof(GameObject));
+		Object prefab = Resources.Load("trapedPlayer", typeof(GameObject));
 		GameObject clone = Instantiate(prefab, Vector3.zero, Quaternion.identity) as GameObject;
 		clone.transform.position = transform.position;
 		clone.transform.rotation = clone.transform.rotation * Quaternion.Euler(270, 0, 0);
