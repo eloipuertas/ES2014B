@@ -123,17 +123,18 @@ public class SpiderState : AbstractEntity {
 	}
 	
 	// THROW PROJECTILE
-	public void throwProj(AbstractEntity enemy,Vector3 enemyPos, int manacost){
+	public void throwProj(Transform enemy, int manacost){
 		if (MP > manacost) {
-			this.lookAt (enemyPos);
+			this.lookAt (enemy.transform.position);
 			MP = MP - manacost;
 			Object prefab = Resources.LoadAssetAtPath("Assets/SpiderProjectile/Prefab/SpiderWeb.prefab", typeof(GameObject));
 			GameObject projectile = Instantiate(prefab, Vector3.zero, Quaternion.identity) as GameObject;
-			Physics.IgnoreCollision(projectile.collider,characterController);
-			projectile.transform.position = new Vector3(transform.position.x,transform.position.y,transform.position.z);
+			projectile.GetComponent<Web>().setTarget(enemy);
+			//Physics.IgnoreCollision(projectile.collider,characterController);
+			projectile.transform.position = new Vector3(transform.position.x,transform.position.y*1.5f,transform.position.z);
 			projectile.transform.rotation = projectile.transform.rotation * Quaternion.Euler(90, transform.rotation.eulerAngles.y, 0);
 			Rigidbody rgproj = projectile.AddComponent<Rigidbody>();
-			Vector3 moveDirection = enemyPos-transform.position;
+			Vector3 moveDirection = enemy.transform.position-transform.position;
 			rgproj.velocity = new Vector3(moveDirection.x,0,moveDirection.z).normalized * projectileSpeed;
 			rgproj.useGravity = false;
 			Physics.IgnoreCollision(rgproj.collider,characterController);

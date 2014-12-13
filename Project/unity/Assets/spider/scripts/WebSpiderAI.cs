@@ -105,7 +105,7 @@ public class WebSpiderAI : BasicAI {
 						currentAction = ATTACKING;
 
 					}else if (dist<spellRange && myState.getMP ()>web_manacost){
-						myState.throwProj (targetEntity,target.position,web_manacost);
+						myState.throwProj (target,web_manacost);
 					}else if (dist<aggroRange){
 						if (currentAction == PASSIVE){
 							RaycastHit hit;

@@ -166,8 +166,7 @@ public class MainPjMovement :  AbstractEntity {
 	}
 	//Update is called once per frame
 	void FixedUpdate  () {
-		
-		
+
 		if (! this.paused) {
 			if (freeze <= 0.0) {
 				//Magia de Foc apretant la tecla 1
@@ -271,10 +270,10 @@ public class MainPjMovement :  AbstractEntity {
 				} 
 				MoveTowardsTarget (targetPosition);
 				
+			}else {
+				this.freeze -= Time.deltaTime;
 			}
-		} else {
-			this.freeze -= Time.deltaTime;
-		}
+		} 
 		//Debug.Log ("Actual pos:"+transform.position + "target pos:"+targetPosition);
 	}
 	
