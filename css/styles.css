@@ -1,5 +1,10 @@
 @import url(http://fonts.googleapis.com/css?family=Kreon:400,700);
 
+@font-face {
+    font-family: "OldLondon";
+    src: url("../fonts/OldLondon.otf");
+}
+
 html,
 body {
   height: 100%;
@@ -15,7 +20,7 @@ body {
 }
 
 .row {
-  margin-left:32px;
+  margin-left:20px;
   margin-right:0px;
 }
 
@@ -44,7 +49,6 @@ body {
 
 #wrap > .container {
   padding: 60px 15px 0;
-  background-color: yellow;
 }
 .container .credit {
   margin: 20px 0;
