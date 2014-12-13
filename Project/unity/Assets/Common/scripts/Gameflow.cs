@@ -100,7 +100,7 @@ public class Gameflow : MonoBehaviour {
 							spiderstate = enemy.GetComponent<SpiderState>();
 							trollstate = enemy.GetComponent<TrollState>();
 							if (spiderstate!=null){
-								spiderstate.destroyWithDelay(2f);
+								spiderstate.destroyWithDelay(1.5f);
 								Invoke ("spawnSpiders",2f);
 							}
 							if (trollstate!=null){
