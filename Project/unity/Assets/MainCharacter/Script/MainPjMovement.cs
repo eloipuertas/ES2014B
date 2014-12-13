@@ -272,6 +272,12 @@ public class MainPjMovement :  AbstractEntity {
 				
 			}else {
 				this.freeze -= Time.deltaTime;
+				if (freeze<=0){
+					Renderer[] renderers = gameObject.GetComponentsInChildren<Renderer> ();
+					for(int i=0;i<renderers.Length;i++){
+						renderers[i].enabled = true;
+					}
+				}
 			}
 		} 
 		//Debug.Log ("Actual pos:"+transform.position + "target pos:"+targetPosition);
@@ -280,7 +286,19 @@ public class MainPjMovement :  AbstractEntity {
 	
 	public void setFreeze(float n){
 		this.freeze = n;
+		targetPosition = transform.position;
+		MoveTowardsTarget (transform.position);
+		Object prefab = Resources.LoadAssetAtPath("Assets/PlayerSpiderTrap/Prefab/trapedPlayer.prefab", typeof(GameObject));
+		GameObject clone = Instantiate(prefab, Vector3.zero, Quaternion.identity) as GameObject;
+		clone.transform.position = transform.position;
+		clone.transform.rotation = clone.transform.rotation * Quaternion.Euler(270, 0, 0);
+		clone.GetComponent<SpiderTrap> ().destroyIn (n);
+		Renderer[] renderers = gameObject.GetComponentsInChildren<Renderer> ();
+		for(int i=0;i<renderers.Length;i++){
+			renderers[i].enabled = false;
+		}
 	}
+
 	public float getFreeze(){
 		return this.freeze;
 	}
