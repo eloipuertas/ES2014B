@@ -13,6 +13,7 @@ public class SpiderState : AbstractEntity {
 	private PNJMusicManager PNJAudio;
 	private CharacterController characterController;
 	private Animator animator;
+	private Transform enemy;
 	
 	public float projectileSpeed = 75f;
 	public float max_attacks_per_second = 5; //Also means MP restored per second
@@ -134,12 +135,22 @@ public class SpiderState : AbstractEntity {
 			animator.SetBool("critical",false);
 		}
 	}
-	
-	// THROW PROJECTILE
-	public void throwProj(Transform enemy, int manacost){
-		if (MP > manacost) {
+
+	public void useWebSpell(Transform target){
+		this.GetComponent<WebSpiderAI>().enabled = false;
+		if (animator.GetBool("walk_enabled")) animator.SetBool("walk_enabled",false);
+		if (!animator.GetBool("web")) animator.SetBool("web",true);
+		destination = transform.position;
+		enemy = target;
+		this.lookAt (enemy.transform.position);
+		Invoke ("reenableWebAI",1.5f);
+		Invoke ("throwProj",1.25f);
+	}
+
+	private void throwProj(){
+		if (this.isAlive ()) {
+			setMP(MP - this.GetComponent<WebSpiderAI>().web_manacost);
 			this.lookAt (enemy.transform.position);
-			MP = MP - manacost;
 			Object prefab = Resources.LoadAssetAtPath("Assets/SpiderProjectile/Prefab/SpiderWeb.prefab", typeof(GameObject));
 			GameObject projectile = Instantiate(prefab, Vector3.zero, Quaternion.identity) as GameObject;
 			projectile.GetComponent<Web>().setTarget(enemy);
@@ -152,6 +163,11 @@ public class SpiderState : AbstractEntity {
 			rgproj.useGravity = false;
 			Physics.IgnoreCollision(rgproj.collider,characterController);
 		}
+	}
+
+	private void reenableWebAI(){
+		animator.SetBool("web",false);
+		this.GetComponent<WebSpiderAI>().enabled = true;
 	}
 	
 	// MOVEMENT
