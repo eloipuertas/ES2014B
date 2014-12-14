@@ -87,6 +87,7 @@ public class SpiderState : AbstractEntity {
 	}
 	
 	private void move(){
+		if (animator.GetBool ("receive_attack_enabled")) animator.SetBool("receive_attack_enabled",false);
 		if ( animator != null && characterController != null) { 
 			Vector3 moveDirection = destination-transform.position;
 			moveDirection.Normalize();
@@ -118,13 +119,13 @@ public class SpiderState : AbstractEntity {
 				if (randomNumber<25){
 					if (animator.GetBool("attack_enabled")) animator.SetBool ("attack_enabled", false);
 					if (!animator.GetBool("critical")) animator.SetBool ("critical", true);
-					PNJAudio.PlayAttackOK();
-					enemy.onAttackReceived (2*DMG);
-					timeForNextAction = 2*timecost_perAction;
+					PNJAudio.PlayCriticalAttack(); // PlayAttackOK
+					enemy.onAttackReceived (4*DMG);
+					timeForNextAction = timecost_perAction;
 				}else{
 					if (animator.GetBool("critical")) animator.SetBool ("critical", false);
 					if (!animator.GetBool("attack_enabled")) animator.SetBool ("attack_enabled", true);
-					PNJAudio.PlayAttackOK();
+					PNJAudio.PlayAttackOK(); // PlayCriticalAttack
 					enemy.onAttackReceived (DMG);
 					timeForNextAction = timecost_perAction;
 				}
