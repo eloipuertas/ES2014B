@@ -152,7 +152,7 @@ public class SpiderState : AbstractEntity {
 		if (this.isAlive ()) {
 			setMP(MP - this.GetComponent<WebSpiderAI>().web_manacost);
 			this.lookAt (enemy.transform.position);
-			Object prefab = Resources.LoadAssetAtPath("Assets/SpiderProjectile/Prefab/SpiderWeb.prefab", typeof(GameObject));
+			Object prefab = Resources.Load("SpiderWeb", typeof(GameObject));
 			GameObject projectile = Instantiate(prefab, Vector3.zero, Quaternion.identity) as GameObject;
 			projectile.GetComponent<Web>().setTarget(enemy);
 			//Physics.IgnoreCollision(projectile.collider,characterController);
