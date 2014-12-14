@@ -155,7 +155,7 @@ public class HUD : MonoBehaviour
 						
 						float timeScale = Time.timeScale;
 						Time.timeScale = 1;
-						print ("incrementar " + incrementar + ", " + Time.deltaTime);
+						//print ("incrementar " + incrementar + ", " + Time.deltaTime);
 						if (incrementar) {
 								alphaValue += Time.deltaTime * 0.4f;
 								if (alphaValue >= maxAlpha) {
