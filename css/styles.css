@@ -1,26 +1,22 @@
 @import url(http://fonts.googleapis.com/css?family=Kreon:400,700);
 
-@font-face {
-    font-family: "OldLondon";
-    src: url("../fonts/OldLondon.otf");
-}
-
 html,
 body {
   height: 100%;
   /* The html and body elements cannot have any padding or margin. */
   -webkit-font-smoothing: antialiased;
   font: normal 14px arial,sans-serif;
-  background: url('../img/background.png') no-repeat center center fixed; 
+  background: url('../img/dungeonBackground.jpg') no-repeat center center fixed; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    color:#fff;
 
 }
 
 .row {
-  margin-left:20px;
+  margin-left:0px;
   margin-right:0px;
 }
 
@@ -59,7 +55,7 @@ body {
 }
 
 #footer a {
-  color:#efefef;
+  color:#000000;
 }
 
 h1,h2,h3,h4 {
@@ -126,10 +122,14 @@ h1 {
   
 /* customize nav style */
 .navbar-custom {
-    background-color: #2e2e2e;
+  background: url('../img/MenuBar.png') no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
 	font-weight:700;
-    text-transform:uppercase;
-    border-width:0;
+  text-transform:uppercase;
 }
 .navbar-custom  .navbar-nav>li>a {
 	color: #ddd;
@@ -190,7 +190,7 @@ h1 {
  
 
 section {
-  color: #ffffff;
+  color: #000000;
   min-height: 400px;
   height: auto !important;
   height: 100%;
@@ -225,3 +225,17 @@ section {
 	padding-top:30px;
 	background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(20,20,20,0.2)),to(rgba(255,255,255,0)), color-stop(1,#000));
 }
+
+#DIV_33, #DIV_38, #DIV_43 {
+    box-sizing: border-box;
+    color: rgb(120, 120, 120);
+    float: left;
+    height: 30px;
+    width: 69.296875px;
+    perspective-origin: 34.640625px 15px;
+    transform-origin: 34.640625px 15px;
+    border: 0px none rgb(120, 120, 120);
+    font: normal normal bold normal 16px/30px 'Benton Sans', Helvetica, sans-serif;
+    outline: rgb(120, 120, 120) none 0px;
+}/*#DIV_33, #DIV_38, #DIV_43*/
+
