@@ -20,7 +20,8 @@ public class MainPjMovement :  AbstractEntity {
 	private Animator anim;
 	public bool paused;
 	public float freeze;
-
+	public int minAP;
+	public int maxAP;
 
 	private EmitParticles Magia;
 	private BitParticles ParticulesSang;
@@ -43,7 +44,7 @@ public class MainPjMovement :  AbstractEntity {
 		this.setHP (750);
 		this.setMP (1000);
 		this.setFOR (0);
-		this.setDMG (25);
+		//this.setDMG (25);
 		this.setRegenHP (15);
 		this.setRegenMP (50);
 		nivellDif = 1;
@@ -55,7 +56,7 @@ public class MainPjMovement :  AbstractEntity {
 		this.setHP (500);
 		this.setMP (500);
 		this.setFOR (0);
-		this.setDMG (15);
+		//this.setDMG (15);
 		this.setRegenHP (10);
 		this.setRegenMP (25);
 		nivellDif = 2;
@@ -66,7 +67,7 @@ public class MainPjMovement :  AbstractEntity {
 		this.setHP (300);
 		this.setMP (400);
 		this.setFOR (0);
-		this.setDMG (15);
+		//this.setDMG (15);
 		this.setRegenHP (3);
 		this.setRegenMP (10);
 		nivellDif = 3;
@@ -234,7 +235,7 @@ public class MainPjMovement :  AbstractEntity {
 								//animacio de la magia
 								Magia.throwParticle(this.gameObject, hit.point); //Merge devel
 								anim.SetBool("magic",true);
-								Aranya.onAttackReceived (Random.Range (150, 200));
+								Aranya.onAttackReceived (Random.Range (minAP, maxAP));
 							} else {
 								//so de que no te magia suficient?
 							}
