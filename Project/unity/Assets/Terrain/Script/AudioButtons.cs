@@ -9,6 +9,9 @@ public class AudioButtons : MonoBehaviour
 	public AudioClip level_medium;
 	public AudioClip level_hard;
 
+	public AudioClip laughMan;
+	public AudioClip laughGirl;
+
 	void Start () 
 	{
 		audio.loop = false;
@@ -33,6 +36,20 @@ public class AudioButtons : MonoBehaviour
 	{
 		audio.loop = false;
 		audio.clip = level_hard;
+		audio.Play();
+	}
+	
+	public void PlayLaughMan()
+	{
+		audio.loop = false;
+		audio.clip = laughMan;
+		audio.Play();
+	}
+	
+	public void PlayLaughGirl()
+	{
+		audio.loop = false;
+		audio.clip = laughGirl;
 		audio.Play();
 	}
 	

@@ -1,11 +1,11 @@
 using UnityEngine;
 using System;
 
-public class WebSpiderAI : SpiderAI {
+public class WebSpiderAI : BasicAI {
 
-	public float aggroRange = 20f;
-	public float spellRange = 10f;
-	public float attackRange = 1.5f; 
+	public float aggroRange = 75f;
+	public float spellRange;
+	public float attackRange = 10f; 
 	public int web_manacost = 100;
 	private SpiderState myState;
 	
@@ -25,18 +25,22 @@ public class WebSpiderAI : SpiderAI {
 
 		if (target == null) {
 			GameObject goTarget = getPlayerGameObject ();
-			target = goTarget.transform;
+			if ( goTarget != null ) {
+				target = goTarget.transform;
+			}
 		}
-		
 		path = new NavMeshPath ();
-		agent.CalculatePath(target.position, path);
-		lastTargetPos = target.position;
+		/* if ( target != null ) {
+			agent.CalculatePath(target.position, path);
+			lastTargetPos = target.position;
+		} */
 		current_corner = 1;
+		spellRange = attackRange * 5f;
 		InvokeRepeating ("checkPath", 0, 0.25f);
 	}
 	
 	private void checkPath(){
-		if (!Vector3.Equals (lastTargetPos, target.position) && currentAction==MOVING) {
+		if (target != null && !Vector3.Equals (lastTargetPos, target.position) && currentAction==MOVING) {
 			agent.CalculatePath(target.position, path);
 			lastTargetPos = target.position;
 			current_corner = 1;
@@ -82,6 +86,12 @@ public class WebSpiderAI : SpiderAI {
 	// Update is called once per frame
 	void Update () {
 		//debugDrawPath();
+		if (target == null) {
+			GameObject goTarget = getPlayerGameObject ();
+			if ( goTarget != null ) {
+				target = goTarget.transform;
+			}
+		}
 		if ( target != null && Time.timeScale>0 ) {
 			AbstractEntity targetEntity = target.GetComponent<AbstractEntity>();
 			if ( targetEntity != null) {
@@ -95,7 +105,12 @@ public class WebSpiderAI : SpiderAI {
 						currentAction = ATTACKING;
 
 					}else if (dist<spellRange && myState.getMP ()>web_manacost){
-						myState.throwProj (targetEntity,target.position,web_manacost);
+						RaycastHit hit;
+						if(Physics.Raycast(transform.position, target.position-transform.position, out hit, dist)) {
+							if ((hit.point-target.position).magnitude<1){ //TODO to change when the main character fixes their tag
+								myState.useWebSpell (target);
+							}
+						}
 					}else if (dist<aggroRange){
 						if (currentAction == PASSIVE){
 							RaycastHit hit;

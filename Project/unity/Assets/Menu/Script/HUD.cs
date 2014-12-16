@@ -22,7 +22,7 @@ public class HUD : MonoBehaviour
 		public Texture[] magicTexturesSpelled = new Texture[3];
 		public Texture texEscut;
 		//textura que saldra cuando el personaje muera
-		public Texture gameOverTexture, hud_bg;
+		public Texture gameOverTexture, hud_bg, winTexture;
 		private float xPos;
 		private float yPos;
 		private MainPjMovement pj;
@@ -42,6 +42,9 @@ public class HUD : MonoBehaviour
 		private float intervalPintada = 0f, alphaValue, tempsPintada = 0.4f, minAlpha = 0.4f, maxAlpha = 0.75f;
 		public float bloodTantPerCentVida = 0.4f;
 		private Texture magiaSelect, magiaNormal, continueTexture, backMainMenuTexture;
+
+		public bool win_message_enabled = false;
+		public bool endMusicEnabled = false;
 
 		
 		void Start ()
@@ -140,7 +143,7 @@ public class HUD : MonoBehaviour
 				int numTextures = 3;
 				
 
-				if (vida < maxVida * bloodTantPerCentVida && pj.isAlive()) {
+				if (vida < maxVida * bloodTantPerCentVida && pj.isAlive ()) {
 						
 						//Vector4 alpha = new Vector4 (1, 0, 0, 1 - vida / maxVida);
 						Vector4 alpha = new Vector4 (1, 0, 0, alphaValue);
@@ -152,17 +155,17 @@ public class HUD : MonoBehaviour
 						
 						float timeScale = Time.timeScale;
 						Time.timeScale = 1;
-						print("incrementar "+incrementar+", "+Time.deltaTime);
-						if(incrementar){
-							alphaValue += Time.deltaTime*0.4f;
-							if (alphaValue >= maxAlpha) {
-								incrementar = false;
-							}
-						}else{
-							alphaValue -= Time.deltaTime*0.4f;
-							if (alphaValue <= minAlpha) {
-								incrementar = true;
-							}
+						//print ("incrementar " + incrementar + ", " + Time.deltaTime);
+						if (incrementar) {
+								alphaValue += Time.deltaTime * 0.4f;
+								if (alphaValue >= maxAlpha) {
+										incrementar = false;
+								}
+						} else {
+								alphaValue -= Time.deltaTime * 0.4f;
+								if (alphaValue <= minAlpha) {
+										incrementar = true;
+								}
 						}
 						Time.timeScale = timeScale;
 						
@@ -207,11 +210,11 @@ public class HUD : MonoBehaviour
 								//GUI.BeginGroup (new Rect (xMana, yMana, amplada, Screen.height - yMana));
 
 								GUI.BeginGroup (new Rect (xMana, yMana, amplada, Screen.height - yMana));
-								GUI.DrawTexture (new Rect (Mathf.Abs(altura-amplada), alturaMana - altura, altura, altura), this.texMana);
+								GUI.DrawTexture (new Rect (Mathf.Abs (altura - amplada), alturaMana - altura, altura, altura), this.texMana);
 								//GUI.DrawTexture (new Rect (0, alturaMana - altura, amplada, altura), this.manaCover);
 								GUI.EndGroup ();
 								GUI.BeginGroup (new Rect (xMana, Screen.height - altura, amplada, Screen.height - altura));
-								GUI.DrawTexture (new Rect (Mathf.Abs(altura-amplada), 0, altura, altura), this.manaCover);
+								GUI.DrawTexture (new Rect (Mathf.Abs (altura - amplada), 0, altura, altura), this.manaCover);
 								GUI.EndGroup ();
 						} else {//altres
 								Texture texturaMagia = magiaEscollida == i ? magiaNormal : magiaSelect;
@@ -297,8 +300,38 @@ public class HUD : MonoBehaviour
 						}
 				}
 		
-		
+				if (win_message_enabled) {
+					if ( !endMusicEnabled ) {
+						AmbientAudio.PlayCredits();
+						endMusicEnabled = true;
+					}
+
+					GUI.DrawTexture (new Rect (Screen.width * 0.5f - Screen.width * 0.2f, 0, Screen.width * 0.4f, Screen.height * 0.4f), winTexture);
+					GUI.DrawTexture (new Rect (xPos + Screen.width * 0.01f, Screen.height * 0.4f, Screen.width * 0.2f, Screen.height * 0.27f), this.fonsMenuGameover);
+					Time.timeScale = 0;
+					Rect restart = new Rect (xPos + Screen.width * 0.01f, Screen.height * 0.4f, Screen.width * 0.2f, Screen.height * 0.1f);
+					restartTexture = restart.Contains (Event.current.mousePosition) ? this.restartTextureSelected : this.restartTextureNormal;
+					if (GUI.Button (restart, restartTexture)) {
+						Object.Destroy (GameObject.FindGameObjectWithTag ("Player"));
+						Application.LoadLevel (Application.loadedLevel);
+						
+					}
+					Rect returnOver = new Rect (xPos + Screen.width * 0.01f, Screen.height * 0.5f, Screen.width * 0.2f, Screen.height * 0.2f);
+					backMainMenuTexture = returnOver.Contains (Event.current.mousePosition) ? this.backMainMenuTextureSelected : this.backMainMenuTextureNormal;
+					
+					
+					if (GUI.Button (returnOver, backMainMenuTexture)) {
+						Object.Destroy (GameObject.FindGameObjectWithTag ("Player"));
+						Application.LoadLevel (0);
+						
+					}
+				}
+	
 		
 		}
+
+	public void show_win_message() {
+		win_message_enabled = true;
+	}
 		
 }

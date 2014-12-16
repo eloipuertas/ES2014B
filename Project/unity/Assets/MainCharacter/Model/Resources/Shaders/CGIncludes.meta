@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Project/unity/Assets/MainCharacter/Model/Resources/Shaders/CGIncludes.meta
 guid: d568bffd798427c41a8ae9a040e3d871
+=======
+guid: 9ed3ca23affece940808e4e46be7f723
+>>>>>>> devel-A:Project/unity/Assets/PlayerSpiderTrap/trapedPlayer.fbm.meta
 folderAsset: yes
 DefaultImporter:
   userData: 
