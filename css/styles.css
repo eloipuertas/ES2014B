@@ -6,13 +6,6 @@ body {
   /* The html and body elements cannot have any padding or margin. */
   -webkit-font-smoothing: antialiased;
   font: normal 14px arial,sans-serif;
-  background: url('../img/dungeonBackground.jpg') no-repeat center center fixed; 
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    color:#fff;
-
 }
 
 .row {
@@ -55,7 +48,7 @@ body {
 }
 
 #footer a {
-  color:#000000;
+  color:#efefef;
 }
 
 h1,h2,h3,h4 {
@@ -122,14 +115,10 @@ h1 {
   
 /* customize nav style */
 .navbar-custom {
-  background: url('../img/MenuBar.png') no-repeat center center fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-
+    background-color: #2e2e2e;
 	font-weight:700;
-  text-transform:uppercase;
+    text-transform:uppercase;
+    border-width:0;
 }
 .navbar-custom  .navbar-nav>li>a {
 	color: #ddd;
@@ -190,7 +179,7 @@ h1 {
  
 
 section {
-  color: #000000;
+  color: #ffffff;
   min-height: 400px;
   height: auto !important;
   height: 100%;
@@ -198,7 +187,7 @@ section {
 }
 
 .bg-1 {
-	background: url('http://www.bootply.com/assets/example/bg_4.jpg') no-repeat center center fixed; 
+	background: url('../img/bg-1.jpg') no-repeat center center fixed; 
     -webkit-background-size: cover;
   	-moz-background-size: cover;
   	-o-background-size: cover;
@@ -214,7 +203,7 @@ section {
 }
 
 .bg-3 {
-	background: url('http://www.bootply.com/assets/example/bg_6.jpg') no-repeat center center fixed; 
+	background: url('../img/bg-3.png') no-repeat center center fixed; 
     -webkit-background-size: cover;
   	-moz-background-size: cover;
   	-o-background-size: cover;
@@ -225,17 +214,3 @@ section {
 	padding-top:30px;
 	background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(20,20,20,0.2)),to(rgba(255,255,255,0)), color-stop(1,#000));
 }
-
-#DIV_33, #DIV_38, #DIV_43 {
-    box-sizing: border-box;
-    color: rgb(120, 120, 120);
-    float: left;
-    height: 30px;
-    width: 69.296875px;
-    perspective-origin: 34.640625px 15px;
-    transform-origin: 34.640625px 15px;
-    border: 0px none rgb(120, 120, 120);
-    font: normal normal bold normal 16px/30px 'Benton Sans', Helvetica, sans-serif;
-    outline: rgb(120, 120, 120) none 0px;
-}/*#DIV_33, #DIV_38, #DIV_43*/
-

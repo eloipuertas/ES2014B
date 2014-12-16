@@ -1,0 +1,16 @@
+Falta una imagen del juego para la sección de Discover the Game del index
+Se ha de sustituir en la hoja de estilos en bg-2
+
+Páginas pendientes:
+	About the game -> Aquí iría toda la historia del juego, presentación de personajes etc
+	About us -> Cosas sobre nosotros
+
+Links:
+INDEX
+	Navbar -> About the game y About us
+	Links de descarga actualizados
+	Discover the game
+	Meet the dev-team
+	
+GAME
+	Navbar -> About the game y About us
