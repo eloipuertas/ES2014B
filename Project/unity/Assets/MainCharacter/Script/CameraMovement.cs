@@ -28,6 +28,8 @@ public class CameraMovement : MonoBehaviour
 	private float maxZ = 150f;
 	private float minZ = 60f;
 	private float zInit = -1f;
+	private bool dark = false;
+	public Texture darkTexture;
 		
 		void Awake ()
 		{
@@ -53,7 +55,10 @@ public class CameraMovement : MonoBehaviour
 						}
 				}
 		}
-	
+	void OnGUI (){
+		if(dark)
+			GUI.DrawTexture (new Rect (0, 0, Screen.width, Screen.height), darkTexture);
+		}
 		void Update ()
 		{
 				updatePlayerGo ();
@@ -64,6 +69,7 @@ public class CameraMovement : MonoBehaviour
 						
 						timeout -= Time.deltaTime;
 						if (!posSetejada) {
+								dark = true;
 								posSetejada = true;
 								Transform teranyina = GameObject.FindGameObjectWithTag ("Door").transform;
 								posCamera [0] = teranyina.position.x+25;
@@ -82,6 +88,7 @@ public class CameraMovement : MonoBehaviour
 			
 
 				} else {
+						dark = false;
 						if (Mathf.Abs (player.transform.position.x - firstMovement [0]) > 2 && Mathf.Abs (player.transform.position.z - firstMovement [2]) > 3) {
 								Vector3 standardPos = player.position + relCameraPos;
 						
