@@ -230,8 +230,8 @@ public class HUD : MonoBehaviour
 						GUI.DrawTexture (new Rect (xMana - alturaMagia - Screen.width * 0.01f, yMagies, alturaMagia, alturaMagia), texEscut);
 
 
-				
-				if (player.canShowMenuPause () && pj.isAlive ()) { 
+
+				if (player.canShowMenuPause () && pj.isAlive () && Gameflow.getPhase()!=Gameflow.GAME_COMPLETE) { 
 						Time.timeScale = 0;
 						GUI.DrawTexture (new Rect (xPos - Screen.width * 0.12f, yPos - Screen.height * 0.3f, Screen.width * 0.45f, Screen.height * 0.25f), this.titolPausa);
 						GUI.DrawTexture (new Rect (xPos - Screen.width * 0.05f, Screen.height * 0.32f, Screen.width * 0.3f, Screen.height * 0.25f), this.fonsMenuPausa);
