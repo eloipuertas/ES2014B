@@ -6,6 +6,7 @@ using System.Collections;
 public class PNJMusicManager : MonoBehaviour 
 {
 	public AudioClip attackOK;
+	public AudioClip criticalAttack;
 
 	public AudioClip PNJKilled;
 
@@ -21,6 +22,15 @@ public class PNJMusicManager : MonoBehaviour
 			audio.Play ();
 		}
 
+	}
+
+	public void PlayCriticalAttack()
+	{
+		if (!audio.isPlaying) {
+			audio.loop = false;
+			audio.clip = criticalAttack;
+			audio.Play ();
+		}
 	}
 	
 	public void PlayPNJKilled()

@@ -8,11 +8,11 @@ public class Gameflow : MonoBehaviour {
 	public int maxEnemies = 0;
 
 	private AbstractEntity playerEntity;
-	private int phase;
-	private const int INITIAL_PHASE = 1;
-	private const int TROLL_FIGHT = 2;
-	private const int GAME_COMPLETE = 3;
-	private const int GAME_OVER = 0;
+	private static int phase;
+	public const int INITIAL_PHASE = 1;
+	public const int TROLL_FIGHT = 2;
+	public const int GAME_COMPLETE = 3;
+	public const int GAME_OVER = 0;
 	
 	//Difficulty levels
 	public const int EASY = 0;
@@ -100,7 +100,7 @@ public class Gameflow : MonoBehaviour {
 							spiderstate = enemy.GetComponent<SpiderState>();
 							trollstate = enemy.GetComponent<TrollState>();
 							if (spiderstate!=null){
-								spiderstate.destroyWithDelay(2f);
+								spiderstate.destroyWithDelay(1.5f);
 								Invoke ("spawnSpiders",2f);
 							}
 							if (trollstate!=null){
@@ -188,5 +188,8 @@ public class Gameflow : MonoBehaviour {
 		mode = mode < EASY ? EASY : mode;
 		mode = mode > HARD ? HARD : mode;
 		return GetDifficulty () == mode;
+	}
+	public static int getPhase(){
+		return phase;
 	}
 }

@@ -13,6 +13,7 @@ public class SpiderState : AbstractEntity {
 	private PNJMusicManager PNJAudio;
 	private CharacterController characterController;
 	private Animator animator;
+	private Transform enemy;
 	
 	public float projectileSpeed = 75f;
 	public float max_attacks_per_second = 5; //Also means MP restored per second
@@ -77,14 +78,16 @@ public class SpiderState : AbstractEntity {
 		int damage = Mathf.RoundToInt((1-((float) ARM / 15 * maxPcDMGReduction))*baseDMG);
 		//Debug.Log("spider_baseDMG: " + baseDMG);
 		Debug.Log("spider_damage: " + damage);
-		animator.SetBool("walk_enabled",false);
-		animator.SetBool("attack_enabled",false);
-		animator.SetBool("receive_attack_enabled",true);
+		if (animator.GetBool ("walk_enabled")) animator.SetBool("walk_enabled",false);
+		if (animator.GetBool ("attack_enabled")) animator.SetBool("attack_enabled",false);
+		if (animator.GetBool ("critical")) animator.SetBool("critical",false);
+		if (!animator.GetBool ("receive_attack_enabled")) animator.SetBool("receive_attack_enabled",true);
 		this.substractHealth(damage);
 		if (timeCostDivisor > 0 && timeForNextAction<(timecost_perAction/timeCostDivisor)) timeForNextAction = timecost_perAction/timeCostDivisor;
 	}
 	
 	private void move(){
+		if (animator.GetBool ("receive_attack_enabled")) animator.SetBool("receive_attack_enabled",false);
 		if ( animator != null && characterController != null) { 
 			Vector3 moveDirection = destination-transform.position;
 			moveDirection.Normalize();
@@ -112,32 +115,60 @@ public class SpiderState : AbstractEntity {
 		this.lookAt(enemyPos);
 		if(this.isAlive() && enemy.isAlive()){
 			if (timeForNextAction<=0){
-				if (!animator.GetBool("attack_enabled")) animator.SetBool ("attack_enabled", true);
-				PNJAudio.PlayAttackOK();
-				enemy.onAttackReceived (DMG);
-				timeForNextAction = timecost_perAction;
+				float randomNumber = Random.Range(0f,100f);
+				if (randomNumber<25){
+					if (animator.GetBool("attack_enabled")) animator.SetBool ("attack_enabled", false);
+					if (!animator.GetBool("critical")) animator.SetBool ("critical", true);
+					PNJAudio.PlayCriticalAttack(); // PlayAttackOK
+					enemy.onAttackReceived (4*DMG);
+					timeForNextAction = timecost_perAction;
+				}else{
+					if (animator.GetBool("critical")) animator.SetBool ("critical", false);
+					if (!animator.GetBool("attack_enabled")) animator.SetBool ("attack_enabled", true);
+					PNJAudio.PlayAttackOK(); // PlayCriticalAttack
+					enemy.onAttackReceived (DMG);
+					timeForNextAction = timecost_perAction;
+				}
 			}
 		}else if (animator.GetBool("attack_enabled")){
 			animator.SetBool("attack_enabled",false);
+		}else if (animator.GetBool("critical")){
+			animator.SetBool("critical",false);
 		}
 	}
-	
-	// THROW PROJECTILE
-	public void throwProj(AbstractEntity enemy,Vector3 enemyPos, int manacost){
-		if (MP > manacost) {
-			this.lookAt (enemyPos);
-			MP = MP - manacost;
-			Object prefab = Resources.LoadAssetAtPath("Assets/SpiderProjectile/Prefab/SpiderWeb.prefab", typeof(GameObject));
+
+	public void useWebSpell(Transform target){
+		this.GetComponent<WebSpiderAI>().enabled = false;
+		if (animator.GetBool("walk_enabled")) animator.SetBool("walk_enabled",false);
+		if (!animator.GetBool("web")) animator.SetBool("web",true);
+		destination = transform.position;
+		enemy = target;
+		this.lookAt (enemy.transform.position);
+		Invoke ("reenableWebAI",1.5f);
+		Invoke ("throwProj",1.25f);
+	}
+
+	private void throwProj(){
+		if (this.isAlive ()) {
+			setMP(MP - this.GetComponent<WebSpiderAI>().web_manacost);
+			this.lookAt (enemy.transform.position);
+			Object prefab = Resources.Load("SpiderWeb", typeof(GameObject));
 			GameObject projectile = Instantiate(prefab, Vector3.zero, Quaternion.identity) as GameObject;
-			Physics.IgnoreCollision(projectile.collider,characterController);
-			projectile.transform.position = new Vector3(transform.position.x,transform.position.y,transform.position.z);
+			projectile.GetComponent<Web>().setTarget(enemy);
+			//Physics.IgnoreCollision(projectile.collider,characterController);
+			projectile.transform.position = new Vector3(transform.position.x,transform.position.y*1.5f,transform.position.z);
 			projectile.transform.rotation = projectile.transform.rotation * Quaternion.Euler(90, transform.rotation.eulerAngles.y, 0);
 			Rigidbody rgproj = projectile.AddComponent<Rigidbody>();
-			Vector3 moveDirection = enemyPos-transform.position;
+			Vector3 moveDirection = enemy.transform.position-transform.position;
 			rgproj.velocity = new Vector3(moveDirection.x,0,moveDirection.z).normalized * projectileSpeed;
 			rgproj.useGravity = false;
 			Physics.IgnoreCollision(rgproj.collider,characterController);
 		}
+	}
+
+	private void reenableWebAI(){
+		animator.SetBool("web",false);
+		this.GetComponent<WebSpiderAI>().enabled = true;
 	}
 	
 	// MOVEMENT
@@ -147,12 +178,12 @@ public class SpiderState : AbstractEntity {
 	
 	public void setDestination(float x,float y,float z){
 		if (animator != null) {
+			if (animator.GetBool("critical")) animator.SetBool ("critical", false);
+			if (animator.GetBool("attack_enabled")) animator.SetBool ("attack_enabled", false);
 			if (this.isAlive()) {
-				if (animator.GetBool("attack_enabled")) animator.SetBool ("attack_enabled", false);
 				if (!animator.GetBool("walk_enabled")) animator.SetBool ("walk_enabled", true);
 				destination = new Vector3 (x, y, z);
 			} else {
-				if (animator.GetBool("attack_enabled")) animator.SetBool ("attack_enabled", false);
 				if (animator.GetBool("walk_enabled")) animator.SetBool ("walk_enabled", false);
 			}
 		}
@@ -174,9 +205,10 @@ public class SpiderState : AbstractEntity {
 	public void substractHealth(int healthToSubstract){
 		setHP(HP - healthToSubstract);
 		if(!isAlive()){
-			animator.SetBool("walk_enabled",false);
-			animator.SetBool("attack_enabled",false);
-			animator.SetBool("receive_attack_enabled",false);
+			if (animator.GetBool("walk_enabled")) animator.SetBool("walk_enabled",false);
+			if (animator.GetBool("attack_enabled")) animator.SetBool("attack_enabled",false);
+			if (animator.GetBool("critical")) animator.SetBool("critical",false);
+			if (animator.GetBool("receive_attack_enabled")) animator.SetBool("receive_attack_enabled",false);
 			animator.SetBool("die",true);
 			GetComponent<CharacterController>().enabled = false;
 			PNJAudio.PlayPNJKilled();

@@ -64,9 +64,5 @@ public class EnvController : MonoBehaviour {
 			
 			Destroy(hit.gameObject);
 		}
-		if (hit.gameObject.tag == "Rocket") {
-			target.setFreeze(2.0f);
-			Destroy(hit.gameObject);
-		}
 	}
 }

@@ -105,7 +105,12 @@ public class WebSpiderAI : BasicAI {
 						currentAction = ATTACKING;
 
 					}else if (dist<spellRange && myState.getMP ()>web_manacost){
-						myState.throwProj (targetEntity,target.position,web_manacost);
+						RaycastHit hit;
+						if(Physics.Raycast(transform.position, target.position-transform.position, out hit, dist)) {
+							if ((hit.point-target.position).magnitude<1){ //TODO to change when the main character fixes their tag
+								myState.useWebSpell (target);
+							}
+						}
 					}else if (dist<aggroRange){
 						if (currentAction == PASSIVE){
 							RaycastHit hit;

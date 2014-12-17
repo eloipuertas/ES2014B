@@ -23,6 +23,13 @@ public class CameraMovement : MonoBehaviour
 		private List<GameObject> amagats;
 		private Vector3 firstMovement;
 		private Vector3 anterior;
+		private bool posSetejada = false;
+		private float timeout = 3f;
+	private float maxZ = 150f;
+	private float minZ = 60f;
+	private float zInit = -1f;
+	private bool dark = false;
+	public Texture darkTexture;
 		
 		void Awake ()
 		{
@@ -48,63 +55,90 @@ public class CameraMovement : MonoBehaviour
 						}
 				}
 		}
-	
+	void OnGUI (){
+		if(dark)
+			GUI.DrawTexture (new Rect (0, 0, Screen.width, Screen.height), darkTexture);
+		}
 		void Update ()
 		{
 				updatePlayerGo ();
 				if (playerGo == null) {
 						return;
 				}
-
-				if (Mathf.Abs (player.transform.position.x - firstMovement [0]) > 2 && Mathf.Abs (player.transform.position.z - firstMovement [2]) > 3) {
-						Vector3 standardPos = player.position + relCameraPos;
+				if (Gameflow.getPhase () == Gameflow.TROLL_FIGHT && timeout > 0) {
 						
-						Vector3 abovePos = player.position + Vector3.up * relCameraPosMag;
-		
-		
-						
-						Vector3[] checkPoints = new Vector3[5];
-		
-		
-						checkPoints [0] = standardPos;
-		
-		
-						checkPoints [1] = Vector3.Lerp (standardPos, abovePos, 0.25f);
-						checkPoints [2] = Vector3.Lerp (standardPos, abovePos, 0.5f);
-						checkPoints [3] = Vector3.Lerp (standardPos, abovePos, 0.75f);
-		
-		
-						checkPoints [4] = abovePos;
-		
-						if (player.position != anterior) {
-								anterior = player.position;
-								for (int i = 0; i < checkPoints.Length; i++) {
-										ViewingPosCheck (checkPoints [i]);
-						
-								}
-								ViewingPosCheck (transform.position);
-								bool enmig;
-								for (int j = 0; j < amagats.Count; j++) {
-						
-										enmig = changeAlpha (amagats [j]);
-										if (enmig)
-												amagats.Remove (amagats [j]);
-								
-						
-								}
+						timeout -= Time.deltaTime;
+						if (!posSetejada) {
+								dark = true;
+								posSetejada = true;
+								Transform teranyina = GameObject.FindGameObjectWithTag ("Door").transform;
+								posCamera [0] = teranyina.position.x+25;
+								posCamera [1] = teranyina.position.y-10;
+								posCamera [2] = teranyina.position.z - maxZ;
+								zInit = teranyina.position.z;
+								transform.LookAt (teranyina.position);
+								transform.position = posCamera;
 						}
-				
-		
-						distancia = Mathf.Clamp (distancia + -1*Input.GetAxis ("Mouse ScrollWheel") * zoomSpeed, distanciaMin, distanciaMax);
-
-
-						posCamera [0] = player.position.x - distancia;
-						posCamera [1] = player.position.y + distancia;
-						posCamera [2] = player.position.z - distancia;			
-
+						
+						zInit += 1f;
+						float z = Mathf.Min (zInit-maxZ,zInit);
+						posCamera [2] = z;
 						transform.position = posCamera;
 
-						transform.LookAt (player.position);
+			
+
+				} else {
+						dark = false;
+						if (Mathf.Abs (player.transform.position.x - firstMovement [0]) > 2 && Mathf.Abs (player.transform.position.z - firstMovement [2]) > 3) {
+								Vector3 standardPos = player.position + relCameraPos;
+						
+								Vector3 abovePos = player.position + Vector3.up * relCameraPosMag;
+		
+		
+						
+								Vector3[] checkPoints = new Vector3[5];
+		
+		
+								checkPoints [0] = standardPos;
+		
+		
+								checkPoints [1] = Vector3.Lerp (standardPos, abovePos, 0.25f);
+								checkPoints [2] = Vector3.Lerp (standardPos, abovePos, 0.5f);
+								checkPoints [3] = Vector3.Lerp (standardPos, abovePos, 0.75f);
+		
+		
+								checkPoints [4] = abovePos;
+		
+								if (player.position != anterior) {
+										anterior = player.position;
+										for (int i = 0; i < checkPoints.Length; i++) {
+												ViewingPosCheck (checkPoints [i]);
+						
+										}
+										ViewingPosCheck (transform.position);
+										bool enmig;
+										for (int j = 0; j < amagats.Count; j++) {
+						
+												enmig = changeAlpha (amagats [j]);
+												if (enmig)
+														amagats.Remove (amagats [j]);
+								
+						
+										}
+								}
+				
+		
+								distancia = Mathf.Clamp (distancia + -1 * Input.GetAxis ("Mouse ScrollWheel") * zoomSpeed, distanciaMin, distanciaMax);
+
+
+								posCamera [0] = player.position.x - distancia;
+								posCamera [1] = player.position.y + distancia;
+								posCamera [2] = player.position.z - distancia;			
+
+								transform.position = posCamera;
+
+								transform.LookAt (player.position);
+						}
 				}
 		}
 
