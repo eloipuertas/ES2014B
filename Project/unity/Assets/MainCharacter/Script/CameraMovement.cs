@@ -25,11 +25,11 @@ public class CameraMovement : MonoBehaviour
 		private Vector3 anterior;
 		private bool posSetejada = false;
 		private float timeout = 3f;
-	private float maxZ = 150f;
-	private float minZ = 60f;
-	private float zInit = -1f;
-	private bool dark = false;
-	public Texture darkTexture;
+		private float maxZ = 150f;
+		private float minZ = 60f;
+		private float zInit = -1f;
+		private bool dark = false;
+		public Texture darkTexture;
 		
 		void Awake ()
 		{
@@ -55,10 +55,13 @@ public class CameraMovement : MonoBehaviour
 						}
 				}
 		}
-	void OnGUI (){
-		if(dark)
-			GUI.DrawTexture (new Rect (0, 0, Screen.width, Screen.height), darkTexture);
+
+		void OnGUI ()
+		{
+				if (dark)
+						GUI.DrawTexture (new Rect (0, 0, Screen.width, Screen.height), darkTexture);
 		}
+
 		void Update ()
 		{
 				updatePlayerGo ();
@@ -72,16 +75,17 @@ public class CameraMovement : MonoBehaviour
 								dark = true;
 								posSetejada = true;
 								Transform teranyina = GameObject.FindGameObjectWithTag ("Door").transform;
-								posCamera [0] = teranyina.position.x+25;
-								posCamera [1] = teranyina.position.y-10;
+								posCamera [0] = teranyina.position.x + 25;
+								posCamera [1] = teranyina.position.y - 10;
 								posCamera [2] = teranyina.position.z - maxZ;
 								zInit = teranyina.position.z;
-								transform.LookAt (teranyina.position);
+								
 								transform.position = posCamera;
+								transform.LookAt (teranyina.position);
 						}
 						
 						zInit += 1f;
-						float z = Mathf.Min (zInit-maxZ,zInit);
+						float z = Mathf.Min (zInit - maxZ, zInit);
 						posCamera [2] = z;
 						transform.position = posCamera;
 
